@@ -1,0 +1,37 @@
+#deny all
+
+<ifModule mod_expires.c>
+ ExpiresActive On
+ ExpiresByType image/x-icon "access plus 604800 seconds"
+ ExpiresByType image/jpeg "access plus 604800 seconds"
+ ExpiresByType image/png "access plus 604800 seconds"
+ ExpiresByType image/gif "access plus 604800 seconds"
+ ExpiresByType application/x-shockwave-flash "access plus 604800 seconds"
+ ExpiresByType text/css "access plus 604800 seconds"
+ ExpiresByType text/javascript "access plus 604800 seconds"
+ ExpiresByType application/javascript "access plus 604800 seconds"
+ ExpiresByType application/x-javascript "access plus 604800 seconds"
+</ifModule>
+
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} ^ec2-174-129-248-144\.compute-1\.amazonaws\.com$ [OR]
+#RewriteCond %{HTTP_HOST} ^174\.129\.248\.144$ [OR]
+#RewriteCond %{HTTP_HOST} ^studypool\.com$ [NC]
+#RewriteRule ^(.*)$ https://www.studypool.com/$1 [R=301,L]
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+
+# otherwise forward it to index.php
+RewriteRule . index.php
+
+# prevent people visit directories(upload included)
+Options -Indexes
+
+#Error pages
+#ErrorDocument 403     /errors/403.php

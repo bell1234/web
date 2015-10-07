@@ -49,6 +49,17 @@ return array(
         ),
 */
 
+        'clientScript'=>array(
+
+            //'class'=>'ext.minScript.components.ExtMinScript',
+
+            'packages'=>array(
+
+                'jquery'=>false,
+
+            ),
+        ),
+
         'user'=>array(
             'class'=>'CWebUser',
             // enable cookie-based authentication

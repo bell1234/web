@@ -48,7 +48,9 @@ if(Yii::app()->user->isGuest){
 			<div class="post_footer grey small">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
 				发布于
-				3 小时前
+				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
+					<?php echo date('M jS, Y',($data->create_time)); ?>
+				</abbr>
 			</div>
 		</div>
 </div>

@@ -1,3 +1,8 @@
+abbr.timeago{
+	text-decoration:none !important;
+	border-bottom:none !important;
+	cursor:auto !important;
+}
 .bold{
 	font-weight:700;
 }

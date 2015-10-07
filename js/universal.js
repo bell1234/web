@@ -15,7 +15,7 @@ $(document).ready(function() {
   		}
 	});	
 
-
+	$("abbr.timeago").timeago();
 });
 
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote

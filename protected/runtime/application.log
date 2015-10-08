@@ -2437,3 +2437,768 @@ Stack trace:
 REQUEST_URI=/favicon.ico
 HTTP_REFERER=http://54.204.37.100/posts/index
 ---
+2015/10/07 10:08:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp3.pospr.waw.pl/testproxy.php
+---
+2015/10/07 13:25:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "proxytest.zmap.io:80".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('proxytest.zmap....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=proxytest.zmap.io:80
+---
+2015/10/07 15:12:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/07 15:28:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/07 16:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120-precomposed.png
+---
+2015/10/07 16:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120.png
+---
+2015/10/07 16:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/07 16:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/07 16:36:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-precomposed.png
+---
+2015/10/07 16:36:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120-precomposed.png
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120.png
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-precomposed.png
+---
+2015/10/07 16:41:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/10/07 18:44:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/07 18:53:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/07 21:30:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/07 22:04:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp5.mielno.lubin.pl/testproxy.php
+---
+2015/10/07 23:31:53 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink...')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink/https://www.cnn.com
+---
+2015/10/07 23:35:14 [error] [php] Undefined variable: post_html (/var/www/html/webapp/protected/controllers/PostsController.php:181)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink?url=https://www.cnn.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (181)
+in /var/www/html/webapp/index.php (13)
+2015/10/07 23:35:15 [error] [php] Undefined variable: post_html (/var/www/html/webapp/protected/controllers/PostsController.php:181)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink?url=https://www.cnn.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (181)
+in /var/www/html/webapp/index.php (13)
+2015/10/07 23:35:32 [error] [php] Undefined variable: images (/var/www/html/webapp/protected/controllers/PostsController.php:190)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink?url=https://www.cnn.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (190)
+in /var/www/html/webapp/index.php (13)
+2015/10/07 23:39:12 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink
+---
+2015/10/07 23:39:32 [error] [php] Undefined variable: absUrl (/var/www/html/webapp/protected/controllers/PostsController.php:196)
+Stack trace:
+#0 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#1 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#2 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#3 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#4 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#5 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#6 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#7 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#8 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#9 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#10 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink
+in /var/www/html/webapp/protected/controllers/PostsController.php (196)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 00:04:35 [error] [php] require_once(/var/www/html/webapp/protected/extentions/PHPDomParser/url_to_absolute.php): failed to open stream: No such file or directory (/var/www/html/webapp/protected/controllers/PostsController.php:5)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(276): CWebApplication->createController()
+#1 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#2 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#3 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink
+in /var/www/html/webapp/protected/controllers/PostsController.php (5)
+in /var/www/html/webapp/protected/controllers/PostsController.php (5)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 00:13:52 [error] [php] file_get_contents(www.cnn.com): failed to open stream: No such file or directory (/var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php:77)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionParseLink()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/parselink
+in /var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php (77)
+in /var/www/html/webapp/protected/controllers/PostsController.php (186)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 00:36:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink
+---
+2015/10/08 00:36:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink
+---
+2015/10/08 00:37:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink
+---
+2015/10/08 00:37:27 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /var/www/html/yii/framework/web/CController.php:336
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(309): CController->invalidActionParams(Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('parselink')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/parselink')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/parselink
+---
+2015/10/08 01:16:08 [error] [php] mkdir(): Permission denied (/var/www/html/webapp/protected/controllers/PostsController.php:225)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (225)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:16:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/posts/2/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/posts/2...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/posts/2/851595_5304836237180.png
+HTTP_REFERER=http://54.204.37.100/submit
+---
+2015/10/08 01:16:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/posts/2/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/posts/2...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/posts/2/851595_5304836237180.png
+---
+2015/10/08 01:16:33 [error] [php] mkdir(): Permission denied (/var/www/html/webapp/protected/controllers/PostsController.php:225)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (225)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:21:54 [error] [php] include(imagick.php): failed to open stream: No such file or directory (/var/www/html/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/PostsController.php(238): spl_autoload_call()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (238)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:24:46 [error] [php] include(imagick.php): failed to open stream: No such file or directory (/var/www/html/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/PostsController.php(238): spl_autoload_call()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (238)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:28:57 [error] [php] include(imagick.php): failed to open stream: No such file or directory (/var/www/html/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/PostsController.php(238): spl_autoload_call()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (238)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:30:35 [error] [php] include(Imagick.php): failed to open stream: No such file or directory (/var/www/html/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/PostsController.php(238): spl_autoload_call()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/AjaxUpload?PHPSESSID=pvsrq9d2vnen12kdb75tgcm4q5&YII_CSRF_TOKEN=d0ccdcd026c96333bd2d320d14465f2b25097640&qqfile=851595_5304836237180.png
+in /var/www/html/webapp/protected/controllers/PostsController.php (238)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 01:33:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "inf".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('inf')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/inf
+---
+2015/10/08 01:33:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "inf".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('inf')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/inf
+---
+2015/10/08 02:08:36 [error] [php] file_get_contents(http://www.zhihu.com): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php:77)
+Stack trace:
+#0 unknown(0): PostsController->actionGetPic()
+#1 /var/www/html/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#2 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#5 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#7 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#8 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#12 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.zhihu.com
+in /var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php (77)
+in /var/www/html/webapp/protected/controllers/PostsController.php (187)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:16:05 [error] [php] file_get_contents(http://www.zhihu.com): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php:77)
+Stack trace:
+#0 unknown(0): PostsController->actionGetPic()
+#1 /var/www/html/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#2 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#5 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#7 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#8 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#12 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.zhihu.com
+in /var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php (77)
+in /var/www/html/webapp/protected/controllers/PostsController.php (191)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:17:19 [error] [php] file_get_contents(http://www.zhihu.com): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php:77)
+Stack trace:
+#0 unknown(0): PostsController->actionGetPic()
+#1 /var/www/html/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#2 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#3 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#4 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#5 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#7 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#8 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#9 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#12 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#13 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.zhihu.com
+in /var/www/html/webapp/protected/extensions/PHPDomParser/simple_html_dom.php (77)
+in /var/www/html/webapp/protected/controllers/PostsController.php (187)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:17:31 [warning] [application] Failed to set unsafe attribute "description" of "Posts".
+in /var/www/html/webapp/protected/components/PostPop.php (25)
+in /var/www/html/webapp/protected/views/posts/_form.php (8)
+in /var/www/html/webapp/protected/views/posts/create.php (9)
+2015/10/08 02:25:38 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/controllers/PostsController.php:213)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.baidu.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (213)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:33:04 [error] [php] preg_match(): Unknown modifier '>' (/var/www/html/webapp/protected/controllers/PostsController.php:191)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.baidu.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (191)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:35:28 [error] [php] Undefined variable: html (/var/www/html/webapp/protected/controllers/PostsController.php:193)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getPic?url=http://www.baidu.com
+in /var/www/html/webapp/protected/controllers/PostsController.php (193)
+in /var/www/html/webapp/index.php (13)
+2015/10/08 02:50:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getpic".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getpic')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getpic')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getPic')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/posts/getPic?url=http://www.zhihu.com
+---
+2015/10/08 03:20:30 [warning] [application] Failed to set unsafe attribute "description" of "Posts".
+in /var/www/html/webapp/protected/components/PostPop.php (25)
+in /var/www/html/webapp/protected/views/posts/_form.php (8)
+in /var/www/html/webapp/protected/views/posts/create.php (8)
+2015/10/08 03:20:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "submit".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('submit')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('submit')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/submit')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/posts/submit
+---
+2015/10/08 03:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120-precomposed.png
+---
+2015/10/08 03:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-120x120.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-120x120.png
+---
+2015/10/08 03:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/08 03:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/08 03:55:05 [warning] [application] Failed to set unsafe attribute "description" of "Posts".
+in /var/www/html/webapp/protected/components/PostPop.php (25)
+in /var/www/html/webapp/protected/views/posts/_form.php (8)
+in /var/www/html/webapp/protected/views/posts/create.php (8)
+2015/10/08 05:42:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manager/html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('manager/html')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/manager/html
+---
+2015/10/08 05:43:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "manager/html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('manager/html')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/manager/html
+---
+2015/10/08 06:44:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp3.pospr.waw.pl/testproxy.php
+---
+2015/10/08 15:13:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp2.czar.bielawa.pl/testproxy.php
+---
+2015/10/08 21:45:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "networkmap/index.html".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('networkmap/inde...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://cachefly.cachefly.net/networkmap/index.html
+---
+2015/10/08 22:58:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "c/view".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('c/view')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/c/1
+HTTP_REFERER=http://54.204.37.100/site/login
+---
+2015/10/08 22:58:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "c/view".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('c/view')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/c/2
+HTTP_REFERER=http://54.204.37.100/c/1
+---
+2015/10/08 22:58:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "c/view".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('c/view')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/c/3
+HTTP_REFERER=http://54.204.37.100/c/2
+---
+2015/10/08 22:58:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "c/view".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('c/view')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/c/4
+HTTP_REFERER=http://54.204.37.100/c/3
+---

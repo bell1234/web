@@ -17,33 +17,34 @@ if(Yii::app()->user->isGuest){
 	$alreadyUp = PostsVotes::model()->findByAttributes(array('post_id'=>$data->id, 'user_id'=>$me->id, 'type'=>1));
 	$alreadyDown = PostsVotes::model()->findByAttributes(array('post_id'=>$data->id, 'user_id'=>$me->id, 'type'=>2));
 }
+if($data->type == 1){
+	$post_link = $data->link;
+}else{
+	$post_link = "/posts/".$data->id;
+}
 ?>
 
 
 <div id="post_cell_<?php echo $data->id; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post_votes">
-			<a class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
+			<a id="vote_up_<?php echo $data->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" ontouchend="vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
 				<div><i class="glyphicon glyphicon-triangle-top"></i></div>
 				<div class="vote_num"><?php echo ($data->up - $data->down); ?></div>
 			</a>
-			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" ontouchend="vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 		</div>
 
 		<div class="post_pic">
-			<img src="http://placehold.it/90x90" />
+			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
+				<img style="width:90px; height:90px;" src="<?php echo $data->thumb_pic; ?>" />
+			</a>
 		</div>
 
-		<div class="post_content">
-			<h4 style="height:45px;">
-			<?php if($data->type == 1): ?>
-				<a class="black_link" target="_blank" href="<?php echo $data->link;?>">
+		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
+			<h4 class="post_header" style="height:45px;">
+				<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 					<?php echo $data->name; ?>
 				</a>
-			<?php else: ?>
-				<a class="black_link" target="_blank" href="/posts/<?php echo $data->id;?>">
-					<?php echo $data->name; ?>
-				</a>
-			<?php endif; ?>
 			</h4>
 			<div class="post_footer grey small">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
@@ -54,49 +55,3 @@ if(Yii::app()->user->isGuest){
 			</div>
 		</div>
 </div>
-
-<!--
-<div class="view">
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
-	<?php echo CHtml::encode($data->name); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
-	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('link')); ?>:</b>
-	<?php echo CHtml::encode($data->link); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('shorturl')); ?>:</b>
-	<?php echo CHtml::encode($data->shorturl); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
-	<?php echo CHtml::encode($data->create_time); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('up')); ?>:</b>
-	<?php echo CHtml::encode($data->up); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('down')); ?>:</b>
-	<?php echo CHtml::encode($data->down); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('comments')); ?>:</b>
-	<?php echo CHtml::encode($data->comments); ?>
-	<br />
-
-</div>
--->

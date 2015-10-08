@@ -48,7 +48,7 @@
 
 	<div class="row">
 		<?php echo $form->hiddenField($model,'type', array('value'=>$type)); ?>
-		<ul class="nav nav-tabs top10 bottom10">
+		<ul class="nav nav-tabs top10 bottom10 bold">
   			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">发布链接</a></li>
   			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">发布内容</a></li>
 		</ul>
@@ -56,7 +56,7 @@
 
 	<div id="link_post_field" class="row link_post form-group">
 		<label class="control-label" for="post_link">要分享的链接/网址</label>
-		<?php echo $form->textField($model,'link',array('class'=>'form-control','maxlength'=>500, 'placeholder'=>'请复制粘贴您想分享的微信/微博/视频/图片/或者任意网站地址', 'id'=>'post_link')); ?>
+		<?php echo $form->textField($model,'link',array('class'=>'form-control','maxlength'=>500, 'placeholder'=>'请复制粘贴微信/微博/视频/图片/或者任意网站地址', 'id'=>'post_link')); ?>
 		<div id="url_invalid" class="errorMessage no_show top5">请输入一个有效的地址</div>
 		<div id="dup_url" class="top5 no_show small">
 			该地址已被提交过，若非必要请尽量不要重复提交: 
@@ -76,9 +76,48 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
+
+	<div class="row form-group">
+		<label class="control-label" for="Posts_thumb_pic">配图（自选）</label>
+		<?php echo $form->hiddenField($model,'thumb_pic', array('id'=>'Posts_thumb_pic')); ?>
+
+		<div>
+			<img id="thumb_pic" style="width:100px; height:100px; margin-top:-35px; float:left;" src='' />
+
+<?php $this->widget('ext.EAjaxUpload.EAjaxUpload',
+	array(
+		'id'=>'uploadFile',        
+        	'config'=>array(
+	                       'action'=>'/posts/AjaxUpload',
+
+					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;">或 <a href="#" onclick="read_pic(); return false;" class=" small pic_post post_pic_before left5">从网址读取配图</a><span class="no_show post_pic_loading left5">读取中...</span><span class="no_show post_pic_error left5">未找到合适的配图，建议手动上传</span></div><ul class="qq-upload-list" style="display:none;"></ul><div style="display:none;" class="qq-upload-drop-area"></div></div>',
+
+					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
+	                                      'allowedExtensions'=>array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp'),
+	                                      'sizeLimit'=>5*1024*1024,// maximum file size in bytes       
+               				      'minSizeLimit'=>1,// minimum file size in bytes
+
+	        			       'messages'=>array(
+               
+	                                      	'typeError'=>'文件格式不符, 请上传以下格式的文件: {extensions}',
+               
+	                                        'sizeError'=>'文件过大, 请上传{sizeLimit}以下的文件',        
+               
+	                                         ),
+               					'showMessage'=>"js:function(message){ alert(message); }"
+	                                       )
+	                                                    
+)); ?>
+
+		</div>
+	</div>
+
+
+
+
 	<div class="row content_post form-group">
 		<label class="control-label" for="Posts_description">内容</label>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'要分享的信息 / 内容', 'style'=>'resize: vertical;')); ?>
+		<?php echo $form->textArea($model,'description',array('class'=>'form-control', 'placeholder'=>'要分享的信息 / 内容', 'style'=>'resize: vertical;')); ?>
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 

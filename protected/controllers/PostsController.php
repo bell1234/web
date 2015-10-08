@@ -29,11 +29,11 @@ class PostsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'inf'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'parseLink', 'getTitle', 'getDupURL', 'vote', 'voteCancel'),
+				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -57,6 +57,10 @@ class PostsController extends Controller
 		));
 	}
 
+
+	public function actionInf(){
+		phpinfo();
+	}
 
 	/**
 	 * Vote ajax function
@@ -163,36 +167,105 @@ class PostsController extends Controller
 		if($title){
 			echo $title[1];
 		}else{
-			return "error";
+			echo "error";
 		}
+
+		
+
+
 	}
 
 
 	/**
 	 * grab picture from the link
 	 */
-	public function actionParseLink()
+	public function actionGetPic($url)
 	{
-		//grab pictures..
 
-   		$post_html = file_get_html($html);
+		$ch = curl_init();
+		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (compatible; MSIE 8.0)');
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		$pos = strpos($data,'utf-8');
+		if($pos===false){$data = iconv("gbk","utf-8",$data);}
+		preg_match_all( '/<img[^>]+src=[\'"]([^\'"]+)[\'"].*>/i', $data, $array);
 
-		/*
-		//first picture
-    		$first_img = $post_html->find('img', 0);
+$biggestImage = 'path to "no image found" image';
 
-    		if($first_img !== null) {
-        		return url_to_absolute($first_img->src);
-    		}
-
-		//all pictures
-		foreach($html->find('img') as $element) {
-			return url_to_absolute($url, $element->src);
-		}
-		*/
-
+// process
+$maxSize = -1;
+$visited = array();
+// base url
+$parts=parse_url($url);
+$host=$parts['scheme'].'://'.$parts['host'];
+// loop a few times
+$i = 0;
+shuffle($array[1]);
+foreach($array[1] as $key=>$element){
+    $i++;
+    $pic = $element;
+    if($i > 3){
+	continue;
+    }
+    if($pic=='')continue;// it happens on your test url
+	$absUrl = $this->nodots($this->absurl($url, $pic));
+    // ignore already seen images, add new images
+    if(in_array($absUrl, $visited))continue;
+    $visited[]=$absUrl;
+    // get image
+    $image=@getimagesize($absUrl);// get the rest images width and height
+    if (($image[0] * $image[1]) > $maxSize) {   
+        $maxSize = $image[0] * $image[1];  //compare images' sise
+        $biggestImage = $absUrl;
+    }
+}
+if($biggestImage){
+	echo $biggestImage; 
+}else{
+	echo "error";
+}
 
 	}
+
+
+
+	public function actionAjaxUpload()
+	{
+
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+ 
+        $folder='uploads/posts/'.Yii::app()->user->id.'/'; // folder for uploaded files
+
+        if (!file_exists ($folder)){
+            mkdir ($folder, 0777, true);
+        }
+
+        $allowedExtensions = array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp');
+        $sizeLimit = 5 * 1024 * 1024;	// maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+ 
+        $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+        $fileName=$result['filename'];//GETTING FILE NAME
+	$filename = $fileName;
+
+ 	$thumb = new Imagick("uploads/posts/" . Yii::app()->user->id . "/" . $filename);
+        $thumb->setImageFormat("png");
+        $thumb->thumbnailImage(90, 90);
+
+        if (file_exists("uploads/posts/" . Yii::app()->user->id . "/" . $filename)) {
+        	unlink("uploads/posts/" . Yii::app()->user->id . "/" . $filename);
+        }
+        $thumb->writeImage("uploads/posts/" . Yii::app()->user->id . "/" . $filename);                  
+       
+        echo $return;// it's array
+	}
+
 
 	/**
 	 * Creates a new model.
@@ -295,4 +368,45 @@ class PostsController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+
+
+
+protected function absurl($pgurl, $url) {
+ $pgurl;
+ if(strpos($url,'://')) return $url; //already absolute
+ if(substr($url,0,2)=='//') return 'http:'.$url; //shorthand scheme
+ if($url[0]=='/') return parse_url($pgurl,PHP_URL_SCHEME).'://'.parse_url($pgurl,PHP_URL_HOST).$url; //just add domain
+ if(strpos($pgurl,'/',9)===false) $pgurl .= '/'; //add slash to domain if needed
+ return substr($pgurl,0,strrpos($pgurl,'/')+1).$url; //for relative links, gets current directory and appends new filename
+}
+
+protected function nodots($path) {
+ $arr1 = explode('/',$path);
+ $arr2 = array();
+ foreach($arr1 as $seg) {
+  switch($seg) {
+   case '.':
+    break;
+   case '..':
+    array_pop($arr2);
+    break;
+   case '...':
+    array_pop($arr2); array_pop($arr2);
+    break;
+   case '....':
+    array_pop($arr2); array_pop($arr2); array_pop($arr2);
+    break;
+   case '.....':
+    array_pop($arr2); array_pop($arr2); array_pop($arr2); array_pop($arr2);
+    break;
+   default:
+    $arr2[] = $seg;
+  }
+ }
+ return implode('/',$arr2);
+}
+
+
 }

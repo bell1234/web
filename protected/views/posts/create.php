@@ -5,7 +5,6 @@
 ?>
 
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h1 class="">发布新内容</h1>
 		<?php $this->renderPartial('_form'); ?>
 </div>
 

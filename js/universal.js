@@ -16,9 +16,13 @@ $(document).ready(function() {
 	});	
 
 	$("abbr.timeago").timeago();
+
+
 });
 
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
+
+	
 	if(guest){
 		alert('show login/signup popup');
 		return false;	
@@ -33,33 +37,31 @@ function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
 	if(type == 1){	//vote up
 		if($(voteup).hasClass('voted')){
-			$(voteup).removeClass('voted');
 			var current = Number($('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text());
 			$('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text(current-1);
+			$(voteup).removeClass('voted');			
 			ajaxVoteCancel(post_id, type);
 		}else{
-			$(voteup).addClass('voted');
 			var current = Number($('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text());
 			$('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text(current+1);
+			$(voteup).addClass('voted');
 			ajaxVote(post_id, type);
 		}
-
 		$(votedown).removeClass('voted');
 
 	}else if(type == 2){	//vote down
 		if($(votedown).hasClass('voted')){
-			$(votedown).removeClass('voted');
 			var current = Number($('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text());
 			$('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text(current+1);
+			$(votedown).removeClass('voted');
 			ajaxVoteCancel(post_id, type);
 		}else{
-			$(votedown).addClass('voted');
 			var current = Number($('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text());
 			$('#post_cell_'+post_id+' > div.post_votes > a.vote_up > div.vote_num').text(current-1);
+			$(votedown).addClass('voted');
 			ajaxVote(post_id, type);
 
 		}
-		
 		$(voteup).removeClass('voted');
 	}
 
@@ -205,6 +207,47 @@ function read_title(){
 			$('.post_title_before').show();
 			$('.post_title_loading').hide();
 			$('.post_title_error').show();
+		}
+    	});
+}
+
+
+function read_pic(){
+	if(!validateURlField()){
+		return false;
+	}
+	url = $("#post_link").val();
+	if($('#Posts_thumb_pic').val()){
+		var r = confirm("现有的配图将被取代，确定替换吗？");
+		if (r == true) {
+		} else {
+    			return false;
+		}
+	}
+	$('.post_pic_loading').show();
+	$('.post_pic_before').hide();
+	$.ajax({
+        	url: '/posts/getPic?url='+url,
+        	type: 'POST',
+        	//data: someData,
+        	//datatype: 'json',
+        	success: function (data) {
+			if(data != "error"){
+				$('.post_pic_before').show();
+				$('.post_pic_loading').hide();
+				$('.post_pic_error').hide();
+				$('#Posts_thumb_pic').val(data);
+				$('#thumb_pic').attr('src', data);
+			}else{
+				$('.post_pic_before').show();
+				$('.post_pic_loading').hide();
+				$('.post_pic_error').show();
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			$('.post_title_before').show();
+			$('.post_pic_loading').hide();
+			$('.post_pic_error').show();
 		}
     	});
 }

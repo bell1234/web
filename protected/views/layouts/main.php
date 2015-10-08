@@ -37,16 +37,20 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Brand</a>
+      <a id="nav_col_post" <?php if(Yii::app()->user->id): ?>target="_blank"<?php endif; ?> href="/submit" class="navbar-toggle collapsed">
+        <span class="sr-only">New post</span>
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">热点</a></li>
-        <li><a href="#">类别1</a></li>
-        <li><a href="#">类别2</a></li>
-        <li><a href="#">类别3</a></li>
-        <li><a href="#">类别4</a></li>
+        <li class="active"><a href="/" style="color:#c73232;">热点</a></li>
+        <li><a href="/c/1">搞笑</a></li>
+        <li><a href="/c/2">吐槽</a></li>
+        <li><a href="/c/3">科技</a></li>
+        <li><a href="/c/4">体育</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	 <?php if(Yii::app()->user->isGuest): ?>
@@ -54,7 +58,7 @@
         <?php else: 
 			   $user = Users::model()->findByPk(Yii::app()->user->id);
 		 ?>
-        <li><a href="/submit"><i class="fa fa-pencil-square-o fa"></i> 发布</a></li><!--make popup-->
+        <li><a target="_blank" href="/submit"><span style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 发布</a></li><!--make popup-->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $user->avatar; ?>" /><?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">

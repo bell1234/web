@@ -51,7 +51,7 @@ class Users extends CActiveRecord
 			array('email', 'email','message'=>'请输入您真实的电子邮箱地址'),
 
 			array('password','required','message'=>'请输入密码'),
-			array('password', 'length', 'min'=>6, 'tooShort'=>'密码至少包含6个字符'),
+			array('password', 'length', 'max'=>128, 'min'=>6, 'tooShort'=>'密码至少包含6个字符', 'tooLong'=>'密码最多包含128个字符'),
 			array('password', 'match', 'pattern' => '/^[A-Za-z0-9_\*]*$/','message' =>'密码只能含有英文字母,数字,下划线或星号'),
 
 			array('password, email, activkey, cookie, name_token', 'length', 'max'=>128),

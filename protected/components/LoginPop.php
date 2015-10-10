@@ -80,7 +80,6 @@ class LoginPop extends CWidget
                                 		'username' => $user->username,
                                 		'act_link'=>$activation_url,
                            		 ), 'text/html');
-
 					$message->setSubject('欢迎加入没六儿');
 					$message->addTo($user->email);
 					$message->setFrom(array(

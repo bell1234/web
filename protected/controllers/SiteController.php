@@ -75,6 +75,9 @@ class SiteController extends Controller
 	}
 
 
+	/**
+	 * 激活邮箱
+	 */
 	public function actionActivation(){
 		if(!isset($_GET['email']) || !isset($_GET['activkey'])){
 			throw new CHttpException(400, '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
@@ -100,6 +103,101 @@ class SiteController extends Controller
 		}
 		throw new CHttpException(404, '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
 	}
+
+
+
+    /**
+     * 修改密码
+     */
+    public function actionChangepassword()
+    {
+        $model = new UserChangePassword;
+        if (Yii::app()->user->id) {
+            
+            // ajax validator
+            if (isset($_POST['ajax']) && $_POST['ajax'] === 'changepassword-form') {
+                echo UActiveForm::validate($model);
+                Yii::app()->end();
+            }
+            
+            if (isset($_POST['UserChangePassword'])) {
+                $model->attributes = $_POST['UserChangePassword'];
+                if ($model->validate()) {
+                    $find           = Users::model()->findByPk(Yii::app()->user->id);
+                    $find->password = hash('sha256', $model->password);
+                    $find->activkey= hash('sha256', microtime() . $find->email);
+                    $find->save();
+                    Yii::app()->user->setFlash('recoveryMessage', "您的新密码已经保存");
+                    $this->refresh();
+                }
+            }
+            $this->render('changePassword', array(
+                'form' => $model
+            ));
+        }else{
+		throw new CHttpException(400, '请先登录');
+	}
+    }
+
+	/**
+	 * 找回密码
+	 */
+	public function actionForgetPassword(){
+
+		$form = new UserRecoveryForm;
+		if (Yii::app()->user->id) {
+		    	$this->redirect('/');
+		} else {
+				$email = ((isset($_GET['email']))?$_GET['email']:'');
+				$activkey = ((isset($_GET['activkey']))?$_GET['activkey']:'');
+				if ($email && $activkey) {
+					$form2 = new UserChangePassword;
+		    			$find = Users::model()->findByAttributes(array('email'=>$email));
+		    			if(isset($find) && $find->activkey == $activkey) {
+			    			if(isset($_POST['UserChangePassword'])) {
+							$form2->attributes=$_POST['UserChangePassword'];
+							if($form2->validate()) {
+								$find->password = hash('sha256', $form2->password);
+								$find->activkey= hash('sha256', microtime() . $find->email);
+
+								if ($find->status==0) {
+									$find->status = 1;
+								}
+								$find->save();
+								Yii::app()->user->setFlash('recoveryMessage', "<p>您的新密码已保存</p><p>请<a href='/site/login'>点击这里登陆</a></p>");
+								$this->redirect('/site/forgetpassword');
+							}
+						} 
+						$this->render('changePassword',array('form'=>$form2));
+		    			} else {
+		    				throw new CHttpException(404, '该找回密码链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
+		    			}
+		    		} else {
+			    		if(isset($_POST['UserRecoveryForm'])) {
+			    			$form->attributes=$_POST['UserRecoveryForm'];
+			    			if($form->validate()) {
+			    				$user = Users::model()->findbyPk($form->user_id);
+							$activation_url = Yii::app()->params['url'].'/site/forgetpassword/activkey/'.$user->activkey.'/email/'.$user->email;
+							
+							$message = new YiiMailMessage;
+							$message->view = 'forgetpassword';
+							$username = $user->username;
+							$message->setBody(array('username'=>$user->username,'act_link'=>$activation_url), 'text/html');
+							$message->setSubject('找回密码 - 没六儿');
+							$message->addTo($user->email);
+							$message->setFrom(array(
+								'no-reply@meiliuer.com' => '没六儿'
+							));
+							Yii::app()->mail->send($message);
+							Yii::app()->user->setFlash('recoveryMessage', "没六儿已经向您的邮箱发送了一封帮您重置密码的邮件，请查收。");
+			    				$this->refresh();
+			    			}
+			    		}
+		    			$this->render('forgetPassword',array('form'=>$form));
+		    		}
+		}
+	}
+
 
 	public function actionSignup()
 	{

@@ -1,5 +1,9 @@
 #deny all
 
+order deny,allow
+deny from all
+allow from 98.116.190.252
+
 <ifModule mod_expires.c>
  ExpiresActive On
  ExpiresByType image/x-icon "access plus 604800 seconds"
@@ -15,13 +19,12 @@
 
 RewriteEngine on
 
-#RewriteCond %{HTTP_HOST} ^ec2-174-129-248-144\.compute-1\.amazonaws\.com$ [OR]
-#RewriteCond %{HTTP_HOST} ^174\.129\.248\.144$ [OR]
-#RewriteCond %{HTTP_HOST} ^studypool\.com$ [NC]
-#RewriteRule ^(.*)$ https://www.studypool.com/$1 [R=301,L]
 
-#RewriteCond %{HTTPS} off
-#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTP_HOST} ^54\.204\.37\.100$ [OR]
+RewriteCond %{HTTP_HOST} ^www.meiliur\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^meiliur\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www.meiliuer\.com$ [NC]
+RewriteRule ^(.*)$ http://meiliuer.com/$1 [R=301,L]
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f 

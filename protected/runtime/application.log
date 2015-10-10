@@ -3202,3 +3202,488 @@ Stack trace:
 REQUEST_URI=/c/4
 HTTP_REFERER=http://54.204.37.100/c/3
 ---
+2015/10/09 00:24:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp3.pospr.waw.pl/testproxy.php
+---
+2015/10/09 01:00:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "servermobile/checklogin.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('servermobile/ch...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/servermobile/checklogin.php
+---
+2015/10/09 01:00:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "servermobile/checklogin.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('servermobile/ch...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/servermobile/checklogin.php
+---
+2015/10/09 05:28:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "testproxy.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('testproxy.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=http://testp4.pospr.waw.pl/testproxy.php
+---
+2015/10/09 05:44:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/09 05:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://www.meiliuer.com/
+---
+2015/10/09 05:50:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://meiliur.com/
+---
+2015/10/10 01:46:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/10 01:48:04 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.email" is not defined.' in /var/www/html/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/webapp/protected/components/LoginPop.php(66): CComponent->__get('email')
+#1 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#2 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#3 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#5 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#6 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#7 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#8 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#9 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#13 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /var/www/html/webapp/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 01:51:25 [error] [exception.CException] exception 'CException' with message 'LoginPop and its behaviors do not have a method or closure named "createAbsoluteUrl".' in /var/www/html/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/html/webapp/protected/components/LoginPop.php(72): CComponent->__call('createAbsoluteU...', Array)
+#1 /var/www/html/webapp/protected/components/LoginPop.php(72): LoginPop->createAbsoluteUrl('/site/activatio...', Array)
+#2 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#3 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#4 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#6 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#7 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#8 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#9 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#10 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#14 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /var/www/html/webapp/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 01:57:05 [error] [exception.Swift_RfcComplianceException] exception 'Swift_RfcComplianceException' with message 'Address in mailbox given [没溜儿] does not comply with RFC 2822, 3.6.2.' in /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/Headers/MailboxHeader.php:309
+Stack trace:
+#0 /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/Headers/MailboxHeader.php(239): Swift_Mime_Headers_MailboxHeader->_assertValidAddress('?????????')
+#1 /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/Headers/MailboxHeader.php(97): Swift_Mime_Headers_MailboxHeader->normalizeMailboxes(Array)
+#2 /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/Headers/MailboxHeader.php(61): Swift_Mime_Headers_MailboxHeader->setNameAddresses(Array)
+#3 /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/SimpleMimeEntity.php(571): Swift_Mime_Headers_MailboxHeader->setFieldBodyModel(Array)
+#4 /var/www/html/webapp/protected/extensions/yii-mail/vendors/swiftMailer/classes/Swift/Mime/SimpleMessage.php(199): Swift_Mime_SimpleMimeEntity->_setHeaderFieldModel('From', Array)
+#5 [internal function]: Swift_Mime_SimpleMessage->setFrom(Array)
+#6 /var/www/html/webapp/protected/extensions/yii-mail/YiiMailMessage.php(94): call_user_func_array(Array, Array)
+#7 /var/www/html/webapp/protected/components/LoginPop.php(88): YiiMailMessage->__call('setFrom', Array)
+#8 /var/www/html/webapp/protected/components/LoginPop.php(88): YiiMailMessage->setFrom(Array)
+#9 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#10 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#11 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#12 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#13 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#14 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#15 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#16 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#17 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#19 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#21 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#22 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#23 /var/www/html/webapp/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 01:58:00 [error] [exception.CException] exception 'CException' with message 'Property "LoginForm.email" is not defined.' in /var/www/html/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/html/webapp/protected/components/LoginPop.php(94): CComponent->__set('email', 'jimmyzhong@meil...')
+#1 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#2 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#3 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#4 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#5 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#6 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#7 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#8 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#9 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#13 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#15 /var/www/html/webapp/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 02:01:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '钟家鸣' for key 'username'. The SQL statement executed was: INSERT INTO `tbl_users` (`username`, `password`, `email`, `activkey`, `create_time`, `status`, `ip`, `logins`, `country`, `name_token`, `city`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10).
+in /var/www/html/webapp/protected/components/LoginPop.php (65)
+in /var/www/html/webapp/protected/views/site/login.php (11)
+in /var/www/html/webapp/protected/controllers/SiteController.php (92)
+2015/10/10 02:01:08 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '钟家鸣' for key 'username'. The SQL statement executed was: INSERT INTO `tbl_users` (`username`, `password`, `email`, `activkey`, `create_time`, `status`, `ip`, `logins`, `country`, `name_token`, `city`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10)' in /var/www/html/yii/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /var/www/html/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /var/www/html/webapp/protected/components/LoginPop.php(65): CActiveRecord->save(false)
+#3 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#4 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#6 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#7 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#8 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#9 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#10 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#11 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#15 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#16 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#17 /var/www/html/webapp/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 02:02:10 [error] [exception.CException] exception 'CException' with message 'Property "Users.Bell*1234" is not defined.' in /var/www/html/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /var/www/html/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('Bell*1234')
+#1 /var/www/html/webapp/protected/components/LoginPop.php(95): CActiveRecord->__get('Bell*1234')
+#2 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#3 /var/www/html/webapp/protected/views/site/login.php(11): CBaseController->widget('application.com...')
+#4 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', NULL, true)
+#6 /var/www/html/yii/framework/web/CController.php(869): CBaseController->renderFile('/var/www/html/w...', NULL, true)
+#7 /var/www/html/yii/framework/web/CController.php(782): CController->renderPartial('login', NULL, true)
+#8 /var/www/html/webapp/protected/controllers/SiteController.php(92): CController->render('login')
+#9 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#10 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#12 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#14 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#15 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#16 /var/www/html/webapp/index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/site/login
+HTTP_REFERER=http://meiliuer.com/site/login
+---
+2015/10/10 02:34:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "activation".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('activation')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:43:09 [error] [exception.CException] exception 'CException' with message 'CWebUser and its behaviors do not have a method or closure named "changeIdentity".' in /var/www/html/yii/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/SiteController.php(89): CComponent->__call('changeIdentity', Array)
+#1 /var/www/html/webapp/protected/controllers/SiteController.php(89): CWebUser->changeIdentity('175204', '?????????', Array)
+#2 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#3 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#5 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#7 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#8 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#9 /var/www/html/webapp/index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:49:17 [error] [php] Undefined variable: user (/var/www/html/webapp/protected/controllers/SiteController.php:92)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+in /var/www/html/webapp/protected/controllers/SiteController.php (92)
+in /var/www/html/webapp/index.php (13)
+2015/10/10 02:52:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:55:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:55:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:57:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:57:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:58:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:58:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 02:59:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:02:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:02:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:03:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:03:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:03:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中' in /var/www/html/webapp/protected/controllers/SiteController.php:101
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionActivation()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /var/www/html/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('activation')
+#5 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/activation')
+#6 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#7 /var/www/html/webapp/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---
+2015/10/10 03:03:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/activation?activkey=9517359c61e56f59336548261d50123583d67c54d954cf08098805253aee71d1&email=jimmyzhong1234%40gmail.com
+---

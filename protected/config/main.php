@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'没六儿',
 	'defaultController' => 'posts/index',    //change to what i want
 
 	// preloading 'log' component
@@ -20,7 +20,15 @@ return array(
 		'application.components.*',
         	'application.modules.*',
         	'application.extensions.*',
+        	'ext.yii-mail.YiiMailMessage',
+		'ext.segment_analytics.lib.*',
+	        'application.classes.*',
 	),
+
+    	'aliases' => array(
+        	'Segment' => 'ext.segment_analytics.lib.Segment',
+        	'Analytics' => 'classes.Analytics'
+    	),
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
@@ -58,6 +66,21 @@ return array(
                 'jquery'=>false,
 
             ),
+        ),
+
+        'mail' => array(
+            'class' => 'ext.yii-mail.YiiMail',
+            'transportType' => 'smtp',
+            'transportOptions'=>array(
+                'host'=>'smtp.mailgun.org',
+                'encryption'=>'ssl',
+                'username'=>'postmaster@meiliuer.com',
+                'password'=>'78ef396786f06b44294cd13d69fb81e7',
+                'port'=>465,
+            ),
+            'viewPath' => 'application.views.mail',
+            'logging' => false,
+            'dryRun' => false,
         ),
 
         'user'=>array(
@@ -137,7 +160,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'url'=>Yii::app()->request->hostInfo, //update to hard code domain
-		'adminEmail'=>'webmaster@example.com',
+		'url'=>'http://meiliuer.com', //update to hard code domain
+		'adminEmail'=>'jimmyzhong@meiliuer.com',
 	),
 );

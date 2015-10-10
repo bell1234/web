@@ -75,7 +75,31 @@ class SiteController extends Controller
 	}
 
 
+	public function actionActivation(){
+		if(!isset($_GET['email']) || !isset($_GET['activkey'])){
+			throw new CHttpException(400, '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
+		}
+		$email = $_GET['email'];
+		$activkey = $_GET['activkey'];
+		if ($email && $activkey) {
+			$find = Users::model()->findByAttributes(array('email'=>$email, 'activkey'=>$_GET['activkey'], 'status'=>0));
+			if($find){
+				$find->status = 1;
+				$find->save(false);
+				$find->userActed();
+				$find->saveDupStats();
 
+				$model = new LoginForm;
+				$model->username = $find->email;
+				$model->password = $find->password;
+				$model->rememberMe = 1;
+				if($model->validate() && $model->login()){
+					$this->redirect('/');
+				}
+			}
+		}
+		throw new CHttpException(404, '该激活链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
+	}
 
 	public function actionSignup()
 	{

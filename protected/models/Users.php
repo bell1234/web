@@ -12,7 +12,6 @@
  * @property string $activkey
  * @property string $cookie
  * @property integer $create_time
- * @property integer $lastvisit
  * @property integer $lastaction
  * @property integer $status
  * @property string $ip
@@ -39,11 +38,12 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('create_time, lastvisit, lastaction, status, logins', 'numerical', 'integerOnly'=>true),
+			array('create_time, lastaction, status, logins', 'numerical', 'integerOnly'=>true),
 
 			array('username', 'length', 'max'=>20, 'tooLong'=>'用户名最多包含20个字符'),
 			array('username', 'length', 'min'=>2, 'tooShort'=>'用户名至少包含2个字符'),
 			array('username','required','message'=>'请输入用户名'),
+			array('username', 'unique', 'message'=>'该用户名已经被注册'),
 			array('username', 'match', 'pattern' => '/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]*$/u','message' =>'用户名只能含有汉字，英文字母，数字和下划线'),
 			
 			array('email','required','message'=>'请输入电子邮箱地址'),
@@ -52,7 +52,7 @@ class Users extends CActiveRecord
 
 			array('password','required','message'=>'请输入密码'),
 			array('password', 'length', 'min'=>6, 'tooShort'=>'密码至少包含6个字符'),
-			array('password', 'match', 'pattern' => '/^[A-Za-z0-9]*$/','message' =>'密码只能含有英文字母和数字'),
+			array('password', 'match', 'pattern' => '/^[A-Za-z0-9_\*]*$/','message' =>'密码只能含有英文字母,数字,下划线或星号'),
 
 			array('password, email, activkey, cookie, name_token', 'length', 'max'=>128),
 			array('avatar', 'length', 'max'=>255),
@@ -60,7 +60,7 @@ class Users extends CActiveRecord
 			array('country', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email, avatar, activkey, cookie, create_time, lastvisit, lastaction, status, ip, logins, country, name_token, city', 'safe', 'on'=>'search'),
+			array('id, username, password, email, avatar, activkey, cookie, create_time, lastaction, status, ip, logins, country, name_token, city', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -89,7 +89,6 @@ class Users extends CActiveRecord
 			'activkey' => 'Activkey',
 			'cookie' => 'Cookie',
 			'create_time' => 'Create Time',
-			'lastvisit' => 'Lastvisit',
 			'lastaction' => 'Lastaction',
 			'status' => 'Status',
 			'ip' => 'Ip',
@@ -126,7 +125,6 @@ class Users extends CActiveRecord
 		$criteria->compare('activkey',$this->activkey,true);
 		$criteria->compare('cookie',$this->cookie,true);
 		$criteria->compare('create_time',$this->create_time);
-		$criteria->compare('lastvisit',$this->lastvisit);
 		$criteria->compare('lastaction',$this->lastaction);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('ip',$this->ip,true);
@@ -319,6 +317,7 @@ class Users extends CActiveRecord
 	 * @return null
      	*/
 	public function userActed() {
+
 		$this->lastaction = time();
 
 		if(isset($_SERVER['HTTP_CF_CONNECTING_IP'])){

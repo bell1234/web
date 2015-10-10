@@ -20,6 +20,32 @@
     
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/universal.js"></script>
     
+    <script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+analytics.load("kEGvVw6uhrd6l8WXPJaVeIzMlCqBG24O");
+analytics.page()
+}}();
+	</script>
+    
+    <?php if(Yii::app()->user->id): 
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+	?>
+            <script>
+            $('document').ready(function() {
+                analytics.identify('<?php echo Yii::app()->user->id ?>', {
+                  email: '<?php echo $user->email;?>',
+                  username: '<?php echo $user->username;?>',
+                  create_time: '<?php echo $user->create_time; ?>',
+                  logins: <?php echo $user->logins; ?>,
+                  avatar: '<?php echo $user->avatar; ?>',
+                  address: {
+                    city: '<?php echo $user->city; ?>',
+                    country: '<?php echo $user->country; ?>' 
+                  }
+                });
+            });
+        </script>
+    <?php endif; ?>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -55,9 +81,7 @@
       <ul class="nav navbar-nav navbar-right">
       	 <?php if(Yii::app()->user->isGuest): ?>
         <li><a href="/site/login">10秒注册/登陆</a></li><!--make popup-->
-        <?php else: 
-			   $user = Users::model()->findByPk(Yii::app()->user->id);
-		 ?>
+        <?php else: ?>
         <li><a target="_blank" href="/submit"><span style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 发布</a></li><!--make popup-->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $user->avatar; ?>" /><?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> <span class="caret"></span></a>

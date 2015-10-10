@@ -1,0 +1,26 @@
+#full-404 {
+    background-color:rgb(230,231,226);
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+}
+
+#img404{
+    height:200px;
+}
+
+.big-txt{
+    font-size:30px;
+    font-weight: 300;
+}
+
+.huge-txt{
+    font-size:45px;
+    font-weight: 300;
+}
+
+.text-center {
+    text-align: center;
+}

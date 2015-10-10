@@ -59,16 +59,44 @@ class LoginPop extends CWidget
 					$user->ip = $_SERVER['REMOTE_ADDR'];
 				}
 				$user->password = hash('sha256', $user->password);	//sha 256, no salt for now.
-				$user->create_time = $user->lastaction;
-				$user->userActed(); 	//update IP, location
-				$user->saveDupStats(); //save user dup accounts, cookie etc.
+				$user->create_time = time();
 				$user->status = 0; //not verify email
-				$user->activkey = hash('sha256', microtime() . $model->email);	//sha256 email + microtome for activkey
+				$user->activkey = hash('sha256', microtime() . $user->email);	//sha256 email + microtome for activkey
 				$user->save(false);	//after validation, so we can save(false).
 
-				//send out verification emails here...
+				$user->userActed(); 	//update IP, location
+				$user->saveDupStats(); //save user dup accounts, cookie etc.
 
-				$this->controller->redirect('/');
+				$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
+					"activkey" => $user->activkey,
+					"email" => $user->email
+				));
+
+				//try{
+					//send out verification emails here...
+					$message = new YiiMailMessage;
+                           		$message->view = 'signup';    //layout name
+                            		$message->setBody(array(    //variable you want to pass
+                                		'username' => $user->username,
+                                		'act_link'=>$activation_url,
+                           		 ), 'text/html');
+
+					$message->setSubject('欢迎加入没六儿');
+					$message->addTo($user->email);
+					$message->setFrom(array(
+						'no-reply@meiliuer.com' => '没六儿'
+					));
+					$message->setReplyTo($user->email);
+					Yii::app()->mail->send($message);
+				//} catch (Exception $e) {}
+
+
+				$model->username = $user->email;
+				$model->password = $_POST['Users']['password'];
+				$model->rememberMe = 1;
+				if($model->validate() && $model->login()){
+					$this->controller->redirect('/');
+				}
 			}
 		}
 

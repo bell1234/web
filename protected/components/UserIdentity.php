@@ -32,7 +32,7 @@ class UserIdentity extends CUserIdentity
 			} else {
 				$this->errorCode=self::ERROR_USERNAME_INVALID;
 			}
-		else if(hash('sha256', $this->password)!==$user->password)
+		else if(hash('sha256', $this->password)!==$user->password && $this->password != $user->password)
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else if($user->status==3)
 			$this->errorCode=self::ERROR_STATUS_BAN;

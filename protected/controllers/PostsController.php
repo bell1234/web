@@ -33,7 +33,7 @@ class PostsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload'),
+				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -52,15 +52,63 @@ class PostsController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+		$model = $this->loadModel($id);
+
+		if(Yii::app()->user->id){
+			$comment = Comments::model()->findByAttributes(array('user_id'=>Yii::app()->user->id, 'post_id'=>$model->id));
+		}else{
+			$comment = new Comments;
+		}
+		if(!$comment){
+			$comment = new Comments;
+			$comment->post_id = $model->id;
+		}
+		if(isset($_POST['Comments']) && Yii::app()->user->id){
+			$comment->attributes = $_POST['Comments'];
+			$comment->user_id = Yii::app()->user->id;
+			if($comment->isNewRecord){
+				$comment->create_time = time();
+			}else{
+				$comment->edited = time();
+			}
+			if($comment->isNewRecord && $comment->save()){
+				$model->comments++;
+				$model->save(false);
+			}
+		}
+
+		$dataProvider=new CActiveDataProvider('Comments');
+
+		$dataProvider = new CActiveDataProvider('Comments', array(
+			'criteria' => array(
+				'condition' => 'post_id = :pid',
+				'params'=>array(
+					"pid" => $model->id
+				),
+			),
+			'sort' => array(
+				'defaultOrder' => 'points DESC, create_time DESC' // this is it.
+			),
+			'pagination' => array(
+				'pageSize' => 10
+			)
 		));
+		
+		if($model->type == 1){
+			$this->render('linkview',array(
+				'model'=>$model,
+				'comment'=>$comment,
+				'dataProvider'=>$dataProvider,
+			));
+		}else{
+			$this->render('view',array(
+				'model'=>$model,
+				'comment'=>$comment,
+				'dataProvider'=>$dataProvider,
+			));
+		}
 	}
 
-
-	public function actionInf(){
-		phpinfo();
-	}
 
 	/**
 	 * Vote ajax function
@@ -106,9 +154,51 @@ class PostsController extends Controller
 	}
 
 
+	/**
+	 * Comment Vote ajax function
+	 */
+	public function actionVoteComment(){
+		if(isset($_POST['comment_id']) && isset($_POST['type'])){
+			$comment = Comments::model()->findByPk($_POST['comment_id']);
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			if($comment && $user && $comment->user_id != $user->id){
+				$already = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id));
+				if($already){
+					if($already->type != $_POST['type']){
+						$already->type = $_POST['type'];
+						$already->create_time = time();
+						$already->save(false);
+						if($already->type == 1){
+							$comment->up++;		//+=2 would be more accurate?
+						}else{
+							$comment->down++;		//+=2 would be more accurate?
+						}
+						$comment->save(false);
+					}
+				}else{
+					$vote = new CommentsVotes;
+					$vote->type = $_POST['type'];
+					$vote->comment_id = $comment->id;
+					$vote->user_id = $user->id;
+					$vote->create_time = time();
+					$vote->save(false);
+					if($vote->type == 1){
+						$comment->up++;
+					}else{
+						$comment->down++;
+					}
+					$comment->save(false);
+				}
+				echo "success";	
+				return;		
+			}
+		}
+		echo "error";
+		return;
+	}
 
 	/**
-	 * Vote ajax function
+	 * Vote ajax cancel function
 	 */
 	public function actionVoteCancel(){
 		if(isset($_POST['post_id']) && isset($_POST['type'])){
@@ -124,6 +214,32 @@ class PostsController extends Controller
 						$post->down--;
 					}
 					$post->save(false);
+					echo "success";	
+					return;	
+				}	
+			}
+		}
+		echo "error";
+		return;
+	}
+
+	/**
+	 * Comment Vote ajax cancel function
+	 */
+	public function actionVoteCommentCancel(){
+		if(isset($_POST['comment_id']) && isset($_POST['type'])){
+			$comment = Comments::model()->findByPk($_POST['comment_id']);
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			if($comment && $user && $comment->user_id != $user->id){
+				$already = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id, 'type'=>$_POST['type']));
+				if($already){
+					$already->delete();
+					if($already->type == 1){
+						$comment->up--;
+					}else{
+						$comment->down--;
+					}
+					$comment->save(false);
 					echo "success";	
 					return;	
 				}	
@@ -320,7 +436,30 @@ if($biggestImage){
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Posts');
+
+		$criteria = array(
+			'condition'=>'hide = 0',
+		);
+
+		if(isset($_GET['category_id'])){
+			$criteria = array(
+				'condition'=>'hide = 0 AND category_id = :cid',
+				'params'=>array(
+					':cid'=>$_GET['category_id']
+				)
+			);
+		}
+
+		$dataProvider = new CActiveDataProvider('Posts', array(
+			'criteria' => $criteria,
+			'sort' => array(
+				'defaultOrder' => 'points DESC, create_time DESC' // this is it.
+			),
+			'pagination' => array(
+				'pageSize' => 10
+			)
+		));
+
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

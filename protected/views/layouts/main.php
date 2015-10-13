@@ -72,11 +72,11 @@ analytics.page()
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/" style="color:#c73232;">热点</a></li>
-        <li><a href="/c/1">搞笑</a></li>
-        <li><a href="/c/2">吐槽</a></li>
-        <li><a href="/c/3">科技</a></li>
-        <li><a href="/c/4">体育</a></li>
+        <li <?php if(!isset($_GET['category_id'])): ?>class="active"<?php endif; ?>><a href="/" style="color:#c73232;">热点</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>class="active"<?php endif; ?>><a href="/funny">搞笑</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>class="active"<?php endif; ?>><a href="/moments">吐槽</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>class="active"<?php endif; ?>><a href="/tech">科技</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>class="active"<?php endif; ?>><a href="/sports">体育</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	 <?php if(Yii::app()->user->isGuest): ?>

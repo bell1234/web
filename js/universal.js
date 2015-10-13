@@ -22,7 +22,6 @@ $(document).ready(function() {
 
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
-	
 	if(guest){
 		alert('show login/signup popup');
 		return false;	
@@ -106,6 +105,94 @@ function ajaxVoteCancel(post_id, type){
 		}
     	});
 }
+
+
+function comment_vote(comment_id, type, guest, self){	//type 1 = up vote, 2 = down vote
+
+	if(guest){
+		alert('show login/signup popup');
+		return false;	
+	}
+	if(self){
+		alert('自己不可以给自己投票哦！');
+		return false;	
+	}
+
+	var voteup = $('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up');
+	var votedown = $('#comment_cell_'+comment_id+' > div.post_votes > a.vote_down');
+
+	if(type == 1){	//vote up
+		if($(voteup).hasClass('voted')){
+			var current = Number($('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text());
+			$('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text(current-1);
+			$(voteup).removeClass('voted');			
+			ajaxVoteCommentCancel(comment_id, type);
+		}else{
+			var current = Number($('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text());
+			$('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text(current+1);
+			$(voteup).addClass('voted');
+			ajaxVoteComment(comment_id, type);
+		}
+		$(votedown).removeClass('voted');
+
+	}else if(type == 2){	//vote down
+		if($(votedown).hasClass('voted')){
+			var current = Number($('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text());
+			$('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text(current+1);
+			$(votedown).removeClass('voted');
+			ajaxVoteCommentCancel(comment_id, type);
+		}else{
+			var current = Number($('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text());
+			$('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up > div.vote_num').text(current-1);
+			$(votedown).addClass('voted');
+			ajaxVoteComment(comment_id, type);
+
+		}
+		$(voteup).removeClass('voted');
+	}
+
+}
+
+
+function ajaxVoteComment(comment_id, type){
+	$.ajax({
+        	url: '/posts/voteComment',
+        	type: 'POST',
+        	data: {comment_id: comment_id, type:type},
+        	datatype: 'json',
+        	success: function (data) {
+			if(data){
+				//
+			}else{
+				//
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			//
+		}
+    	});
+}
+
+
+function ajaxVoteCommentCancel(comment_id, type){
+	$.ajax({
+        	url: '/posts/voteCommentCancel',
+        	type: 'POST',
+        	data: {comment_id: comment_id, type:type},
+        	datatype: 'json',
+        	success: function (data) {
+			if(data){
+				//
+			}else{
+				//
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			//
+		}
+    	});
+}
+
 
 
 function validateURlField(){

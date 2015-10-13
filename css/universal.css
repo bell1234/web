@@ -170,10 +170,15 @@ div.post_cell{
 	font-size: 20px;
 	display: block;
 	background-color: #faeeef;
+	color: #d15d5f !important;
 	border-radius: 3px;
 	vertical-align:middle;
 	text-decoration:none !important;
-	color: #d15d5f !important;
+}
+.comment_cell > .post_votes > .vote_up,
+.comment_cell > .post_votes > .vote_down{
+	background-color: #efefef;
+	color: #777 !important;		
 }
 .vote_up{
 	padding-bottom:3px;
@@ -194,6 +199,11 @@ div.post_cell{
 	background-color: #d15d5f;
 }
 
+.comment_cell > .post_votes > .voted{
+	color:#efefef !important;
+	background-color: #888;
+}
+
 a.black_link{
 	color:black;
 }
@@ -209,19 +219,24 @@ poser_header{
 }
 
 @media (max-width: 700px) {
-	h4.post_header{
+	.post_header{
 		font-size:15px;
 	}
     /* some CSS for small resolution */
 }
 
 @media (min-width: 700px) {
-	h4.post_header{
+	.post_header{
 		font-size:18px;
 	}
 	.vote_down:hover, .vote_up:hover{
 		color:#faeeef !important;
 		background-color: #d15d5f;
+	}
+	.comment_cell > .post_votes > .vote_up:hover,
+	.comment_cell > .post_votes > .vote_down:hover{
+		background-color: #888;
+		color: #efefef !important;		
 	}
     /* some CSS for large resolution */
 }
@@ -234,6 +249,27 @@ poser_header{
 	padding-top:4px; 
 	padding-bottom:3px; 
 	padding-left:13px;
+}
+.sm_h1{
+	font-size:24px;
+}
+.post_description p{
+	font-size:13px;
+	line-height:1.8em;
+}
+.post_comment_counter{
+	font-weight:bold;
+	font-size:14px;
+	border-bottom: solid 1px #efefef;
+	border-top: solid 1px #efefef;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.clear{
+	clear:both;
+}
+.post_comments{
+	margin-top: -1px;
 }
 
 /*

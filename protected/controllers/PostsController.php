@@ -77,17 +77,18 @@ class PostsController extends Controller
 			}
 		}
 
-		$dataProvider=new CActiveDataProvider('Comments');
+
 
 		$dataProvider = new CActiveDataProvider('Comments', array(
 			'criteria' => array(
+				'select'=>'*, commentrank(up, CAST(down as decimal(18,7))) as rank',
 				'condition' => 'post_id = :pid',
 				'params'=>array(
 					"pid" => $model->id
 				),
 			),
 			'sort' => array(
-				'defaultOrder' => 'points DESC, create_time DESC' // this is it.
+				'defaultOrder' => 'rank DESC, create_time DESC' // this is it.
 			),
 			'pagination' => array(
 				'pageSize' => 10
@@ -437,23 +438,25 @@ if($biggestImage){
 	public function actionIndex()
 	{
 
-		$criteria = array(
-			'condition'=>'hide = 0',
-		);
-
 		if(isset($_GET['category_id'])){
 			$criteria = array(
+				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
 				'condition'=>'hide = 0 AND category_id = :cid',
 				'params'=>array(
 					':cid'=>$_GET['category_id']
 				)
+			);
+		}else{
+			$criteria = array(
+				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
+				'condition'=>'hide = 0',
 			);
 		}
 
 		$dataProvider = new CActiveDataProvider('Posts', array(
 			'criteria' => $criteria,
 			'sort' => array(
-				'defaultOrder' => 'points DESC, create_time DESC' // this is it.
+				'defaultOrder' => 'rank DESC, create_time DESC' // this is it.
 			),
 			'pagination' => array(
 				'pageSize' => 10

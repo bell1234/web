@@ -49,8 +49,8 @@
 	<div class="row">
 		<?php echo $form->hiddenField($model,'type', array('value'=>$type)); ?>
 		<ul class="nav nav-tabs top10 bottom10 bold">
-  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">发布链接</a></li>
-  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">发布内容</a></li>
+  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">分享链接</a></li>
+  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">分享内容</a></li>
 		</ul>
 	</div>
 
@@ -123,7 +123,7 @@
 
 	<div class="row form-group">
 		<label class="control-label" for="Posts_category_id">请选择分类</label>
-		<?php echo $form->dropDownList($model,'category_id', array(1=>'例子'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
+		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'吐槽'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
 
@@ -133,7 +133,7 @@
 		<span class="dark_grey v_middle top5">匿名</span>
 		<div class="float_right">
 			<a class="right25" href="#" onclick="dismiss_post_popup(); return false;">取消</a>
-			<?php echo CHtml::submitButton($model->isNewRecord ? '发布' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
+			<?php echo CHtml::submitButton($model->isNewRecord ? '分享' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>
 

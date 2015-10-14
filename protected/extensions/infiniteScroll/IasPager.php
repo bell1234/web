@@ -38,7 +38,7 @@ class IasPager extends CLinkPager {
                             'item' => $this->rowSelector,
                             'pagination' => '#' . $this->listViewId . ' ' . $this->pagerSelector,
                             'next' => '#' . $this->listViewId . ' ' . $this->nextSelector,
-                            'loader' => '<img width="20px;" style="margin-right:3px;" src="https://www.likeplum.com/pictures/loading.gif" /> loading…',
+                            'loader' => '<img width="20px;" style="margin-right:3px;" src="/images/loading.gif" /> 努力读取中…',
                         ))) . ");";
 
 

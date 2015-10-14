@@ -20,7 +20,7 @@ if(Yii::app()->user->isGuest){
 ?>
 
 
-<div id="comment_cell_<?php echo $data->id; ?>" style="border-bottom:none; padding-bottom:0px;" class="post_cell comment_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div id="comment_cell_<?php echo $data->id; ?>" class="post_cell comment_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post_votes">
 			<a id="vote_up_comment_<?php echo $data->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" ontouchend="comment_vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="comment_vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
 				<div><i class="glyphicon glyphicon-triangle-top"></i></div>

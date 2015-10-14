@@ -82,5 +82,5 @@ if($model->type == 1){
 
 
 <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top10">
-	<img src="/images/placeholder.png" style="width:100%;" /> 
+	<?php $this->renderPartial('_sidebar'); ?>
 </div>

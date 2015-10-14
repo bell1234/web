@@ -72,22 +72,25 @@ analytics.page()
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li <?php if(!isset($_GET['category_id'])): ?>class="active"<?php endif; ?>><a href="/" style="color:#c73232;">热点</a></li>
+        <?php $host = $_SERVER['REQUEST_URI']; ?>
+        <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/" style="color:#c73232;">热点</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>class="active"<?php endif; ?>><a href="/funny">搞笑</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>class="active"<?php endif; ?>><a href="/moments">吐槽</a></li>
+        <!--
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>class="active"<?php endif; ?>><a href="/tech">科技</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>class="active"<?php endif; ?>><a href="/sports">体育</a></li>
+        -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	 <?php if(Yii::app()->user->isGuest): ?>
         <li><a href="/site/login">10秒注册/登陆</a></li><!--make popup-->
         <?php else: ?>
-        <li><a target="_blank" href="/submit"><span style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 发布</a></li><!--make popup-->
+        <li><a href="/submit"><span style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 分享</a></li><!--make popup-->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo $user->avatar; ?>" /><?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">我的账户</a></li>
-            <li><a href="#">安全设定</a></li>
+            <li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的分享</a></li>
+            <li><a href="/users/setting">账户设置</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/site/logout">退出此账号</a></li>
           </ul>
@@ -105,8 +108,7 @@ analytics.page()
 	<div class="clear"></div>
     
 	<div id="footer" class="container no_show">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by Meiliuer<br/>
 	</div><!-- footer -->
 
 </body>

@@ -61,11 +61,9 @@ if($model->type == 1){
 		<div class="clear"></div>
 
 		<div class="post_comments_box">
-			<?php 
-			if(Yii::app()->user->id && $comment->isNewRecord):
-				$this->renderPartial('_comment_form', array('model'=>$comment)); 
-			endif;
-			?>
+		<?php 
+			$this->renderPartial('_comment_form', array('model'=>$comment)); 
+		?>
 		</div>
 
 		<div class="post_comment_counter left50">
@@ -78,13 +76,6 @@ if($model->type == 1){
 			?>
 		</div>
 
-		<div class="post_comments_box">
-		<?php 
-		if(Yii::app()->user->id && !$comment->isNewRecord):
-			$this->renderPartial('_comment_form', array('model'=>$comment)); 
-		endif;
-		?>
-		</div>
 </div>
 
 

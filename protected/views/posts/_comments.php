@@ -3,14 +3,14 @@
 	'id'=>'commentlist',
         'pager' => array(
             'class' => 'ext.infiniteScroll.IasPager',
-            'rowSelector'=>'.question_view_only',
-            'listViewId' => 'questionslistview',
+            'rowSelector'=>'.comment_cell',
+            'listViewId' => 'commentlist',
             'header' => '',
             'options'=>array(
                 'triggerPageTreshold' => 8,
                 'onRenderComplete'=>'js:function () {
-	 $(".timeago").timeago();
-	}'),
+	 		$(".timeago").timeago();
+		}'),
         ),
         'afterAjaxUpdate'=>'function(id,data){ 
 		$(".timeago").timeago();

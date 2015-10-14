@@ -17,6 +17,7 @@ return array(
 	'import'=>array(
 	        'application.classes.*',
 		'application.models.*',
+		'application.controllers.*',
 		'application.components.*',
         	'application.modules.*',
         	'application.extensions.*',

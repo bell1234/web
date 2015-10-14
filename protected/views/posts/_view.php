@@ -52,6 +52,7 @@ if($data->type == 1){
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>
 				</abbr>
+				<a target="_blank" href="<?php echo "/posts/".$data->id; ?>" class="left5 grey bold">评论(<?php echo $data->comments;?>)</a>
 			</div>
 		</div>
 </div>

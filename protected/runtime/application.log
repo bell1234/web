@@ -6785,3 +6785,93 @@ Stack trace:
 REQUEST_URI=/images/404ufo.png
 HTTP_REFERER=http://meiliuer.com/site/submit?content
 ---
+2015/10/14 08:43:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-1.11.3.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-1.11.3.min.js
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/14 08:43:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-migrate-1.2.1.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-migrate-1.2.1.min.js
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/14 08:43:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-migrate-1.2.1.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-migrate-1.2.1.min.js
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/14 08:43:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-1.11.3.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-1.11.3.min.js
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/14 08:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-migrate-1.2.1.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-migrate-1.2.1.min.js
+HTTP_REFERER=http://meiliuer.com/funny
+---
+2015/10/14 08:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-1.11.3.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-1.11.3.min.js
+HTTP_REFERER=http://meiliuer.com/funny
+---
+2015/10/14 08:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-migrate-1.2.1.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-migrate-1.2.1.min.js
+HTTP_REFERER=http://meiliuer.com/moments
+---
+2015/10/14 08:43:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-1.11.3.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-1.11.3.min.js
+HTTP_REFERER=http://meiliuer.com/moments
+---
+2015/10/14 08:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-1.11.3.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-1.11.3.min.js
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/14 08:43:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "bootstrap/js/jquery-migrate-1.2.1.min.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('bootstrap/js/jq...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/bootstrap/js/jquery-migrate-1.2.1.min.js
+HTTP_REFERER=http://meiliuer.com/
+---

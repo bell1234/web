@@ -85,7 +85,7 @@ analytics.page()
       	 <?php if(Yii::app()->user->isGuest): ?>
         <li><a href="/site/login">10秒注册/登陆</a></li><!--make popup-->
         <?php else: ?>
-        <li><a href="/submit"><span style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 分享</a></li><!--make popup-->
+        <li><a href="/submit"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 分享</a></li><!--make popup-->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">

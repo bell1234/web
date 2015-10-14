@@ -33,7 +33,7 @@ class PostsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel'),
+				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,6 +45,41 @@ class PostsController extends Controller
 			),
 		);
 	}
+
+
+	//ajax image upload for redactor
+
+	public function actionImageUpload() {
+		$image              = new PostsPictures;
+		$image->create_time = time();
+		$image->file        = CUploadedFile::getInstanceByName('file');
+		if ($image->validate()) {
+			$fileSavePath = "uploads/posts/" . Yii::app()->user->id . "/";
+			if (!file_exists($fileSavePath)) {
+				mkdir($fileSavePath, 0777, true);
+			}
+			$date     = date("YmdHis");
+			$filename = strtolower(preg_replace('/[^a-zA-Z0-9\.]/', '_', $image->file));
+			$image->file->saveAs("uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename);
+			$image->path = "uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename;
+			$image->save();
+			$pictures = Yii::app()->session['pictures'];
+			if (!is_array($pictures)) {
+				$pictures = array();
+			}
+			array_push($pictures, $image->path);
+			Yii::app()->session['pictures'] = $pictures; //update the session
+			$array  = array(
+				'filelink' => "/uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename
+			);
+			echo stripslashes(json_encode($array));
+		} else {
+			throw new CHttpException(500, CJSON::encode(array(
+				'error' => 'You can only upload images here. If you want to upload  files with other formats, please choose attach files.'
+			)));
+		}
+	}
+
 
 	/**
 	 * Displays a particular model.

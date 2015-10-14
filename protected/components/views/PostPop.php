@@ -1,5 +1,5 @@
 
-<div class="form">
+<div class="form bottom50">
 	<?php CHtml::$errorCss = "has-error"; ?>
 <?php 
 
@@ -117,8 +117,42 @@
 
 	<div class="row content_post form-group">
 		<label class="control-label" for="Posts_description">内容</label>
-		<?php echo $form->textArea($model,'description',array('class'=>'form-control', 'placeholder'=>'要分享的信息 / 内容', 'style'=>'resize: vertical;')); ?>
-		<?php echo $form->error($model,'description'); ?>
+
+<?php
+$this->widget('ImperaviRedactorWidget', array(
+    // You can either use it for model attribute
+    'model' => $model,
+    'attribute' => 'description',
+    // Some options, see http://imperavi.com/redactor/docs/
+    'options' => array(
+        'lang' => 'zh_cn',
+	'focus'=>true,
+	'buttons'=>array('bold', 'italic', 'horizontalrule', 'image', 'video', 'link'),
+	'placeholder' => '要分享的信息 / 内容',
+	'minHeight'=>100,
+
+        //'fileUpload'=>Yii::app()->createAbsoluteUrl('posts/fileupload'),
+
+        'imageUpload'=>Yii::app()->createAbsoluteUrl('posts/imageupload'),
+
+	 'imageUploadErrorCallback'=>new CJavaScriptExpression(
+            'function(obj,json) { alert(json.error); }'
+        ),
+
+	// 'fileUploadErrorCallback'=>new CJavaScriptExpression(
+        //   'function(obj,json) { alert(json.error); }'
+        //),
+    ),
+ 'plugins' => array(
+        'video' => array(
+            'js' => array('video.js',),
+        ),
+    ),
+
+));
+?>
+
+		<?php echo $form->error($model,'description', array('style'=>'margin-top:-15px;')); ?>
 	</div>
 
 	<div class="row form-group">

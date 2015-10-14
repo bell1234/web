@@ -39,7 +39,7 @@
 
 <div class="form col-md-4 col-sm-4 col-lg-4 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
 
-<h3 class="bottom15">登陆</h3>
+<h3 class="bottom15">登陆没六儿</h3>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',

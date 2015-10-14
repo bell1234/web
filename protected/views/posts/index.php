@@ -5,7 +5,7 @@
 
 <?php $this->pageTitle=Yii::app()->name . ' - 最火热的话题与信息'; ?>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 top5">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 top5 bottom50">
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

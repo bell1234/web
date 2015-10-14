@@ -91,6 +91,7 @@ analytics.page()
           <ul class="dropdown-menu">
             <li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的分享</a></li>
             <li><a href="/users/setting">账户设置</a></li>
+            <li><a href="/site/contact">联系我们</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/site/logout">退出此账号</a></li>
           </ul>

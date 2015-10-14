@@ -21,8 +21,8 @@
 <hr>
 
 <ul class="dotul align_left nopaddingleft">
-	<li><a class="dark_grey small bold" href="/site/contact?feedback">建议反馈</a></li>
-	<li><a class="dark_grey small bold" href="/site/contact">联系我们</a></li>
-	<li class="dark_grey small bold">&copy; <?php echo date('Y'); ?> 没六儿</li>
+	<li><a class="dark_grey small" href="/site/contact?feedback">建议反馈</a></li>
+	<li><a class="dark_grey small" href="/site/contact">联系我们</a></li>
+	<li class="dark_grey small">&copy; <?php echo date('Y'); ?> 没六儿</li>
 </ul>
 </div>

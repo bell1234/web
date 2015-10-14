@@ -22,6 +22,7 @@ return array(
         	'application.modules.*',
         	'application.extensions.*',
         	'ext.yii-mail.YiiMailMessage',
+        	'ext.imperavi-redactor-widget.ImperaviRedactorWidget',
 		'ext.segment_analytics.lib.*',
 	        'application.classes.*',
 	),

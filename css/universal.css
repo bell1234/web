@@ -1,4 +1,4 @@
-body.bold {
+body {
 	-webkit-font-smoothing: antialiased;
 }
  
@@ -184,9 +184,6 @@ div.comment_cell{
   background-position: center center;
   background-repeat: no-repeat;
 }
-.post_content{
-	float:left;
-}
 .vote_up, .vote_down{
 	text-align: center;
 	font-size: 20px;
@@ -317,6 +314,9 @@ img.sidebar_head_pic{
 	border-radius:5px 5px 5px 5px !important;
 	-moz-border-radius: 5px 5px 5px 5px !important;
 	-webkit-border-radius: 5px 5px 5px 5px !important;
+}
+.redactor-editor{
+	border-radius: 0px 0px 3px 3px;
 }
 
 /*

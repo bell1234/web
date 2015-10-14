@@ -73,7 +73,7 @@ analytics.page()
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <?php $host = $_SERVER['REQUEST_URI']; ?>
-        <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/" style="color:#c73232;">热点</a></li>
+        <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/">热点</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>class="active"<?php endif; ?>><a href="/funny">搞笑</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>class="active"<?php endif; ?>><a href="/moments">吐槽</a></li>
         <!--

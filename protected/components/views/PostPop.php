@@ -78,7 +78,7 @@
 
 
 	<div class="row form-group">
-		<label class="control-label" for="Posts_thumb_pic">配图（自选）</label>
+		<label class="control-label" for="Posts_thumb_pic">配图（可选）</label>
 		<?php echo $form->hiddenField($model,'thumb_pic', array('id'=>'Posts_thumb_pic')); ?>
 
 		<div>

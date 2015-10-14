@@ -39,8 +39,42 @@
 			编辑评论
 		<?php endif; ?>
 		</label>
-		<?php echo $form->textArea($model,'description',array('class'=>'form-control', 'placeholder'=>'想说点儿什么？', 'style'=>'resize: vertical;')); ?>
-		<?php echo $form->error($model,'description'); ?>
+
+<?php
+$this->widget('ImperaviRedactorWidget', array(
+    // You can either use it for model attribute
+    'model' => $model,
+    'attribute' => 'description',
+    // Some options, see http://imperavi.com/redactor/docs/
+    'options' => array(
+        'lang' => 'zh_cn',
+	'focus'=>true,
+	'buttons'=>array('bold', 'italic', 'horizontalrule', 'image', 'video', 'link'),
+	'placeholder' => '想说点儿什么?',
+	'minHeight'=>60,
+
+        //'fileUpload'=>Yii::app()->createAbsoluteUrl('posts/commentfileupload'),
+
+        'imageUpload'=>Yii::app()->createAbsoluteUrl('posts/commentimageupload'),
+
+	 'imageUploadErrorCallback'=>new CJavaScriptExpression(
+            'function(obj,json) { alert(json.error); }'
+        ),
+
+	// 'fileUploadErrorCallback'=>new CJavaScriptExpression(
+        //   'function(obj,json) { alert(json.error); }'
+        //),
+    ),
+ 'plugins' => array(
+        'video' => array(
+            'js' => array('video.js',),
+        ),
+    ),
+
+));
+?>
+<?php echo $form->error($model,'description', array('style'=>'margin-top:-15px;')); ?>
+
 	</div>
 
 	<div class="row buttons top20">

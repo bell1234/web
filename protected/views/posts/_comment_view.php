@@ -30,10 +30,9 @@ if(Yii::app()->user->isGuest){
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
-			<p style="min-height:62px;">
+			<div style="min-height:62px;">
 				<?php echo $data->description; ?>
-				</a>
-			</p>
+			</div>
 			<div class="post_footer grey small">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
 				发布于

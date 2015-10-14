@@ -33,7 +33,7 @@ class PostsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload'),
+				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload', 'commentimageupload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -49,6 +49,39 @@ class PostsController extends Controller
 
 	//ajax image upload for redactor
 
+	//for comment
+	public function actionCommentimageupload() {
+		$image              = new CommentsPictures;
+		$image->create_time = time();
+		$image->file        = CUploadedFile::getInstanceByName('file');
+		if ($image->validate()) {
+			$fileSavePath = "uploads/comments/" . Yii::app()->user->id . "/";
+			if (!file_exists($fileSavePath)) {
+				mkdir($fileSavePath, 0777, true);
+			}
+			$date     = date("YmdHis");
+			$filename = strtolower(preg_replace('/[^a-zA-Z0-9\.]/', '_', $image->file));
+			$image->file->saveAs("uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename);
+			$image->path = "uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename;
+			$image->save();
+			$pictures = Yii::app()->session['comment_pictures'];
+			if (!is_array($pictures)) {
+				$pictures = array();
+			}
+			array_push($pictures, $image->path);
+			Yii::app()->session['comment_pictures'] = $pictures; //update the session
+			$array  = array(
+				'filelink' => "/uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename
+			);
+			echo stripslashes(json_encode($array));
+		} else {
+			throw new CHttpException(500, CJSON::encode(array(
+				'error' => 'You can only upload images here. If you want to upload  files with other formats, please choose attach files.'
+			)));
+		}
+	}
+
+	//for post
 	public function actionImageUpload() {
 		$image              = new PostsPictures;
 		$image->create_time = time();
@@ -106,9 +139,25 @@ class PostsController extends Controller
 			}else{
 				$comment->edited = time();
 			}
-			if($comment->isNewRecord && $comment->save()){
-				$model->comments++;
-				$model->save(false);
+			if($comment->save()){
+
+				if($comment->isNewRecord){
+					$model->comments++;
+					$model->save(false);
+				}
+
+				$pictures = Yii::app()->session['comment_pictures'];
+				if ($pictures) {
+					foreach ($pictures as $picture => $pic) {
+						$image = CommentsPictures::model()->findByAttributes(array(
+							'path' => $pic
+						));
+						$image->comment_id = $model->id;
+						$image->save();
+					}
+				}
+				unset(Yii::app()->session['comment_pictures']);
+
 			}
 		}
 

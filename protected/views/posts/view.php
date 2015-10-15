@@ -39,20 +39,34 @@ if($model->type == 1){
 				<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" ontouchend="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 			</div>
 
-			<h1 class="post_header paddingleft50" style="margin-top:1px;">
-					<b><?php echo $model->name; ?></b>
-			</h1>
+			<div style="min-height:60px;">
+				<h1 class="post_header paddingleft50 bottom15">
+					<?php echo $model->name; ?>
+				</h1>
 
-			<div class="post_footer grey small">
+				<div class="post_description paddingleft50">
+
+
+					<div class="post_pic">
+						<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
+							<img style="width:90px; height:90px;" src="<?php echo $model->thumb_pic; ?>" />
+						</a>
+					</div>
+
+					<div>
+						<?php echo $model->description; ?>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="post_footer grey small paddingleft50 top20 bottom10">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>
 				</abbr>
-			</div>
-
-			<div class="post_description top10 paddingleft50">
-				<p><?php echo $model->description; ?></p>
 			</div>
 
 			<div class="post_comments_box">

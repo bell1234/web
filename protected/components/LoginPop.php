@@ -43,7 +43,11 @@ class LoginPop extends CWidget
 				$user = Users::model()->findByPk(Yii::app()->user->id);
 				$user->logins++;
 				$user->save(false);
-				$this->controller->redirect('/');
+				if($_SERVER['REQUEST_URI'] == '/site/login' || $_SERVER['REQUEST_URI'] == '/site/login/'){
+					$this->controller->redirect('/');
+				}else{
+					$this->controller->refresh();
+				}
 
 			}
 		}

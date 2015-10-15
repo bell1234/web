@@ -1,4 +1,4 @@
-
+<?php if(Yii::app()->user->id): ?>
 <div class="form left50 comments_form" style="border-top: solid 1px #efefef; padding-bottom:15px;">
 	<?php CHtml::$errorCss = "has-error"; ?>
 <?php 
@@ -73,7 +73,7 @@ $this->widget('ImperaviRedactorWidget', array(
 
 ));
 ?>
-<?php echo $form->error($model,'description', array('style'=>'margin-top:-15px;')); ?>
+<?php echo $form->error($model,'description'); ?>
 
 	</div>
 
@@ -92,3 +92,4 @@ $this->widget('ImperaviRedactorWidget', array(
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<?php endif; ?>

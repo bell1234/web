@@ -22,6 +22,9 @@ if($data->type == 1){
 }else{
 	$post_link = "/posts/".$data->id;
 }
+
+//need to do yum install php-mbstring
+$truncated = (strlen($data->name) > 53) ? mb_substr($data->name, 0, 50,'utf-8') . '...' : $data->name;
 ?>
 
 
@@ -41,9 +44,9 @@ if($data->type == 1){
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
-			<h4 class="post_header" style="height:45px;">
+			<h4 class="post_header">
 				<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-					<?php echo $data->name; ?>
+					<?php echo $truncated; ?>
 				</a>
 			</h4>
 			<div class="post_footer grey small">

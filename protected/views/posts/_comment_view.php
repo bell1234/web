@@ -30,7 +30,7 @@ if(Yii::app()->user->isGuest){
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
-			<div style="min-height:62px;">
+			<div style="min-height:72px;">
 				<?php echo $data->description; ?>
 			</div>
 			<div class="post_footer grey small">
@@ -40,10 +40,9 @@ if(Yii::app()->user->isGuest){
 					<?php echo date('M jS, Y',($data->create_time)); ?>
 				</abbr>
 				<?php if($data->edited): ?>
-				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
+				(<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>
-				</abbr>
-				编辑过
+				</abbr>编辑过)
 				<?php endif; ?>
 				<?php if($data->user_id == Yii::app()->user->id): ?>
 				<script>

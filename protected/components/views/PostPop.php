@@ -90,7 +90,7 @@
         	'config'=>array(
 	                       'action'=>'/posts/AjaxUpload',
 
-					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;">或 <a href="#" onclick="read_pic(); return false;" class=" small pic_post post_pic_before left5">从网址读取配图</a><span class="no_show post_pic_loading left5">读取中...</span><span class="no_show post_pic_error left5">未找到合适的配图，建议手动上传</span></div><ul class="qq-upload-list" style="display:none;"></ul><div style="display:none;" class="qq-upload-drop-area"></div></div>',
+					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;">或 <a href="#" onclick="read_pic(); return false;" class=" small pic_post post_pic_before left5">从网址读取配图</a><span class="no_show post_pic_loading left5">读取中...</span><span class="no_show post_pic_error left5">未找到合适的配图，建议手动上传</span></div><ul class="qq-upload-list" style="display:none;"></ul><br><br><br><div class="qq-upload-drop-area">将图片拖至这里上传</div></div>',
 
 					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
 	                                      'allowedExtensions'=>array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp'),
@@ -151,13 +151,12 @@ $this->widget('ImperaviRedactorWidget', array(
 
 ));
 ?>
-
-		<?php echo $form->error($model,'description', array('style'=>'margin-top:-15px;')); ?>
+		<?php echo $form->error($model,'description'); ?>
 	</div>
 
 	<div class="row form-group">
 		<label class="control-label" for="Posts_category_id">请选择分类</label>
-		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'吐槽'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
+		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'新闻', 3=>'科技', 4=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
 

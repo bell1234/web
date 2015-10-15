@@ -24,7 +24,7 @@ if($model->type == 1){
 }
 ?>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 top10">
 
 	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none;" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post_votes">
@@ -42,12 +42,16 @@ if($model->type == 1){
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
-			<h1 class="post_header top10">
-				<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-					<?php echo $model->name; ?>
-				</a>
-			</h1>
-			<p><a style="word-wrap:break-word;" href="<?php echo $post_link;?>" rel="nofollow"><?php echo $post_link;?></a></p>
+
+			<div style="min-height:66px;">
+				<h1 class="post_header" style="margin-top:0px;">
+					<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
+						<?php echo $model->name; ?>
+					</a>
+				</h1>
+				<p><a style="word-wrap:break-word;" href="<?php echo $post_link;?>" rel="nofollow"><?php echo $post_link;?></a></p>
+			</div>
+
 			<div class="post_footer grey small">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
 				发布于
@@ -80,5 +84,5 @@ if($model->type == 1){
 
 
 <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top10">
-	<img src="/images/placeholder.png" style="width:100%;" /> 
+	<?php $this->renderPartial('_sidebar'); ?>
 </div>

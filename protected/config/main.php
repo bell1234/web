@@ -131,9 +131,9 @@ return array(
 				'/'=>'/posts/index',
 
 				'funny'=>'/posts/index/category_id/1',
-				'moments'=>'/posts/index/category_id/2',
+				'news'=>'/posts/index/category_id/2',
 				'tech'=>'/posts/index/category_id/3',
-				'sports'=>'/posts/index/category_id/4',
+				'other'=>'/posts/index/category_id/30',
 
 			),
 		),

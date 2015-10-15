@@ -17,6 +17,37 @@
 	),
 )); ?>
 
+	<div class="row bottom30">
+		<label class="control-label" for="Users_avatar">头像</label>
+		<div id="avatar_holder">
+			<img id="avatar_now" class="img-circle" src="<?php echo $model->avatar; ?>" />
+		</div>
+
+		<?php $this->widget('ext.EAjaxUpload.EAjaxUpload', array(
+			'id'=>'uploadFile',
+	        	'config'=>array(
+	                       'action'=>'/users/AjaxUpload',
+				'template'=>'<div class="qq-uploader"><div class="qq-upload-drop-area">将图片拖至这里上传</div><div class="qq-upload-button btn btn-primary btn-block">上传新头像</div><ul class="qq-upload-list" style="display:none;"></ul></div>',
+				'onComplete'=>"js:function(id, fileName, responseJSON){ $('#avatar_now').attr('src', '/uploads/avatar/".Yii::app()->user->id."/' + fileName);}",
+	                        'allowedExtensions'=>array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp','tga'),
+	                        'sizeLimit'=>5*1024*1024,// maximum file size in bytes                    
+               			 'minSizeLimit'=>1,// minimum file size in bytes
+	                        'messages'=>array(
+               
+	                                      	'typeError'=>'文件格式不符, 请上传以下格式的文件: {extensions}',
+               
+	                                        'sizeError'=>'文件过大, 请上传{sizeLimit}以下的文件',        
+               
+	                                         ),
+               					'showMessage'=>"js:function(message){ alert(message); }"
+	                                       )                            
+	                                                    
+)); ?>
+
+
+		<?php echo $form->error($model,'avatar'); ?>
+	</div>
+
 	<div class="row">
 		<label class="control-label" for="Users_username">用户名/昵称</label>
 		<?php echo $form->textField($model,'username',array('placeholder'=>'用户名/昵称','class'=>'form-control')); ?>
@@ -24,8 +55,8 @@
 	</div>
 
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('保存', array('class'=>'btn btn-primary btn-block')); ?>
+	<div class="row buttons" style="margin-top:15px;">
+		<?php echo CHtml::submitButton('保存用户名', array('class'=>'btn btn-primary btn-block')); ?>
 
 	</div>
 

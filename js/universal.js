@@ -20,10 +20,15 @@ $(document).ready(function() {
 
 });
 
+function signup(){
+	$('#signup_or_login').modal();
+}
+
+
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
 	if(guest){
-		alert('show login/signup popup');
+		signup();
 		return false;	
 	}
 	if(self){
@@ -110,7 +115,7 @@ function ajaxVoteCancel(post_id, type){
 function comment_vote(comment_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
 	if(guest){
-		alert('show login/signup popup');
+		signup();
 		return false;	
 	}
 	if(self){

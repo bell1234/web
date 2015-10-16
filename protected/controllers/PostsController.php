@@ -445,7 +445,7 @@ if($biggestImage){
             mkdir ($folder, 0777, true);
         }
 
-        $allowedExtensions = array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp');
+        $allowedExtensions = array('jpg','png','gif','jpeg','tiff','tif','bmp');
         $sizeLimit = 5 * 1024 * 1024;	// maximum file size in bytes
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload($folder);
@@ -457,7 +457,7 @@ if($biggestImage){
 
  	$thumb = new Imagick("uploads/posts/" . Yii::app()->user->id . "/" . $filename);
         $thumb->setImageFormat("png");
-        $thumb->thumbnailImage(90, 90);
+        $thumb->thumbnailImage(180, 180);
 
         if (file_exists("uploads/posts/" . Yii::app()->user->id . "/" . $filename)) {
         	unlink("uploads/posts/" . Yii::app()->user->id . "/" . $filename);

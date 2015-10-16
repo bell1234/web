@@ -32,7 +32,7 @@ class UsersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('setting'),
+				'actions'=>array('setting', 'ajaxUpload'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,6 +44,46 @@ class UsersController extends Controller
 			),
 		);
 	}
+
+	//Ajax 上传头像
+	public function actionAjaxUpload()
+	{
+
+        Yii::import("ext.EAjaxUpload.qqFileUploader");
+ 
+        $folder='uploads/avatars/'.Yii::app()->user->id.'/'; // folder for uploaded files
+
+        if (!file_exists ($folder)){
+            mkdir ($folder, 0777, true);
+        }
+
+        $allowedExtensions = array('jpg','png','gif','jpeg','tiff','tif','bmp');
+        $sizeLimit = 5 * 1024 * 1024;	// maximum file size in bytes
+        $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+        $result = $uploader->handleUpload($folder);
+        $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+ 
+        $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
+        $fileName=$result['filename'];//GETTING FILE NAME
+	$filename = $fileName;
+
+ 	$thumb = new Imagick("uploads/avatars/" . Yii::app()->user->id . "/" . $filename);
+        $thumb->setImageFormat("png");
+        $thumb->thumbnailImage(200, 200);
+
+        if (file_exists("uploads/avatars/" . Yii::app()->user->id . "/" . $filename)) {
+        	unlink("uploads/avatars/" . Yii::app()->user->id . "/" . $filename);
+        }
+        $thumb->writeImage("uploads/avatars/" . Yii::app()->user->id . "/" . $filename);                  
+       
+	$user = Users::model()->findByPk(Yii::app()->user->id);
+	$user->avatar = "/uploads/avatars/" . Yii::app()->user->id . "/" . $filename;
+	$user->save();
+
+        echo $return;// it's array
+	}
+
+
 
 	/**
 	 * Displays a particular model.

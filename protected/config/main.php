@@ -133,6 +133,7 @@ return array(
 				'funny'=>'/posts/index/category_id/1',
 				'news'=>'/posts/index/category_id/2',
 				'tech'=>'/posts/index/category_id/3',
+				'ama'=>'/posts/index/category_id/4',
 				'other'=>'/posts/index/category_id/30',
 
 			),

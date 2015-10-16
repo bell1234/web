@@ -30,7 +30,7 @@ if(Yii::app()->user->isGuest){
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
-			<div style="min-height:72px;">
+			<div class="comment_des">
 				<?php echo $data->description; ?>
 			</div>
 			<div class="post_footer grey small">

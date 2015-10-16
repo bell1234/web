@@ -52,25 +52,39 @@ analytics.page()
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top bottom_redborder">
+<nav class="navbar navbar-default bottom_redborder">
   <div class="container-fluid col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
+
+      <a id="small_avatar_mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
+	<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
+	<span style="line-height:48px;">
+		<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
+	</span>
+
+      </a>
       <a class="navbar-brand" href="#">Brand</a>
       <a id="nav_col_post" <?php if(Yii::app()->user->id): ?>target="_blank"<?php endif; ?> href="/submit" class="navbar-toggle collapsed">
         <span class="sr-only">New post</span>
-        <i class="fa fa-pencil-square-o"></i>
+        提交
       </a>
     </div>
 
+    <div class="collapse navbar-collapse"  aria-expanded="false" id="bs-top-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+           	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+           	<li><a href="/users/setting">账户设置</a></li>
+           	<li><a href="/site/contact">联系我们</a></li>
+           	<li role="separator" class="divider"></li>
+           	<li><a href="/site/logout">退出此账号</a></li>
+      </ul>  
+    </div>
+
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-top-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-top-navbar-collapse">
       <ul class="nav navbar-nav">
         <?php $host = $_SERVER['REQUEST_URI']; ?>
         <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/">热点</a></li>
@@ -78,28 +92,29 @@ analytics.page()
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>class="active"<?php endif; ?>><a href="/news">新闻</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>class="active"<?php endif; ?>><a href="/tech">科技</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>class="active"<?php endif; ?>><a href="/other">杂谈</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>class="active"<?php endif; ?>><a href="/ama">有问必答</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	 <?php if(Yii::app()->user->isGuest): ?>
+	 <li><a href="#" onclick="signup(); return false;"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>
         <li><a href="#" onclick="signup(); return false;">10秒注册/登陆</a></li>
         <?php else: ?>
-        <li><a href="/submit"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 分享</a></li><!--make popup-->
+        <li><a href="/submit"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>
         <li class="dropdown">
-
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top:0px; padding-bottom:0px;">
-	<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
-	<span style="line-height:48px;">
-		<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
-	</span>
-	<span class="caret"></span>
-	</a>
-          <ul class="dropdown-menu">
-            <li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的分享</a></li>
-            <li><a href="/users/setting">账户设置</a></li>
-            <li><a href="/site/contact">联系我们</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="/site/logout">退出此账号</a></li>
-          </ul>
+        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top:0px; padding-bottom:0px;">
+			<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
+			<span style="line-height:48px;">
+				<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
+			</span>
+			<span class="caret"></span>
+		</a>
+          	<ul class="dropdown-menu">
+           	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+           	<li><a href="/users/setting">账户设置</a></li>
+           	<li><a href="/site/contact">联系我们</a></li>
+           	<li role="separator" class="divider"></li>
+           	<li><a href="/site/logout">退出此账号</a></li>
+         	</ul>
         </li>
         <?php endif; ?>
       </ul>
@@ -107,7 +122,7 @@ analytics.page()
   </div><!-- /.container-fluid -->
 </nav>
 
-	<div id="main-page" class="container-fluid col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1 nopaddingleft nopaddingright top60">
+	<div id="main-page" class="container-fluid col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1 nopaddingleft nopaddingright">
 		<?php echo $content; ?>
 	</div>
 

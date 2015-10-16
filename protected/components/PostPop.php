@@ -15,6 +15,8 @@ class PostPop extends CWidget
 			exit(0);
 		}
 
+		$user = Users::model()->findByPk(Yii::app()->user->id);
+
 		$model=new Posts;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -26,17 +28,24 @@ class PostPop extends CWidget
 			$model->create_time = time();
 			$model->user_id = Yii::app()->user->id;
 			$model->points = 0;	//starting with 0 points?
-			if($model->type == 1){
+			if($model->type == 1){		//link
+				//nothing
+			}else if($model->type == 2){	//content
+				$model->link = "";
 
-			}else{
-				$model->link = "";	//not link post, let's clear it just in case it's passed.
-				//text 2
-				//with picture 3
-				//with video 4
-				//...
-			}	
+			}else if($model->type == 3){	//ama
+				$model->link = "";
+				$model->category_id = 4;	//force AMA
+			}
+			if(!$model->thumb_pic){
+				if($model->private){
+					//default pic here...
+				}else{
+					$model->thumb_pic = $user->avatar;
+				}
+			}
 			if($model->type != 1 && !$model->description){
-				$model->addError('description', '请输入要分享的内容');
+				$model->addError('description', '请输入要提交的内容');
 			}else if($model->save()){
 				$pictures = Yii::app()->session['pictures'];
 				if ($pictures) {

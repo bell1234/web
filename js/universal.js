@@ -250,18 +250,41 @@ function isUrlValid(url) {
 
 function show_link(){
 	$('#Posts_type').val(1);
-	$('.link_tab').addClass('active');
 	$('.content_tab').removeClass('active');
+	$('.ama_tab').removeClass('active');
+	$('.link_tab').addClass('active');
 	$('.link_post').show();
 	$('.content_post').hide();
+	$('.ama_alert').hide();
+	$('#Posts_category_id').val('');
+	$('.category_drop').show();
+	$('#Posts_category_id').val('');
 }
 
 function show_content(){
 	$('#Posts_type').val(2);
 	$('.link_tab').removeClass('active');
+	$('.ama_tab').removeClass('active');
 	$('.content_tab').addClass('active');
 	$('.link_post').hide();
+	$('.ama_alert').hide();
 	$('.content_post').show();
+	$('.category_drop').show();
+	$('#Posts_category_id').val('');
+}
+
+function show_ama(){
+	$('#Posts_type').val(2);
+	$('.link_tab').removeClass('active');
+	$('.content_tab').removeClass('active');
+	$('.ama_tab').addClass('active');
+	$('.content_post').show();
+	$('.ama_alert').show();
+	$('#Posts_name').val('我是XXX (简介自己), 有问必答!');
+	$('#Posts_description').val('请介绍自己，如果方便的话，提供可以证明身份的材料可以大幅提高收视率哦。');
+	$('.link_post').hide();
+	$('.category_drop').hide();
+	$('#Posts_category_id').val(30); //random value here for validation, does not matter
 }
 
 function read_title(){
@@ -278,6 +301,7 @@ function read_title(){
 	}
 	$('.post_title_loading').show();
 	$('.post_title_before').hide();
+	$('.post_title_error').hide();
 	$.ajax({
         	url: '/posts/getTitle?url='+url,
         	type: 'POST',

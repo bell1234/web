@@ -31,27 +31,50 @@
 )); 
 ?>
 
-<?php if(isset($_GET['content'])){ $type = 2; ?>
+<?php if(isset($_GET['ama'])){ $type = 3; ?>
+	<script>
+		$(function (){
+			show_ama();
+		});
+	</script>
+<?php }else if(isset($_GET['content'])){ $type = 2; ?>
 	<script>
 		$(function (){
 			show_content();
 		});
 	</script>
-<?php }else{ $type = 1; ?>
+	<style>
+		.link_post{
+			display:none;
+		}
+	</style>
+<?php }else{ $type = 1; 	//ama ?>
 	<script>
 		$(function (){
 			show_link();
 		});
 	</script>
+	<style>
+		.link_post{
+			display:none;
+		}
+	</style>
 <?php } ?>
 	
 
 	<div class="row">
 		<?php echo $form->hiddenField($model,'type', array('value'=>$type)); ?>
 		<ul class="nav nav-tabs top10 bottom10 bold">
-  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">分享链接</a></li>
-  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">分享内容</a></li>
+  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">提交链接</a></li>
+  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">提交内容</a></li>
+  			<li role="presentation" class="ama_tab"><a href="#" onclick="show_ama(); return false;">有问必答</a></li>
 		</ul>
+	</div>
+
+	<div class="ama_alert alert alert-warning">
+		<p><b>有问必答(Ask Me Anything)</b></p>
+		<p>例如: 我是XXX／我是一个XXX (简介自己), 有问必答！</p>
+		<p class="small">* 名人/机构发起有问必答: 请先<a href="mailto:contact@meiliuer.com">联系我们验证帐号</a>或在发表后将链接分享到您的微博/微信公众号。</p>
 	</div>
 
 	<div id="link_post_field" class="row link_post form-group">
@@ -84,7 +107,7 @@
 		<div>
 			<img id="thumb_pic" style="width:100px; height:100px; margin-top:-35px; float:left;" src='' />
 
-<?php $this->widget('ext.EAjaxUpload.EAjaxUpload',
+	<?php $this->widget('ext.EAjaxUpload.EAjaxUpload',
 	array(
 		'id'=>'uploadFile',        
         	'config'=>array(
@@ -93,7 +116,7 @@
 					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;">或 <a href="#" onclick="read_pic(); return false;" class=" small pic_post post_pic_before left5">从网址读取配图</a><span class="no_show post_pic_loading left5">读取中...</span><span class="no_show post_pic_error left5">未找到合适的配图，建议手动上传</span></div><ul class="qq-upload-list" style="display:none;"></ul><br><br><br><div class="qq-upload-drop-area">将图片拖至这里上传</div></div>',
 
 					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
-	                                      'allowedExtensions'=>array('jpg','png','svg','gif','jpeg','tiff','tif','ico','bmp'),
+	                                      'allowedExtensions'=>array('jpg','png','gif','jpeg','tiff','tif','bmp'),
 	                                      'sizeLimit'=>5*1024*1024,// maximum file size in bytes       
                				      'minSizeLimit'=>1,// minimum file size in bytes
 
@@ -128,7 +151,7 @@ $this->widget('ImperaviRedactorWidget', array(
         'lang' => 'zh_cn',
 	'focus'=>true,
 	'buttons'=>array('bold', 'italic', 'horizontalrule', 'image', 'video', 'link'),
-	'placeholder' => '要分享的信息 / 内容',
+	'placeholder' => '请输入要提交的信息 / 内容',
 	'minHeight'=>100,
 
         //'fileUpload'=>Yii::app()->createAbsoluteUrl('posts/fileupload'),
@@ -154,9 +177,9 @@ $this->widget('ImperaviRedactorWidget', array(
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="row form-group">
+	<div class="row form-group category_drop">
 		<label class="control-label" for="Posts_category_id">请选择分类</label>
-		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'新闻', 3=>'科技', 4=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
+		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'新闻', 3=>'科技', 30=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
 
@@ -165,8 +188,8 @@ $this->widget('ImperaviRedactorWidget', array(
 		<?php echo $form->checkBox($model,'private'); ?>
 		<span class="dark_grey v_middle top5">匿名</span>
 		<div class="float_right">
-			<a class="right25" href="#" onclick="dismiss_post_popup(); return false;">取消</a>
-			<?php echo CHtml::submitButton($model->isNewRecord ? '分享' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
+			<!--<a class="right25" href="#" onclick="dismiss_post_popup(); return false;">取消</a>-->
+			<?php echo CHtml::submitButton($model->isNewRecord ? '提交' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>
 

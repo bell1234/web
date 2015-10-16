@@ -4,7 +4,9 @@ body {
  
 h1, h2, h3, h4, h5 {
 	-webkit-font-smoothing: antialiased;
+	line-height:1.3em;
 }
+
 
 abbr.timeago{
 	text-decoration:none !important;
@@ -234,8 +236,15 @@ ul.qq-upload-list{
 }
 
 h4.post_header{
-	min-height: 65px;
+	min-height: 75px;
 	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+@media (min-width: 768px) {
+	#bs-top-navbar-collapse-1{
+		display: none !important;
+	}
 }
 
 @media (max-width: 700px) {
@@ -256,26 +265,41 @@ h4.post_header{
 	.comment_cell > .post_votes > .vote_up:hover,
 	.comment_cell > .post_votes > .vote_down:hover{
 		background-color: #888;
-		color: #efefef !important;		
+		color: #efefef !important;	
 	}
     /* some CSS for large resolution */
 }
 
+#small_avatar_mobile{
+	border:none !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	cursor: pointer;
+}
+
+#small_avatar_mobile:hover{
+	background-color: none;
+	background: none;
+	text-decoration:none;
+}
+
 #nav_col_post{
-	background-color:#faeeef; 
-	color:#c73232; 
-	border-color:#E39E9F; 
-	font-size:18px; 
-	padding-top:4px; 
-	padding-bottom:3px; 
-	padding-left:13px;
+	font-size:14px; 
+	padding-top:6px; 
+	padding-bottom:6px; 
+	padding-left:10px;
 }
 .sm_h1{
 	font-size:24px;
 }
-.post_description p{
-	font-size:13px;
-	line-height:1.8em;
+.post_description{
+	line-height:1.7em;
+}
+.comment_des{
+	line-height:1.7em !important;
+	min-height:72px !important;
 }
 .post_comment_counter{
 	font-weight:bold;
@@ -306,7 +330,7 @@ ul.nostyle li{
 	font-size:14px;
 }
 ul.nostyle li a{
-	color: #777;
+	color: #555;
 	font-weight:normal;
 }
 
@@ -355,7 +379,7 @@ button.body-close{
 }
 #small_avatar_nav{
 	padding: 2px;
-	border: solid 1px #e5e5e5;
+	border: solid 1px #e1e1e1;
 	width:36px;
 	height:36px;
 	display:inline;

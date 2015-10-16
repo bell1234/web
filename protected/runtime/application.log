@@ -7406,3 +7406,549 @@ Stack trace:
 REQUEST_URI=/images/404ufo.png
 HTTP_REFERER=http://meiliuer.com/users/setting
 ---
+2015/10/15 02:38:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:38:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:38:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/uploads/avatars/175204/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/uploads/avatars/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:38:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:40:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/851595_5304836237180.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:40:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/images 2.jpg".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/images%202.jpg
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:40:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/images 2.jpg".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/images%202.jpg
+---
+2015/10/15 02:40:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "uploads/avatar/175204/uploads/avatars/175204/images 2.jpg".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('uploads/avatar/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/uploads/avatar/175204/uploads/avatars/175204/images%202.jpg
+HTTP_REFERER=http://meiliuer.com/uploads/avatar/175204/images%202.jpg
+---
+2015/10/15 02:40:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/uploads/avatar/175204/images%202.jpg
+---
+2015/10/15 02:41:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setting1".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('setting1')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('setting1')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/setting1')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/setting1
+---
+2015/10/15 02:41:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/users/setting1
+---
+2015/10/15 02:41:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatars/175204/images%202.jpg
+HTTP_REFERER=http://meiliuer.com/users/setting1
+---
+2015/10/15 02:41:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatars/175204/images%202.jpg
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:41:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:41:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:41:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:41:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:41:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:42:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:42:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:42:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:42:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:42:59 [error] [exception.ImagickException] exception 'ImagickException' with message 'unable to open file `/uploads/avatar/175204/851595_530483623718013.png' @ error/png.c/ReadPNGImage/3733' in /var/www/html/webapp/protected/controllers/UsersController.php:70
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/UsersController.php(70): Imagick->__construct('/uploads/avatar...')
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): UsersController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('ajaxupload')
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/AjaxUploa...')
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/users/AjaxUpload?PHPSESSID=6q5vc1jqmsr9klrl8pohifq1n5&YII_CSRF_TOKEN=99b97b2da56b6592582325d6a554367e1e2ba5ab&qqfile=851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:43:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:43:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:43:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:43:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/uploads/avatar/175204/851595_5304836237180.png
+---
+2015/10/15 02:43:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:43:43 [error] [exception.ImagickException] exception 'ImagickException' with message 'unable to open file `/uploads/avatar/175204/851595_530483623718064.png' @ error/png.c/ReadPNGImage/3733' in /var/www/html/webapp/protected/controllers/UsersController.php:70
+Stack trace:
+#0 /var/www/html/webapp/protected/controllers/UsersController.php(70): Imagick->__construct('/uploads/avatar...')
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): UsersController->actionAjaxUpload()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('ajaxupload')
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/AjaxUploa...')
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/users/AjaxUpload?PHPSESSID=6q5vc1jqmsr9klrl8pohifq1n5&YII_CSRF_TOKEN=99b97b2da56b6592582325d6a554367e1e2ba5ab&qqfile=851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:43:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:46:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "uploads".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('uploads')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('uploads')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users/uploads/a...')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/users/uploads/avatar/175204/851595_5304836237180.png
+HTTP_REFERER=http://meiliuer.com/users/setting
+---
+2015/10/15 02:54:08 [error] [php] iconv(): Detected an illegal character in input string (/var/www/html/webapp/protected/controllers/PostsController.php:366)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs()
+#1 /var/www/html/yii/framework/web/actions/CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#2 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#3 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#4 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#5 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#6 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#7 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#8 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#9 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#11 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/posts/getTitle?url=http://chuansong.me
+in /var/www/html/webapp/protected/controllers/PostsController.php (366)
+in /var/www/html/webapp/index.php (13)
+2015/10/15 17:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2015/10/15 17:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-precomposed.png
+---
+2015/10/15 17:33:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/15 17:33:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-precomposed.png
+---
+2015/10/15 17:33:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/15 19:28:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon-precomposed.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon-precomposed.png
+---
+2015/10/15 19:28:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "apple-touch-icon.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('apple-touch-ico...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/apple-touch-icon.png
+---
+2015/10/15 19:58:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "hot".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('hot')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hot
+---
+2015/10/15 19:58:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/hot
+---
+2015/10/15 21:37:48 [error] [php] Undefined variable: type (/var/www/html/webapp/protected/components/views/PostPop.php:36)
+Stack trace:
+#0 /var/www/html/yii/framework/web/widgets/CWidget.php(244): PostPop->renderFile()
+#1 /var/www/html/webapp/protected/components/PostPop.php(63): PostPop->render()
+#2 /var/www/html/yii/framework/web/CBaseController.php(181): PostPop->run()
+#3 /var/www/html/webapp/protected/views/posts/_form.php(8): PostsController->widget()
+#4 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#6 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#7 /var/www/html/webapp/protected/views/posts/create.php(8): PostsController->renderPartial()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#11 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#12 /var/www/html/webapp/protected/controllers/PostsController.php(478): PostsController->render()
+#13 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionCreate()
+#14 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#16 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#18 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#19 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#20 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#23 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#24 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/submit?content
+in /var/www/html/webapp/protected/components/views/PostPop.php (36)
+in /var/www/html/webapp/protected/components/PostPop.php (63)
+in /var/www/html/webapp/protected/views/posts/_form.php (8)
+2015/10/15 21:37:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/submit?content
+---
+2015/10/15 21:37:50 [error] [php] Undefined variable: type (/var/www/html/webapp/protected/components/views/PostPop.php:36)
+Stack trace:
+#0 /var/www/html/yii/framework/web/widgets/CWidget.php(244): PostPop->renderFile()
+#1 /var/www/html/webapp/protected/components/PostPop.php(63): PostPop->render()
+#2 /var/www/html/yii/framework/web/CBaseController.php(181): PostPop->run()
+#3 /var/www/html/webapp/protected/views/posts/_form.php(8): PostsController->widget()
+#4 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#6 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#7 /var/www/html/webapp/protected/views/posts/create.php(8): PostsController->renderPartial()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#11 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#12 /var/www/html/webapp/protected/controllers/PostsController.php(478): PostsController->render()
+#13 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionCreate()
+#14 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#15 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#16 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#17 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#18 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#19 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#20 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#21 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#23 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#24 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/submit?content
+in /var/www/html/webapp/protected/components/views/PostPop.php (36)
+in /var/www/html/webapp/protected/components/PostPop.php (63)
+in /var/www/html/webapp/protected/views/posts/_form.php (8)
+2015/10/15 21:37:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/submit?content
+---
+2015/10/16 00:31:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "www.baidu.com".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('www.baidu.com')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/www.baidu.com
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/16 00:31:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/www.baidu.com
+---
+2015/10/16 00:32:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "www.baidu.com".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('www.baidu.com')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/www.baidu.com
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/16 00:32:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/www.baidu.com
+---
+2015/10/16 01:01:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://meiliuer.com/
+---

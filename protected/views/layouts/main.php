@@ -52,22 +52,32 @@ analytics.page()
 
 <body>
 
-<nav class="navbar navbar-default bottom_redborder">
+<nav class="navbar navbar-fixed-top navbar-default bottom_redborder">
   <div class="container-fluid col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
+      <a class="navbar-brand" href="#">
+	Brand
+	 <!--<img alt="Brand" src="...">-->
+      </a>
+
+<?php if(Yii::app()->user->isGuest): ?>
+      <a id="nav_col_signup" onclick="signup(); return false;" class="navbar-toggle collapsed">
+        <span class="sr-only">New post</span>
+        10秒注册/登录
+      </a>
+<?php else: ?>
       <a id="small_avatar_mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
-
 	<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
 	<span style="line-height:48px;">
 		<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
 	</span>
-
       </a>
-      <a class="navbar-brand" href="#">Brand</a>
-      <a id="nav_col_post" <?php if(Yii::app()->user->id): ?>target="_blank"<?php endif; ?> href="/submit" class="navbar-toggle collapsed">
+<?php endif; ?>
+
+      <a id="nav_col_post" <?php if(Yii::app()->user->id): ?>target="_blank" href="/submit"<?php else: ?>onclick="signup(); return false;" href="#"<?php endif; ?> class="navbar-toggle collapsed">
         <span class="sr-only">New post</span>
         提交
       </a>
@@ -121,6 +131,21 @@ analytics.page()
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+
+
+<div id="option_bar_mobile" class="btn-group visible-xs btn-block" role="group">
+  <a href="/" class="btn btn-default <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>active<?php endif; ?>" style="border-left:none;">热点</a>
+  <a href="/funny" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>active<?php endif; ?>" >搞笑</a>
+  <a href="/news" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>active<?php endif; ?>" >新闻</a>
+  <a href="/tech" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>active<?php endif; ?>" >科技</a>
+  <a href="/other" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>active<?php endif; ?>" >杂谈</a>
+  <a href="/ama" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>active<?php endif; ?>" style="width:22.5%;">有问必答</a>
+</div>
+
+
+
 
 	<div id="main-page" class="container-fluid col-lg-10 col-md-10 col-sm-12 col-lg-offset-1 col-md-offset-1 nopaddingleft nopaddingright">
 		<?php echo $content; ?>

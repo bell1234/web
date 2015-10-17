@@ -50,8 +50,8 @@ class Posts extends CActiveRecord
 
 			array('user_id, create_time', 'required'),		//system will assign it...
 
-			array('user_id, create_time, category_id, up, down, points, comments, type, hide, processed, views, private, thumb_generated', 'numerical', 'integerOnly'=>true),
-			array('name, link, thumb_pic', 'length', 'max'=>500),
+			array('user_id, create_time, category_id, up, down, points, comments, type, hide, processed, views, private', 'numerical', 'integerOnly'=>true),
+			array('name, link, thumb_pic, video_html', 'length', 'max'=>500),
 			array('shorturl', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -135,6 +135,41 @@ class Posts extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+
+
+	public function getTitle($url){
+
+		Yii::import('application.extensions.embedly.src.Embedly.Embedly', true);
+
+		// Call with pro (you'll need a real key)
+		$pro = new Embedly\Embedly(array(
+ 		   'key' => '05c0e7529f174ace83e837e28ffc448e',
+    		    'user_agent' => 'Mozilla/8.0 (compatible; mytestapp/1.0)'
+		));
+		$objs = $pro->oembed($url);
+
+		$arr = array();
+
+		if(isset($objs->title)){	//title
+			array_push($arr, $objs->title);
+		}else{
+			array_push($arr, "");		
+		}
+
+		if(isset($objs->thumbnail_url)){	//thumbnail
+			array_push($arr, $objs->thumbnail_url);
+		}else{
+			array_push($arr, "");	
+		}
+
+		if(isset($objs->html)){	//video...
+			array_push($arr, $objs->html);
+		}else{
+			array_push($arr, "");	
+		}
+
+		echo json_encode($arr);
 	}
 
 	/**

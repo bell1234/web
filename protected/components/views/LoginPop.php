@@ -5,6 +5,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'signup-form',
+	'enableAjaxValidation'=>false,
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
@@ -43,13 +44,12 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
+	'enableAjaxValidation'=> false,
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
-
-
 	<div class="row">
 		<?php echo $form->textField($model,'username',array('placeholder'=>'邮箱','class'=>'form-control')); ?>
 		<?php echo $form->error($model,'username'); ?>
@@ -63,7 +63,6 @@
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('登陆', array('class'=>'btn btn-primary btn-block')); ?>
-
 	</div>
 
 

@@ -121,9 +121,13 @@ class PostsController extends Controller
 	public function actionView($id)
 	{
 		$model = $this->loadModel($id);
+		$model->views++;
+		$model->save(false);
 
 		if(Yii::app()->user->id){
 			$comment = Comments::model()->findByAttributes(array('user_id'=>Yii::app()->user->id, 'post_id'=>$model->id));
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			$user->userActed(); 
 		}else{
 			$comment = new Comments;
 		}
@@ -350,30 +354,11 @@ class PostsController extends Controller
 
 
 	/**
-	 * grab title from the link
+	 * grab title, pic and video from the link
 	 */
 	public function actionGetTitle($url){
 
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (compatible; MSIE 8.0)');
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, true);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		$pos = strpos($data,'utf-8');
-		if($pos===false){$data = iconv("gbk","utf-8",$data);}
-		preg_match("/<title>(.*)<\/title>/i",$data, $title);
-		if($title){
-			echo $title[1];
-		}else{
-			echo "error";
-		}
-
-		
-
-
+		return Posts::getTitle($url);
 	}
 
 
@@ -382,54 +367,7 @@ class PostsController extends Controller
 	 */
 	public function actionGetPic($url)
 	{
-
-		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (compatible; MSIE 8.0)');
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, true);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		$pos = strpos($data,'utf-8');
-		if($pos===false){$data = iconv("gbk","utf-8",$data);}
-		preg_match_all( '/<img[^>]+src=[\'"]([^\'"]+)[\'"].*>/i', $data, $array);
-
-$biggestImage = 'path to "no image found" image';
-
-// process
-$maxSize = -1;
-$visited = array();
-// base url
-$parts=parse_url($url);
-$host=$parts['scheme'].'://'.$parts['host'];
-// loop a few times
-$i = 0;
-shuffle($array[1]);
-foreach($array[1] as $key=>$element){
-    $i++;
-    $pic = $element;
-    if($i > 3){
-	continue;
-    }
-    if($pic=='')continue;// it happens on your test url
-	$absUrl = $this->nodots($this->absurl($url, $pic));
-    // ignore already seen images, add new images
-    if(in_array($absUrl, $visited))continue;
-    $visited[]=$absUrl;
-    // get image
-    $image=@getimagesize($absUrl);// get the rest images width and height
-    if (($image[0] * $image[1]) > $maxSize) {   
-        $maxSize = $image[0] * $image[1];  //compare images' sise
-        $biggestImage = $absUrl;
-    }
-}
-if($biggestImage){
-	echo $biggestImage; 
-}else{
-	echo "error";
-}
-
+		
 	}
 
 
@@ -475,6 +413,8 @@ if($biggestImage){
 	public function actionCreate()
 	{	
 		//handled by widget PostPop
+		$user = Users::model()->findByPk(Yii::app()->user->id);
+		$user->userActed(); 
 		$this->render('create');
 	}
 
@@ -521,7 +461,10 @@ if($biggestImage){
 	 */
 	public function actionIndex()
 	{
-
+		if(Yii::app()->user->id){
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			$user->userActed(); 
+		}
 		if(isset($_GET['category_id'])){
 			$criteria = array(
 				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',

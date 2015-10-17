@@ -71,7 +71,8 @@
 		</ul>
 	</div>
 
-	<div class="ama_alert alert alert-warning">
+	<div class="ama_alert alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<p><b>有问必答(Ask Me Anything)</b></p>
 		<p>例如: 我是XXX／我是一个XXX (简介自己), 有问必答！</p>
 		<p class="small">* 名人/机构发起有问必答: 请先<a href="mailto:contact@meiliuer.com">联系我们验证帐号</a>或在发表后将链接分享到您的微博/微信公众号。</p>
@@ -91,7 +92,7 @@
 
 	<div class="row form-group">
 		<label class="control-label" for="Posts_name">标题</label>
-		<a href="#" onclick="read_title(); return false;" class="left15 small link_post post_title_before">从网址读取标题</a>
+		<a href="#" onclick="read_title(); return false;" class="left15 small link_post post_title_before">自动推荐标题</a>
 		<span class="no_show post_title_loading left10">读取中...</span>
 		<span class="no_show post_title_error left10">未找到合适的标题，请手动输入</span>
 		
@@ -99,10 +100,13 @@
 		<?php echo $form->error($model,'name'); ?>
 	</div>
 
+		<?php echo $form->hiddenField($model,'thumb_pic'); ?>
 
+		<?php echo $form->hiddenField($model,'video_html'); ?>
+
+<?php /****** ?>
 	<div class="row form-group">
 		<label class="control-label" for="Posts_thumb_pic">配图（可选）</label>
-		<?php echo $form->hiddenField($model,'thumb_pic', array('id'=>'Posts_thumb_pic')); ?>
 
 		<div>
 			<img id="thumb_pic" style="width:100px; height:100px; margin-top:-35px; float:left;" src='' />
@@ -134,7 +138,7 @@
 
 		</div>
 	</div>
-
+<?php ***/ ?>
 
 
 

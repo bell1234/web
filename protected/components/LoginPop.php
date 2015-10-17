@@ -11,7 +11,6 @@ class LoginPop extends CWidget
 	public function run()
 	{
 
-
 		if(!Yii::app()->user->isGuest){
 			$this->controller->redirect('/');
 		}
@@ -30,13 +29,14 @@ class LoginPop extends CWidget
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='signup-form')
 		{
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate($user);
 			Yii::app()->end();
 		}
 
 		// login part
 		if(isset($_POST['LoginForm']))
 		{
+
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){

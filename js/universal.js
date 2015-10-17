@@ -13,10 +13,17 @@ $(document).ready(function() {
   		change: function() {
     			this.value = this.value.replace(/\s/g, "");
   		}
-	});	
+	});
+
+	queried = false;
+
+	$('#Posts_name').focus(function() {
+		if(!queried && $('#post_link').val()){
+			read_title(true);
+		}
+	});
 
 	$("abbr.timeago").timeago();
-
 
 });
 
@@ -287,47 +294,61 @@ function show_ama(){
 	$('#Posts_category_id').val(30); //random value here for validation, does not matter
 }
 
-function read_title(){
+function read_title(system_action){		//读取标题，图片或者视频。如果system_action为true, 则为系统读取，不覆盖标题。
+
+	system_action = typeof system_action !== 'undefined' ? system_action : false;
+
 	if(!validateURlField()){
 		return false;
 	}
 	url = $("#post_link").val();
-	if($('#Posts_name').val()){
-		var r = confirm("现有的标题将被取代，确定替换吗？");
-		if (r == true) {
-		} else {
-    			return false;
+
+	if(!system_action){	//非系统读取
+		if($('#Posts_name').val()){
+			var r = confirm("现有的标题将被取代，确定替换吗？");
+			if (r == true) {
+			} else {
+    				return false;
+			}
 		}
+		$('.post_title_loading').show();
+		$('.post_title_before').hide();
+		$('.post_title_error').hide();
 	}
-	$('.post_title_loading').show();
-	$('.post_title_before').hide();
-	$('.post_title_error').hide();
 	$.ajax({
         	url: '/posts/getTitle?url='+url,
         	type: 'POST',
-        	//data: someData,
-        	//datatype: 'json',
         	success: function (data) {
-			if(data != "error"){
+			if(!system_action){	//非系统读取
+				$('#Posts_name').val(data[0]);
+			}
+			$('#Posts_thumb_pic').val(data[1]);
+			$('#Posts_video_html').val(data[2]);
+			queried = true;		//only once.
+			if(!system_action){	//非系统读取
 				$('.post_title_before').show();
 				$('.post_title_loading').hide();
 				$('.post_title_error').hide();
-				$('#Posts_name').val(data);
-			}else{
+				if($('#Posts_name').val() == ""){
+					$('.post_title_before').show();
+					$('.post_title_loading').hide();
+					$('.post_title_error').show();
+				}
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			if(!system_action){	//非系统读取
 				$('.post_title_before').show();
 				$('.post_title_loading').hide();
 				$('.post_title_error').show();
 			}
 		},
-        	error: function (jqXHR, textStatus, errorThrown) {
-			$('.post_title_before').show();
-			$('.post_title_loading').hide();
-			$('.post_title_error').show();
-		}
+ 		dataType: 'json',
     	});
 }
 
 
+/*
 function read_pic(){
 	if(!validateURlField()){
 		return false;
@@ -367,3 +388,4 @@ function read_pic(){
 		}
     	});
 }
+*/

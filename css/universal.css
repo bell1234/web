@@ -1,6 +1,23 @@
 body {
 	-webkit-font-smoothing: antialiased;
 }
+
+#main-page{
+	margin-top: 60px;
+}
+
+@media (max-width: 767px) {
+    .navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+    .navbar-collapse {
+        max-height: none;
+    }
+    #main-page {
+        margin-top: 0px;
+    }
+}
  
 h1, h2, h3, h4, h5 {
 	-webkit-font-smoothing: antialiased;
@@ -273,6 +290,7 @@ h4.post_header{
 #small_avatar_mobile{
 	border:none !important;
 	padding-top: 0px !important;
+	padding-left:0px !important;
 	padding-bottom: 0px !important;
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
@@ -285,11 +303,15 @@ h4.post_header{
 	text-decoration:none;
 }
 
-#nav_col_post{
+#nav_col_post, #nav_col_signup{
 	font-size:14px; 
 	padding-top:6px; 
 	padding-bottom:6px; 
 	padding-left:10px;
+	text-decoration:none;
+	font-weight:bold;
+	color: #c73232;
+	cursor: pointer;
 }
 .sm_h1{
 	font-size:24px;
@@ -383,6 +405,20 @@ button.body-close{
 	width:36px;
 	height:36px;
 	display:inline;
+}
+#option_bar_mobile{
+	margin-top:-20px; 
+	width:100%; 
+	height:35px;
+}
+#option_bar_mobile a{
+	width:15.5%;
+	border-right:none !important;
+	border-top: none !important;
+	border-radius: 0px 0px 0px 0px !important;
+	-moz-border-radius:0px 0px 0px 0px !important;
+	-webkit-border-radius:0px 0px 0px 0px !important;
+	margin: 0px 0px 0px 0px !important;
 }
 
 /*

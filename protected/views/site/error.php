@@ -12,8 +12,8 @@ $this->breadcrumbs=array(
 ?>
 
 <section id="full-404">
-	<div class="row margin-top-l text-center">
-		<h1 class=" margin-top-l margin-bottom-m huge-txt"><?php echo $code; ?></h1>
+	<div class="row text-center">
+		<h1 class="huge-txt"><?php echo $code; ?></h1>
 		<?php if($code == 500): 
 			Analytics::didEncounterErrorPage($code, $message);
 		?>

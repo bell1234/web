@@ -1,7 +1,10 @@
 $(document).ready(function() {
 
+	queried = false;
+
 	$("#post_link").change(function() {
 		validateURlField();
+		queried = false;
 	});	
 
 	//disable space for URL
@@ -14,8 +17,6 @@ $(document).ready(function() {
     			this.value = this.value.replace(/\s/g, "");
   		}
 	});
-
-	queried = false;
 
 	$('#Posts_name').focus(function() {
 		if(!queried && $('#post_link').val()){
@@ -314,6 +315,13 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
 		$('.post_title_loading').show();
 		$('.post_title_before').hide();
 		$('.post_title_error').hide();
+		if($('#temp_title').val() && queried){	//最近地址已经被cache
+			$('#Posts_name').val($('#temp_title').val());
+			$('.post_title_before').show();
+			$('.post_title_loading').hide();
+			$('.post_title_error').hide();
+			return false;
+		}
 	}
 	$.ajax({
         	url: '/posts/getTitle?url='+url,
@@ -321,6 +329,8 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
         	success: function (data) {
 			if(!system_action){	//非系统读取
 				$('#Posts_name').val(data[0]);
+			}else{
+				$('#temp_title').val(data[0]);
 			}
 			$('#Posts_thumb_pic').val(data[1]);
 			$('#Posts_video_html').val(data[2]);

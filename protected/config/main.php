@@ -59,6 +59,14 @@ return array(
         ),
 */
 
+'session' => array(
+    'class' => 'system.web.CDbHttpSession',
+    'autoStart' => true,
+    'connectionID' => 'db',
+    'sessionTableName' => 'tbl_session',
+    'autoCreateSessionTable' => false    // for performance reasons
+),
+
         'clientScript'=>array(
 
             //'class'=>'ext.minScript.components.ExtMinScript',

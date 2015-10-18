@@ -103,6 +103,8 @@
 		<?php echo $form->hiddenField($model,'thumb_pic'); ?>
 
 		<?php echo $form->hiddenField($model,'video_html'); ?>
+		
+		<input type="hidden" style="display:none;" id="temp_title" />
 
 <?php /****** ?>
 	<div class="row form-group">

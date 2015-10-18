@@ -43,54 +43,51 @@ class PostPop extends CWidget
 				$model->link = "";
 				$model->category_id = 4;	//force AMA
 			}
-			if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
-				if($model->link){
-					$json = Posts::getTitle($model->link);
-					$arr = json_decode($json);
-					if(isset($arr['1'])){	//thumb_pic
-						$model->thumb_pic = $arr['1'];
-					}
-					if(isset($arr['2'])){	//video_html
-						$model->video_html = $arr['2'];
-					}
-				}else if($model->type == 2){	
-					$pictures = Yii::app()->session['pictures'];
-					if($pictures){
-						foreach ($pictures as $picture => $pic) {
-							$image = PostsPictures::model()->findByAttributes(array(
-								'path' => $pic
-							));
-							if($image){
-								$model->thumb_pic = $image->path;
-								break;
-							}
-						}
-					}
-					//如果上述还是没有找到图片
-					if(!$model->thumb_pic){
-						$model->thumb_pic = ""; 	//avatar? or default content pic?
-					}
-				}else if($model->type == 3){	//AMA
-					$model->thumb_pic = ""; //avatar? or default ama pic?
-				}
-			}
-
 			if($model->type != 1 && !$model->description){
 				$model->addError('description', '请输入要提交的内容');
-			}else if($model->save()){
+			}else if($model->validate()){
+
+				$model->save(false);
+
 				$pictures = Yii::app()->session['pictures'];
+				$first_pic = "";
 				if ($pictures) {
 					foreach ($pictures as $picture => $pic) {
 						$image = PostsPictures::model()->findByAttributes(array(
 							'path' => $pic
 						));
 						if($image){
+							if(!$first_pic){
+								$first_pic = $pic;
+							}
 							$image->post_id = $model->id;
 							$image->save();
 						}
 					}
 				}
+
 				unset(Yii::app()->session['pictures']);
+
+				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
+					if($model->link){
+						//We fill in thumb_pic, etc, in a async way, in ajax. not here.
+						//nothing here
+					}else if($model->type == 2){	
+						if($first_pic){
+							$model->thumb_pic = $first_pic;
+						}
+						//如果上述还是没有找到图片
+						if(!$model->thumb_pic){
+							$model->thumb_pic = ""; 	//avatar? or default content pic?
+						}
+						$model->save(false);
+					}else if($model->type == 3){	//AMA
+						$model->thumb_pic = ""; //avatar? or default ama pic?
+						$model->save(false);
+					}
+				}
+
+
 				$this->controller->redirect(array('view','id'=>$model->id));
 			}
 		}

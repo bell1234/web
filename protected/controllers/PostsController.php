@@ -29,11 +29,11 @@ class PostsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view', 'inf'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'getTitle', 'getPic', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload', 'commentimageupload'),
+				'actions'=>array('create','update', 'getTitle', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload', 'commentimageupload', 'saveTitle'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -45,6 +45,7 @@ class PostsController extends Controller
 			),
 		);
 	}
+
 
 
 	//ajax image upload for redactor
@@ -62,7 +63,7 @@ class PostsController extends Controller
 			$date     = date("YmdHis");
 			$filename = strtolower(preg_replace('/[^a-zA-Z0-9\.]/', '_', $image->file));
 			$image->file->saveAs("uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename);
-			$image->path = "uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename;
+			$image->path = "/uploads/comments/" . Yii::app()->user->id . "/" . $date ."_". $filename;
 			$image->save();
 			$pictures = Yii::app()->session['comment_pictures'];
 			if (!is_array($pictures)) {
@@ -94,7 +95,7 @@ class PostsController extends Controller
 			$date     = date("YmdHis");
 			$filename = strtolower(preg_replace('/[^a-zA-Z0-9\.]/', '_', $image->file));
 			$image->file->saveAs("uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename);
-			$image->path = "uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename;
+			$image->path = "/uploads/posts/" . Yii::app()->user->id . "/" . $date ."_". $filename;
 			$image->save();
 			$pictures = Yii::app()->session['pictures'];
 			if (!is_array($pictures)) {
@@ -350,26 +351,36 @@ class PostsController extends Controller
 			echo "";
 		}
 	}
-	
+
 
 
 	/**
 	 * grab title, pic and video from the link
 	 */
 	public function actionGetTitle($url){
-
-		return Posts::getTitle($url);
+		echo Posts::getTitle($url);
 	}
 
-
-	/**
-	 * grab picture from the link
-	 */
-	public function actionGetPic($url)
-	{
-		
+	//接受ajax，非同步获取保存图片
+	public function actionSaveTitle(){	//太慢了 需要优化。ajax保存的时候点别的链接反应很慢。
+		$model = "";
+		if(isset($_GET['id'])){
+			$model = Posts::model()->findByPk($_GET['id']);
+		}
+		$array = array();
+		if($model){
+			$json = Posts::getTitle($model->link);
+			$array = json_decode($json);
+			if(isset($array[1])){
+				$model->thumb_pic = $array[1];
+			}
+			if(isset($array[2])){
+				$model->video_html = $array[2];
+			}
+			$model->save(false);
+		}
+		echo $json;
 	}
-
 
 
 	public function actionAjaxUpload()

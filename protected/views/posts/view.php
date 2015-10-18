@@ -45,19 +45,7 @@ if($model->type == 1){
 				</h1>
 
 				<div class="post_description paddingleft50">
-
-
-					<div class="post_pic">
-						<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-							<img style="width:90px; height:90px;" src="<?php echo $model->thumb_pic; ?>" />
-						</a>
-					</div>
-
-					<div>
-						<?php echo $model->description; ?>
-
-					</div>
-
+					<?php echo $model->description; ?>
 				</div>
 			</div>
 
@@ -89,10 +77,6 @@ if($model->type == 1){
 		</div>
 
 	</div>
-
-	<?php 
-	$this->renderPartial('_hidden_field_for_ajax', array('model'=>$model)); 
-	?>
 
 </div>
 

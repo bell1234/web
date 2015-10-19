@@ -22,11 +22,11 @@ if(Yii::app()->user->isGuest){
 
 <div id="comment_cell_<?php echo $data->id; ?>" class="post_cell comment_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post_votes">
-			<a id="vote_up_comment_<?php echo $data->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" ontouchend="comment_vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="comment_vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
+			<a id="vote_up_comment_<?php echo $data->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="comment_vote(<?php echo $data->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
 				<div><i class="glyphicon glyphicon-triangle-top"></i></div>
 				<div class="vote_num"><?php echo ($data->up - $data->down); ?></div>
 			</a>
-			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" ontouchend="comment_vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;" onclick="comment_vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="comment_vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 		</div>
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">

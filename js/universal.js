@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    	FastClick.attach(document.body);
+
 	queried = false;
 
 	$("#post_link").change(function() {

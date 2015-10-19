@@ -9114,3 +9114,1028 @@ Stack trace:
 REQUEST_URI=/favicon.ico
 HTTP_REFERER=http://meiliuer.com/
 ---
+2015/10/19 00:58:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "notexist_path".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('notexist_path')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/notexist_path
+---
+2015/10/19 00:58:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/notexist_path
+---
+2015/10/19 00:59:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "notexist_path".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('notexist_path')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/notexist_path
+---
+2015/10/19 01:00:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/log
+---
+2015/10/19 01:00:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "logs".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('logs')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/logs
+---
+2015/10/19 01:00:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "conf".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('conf')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/conf
+---
+2015/10/19 01:01:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "confs".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('confs')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/confs
+---
+2015/10/19 01:01:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "config".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('config')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/config
+---
+2015/10/19 01:01:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "server-status".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('server-status')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/server-status
+---
+2015/10/19 01:01:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('admin')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/admin
+---
+2015/10/19 01:01:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "backup".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('backup')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/backup
+---
+2015/10/19 01:01:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nagios/index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nagios/index.ph...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nagios/index.php
+---
+2015/10/19 01:01:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "notexist_path.htaccess".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('notexist_path.h...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/notexist_path.htaccess
+---
+2015/10/19 01:01:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nagiosxi/index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nagiosxi/index....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nagiosxi/index.php
+---
+2015/10/19 01:01:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nagiosfusion/index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nagiosfusion/in...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nagiosfusion/index.php
+---
+2015/10/19 01:01:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nagiosna/index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nagiosna/index....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nagiosna/index.php
+---
+2015/10/19 01:01:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/web.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/web.xml')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/web.xml
+---
+2015/10/19 01:01:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "notexist_path.404notfound".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('notexist_path.4...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/notexist_path.404notfound
+---
+2015/10/19 01:01:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "web.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('web.xml')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/web.xml
+---
+2015/10/19 01:01:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "path_not_exist.404notfound".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('path_not_exist....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/path_not_exist.404notfound
+---
+2015/10/19 01:01:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "web-console/ServerInfo.jsp".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('web-console/Ser...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/web-console/ServerInfo.jsp
+---
+2015/10/19 01:01:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "war/WEB-INF/struts-config.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('war/WEB-INF/str...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/war/WEB-INF/struts-config.xml
+---
+2015/10/19 01:01:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/struts-config.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/struts-...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/struts-config.xml
+---
+2015/10/19 01:01:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "wp-login.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('wp-login.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/wp-login.php
+---
+2015/10/19 01:01:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/struts.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/struts....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/struts.xml
+---
+2015/10/19 01:01:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/classes/struts.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/classes...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/classes/struts.xml
+---
+2015/10/19 01:01:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "wp-includes/wlwmanifest.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('wp-includes/wlw...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/wp-includes/wlwmanifest.xml
+---
+2015/10/19 01:01:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/classes/applicationContext-jms.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/classes...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/classes/applicationContext-jms.xml
+---
+2015/10/19 01:01:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/classes/applicationContext-config.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/classes...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/classes/applicationContext-config.xml
+---
+2015/10/19 01:01:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "data/stat_setting.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('data/stat_setti...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/data/stat_setting.xml
+---
+2015/10/19 01:01:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "WEB-INF/classes/applicationContext.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('WEB-INF/classes...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/WEB-INF/classes/applicationContext.xml
+---
+2015/10/19 01:01:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "server-status".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('server-status')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/server-status
+---
+2015/10/19 01:01:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "source/discuz_version.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('source/discuz_v...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/source/discuz_version.php
+---
+2015/10/19 01:01:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "server-info".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('server-info')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/server-info
+---
+2015/10/19 01:01:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "discuz_version.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('discuz_version....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/discuz_version.php
+---
+2015/10/19 01:01:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "nginx-status".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('nginx-status')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/nginx-status
+---
+2015/10/19 01:01:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('admin.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/admin.php
+---
+2015/10/19 01:01:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpmyadmin/ChangeLog".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpmyadmin/Chan...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpmyadmin/ChangeLog
+---
+2015/10/19 01:02:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "NginsxStatus".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('NginsxStatus')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/NginsxStatus
+---
+2015/10/19 01:02:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpMyAdmin/ChangeLog".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpMyAdmin/Chan...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpMyAdmin/ChangeLog
+---
+2015/10/19 01:02:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpinfo.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpinfo.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpinfo.php
+---
+2015/10/19 01:02:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "styles/prosilver/style.cfg".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('styles/prosilve...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/styles/prosilver/style.cfg
+---
+2015/10/19 01:02:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "php.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('php.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/php.php
+---
+2015/10/19 01:02:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "p.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('p.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/p.php
+---
+2015/10/19 01:02:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('test.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/test.php
+---
+2015/10/19 01:02:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "info.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('info.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/info.php
+---
+2015/10/19 01:02:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "test1.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('test1.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/test1.php
+---
+2015/10/19 01:02:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "t.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('t.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/t.php
+---
+2015/10/19 01:02:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "1.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('1.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/1.php
+---
+2015/10/19 01:02:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "a.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('a.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/a.php
+---
+2015/10/19 01:02:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "statics/js/cookie.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('statics/js/cook...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/statics/js/cookie.js
+---
+2015/10/19 01:02:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpcms/member/images/js/login.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpcms/member/i...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpcms/member/images/js/login.js
+---
+2015/10/19 01:02:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpcms/data/js/config.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpcms/data/js/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpcms/data/js/config.js
+---
+2015/10/19 01:02:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "i.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('i.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/i.php
+---
+2015/10/19 01:02:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "source/script_cookie.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('source/script_c...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/source/script_cookie.js
+---
+2015/10/19 01:02:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "source/script_common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('source/script_c...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/source/script_common.js
+---
+2015/10/19 01:02:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index1.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('index1.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index1.php
+---
+2015/10/19 01:02:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "source/script_ajax.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('source/script_a...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/source/script_ajax.js
+---
+2015/10/19 01:02:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "main.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('main.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/main.php
+---
+2015/10/19 01:02:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "pi.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('pi.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/pi.php
+---
+2015/10/19 01:02:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/common.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/common.js
+---
+2015/10/19 01:02:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/privilege.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/privilege...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/admin/privilege.php?act=login
+---
+2015/10/19 01:02:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "temp.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('temp.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/temp.php
+---
+2015/10/19 01:02:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "_index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('_index.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/_index.php
+---
+2015/10/19 01:02:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpsecinfo".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('phpsecinfo')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/phpsecinfo
+---
+2015/10/19 01:02:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "hm_permission_denied.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('hm_permission_d...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hm_permission_denied.php
+---
+2015/10/19 01:02:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request ".svn/entries".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('.svn/entries')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/.svn/entries
+---
+2015/10/19 01:02:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "hm_frontpage.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('hm_frontpage.ph...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/hm_frontpage.php
+---
+2015/10/19 01:02:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "language/ja_JP/README.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('language/ja_JP/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/language/ja_JP/README.txt
+---
+2015/10/19 01:02:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "crossdomain.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('crossdomain.xml')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/crossdomain.xml
+---
+2015/10/19 01:02:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "doc/README_en.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('doc/README_en.t...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/doc/README_en.txt
+---
+2015/10/19 01:02:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "CVS/Root".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('CVS/Root')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CVS/Root
+---
+2015/10/19 01:02:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "API".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('API')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/API
+---
+2015/10/19 01:02:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request ".bash_history".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('.bash_history')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/.bash_history
+---
+2015/10/19 01:02:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "BUGS".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('BUGS')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/BUGS
+---
+2015/10/19 01:02:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "examples/jsp".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('examples/jsp')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/examples/jsp/
+---
+2015/10/19 01:02:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "CREDITS".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('CREDITS')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/CREDITS
+---
+2015/10/19 01:02:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request ".bashrc".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('.bashrc')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/.bashrc
+---
+2015/10/19 01:02:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "INSTALL".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('INSTALL')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/INSTALL
+---
+2015/10/19 01:02:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "wwwroot.rar".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('wwwroot.rar')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/wwwroot.rar
+---
+2015/10/19 01:02:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "README".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('README')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/README
+---
+2015/10/19 01:02:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "news_manajemen/index.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('news_manajemen/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/news_manajemen/index.php
+---
+2015/10/19 01:02:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "htdocs.rar".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('htdocs.rar')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/htdocs.rar
+---
+2015/10/19 01:02:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "wtnews.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('wtnews.xml')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/wtnews.xml
+---
+2015/10/19 01:03:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "docs/README.TXT".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('docs/README.TXT')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/docs/README.TXT
+---
+2015/10/19 01:03:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "backup.rar".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('backup.rar')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/backup.rar
+---
+2015/10/19 01:03:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "INSTALL.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('INSTALL.txt')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/INSTALL.txt
+---
+2015/10/19 01:03:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "backup.tar.gz".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('backup.tar.gz')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/backup.tar.gz
+---
+2015/10/19 01:03:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/config.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/config.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/config.js
+---
+2015/10/19 01:03:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/api.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/api.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/api.js
+---
+2015/10/19 01:03:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "htdocs.tar.gz".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('htdocs.tar.gz')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/htdocs.tar.gz
+---
+2015/10/19 01:03:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/login.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/login.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/login.js
+---
+2015/10/19 01:03:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "dede/js/dialog.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('dede/js/dialog....')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/dede/js/dialog.js
+---
+2015/10/19 01:03:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "log.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('log.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/log.php
+---
+2015/10/19 01:03:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "README.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('README.txt')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/README.txt
+---
+2015/10/19 01:03:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "addons/theme/stv1/_static/js/core.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('addons/theme/st...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/addons/theme/stv1/_static/js/core.js
+---
+2015/10/19 01:03:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "error.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('error.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/error.log
+---
+2015/10/19 01:03:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "includes/js/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('includes/js/com...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/includes/js/common.js
+---
+2015/10/19 01:03:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "joomla.xml".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('joomla.xml')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/joomla.xml
+---
+2015/10/19 01:03:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "htaccess.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('htaccess.txt')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/htaccess.txt
+---
+2015/10/19 01:03:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "misc/drupal.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('misc/drupal.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/misc/drupal.js
+---
+2015/10/19 01:03:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "license.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('license.txt')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/license.txt
+---
+2015/10/19 01:03:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "sql.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('sql.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/sql.log
+---
+2015/10/19 01:03:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "file/script/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('file/script/com...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/file/script/common.js
+---
+2015/10/19 01:03:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "mysql_error.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('mysql_error.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/mysql_error.log
+---
+2015/10/19 01:03:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "readme.txt".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('readme.txt')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/readme.txt
+---
+2015/10/19 01:03:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "zb_system/script/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('zb_system/scrip...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/zb_system/script/common.js
+---
+2015/10/19 01:03:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "celive/js/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('celive/js/commo...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/celive/js/common.js
+---
+2015/10/19 01:03:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "app/site/statics/js_mini/broswerstore.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('app/site/static...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/app/site/statics/js_mini/broswerstore.js
+---
+2015/10/19 01:03:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/photoshow.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/photoshow.js')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/photoshow.js
+---
+2015/10/19 01:03:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "static/javascript/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('static/javascri...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/static/javascript/common.js
+---
+2015/10/19 01:03:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "tttgfiles.md5".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('tttgfiles.md5')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/tttgfiles.md5
+---
+2015/10/19 01:03:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "static/js/common.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('static/js/commo...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/static/js/common.js
+---
+2015/10/19 01:03:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "template/taoCMS/images/tao.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('template/taoCMS...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/template/taoCMS/images/tao.js
+---
+2015/10/19 01:03:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "error_log.php".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('error_log.php')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/error_log.php
+---
+2015/10/19 01:03:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "templets/default/style/dedecms.css".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('templets/defaul...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/templets/default/style/dedecms.css
+---
+2015/10/19 01:03:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "install.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('install.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/install.log
+---
+2015/10/19 01:03:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "include/dedeajax2.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('include/dedeaja...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/include/dedeajax2.js
+---
+2015/10/19 01:03:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "csdj/js/homeajax.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('csdj/js/homeaja...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/csdj/js/homeajax.js
+---
+2015/10/19 01:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/cpstyle.css".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/cpstyle.c...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/admin/cpstyle.css
+---
+2015/10/19 01:03:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "ws_ftp.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('ws_ftp.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/ws_ftp.log
+---
+2015/10/19 01:03:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "database.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('database.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/database.log
+---
+2015/10/19 01:03:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "api/js/jishigou.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/js/jishigou...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/api/js/jishigou.js
+---
+2015/10/19 01:03:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "db.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('db.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/db.log
+---
+2015/10/19 01:03:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "pmwiki/pub/skins/pmwiki/pmwiki.css".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('pmwiki/pub/skin...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/pmwiki/pub/skins/pmwiki/pmwiki.css
+---
+2015/10/19 01:03:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "pub/skins/pmwiki/pmwiki.css".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('pub/skins/pmwik...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/pub/skins/pmwiki/pmwiki.css
+---
+2015/10/19 01:03:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "dbaccess.log".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('dbaccess.log')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/dbaccess.log
+---
+2015/10/19 01:03:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/default/setday.js".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/default/...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/default/setday.js
+---

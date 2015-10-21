@@ -38,7 +38,7 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('create_time, lastaction, status, logins', 'numerical', 'integerOnly'=>true),
+			array('create_time, lastaction, status, logins, auto', 'numerical', 'integerOnly'=>true),
 
 			array('username', 'length', 'max'=>20, 'tooLong'=>'用户名最多包含20个字符'),
 			array('username', 'length', 'min'=>2, 'tooShort'=>'用户名至少包含2个字符'),
@@ -46,7 +46,7 @@ class Users extends CActiveRecord
 			array('username', 'unique', 'message'=>'该用户名已经被注册'),
 			array('username', 'match', 'pattern' => '/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]*$/u','message' =>'用户名只能含有汉字，英文字母，数字和下划线'),
 			
-			array('email','required','message'=>'请输入电子邮箱地址'),
+			//array('email','required','message'=>'请输入电子邮箱地址'),
 			array('email', 'unique', 'message' => '此邮箱已经被注册'),
 			array('email', 'email','message'=>'请输入您真实的电子邮箱地址'),
 
@@ -143,6 +143,88 @@ class Users extends CActiveRecord
 	public function isAdmin() {
 		// Returns null if it doesn't find the user in the admins table
 		return Admins::model()->findByAttributes(array('user_id'=>$this->id));
+	}
+
+
+	public function guestSignup(){
+
+  			if (!isset($_SERVER['HTTP_USER_AGENT']) || (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|seek|facebookexternalhit|search|robo|lycos|twiceler|archiver|sohu|msn|sogou|mediapartners-google|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))) {
+    				return false;		//stop search engining from signing up
+  			}
+
+			if(!Yii::app()->user->id){
+				$user = new Users;
+				$user->username = "guest".time();
+				$user->password = "pwd".time();
+				$temp = $user->password;
+				if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {		//cloudflare for now, maybe Baidu in the future.
+					$user->ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+				} else {
+					$user->ip = $_SERVER['REMOTE_ADDR'];
+				}
+				$user->password = hash('sha256', $user->password);	//sha 256, no salt for now.
+				$user->create_time = time();
+				$user->status = 0; //not verify email
+				$user->activkey = hash('sha256', microtime() . $user->email);	//sha256 email + microtome for activkey
+				$user->auto = 1;		//auto account
+				
+				$user->lastaction = time();
+
+				if(isset($_SERVER['HTTP_CF_CONNECTING_IP'])){
+					$user->ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+				} else {
+					$user->ip = $_SERVER['REMOTE_ADDR'];
+				}
+
+				if (!isset($_COOKIE["duc"])): //stands for duplicate user check
+					$duc = base64_encode($user->activkey);
+					setcookie("duc", $duc, time() + 200000000, "/");
+				endif;
+
+				if (isset($_COOKIE["duc"])) {	//in case cookie disabled.
+					$duc = $_COOKIE["duc"];
+				} else {
+					$duc = base64_encode($user->activkey);
+				}
+
+				$user->cookie = $duc;
+
+				$dup_cookie = Users::model()->find(array(
+					'condition' => 'cookie = :duc AND auto > 0',
+					'params' => array(
+						':duc' => $duc
+					)
+				));
+
+				$already = false;
+
+				if($dup_cookie){
+					$already = true;
+					$user = $dup_cookie;
+				}else{			
+					$dup_ip = Users::model()->find(array(
+						'condition' => 'ip = :ip AND auto > 0',
+						'params' => array(
+							':ip' => $user->ip
+						)
+					));
+					if($dup_ip){
+						$already = true;
+						$user = $dup_ip;
+					}
+				}
+
+				$user->userActed();
+				$user->save(false);
+
+				$login = new LoginForm;
+				$login->username = $user->username;
+				$login->password = $user->password;
+				$login->rememberMe = 1;
+				$login->login();
+				
+			}
+		return;
 	}
 
 
@@ -249,7 +331,9 @@ class Users extends CActiveRecord
 	 * @return null
      	*/
 
-	public function getDuplicateAccount($uid){
+	public function getDuplicateAccount(){
+
+	$uid = $this->id;
 	$tree = array();
 	$admin = Admins::model()->findByPk($uid);
 	if($admin){
@@ -346,7 +430,6 @@ class Users extends CActiveRecord
 			}
 			$this->ip = $_SERVER['REMOTE_ADDR'];
 		}
-
 
 		$this->save(false);
 	}

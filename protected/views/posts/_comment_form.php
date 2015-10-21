@@ -31,7 +31,7 @@
 )); 
 ?>
 
-	<div class="row content_post form-group">
+	<div class="row form-group">
 		<label class="control-label" for="Posts_description">
 		<?php if($model->isNewRecord): ?>
 			提交评论

@@ -4,6 +4,7 @@ order deny,allow
 deny from all
 allow from 98.116.190.252
 allow from 67.243.132.104
+allow from 24.6.100.11
 
 <ifModule mod_expires.c>
  ExpiresActive On

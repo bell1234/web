@@ -60,7 +60,7 @@ analytics.page()
 	 <!--<img alt="Brand" src="...">-->
       </a>
 
-<?php if(Yii::app()->user->isGuest): ?>
+<?php if(Yii::app()->user->isGuest || $user->auto): ?>
       <a id="nav_col_signup" onclick="signup(); return false;" class="navbar-toggle collapsed">
         <span class="sr-only">New post</span>
         10秒注册/登录
@@ -74,11 +74,16 @@ analytics.page()
 	</span>
       </a>
 <?php endif; ?>
-
-      <a id="nav_col_post" <?php if(Yii::app()->user->id): ?>target="_blank" href="/submit"<?php else: ?>onclick="signup(); return false;" href="#"<?php endif; ?> class="navbar-toggle collapsed">
-        <span class="sr-only">New post</span>
-        提交
-      </a>
+        	<?php if (strpos($_SERVER['REQUEST_URI'], "submit") !== false): ?>
+                 <a id="nav_col_post" href="/submit" class="navbar-toggle collapsed">
+        				提交
+      			   </a>
+           <?php else: ?>
+                 <a id="nav_col_post" onclick="post_new(); return false;" href="#" class="navbar-toggle collapsed">
+        				提交
+      			   </a>
+           <?php endif; ?>
+    
     </div>
 
     <div class="collapse navbar-collapse"  aria-expanded="false" id="bs-top-navbar-collapse-1">
@@ -93,6 +98,7 @@ analytics.page()
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse">
+      <!--
       <ul class="nav navbar-nav">
         <?php $host = $_SERVER['REQUEST_URI']; ?>
         <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/">热点</a></li>
@@ -102,13 +108,21 @@ analytics.page()
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>class="active"<?php endif; ?>><a href="/other">杂谈</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>class="active"<?php endif; ?>><a href="/ama">有问必答</a></li>
       </ul>
+      -->
       <ul class="nav navbar-nav navbar-right">
-      	 <?php if(Yii::app()->user->isGuest): ?>
-	 <li><a href="#" onclick="signup(); return false;"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>
-        <li><a href="#" onclick="signup(); return false;">10秒注册/登陆</a></li>
+
+
+		<?php if (strpos($_SERVER['REQUEST_URI'], "submit") !== false): ?>
+        		<li><a href="/submit"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>
+        	<?php else: ?>
+       			<li><a onclick="post_new(); return false;" href="#"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>        
+        	<?php endif; ?>
+
+      	 <?php if(Yii::app()->user->isGuest || $user->auto): ?>
+        	<li><a href="#" onclick="signup(); return false;">10秒注册/登陆</a></li>
         <?php else: ?>
-        <li><a href="/submit"><span class="bold" style="font-size:16px;"><i class="fa fa-pencil-square-o fa"></i></span> 提交</a></li>
-        <li class="dropdown">
+  
+       		<li class="dropdown">
         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top:0px; padding-bottom:0px;">
 			<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
 			<span style="line-height:48px;">
@@ -123,8 +137,9 @@ analytics.page()
            	<li role="separator" class="divider"></li>
            	<li><a href="/site/logout">退出此账号</a></li>
          	</ul>
-        </li>
+        	</li>
         <?php endif; ?>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -132,7 +147,7 @@ analytics.page()
 
 
 
-
+<!--
 <div id="option_bar_mobile" class="btn-group visible-xs btn-block" role="group">
   <a href="/" class="btn btn-default <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>active<?php endif; ?>" style="border-left:none;">热点</a>
   <a href="/funny" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>active<?php endif; ?>" >搞笑</a>
@@ -141,6 +156,7 @@ analytics.page()
   <a href="/other" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>active<?php endif; ?>" >杂谈</a>
   <a href="/ama" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>active<?php endif; ?>" style="width:22.5%;">有问必答</a>
 </div>
+-->
 
 
 
@@ -155,7 +171,7 @@ analytics.page()
 		Copyright &copy; <?php echo date('Y'); ?> by Meiliuer<br/>
 	</div><!-- footer -->
 
-	<?php if(Yii::app()->user->isGuest): ?>
+	<?php if(Yii::app()->user->isGuest || $user->auto): ?>
 		<!-- Modal -->
 		<div class="modal fade" id="signup_or_login" tabindex="-1" role="dialog" aria-labelledby="signup_or_login_modal">
   			<div class="modal-dialog" role="document">
@@ -169,7 +185,22 @@ analytics.page()
     				</div>
   			</div>
 		</div>
-	<?php endif; ?>
+    	<?php endif; ?>
+
+		<!-- Modal -->
+		<div class="modal fade" id="post_popup" tabindex="-1" role="dialog" aria-labelledby="post_popup_modal">
+  			<div class="modal-dialog" role="document">
+   				<div class="modal-content">
+     		 			<div class="modal-body nopaddingtop" style="margin-top:-8px;">
+						<div class="row">
+       							<button class="body-close close type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      		  					<?php $this->widget('application.components.PostPop');?>
+						</div>
+     		 			</div>
+    				</div>
+  			</div>
+		</div> 
+
 
 </body>
 </html>

@@ -46,7 +46,7 @@ class Posts extends CActiveRecord
 
 			array('description', 'length', 'min'=>10, 'max'=>'65535', 'tooShort'=>'内容太少啦！', 'tooLong'=>'内容太长啦!'),
 
-			array('category_id', 'required', 'message'=>'请为你的内容分类'),
+			//array('category_id', 'required', 'message'=>'请为你的内容分类'),
 
 			array('user_id, create_time', 'required'),		//system will assign it...
 

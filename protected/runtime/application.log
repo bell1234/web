@@ -10139,3 +10139,2372 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/images/default/setday.js
 ---
+2015/10/20 01:15:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/20 03:53:26 [error] [exception.CException] exception 'CException' with message 'Property "CActiveForm.afterValidate" is not defined.' in /var/www/html/yii/framework/base/CComponent.php:173
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWidgetFactory.php(161): CComponent->__set('afterValidate', 'js:function(for...')
+#1 /var/www/html/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(LoginPop), 'CActiveForm', Array)
+#2 /var/www/html/yii/framework/web/CBaseController.php(197): CBaseController->createWidget('CActiveForm', Array)
+#3 /var/www/html/webapp/protected/components/views/LoginPop.php(63): CBaseController->beginWidget('CActiveForm', Array)
+#4 /var/www/html/yii/framework/web/CBaseController.php(130): require('/var/www/html/w...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, false)
+#6 /var/www/html/yii/framework/web/widgets/CWidget.php(244): CBaseController->renderFile('/var/www/html/w...', Array, false)
+#7 /var/www/html/webapp/protected/components/LoginPop.php(114): CWidget->render('LoginPop', Array)
+#8 /var/www/html/yii/framework/web/CBaseController.php(181): LoginPop->run()
+#9 /var/www/html/webapp/protected/views/layouts/main.php(166): CBaseController->widget('application.com...')
+#10 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#11 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#12 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#13 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#14 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#15 /var/www/html/yii/framework/web/CBaseController.php(214): COutputProcessor->run()
+#16 /var/www/html/yii/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#17 /var/www/html/webapp/protected/views/layouts/column2.php(6): CBaseController->endContent()
+#18 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#19 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#20 /var/www/html/yii/framework/web/CController.php(784): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#21 /var/www/html/webapp/protected/controllers/PostsController.php(506): CController->render('index', Array)
+#22 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#23 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#24 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#25 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#26 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#27 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#28 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#29 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#30 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#31 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#32 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/index')
+#33 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#34 /var/www/html/webapp/index.php(13): CApplication->run()
+#35 {main}
+REQUEST_URI=/
+---
+2015/10/20 04:02:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/52
+---
+2015/10/20 04:06:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/52
+---
+2015/10/20 04:06:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/52
+---
+2015/10/20 04:35:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/53
+---
+2015/10/20 04:35:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/53
+---
+2015/10/20 04:36:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/57
+---
+2015/10/20 04:45:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/loading_or_404.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/loading_...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/loading_or_404.png
+HTTP_REFERER=http://meiliuer.com/posts/52
+---
+2015/10/20 07:00:34 [error] [php] Undefined variable: feed_url (/var/www/html/webapp/protected/controllers/SiteController.php:36)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (36)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:00:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:04:39 [error] [php] file_get_contents(http://www.zhihu.com/rss): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/controllers/SiteController.php:41)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (41)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:04:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:04:50 [error] [php] file_get_contents(http://www.zhihu.com/rss): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/controllers/SiteController.php:41)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (41)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:04:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:07:05 [error] [php] file_get_contents(http://www.zhihu.com/rss): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/controllers/SiteController.php:41)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (41)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:07:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:14:27 [error] [php] SiteController::actionGetFeed(): Node no longer exists (/var/www/html/webapp/protected/controllers/SiteController.php:49)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (49)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:14:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:20:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getpost".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getpost')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getpost')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getpost')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getpost
+---
+2015/10/20 07:20:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getpost
+---
+2015/10/20 07:21:05 [error] [php] file_get_contents(http://www.infzm.com/rss/home/rss2.0.xml): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ (/var/www/html/webapp/protected/controllers/SiteController.php:46)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (46)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:21:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:21:30 [error] [php] file_get_contents(http://www.infzm.com/rss/home/rss2.0.xml): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ (/var/www/html/webapp/protected/controllers/SiteController.php:46)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (46)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:21:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:22:03 [error] [php] file_get_contents(http://www.zhihu.com/rss): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+ (/var/www/html/webapp/protected/controllers/SiteController.php:46)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (46)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:22:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:23:20 [error] [php] SimpleXMLElement::__construct(): Entity: line 1: parser error : StartTag: invalid element name (/var/www/html/webapp/protected/controllers/SiteController.php:63)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (63)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:23:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:23:36 [error] [php] file_get_contents(<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 50px;
+        background-color: #fff;
+        border-radius: 1em;
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        body {
+            background-color: #fff;
+        }
+        div {
+            width: auto;
+            margin: 0 auto;
+            border-radius: 0;
+            padding: 1em;
+        }
+    }
+    </style>    
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is established to be used for illustrative examples in documents. You may use this
+    domain in examples without prior coordination or asking for permission.</p>
+    <p><a href="http://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+): failed to open stream: No such file or directory (/var/www/html/webapp/protected/controllers/SiteController.php:64)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (64)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:23:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:24:02 [error] [php] SimpleXMLElement::__construct(): Entity: line 1: parser error : StartTag: invalid element name (/var/www/html/webapp/protected/controllers/SiteController.php:64)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (64)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:24:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:25:10 [error] [php] simplexml_load_string(): Entity: line 1: parser error : StartTag: invalid element name (/var/www/html/webapp/protected/controllers/SiteController.php:64)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (64)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:25:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:35:10 [error] [php] Invalid argument supplied for foreach() (/var/www/html/webapp/protected/controllers/SiteController.php:76)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (76)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:35:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:40:06 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/controllers/SiteController.php:77)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (77)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:40:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:40:21 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/controllers/SiteController.php:77)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (77)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:40:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:41:23 [error] [php] simplexml_load_string(): Entity: line 1: parser error : Start tag expected, '<' not found (/var/www/html/webapp/protected/controllers/SiteController.php:73)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (73)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:41:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:42:01 [error] [php] simplexml_load_string(): Entity: line 1: parser error : Start tag expected, '<' not found (/var/www/html/webapp/protected/controllers/SiteController.php:74)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (74)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:42:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:42:16 [error] [php] simplexml_load_string(): Entity: line 1: parser error : Start tag expected, '<' not found (/var/www/html/webapp/protected/controllers/SiteController.php:74)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (74)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:42:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 07:53:48 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/controllers/SiteController.php:83)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (83)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 07:53:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:10:54 [error] [php] simplexml_load_string(): Entity: line 1: parser error : Start tag expected, '<' not found (/var/www/html/webapp/protected/controllers/SiteController.php:95)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (95)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:10:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:13:03 [error] [php] simplexml_load_string(): Entity: line 1: parser error : StartTag: invalid element name (/var/www/html/webapp/protected/controllers/SiteController.php:95)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (95)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:13:04 [error] [php] simplexml_load_string(): Entity: line 1: parser error : StartTag: invalid element name (/var/www/html/webapp/protected/controllers/SiteController.php:95)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (95)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:13:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:13:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:15:28 [error] [php] simplexml_load_string(): Entity: line 1: parser error : Start tag expected, '<' not found (/var/www/html/webapp/protected/controllers/SiteController.php:95)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (95)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:15:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:23:52 [error] [php] Undefined variable: feed_url (/var/www/html/webapp/protected/controllers/SiteController.php:87)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (87)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:23:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:23:54 [error] [php] Undefined variable: feed_url (/var/www/html/webapp/protected/controllers/SiteController.php:87)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (87)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:23:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:25:27 [error] [php] Undefined variable: feed_url (/var/www/html/webapp/protected/controllers/SiteController.php:87)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (87)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:25:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:26:42 [error] [php] simplexml_load_string(): Entity: line 218: parser error : CData section not finished
+<a href="http://www.youku.com/v_show/id_XODA3ODYwN (/var/www/html/webapp/protected/controllers/SiteController.php:100)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (100)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:26:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/20 08:26:49 [error] [php] simplexml_load_string(): Entity: line 218: parser error : CData section not finished
+<a href="http://www.youku.com/v_show/id_XODA3ODYwN (/var/www/html/webapp/protected/controllers/SiteController.php:100)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#2 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#4 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#5 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#6 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeed
+in /var/www/html/webapp/protected/controllers/SiteController.php (100)
+in /var/www/html/webapp/index.php (13)
+2015/10/20 08:26:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed
+---
+2015/10/21 03:54:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "moments".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('moments')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/moments
+---
+2015/10/21 03:54:21 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:54:21 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:54:43 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:54:48 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:54:59 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:55:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not allowed to access this page.' in /var/www/html/yii/framework/gii/GiiModule.php:170
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(263): GiiModule->beforeControllerAction(Object(ModelGenerator), Object(CInlineAction))
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/model/index')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/gii/model/index
+---
+2015/10/21 03:55:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'webapp.tbl_Rss' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_Rss`.
+in /var/www/html/webapp/index.php (13)
+2015/10/21 04:31:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getfeed2".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getfeed2')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getfeed2')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getfeed2')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getfeed2
+---
+2015/10/21 04:31:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeed2
+---
+2015/10/21 04:31:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getfeedok".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getfeedok')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getfeedok')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getfeedok')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getfeedok
+---
+2015/10/21 04:31:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeedok
+---
+2015/10/21 04:31:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getfeedok".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getfeedok')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getfeedok')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getfeedok')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getfeedok
+---
+2015/10/21 04:31:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeedok
+---
+2015/10/21 04:32:23 [error] [php] Undefined variable: page (/var/www/html/webapp/protected/controllers/SiteController.php:28)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeedok
+in /var/www/html/webapp/protected/controllers/SiteController.php (28)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 04:32:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeedok
+---
+2015/10/21 04:32:44 [error] [php] Undefined variable: count (/var/www/html/webapp/protected/controllers/SiteController.php:60)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(286): SiteController->runAction()
+#1 /var/www/html/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#2 /var/www/html/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#3 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#5 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/getfeedok
+in /var/www/html/webapp/protected/controllers/SiteController.php (60)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 04:32:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getfeedok
+---
+2015/10/21 05:31:09 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:09 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('gettitle')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getTitle')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getTitle?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:09 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('gettitle')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getTitle')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getTitle?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:12 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('gettitle')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getTitle')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getTitle?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('gettitle')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getTitle')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getTitle?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('gettitle')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getTitle')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getTitle?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:31:14 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Login Required' in /var/www/html/yii/framework/web/auth/CWebUser.php:394
+Stack trace:
+#0 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(180): CWebUser->loginRequired()
+#1 /var/www/html/yii/framework/web/auth/CAccessControlFilter.php(145): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#3 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getdupurl')
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/getDupURL')
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/posts/getDupURL?url=http://www.sina.com
+HTTP_REFERER=http://meiliuer.com/posts/45
+---
+2015/10/21 05:34:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'email'. The SQL statement executed was: INSERT INTO `tbl_users` (`username`, `password`, `email`, `activkey`, `create_time`, `status`, `ip`, `logins`, `country`, `name_token`, `city`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10).
+in /var/www/html/webapp/protected/components/PostPop.php (44)
+in /var/www/html/webapp/protected/views/layouts/main.php (197)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 05:34:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'email'. The SQL statement executed was: INSERT INTO `tbl_users` (`username`, `password`, `email`, `activkey`, `create_time`, `status`, `ip`, `logins`, `country`, `name_token`, `city`) VALUES (:yp0, :yp1, :yp2, :yp3, :yp4, :yp5, :yp6, :yp7, :yp8, :yp9, :yp10)' in /var/www/html/yii/framework/db/CDbCommand.php:358
+Stack trace:
+#0 /var/www/html/yii/framework/db/ar/CActiveRecord.php(1080): CDbCommand->execute()
+#1 /var/www/html/yii/framework/db/ar/CActiveRecord.php(809): CActiveRecord->insert(NULL)
+#2 /var/www/html/webapp/protected/components/PostPop.php(44): CActiveRecord->save(false)
+#3 /var/www/html/yii/framework/web/CBaseController.php(181): PostPop->run()
+#4 /var/www/html/webapp/protected/views/layouts/main.php(197): CBaseController->widget('application.com...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#6 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#7 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#8 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#9 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#10 /var/www/html/yii/framework/web/CBaseController.php(214): COutputProcessor->run()
+#11 /var/www/html/yii/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#12 /var/www/html/webapp/protected/views/layouts/column2.php(6): CBaseController->endContent()
+#13 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#14 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#15 /var/www/html/yii/framework/web/CController.php(784): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#16 /var/www/html/webapp/protected/controllers/PostsController.php(506): CController->render('index', Array)
+#17 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#18 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#19 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#20 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#21 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#22 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#23 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#24 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#25 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#26 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#27 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/index')
+#28 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#29 /var/www/html/webapp/index.php(13): CApplication->run()
+#30 {main}
+REQUEST_URI=/
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:44:03 [error] [exception.CException] exception 'CException' with message 'Alias "application.components.PostPop" is invalid. Make sure it points to an existing PHP file and the file is readable.' in /var/www/html/yii/framework/YiiBase.php:323
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('application.com...', true)
+#1 /var/www/html/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(PostsController), 'application.com...', Array)
+#2 /var/www/html/yii/framework/web/CBaseController.php(180): CBaseController->createWidget('application.com...', Array)
+#3 /var/www/html/webapp/protected/views/layouts/main.php(197): CBaseController->widget('application.com...')
+#4 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#5 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#6 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#7 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate('<div id="conten...')
+#8 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput('<div id="conten...')
+#9 /var/www/html/yii/framework/web/CBaseController.php(214): COutputProcessor->run()
+#10 /var/www/html/yii/framework/web/CBaseController.php(308): CBaseController->endWidget('CContentDecorat...')
+#11 /var/www/html/webapp/protected/views/layouts/column2.php(6): CBaseController->endContent()
+#12 /var/www/html/yii/framework/web/CBaseController.php(126): require('/var/www/html/w...')
+#13 /var/www/html/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/html/w...', Array, true)
+#14 /var/www/html/yii/framework/web/CController.php(784): CBaseController->renderFile('/var/www/html/w...', Array, true)
+#15 /var/www/html/webapp/protected/controllers/PostsController.php(506): CController->render('index', Array)
+#16 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#17 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#19 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#21 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#22 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#23 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#24 /var/www/html/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#25 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#26 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('posts/index')
+#27 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#28 /var/www/html/webapp/index.php(13): CApplication->run()
+#29 {main}
+REQUEST_URI=/
+---
+2015/10/21 05:57:27 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:17)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (17)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:57:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:57:36 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:17)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (17)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:57:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:57:57 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:57:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:57:59 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:58:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:58:09 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:58:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:58:11 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:58:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:58:17 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:58:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 05:58:20 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/views/posts/_view.php:53)
+Stack trace:
+#0 /var/www/html/yii/framework/zii/widgets/CListView.php(291): PostsController->renderFile()
+#1 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(181): CListView->renderItems()
+#2 unknown(0): CListView->renderSection()
+#3 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(164): preg_replace_callback()
+#4 /var/www/html/yii/framework/zii/widgets/CBaseListView.php(149): CListView->renderContent()
+#5 /var/www/html/yii/framework/web/CBaseController.php(181): CListView->run()
+#6 /var/www/html/webapp/protected/views/posts/index.php(31): PostsController->widget()
+#7 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#8 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#9 /var/www/html/yii/framework/web/CController.php(869): PostsController->renderFile()
+#10 /var/www/html/yii/framework/web/CController.php(782): PostsController->renderPartial()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/views/posts/_view.php (53)
+in /var/www/html/webapp/protected/views/posts/index.php (31)
+in /var/www/html/webapp/protected/controllers/PostsController.php (506)
+2015/10/21 05:58:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:25:54 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:55 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:55 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:56 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:57 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:57 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:58 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:58 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:59 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:25:59 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:00 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:01 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:01 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:02 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:02 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:03 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:04 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:04 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:26:07 [error] [php] Trying to get property of non-object (/var/www/html/webapp/protected/components/LoginPop.php:16)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#1 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#2 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(76): PostsController->renderFile()
+#3 /var/www/html/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#4 /var/www/html/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#5 /var/www/html/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#6 /var/www/html/yii/framework/web/CBaseController.php(308): PostsController->endWidget()
+#7 /var/www/html/webapp/protected/views/layouts/column2.php(6): PostsController->endContent()
+#8 /var/www/html/yii/framework/web/CBaseController.php(126): require()
+#9 /var/www/html/yii/framework/web/CBaseController.php(95): PostsController->renderInternal()
+#10 /var/www/html/yii/framework/web/CController.php(784): PostsController->renderFile()
+#11 /var/www/html/webapp/protected/controllers/PostsController.php(506): PostsController->render()
+#12 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#13 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#14 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#15 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#17 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#18 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#19 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#20 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#21 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#22 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#23 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#24 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/components/LoginPop.php (16)
+in /var/www/html/webapp/protected/views/layouts/main.php (182)
+in /var/www/html/webapp/protected/views/layouts/column2.php (6)
+2015/10/21 06:26:07 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:28:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "setting".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('setting')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('setting')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/setting')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/setting
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:29:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/logout".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/logout')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user/logout
+---
+2015/10/21 06:29:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/user/logout
+---
+2015/10/21 06:44:35 [error] [php] Missing argument 1 for CActiveRecord::findByPk(), called in /var/www/html/webapp/protected/models/Users.php on line 183 and defined (/var/www/html/yii/framework/db/ar/CActiveRecord.php:1486)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/models/Users.php (183)
+in /var/www/html/webapp/protected/controllers/PostsController.php (477)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 06:44:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:45:11 [error] [php] Missing argument 1 for CActiveRecord::findByPk(), called in /var/www/html/webapp/protected/models/Users.php on line 183 and defined (/var/www/html/yii/framework/db/ar/CActiveRecord.php:1486)
+Stack trace:
+#0 /var/www/html/yii/framework/web/actions/CInlineAction.php(49): PostsController->actionIndex()
+#1 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#2 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#3 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#4 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#5 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#6 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#7 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#8 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#10 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#11 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#12 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/models/Users.php (183)
+in /var/www/html/webapp/protected/controllers/PostsController.php (477)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 06:45:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:46:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/logout".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/logout')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user/logout
+---
+2015/10/21 06:46:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/user/logout
+---
+2015/10/21 06:51:33 [error] [php] Missing argument 1 for Users::userActed(), called in /var/www/html/webapp/protected/controllers/PostsController.php on line 475 and defined (/var/www/html/webapp/protected/models/Users.php:396)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/models/Users.php (396)
+in /var/www/html/webapp/protected/controllers/PostsController.php (475)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 06:51:33 [error] [php] Missing argument 1 for Users::userActed(), called in /var/www/html/webapp/protected/controllers/PostsController.php on line 475 and defined (/var/www/html/webapp/protected/models/Users.php:396)
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#1 /var/www/html/yii/framework/web/filters/CFilterChain.php(133): PostsController->runAction()
+#2 /var/www/html/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#3 /var/www/html/yii/framework/web/CController.php(1145): CAccessControlFilter->filter()
+#4 /var/www/html/yii/framework/web/filters/CInlineFilter.php(58): PostsController->filterAccessControl()
+#5 /var/www/html/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter()
+#6 /var/www/html/yii/framework/web/CController.php(291): CFilterChain->run()
+#7 /var/www/html/yii/framework/web/CController.php(265): PostsController->runActionWithFilters()
+#8 /var/www/html/yii/framework/web/CWebApplication.php(282): PostsController->run()
+#9 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#10 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#11 /var/www/html/webapp/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/html/webapp/protected/models/Users.php (396)
+in /var/www/html/webapp/protected/controllers/PostsController.php (475)
+in /var/www/html/webapp/index.php (13)
+2015/10/21 06:51:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/
+---
+2015/10/21 06:55:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/logout".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/logout')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user/logout
+---
+2015/10/21 06:55:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/user/logout
+---
+2015/10/21 06:55:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/logout".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/logout')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user/logout
+---
+2015/10/21 06:55:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/user/logout
+---
+2015/10/21 06:56:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "user/logout".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/logout')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/user/logout
+---
+2015/10/21 06:56:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/user/logout
+---
+2015/10/21 07:13:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getidk".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getidk')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getidk')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getidk')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getidk
+---
+2015/10/21 07:13:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getidk
+---
+2015/10/21 07:13:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "getid".' in /var/www/html/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/html/yii/framework/web/CController.php(270): CController->missingAction('getid')
+#1 /var/www/html/yii/framework/web/CWebApplication.php(282): CController->run('getid')
+#2 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/getid')
+#3 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/html/webapp/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/getid
+---
+2015/10/21 07:13:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "images/404ufo.png".' in /var/www/html/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/html/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/404ufo.p...')
+#1 /var/www/html/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/html/webapp/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/images/404ufo.png
+HTTP_REFERER=http://meiliuer.com/site/getid
+---

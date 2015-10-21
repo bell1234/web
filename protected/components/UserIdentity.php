@@ -21,11 +21,11 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		// only allow users to login via email
-		//if (strpos($this->username,"@")) {
+		if (strpos($this->username,"@")) {
 			$user=Users::model()->findByAttributes(array('email'=>$this->username));
-		//} else {
-		//	$user=Users::model()->findByAttributes(array('username'=>$this->username));
-		//}
+		} else {
+			$user=Users::model()->findByAttributes(array('username'=>$this->username));
+		}
 		if($user===null)
 			if (strpos($this->username,"@")) {
 				$this->errorCode=self::ERROR_EMAIL_INVALID;

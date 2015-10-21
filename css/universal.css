@@ -354,6 +354,7 @@ ul.nostyle li{
 ul.nostyle li a{
 	color: #555;
 	font-weight:normal;
+	text-decoration:none;
 }
 
 img.sidebar_head_pic{

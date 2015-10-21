@@ -1,6 +1,4 @@
 <?php
-Yii::import('ext.PHPDomParser.simple_html_dom', true);
-
 class PostsController extends Controller
 {
 	/**
@@ -475,6 +473,8 @@ class PostsController extends Controller
 		if(Yii::app()->user->id){
 			$user = Users::model()->findByPk(Yii::app()->user->id);
 			$user->userActed(); 
+		}else{
+			Users::guestSignup();		//automatically sign up for you
 		}
 		if(isset($_GET['category_id'])){
 			$criteria = array(

@@ -12,7 +12,10 @@ class LoginPop extends CWidget
 	{
 
 		if(!Yii::app()->user->isGuest){
-			$this->controller->redirect('/');
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			if(!$user->auto){
+				$this->controller->redirect('/');
+			}
 		}
 
 		$user = new Users;
@@ -49,6 +52,8 @@ class LoginPop extends CWidget
 					$this->controller->refresh();
 				}
 
+			}else{
+				echo "<script>signup();</script>";
 			}
 		}
 
@@ -65,18 +70,19 @@ class LoginPop extends CWidget
 				$user->password = hash('sha256', $user->password);	//sha 256, no salt for now.
 				$user->create_time = time();
 				$user->status = 0; //not verify email
-				$user->activkey = hash('sha256', microtime() . $user->email);	//sha256 email + microtome for activkey
+				$user->activkey = hash('sha256', microtime() . $user->username);	//sha256 email + microtome for activkey
 				$user->save(false);	//after validation, so we can save(false).
 
 				$user->userActed(); 	//update IP, location
 				$user->saveDupStats(); //save user dup accounts, cookie etc.
 
-				$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
-					"activkey" => $user->activkey,
-					"email" => $user->email
-				));
+				if($user->email){
+					$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
+						"activkey" => $user->activkey,
+						"email" => $user->email
+					));
 
-				//try{
+					try{
 					//send out verification emails here...
 					$message = new YiiMailMessage;
                            		$message->view = 'signup';    //layout name
@@ -91,15 +97,19 @@ class LoginPop extends CWidget
 					));
 					$message->setReplyTo($user->email);
 					Yii::app()->mail->send($message);
-				//} catch (Exception $e) {}
+					} catch (Exception $e) {}
+				}
 
-
-				$model->username = $user->email;
+				$model->username = $user->username;
 				$model->password = $_POST['Users']['password'];
 				$model->rememberMe = 1;
 				if($model->validate() && $model->login()){
 					$this->controller->redirect('/');
+				}else{
+					echo "<script>signup();</script>";
 				}
+			}else{
+				echo "<script>signup();</script>";
 			}
 		}
 

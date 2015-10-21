@@ -22,7 +22,7 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username', 'required', 'message'=>'请输入登陆邮箱'),
+			array('username', 'required', 'message'=>'请输入用户名或邮箱'),
 			array('password', 'required', 'message'=>'请输入密码'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
@@ -51,7 +51,7 @@ class LoginForm extends CFormModel
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password);
 			if(!$this->_identity->authenticate())
-				$this->addError('password','邮箱或密码不正确');
+				$this->addError('password','用户名/邮箱或密码不正确');
 		}
 	}
 
@@ -68,7 +68,7 @@ class LoginForm extends CFormModel
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
-			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
+			$duration=$this->rememberMe ? 3600*24*365 : 0; // 365 days
 			Yii::app()->user->login($this->_identity,$duration);
 			return true;
 		}

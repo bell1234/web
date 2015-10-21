@@ -11,9 +11,6 @@ class PostPop extends CWidget
 	public function run()
 	{
 
-		if(Yii::app()->user->isGuest){
-			exit(0);
-		}
 
 		$user = Users::model()->findByPk(Yii::app()->user->id);
 
@@ -45,8 +42,11 @@ class PostPop extends CWidget
 			}
 			if($model->type != 1 && !$model->description){
 				$model->addError('description', '请输入要提交的内容');
+				echo "<script>post_new();</script>";
+			}else if($model->type == 1 && !$model->link){
+				$model->addError('link', '请输入要提交的链接');
+				echo "<script>post_new();</script>";
 			}else if($model->validate()){
-
 				$model->save(false);
 
 				$pictures = Yii::app()->session['pictures'];
@@ -89,6 +89,8 @@ class PostPop extends CWidget
 
 
 				$this->controller->redirect(array('view','id'=>$model->id));
+			}else{
+				echo "<script>post_new();</script>";
 			}
 		}
 

@@ -141,6 +141,8 @@ class UsersController extends Controller
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
+			$model->auto = 0;
+
 			if($model->save()){
 				Yii::app()->user->setFlash('settingMessage', "您的设置已经保存");
 				$this->refresh();

@@ -1,5 +1,5 @@
 
-<div class="form bottom50">
+<div class="form">
 	<?php CHtml::$errorCss = "has-error"; ?>
 <?php 
 
@@ -12,7 +12,7 @@
 	'enableAjaxValidation'=>false,
 	'enableClientValidation'=>true,
           'clientOptions'=>array(
-              'validateOnSubmit'=>false,
+              'validateOnSubmit'=>true,
               'afterValidate' => 'js:function(form, data, hasError) { 
                   if(hasError) {
                       for(var i in data) $("#"+i).parent(".form-group").addClass("has-error");
@@ -183,18 +183,21 @@ $this->widget('ImperaviRedactorWidget', array(
 		<?php echo $form->error($model,'description'); ?>
 	</div>
 
-	<div class="row form-group category_drop">
+
+	<div class="row form-group category_drop" style="display:none;">
 		<label class="control-label" for="Posts_category_id">请选择分类</label>
 		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'新闻', 3=>'科技', 30=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
 
 
+
 	<div class="row buttons top20">
+<?php if(Yii::app()->user->id): ?>
 		<?php echo $form->checkBox($model,'private'); ?>
-		<span class="dark_grey v_middle top5">匿名</span>
+		<span class="dark_grey v_middle top5">匿名</span>		
+<?php endif; ?>
 		<div class="float_right">
-			<!--<a class="right25" href="#" onclick="dismiss_post_popup(); return false;">取消</a>-->
 			<?php echo CHtml::submitButton($model->isNewRecord ? '提交' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>

@@ -17,6 +17,7 @@
 		<?php endif; ?>
 			<li><a href="/submit?content&ama"><i class="fa fa-microphone"></i> <span style="margin-left:9px;">发起问答</span></a></li>
 	<?php endif; ?>
+<!--
 	<hr>
 	<li><a href="/"><i class="fa fa-fire"></i> <span style="margin-left:7px;">热门</span></a></li>
 	<li><a href="/funny"><i class="fa fa-smile-o"></i> <span style="margin-left:6px;">搞笑</span></a></li>
@@ -24,6 +25,7 @@
 	<li><a href="/tech"><i class="fa fa-desktop"></i> <span style="margin-left:4px;">科技</span></a></li>
 	<li><a href="/other"><i class="fa fa-commenting-o"></i> <span style="margin-left:6px;">杂谈</span></a></li>
 	<li><a href="/ama"><i class="fa fa-comments"></i> <span style="margin-left:6px;">有问必答</span></a></li>
+-->
 
 </ul>
 

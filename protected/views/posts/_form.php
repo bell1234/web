@@ -7,3 +7,5 @@
 <?php
  $this->widget('application.components.PostPop');
 ?>
+
+<div class="bottom50"></div>

@@ -34,6 +34,10 @@ function signup(){
 	$('#signup_or_login').modal();
 }
 
+function post_new(){
+	$('#post_popup').modal();
+}
+
 
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
@@ -267,8 +271,11 @@ function show_link(){
 	$('.content_post').hide();
 	$('.ama_alert').hide();
 	$('#Posts_category_id').val('');
-	$('.category_drop').show();
+	//$('.category_drop').show();
 	$('#Posts_category_id').val('');
+	if($('#Posts_name').val() == '我是XXX (简介自己), 有问必答!'){
+		$('#Posts_name').val('');
+	}
 }
 
 function show_content(){
@@ -279,8 +286,11 @@ function show_content(){
 	$('.link_post').hide();
 	$('.ama_alert').hide();
 	$('.content_post').show();
-	$('.category_drop').show();
+	//$('.category_drop').show();
 	$('#Posts_category_id').val('');
+	if($('#Posts_name').val() == '我是XXX (简介自己), 有问必答!'){
+		$('#Posts_name').val('');
+	}
 }
 
 function show_ama(){
@@ -293,7 +303,7 @@ function show_ama(){
 	$('#Posts_name').val('我是XXX (简介自己), 有问必答!');
 	$('#Posts_description').val('请介绍自己，如果方便的话，提供可以证明身份的材料可以大幅提高收视率哦。');
 	$('.link_post').hide();
-	$('.category_drop').hide();
+	//$('.category_drop').hide();
 	$('#Posts_category_id').val(30); //random value here for validation, does not matter
 }
 

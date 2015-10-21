@@ -10,6 +10,7 @@
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
+	'action'=>'/site/setting',	//我们加了这一行 因为每个人都已经是用户了...我们存下每一个访问
 )); ?>
 
 	<div class="row">
@@ -18,7 +19,7 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->textField($user,'email',array('placeholder'=>'邮箱','class'=>'form-control')); ?>
+		<?php echo $form->textField($user,'email',array('placeholder'=>'邮箱(选填)','class'=>'form-control')); ?>
 		<?php echo $form->error($user,'email'); ?>
 	</div>
 
@@ -40,7 +41,7 @@
 
 <div class="form col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
-<h3 class="bottom15">登陆没六儿</h3>
+<h3 class="bottom15">登录没六儿</h3>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
@@ -51,7 +52,7 @@
 	),
 )); ?>
 	<div class="row">
-		<?php echo $form->textField($model,'username',array('placeholder'=>'邮箱','class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'username',array('placeholder'=>'用户名/邮箱','class'=>'form-control')); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
@@ -62,7 +63,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('登陆', array('class'=>'btn btn-danger btn-block')); ?>
+		<?php echo CHtml::SubmitButton('登陆', array('class'=>'btn btn-danger btn-block')); ?>
 	</div>
 
 

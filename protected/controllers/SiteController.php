@@ -22,6 +22,67 @@ class SiteController extends Controller
 	}
 
 
+
+public function actionGetFeed(){
+
+//https://diy-devz.rhcloud.com
+
+
+
+    //$feed_url = "http://weirss.me/account/Tianya-China/feed/";
+    //$feed_url = "http://weirss.me/account/yiduiread/feed/";
+    //$feed_url = "http://hanhanone.appspot.com/";
+    //$feed_url = "http://weirss.me/account/grandpagu/feed/";
+    //$feed_url = "http://weirss.me/account/huxiu_com/feed/";
+    //$feed_url = "http://www.youku.com/index/rss_cool_v/";
+    //$feed_url = "http://www.youku.com/index/rss_hot_day_videos/duration/1";
+
+
+    //搞笑	1
+    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1644395354";
+    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=3177527181";
+    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1642635773";
+    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1713926427";
+    //$feed_url = "http://weirss.me/account/lengtoo/feed/";
+    //$feed_url = "http://weirss.me/account/lengiii/feed/";
+    //$feed_url = "http://weirss.me/account/licaivip8/feed/";
+    //$feed_url = "http://weirss.me/account/xiaonimeia123/feed/";
+    //$feed_url = "http://weirss.me/account/dongtu600/feed/";
+    //$feed_url = "http://weirss.me/account/mojiexuetang/feed/";
+    //$feed_url = "http://www.youku.com/index/rss_category_videos/cateid/94";
+
+
+
+
+    // create curl resource
+    $ch = curl_init();
+
+    // set url
+    curl_setopt($ch, CURLOPT_URL, $feed_url);
+
+    //return the transfer as a string
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+
+    // $output contains the output string
+    $content = curl_exec($ch);
+
+    // close curl resource to free up system resources
+    curl_close($ch); 
+
+
+    $x = simplexml_load_string($content);
+     
+    echo "<ul>";
+     
+    foreach($x->channel->item as $entry) {
+        echo "<li><a href='$entry->link' title='$entry->title'>" . $entry->title . "</a></li>";
+    }
+    echo "</ul>";
+
+}
+
+
 /*
 	public function actionTest(){
 
@@ -74,11 +135,7 @@ if(isset($objs->html)){	//video...
 	 */
 	public function actionIndex()
 	{
-		if(!Yii::app()->user->isGuest){
-			$model = Users::model()->findByPk(Yii::app()->user->id);
-			$model->userActed(); 	//get lastaction time and location updated
-		}
-		$this->render('index');
+		$this->redirect('/');
 	}
 
 	/**
@@ -172,7 +229,7 @@ if(isset($objs->html)){	//video...
                 if ($model->validate()) {
                     $find           = Users::model()->findByPk(Yii::app()->user->id);
                     $find->password = hash('sha256', $model->password);
-                    $find->activkey= hash('sha256', microtime() . $find->email);
+                    $find->activkey= hash('sha256', microtime() . $find->username);
                     $find->save();
                     Yii::app()->user->setFlash('recoveryMessage', "您的新密码已经保存");
                     $this->refresh();
@@ -205,7 +262,7 @@ if(isset($objs->html)){	//video...
 							$form2->attributes=$_POST['UserChangePassword'];
 							if($form2->validate()) {
 								$find->password = hash('sha256', $form2->password);
-								$find->activkey= hash('sha256', microtime() . $find->email);
+								$find->activkey= hash('sha256', microtime() . $find->username);
 
 								if ($find->status==0) {
 									$find->status = 1;
@@ -266,7 +323,12 @@ if(isset($objs->html)){	//video...
 	 */
 	public function actionLogout()
 	{
-		Yii::app()->user->logout();
+		if(Yii::app()->user->id){
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			if($user && !$user->auto){
+				Yii::app()->user->logout();
+			}
+		}
 		$this->redirect(Yii::app()->homeUrl);
 	}
 }

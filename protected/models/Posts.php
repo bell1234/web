@@ -50,7 +50,8 @@ class Posts extends CActiveRecord
 
 			array('user_id, create_time', 'required'),		//system will assign it...
 
-			array('user_id, create_time, category_id, up, down, points, comments, type, hide, processed, views, private', 'numerical', 'integerOnly'=>true),
+			array('user_id, create_time, category_id, up, down, points, comments, type, hide, processed, views, private, auto', 'numerical', 'integerOnly'=>true),
+
 			array('name, link, thumb_pic, video_html', 'length', 'max'=>500),
 			array('shorturl', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -137,6 +138,42 @@ class Posts extends CActiveRecord
 		));
 	}
 
+
+	//ensure that in php.ini allow_url_fopen is enable
+	//s3国内无法使用 以后开始使用又拍云 目前存在服务器上就 http://www.yiiframework.com/extension/upyun/ 
+
+	public function grab_image($url,$saveto){
+    		$ch = curl_init ($url);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+    		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+    		curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+    		$raw=curl_exec($ch);
+    		curl_close ($ch);
+   		if(file_exists($saveto)){
+        		unlink($saveto);
+    		}
+    		$fp = fopen($saveto,'x');
+    		fwrite($fp, $raw);
+    		fclose($fp);
+ 		$thumb = new Imagick($saveto);
+       		$thumb->setImageFormat("png");
+        	$thumb->thumbnailImage(200, 200);
+   		if(file_exists($saveto)){
+        		unlink($saveto);
+    		}
+        	$thumb->writeImage($saveto);
+
+		//s3 国内被墙
+		//$success = Yii::app()->s3->upload($saveto, $saveto, 'meiliuer');	//from, to, bucket name
+		//
+   		//if(file_exists($saveto)){
+        	//	unlink($saveto);
+    		//}
+		return $success;
+	}
+
+
 	public function getTitle($url){
 
 		Yii::import('application.extensions.embedly.src.Embedly.Embedly', true);
@@ -157,6 +194,9 @@ class Posts extends CActiveRecord
 		}
 
 		if(isset($objs->thumbnail_url)){	//thumbnail
+
+			//$this->grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".png");
+
 			array_push($arr, $objs->thumbnail_url);
 		}else{
 			array_push($arr, "");	

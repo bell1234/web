@@ -38,7 +38,6 @@ function post_new(){
 	$('#post_popup').modal();
 }
 
-
 function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
 	if(guest){

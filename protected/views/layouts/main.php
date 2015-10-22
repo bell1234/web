@@ -55,15 +55,15 @@ analytics.page()
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
-      <a class="navbar-brand" href="#">
-	Brand
-	 <!--<img alt="Brand" src="...">-->
+      <a class="navbar-brand" href="/">
+	<span class="logo_text">没六儿</span>
+	<img class="logo_img" alt="Brand" src="/images/shaka.png" /> 
       </a>
 
 <?php if(Yii::app()->user->isGuest || $user->auto): ?>
       <a id="nav_col_signup" onclick="signup(); return false;" class="navbar-toggle collapsed">
         <span class="sr-only">New post</span>
-        10秒注册/登录
+        7秒注册/登录
       </a>
 <?php else: ?>
       <a id="small_avatar_mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
@@ -119,7 +119,7 @@ analytics.page()
         	<?php endif; ?>
 
       	 <?php if(Yii::app()->user->isGuest || $user->auto): ?>
-        	<li><a href="#" onclick="signup(); return false;">10秒注册/登陆</a></li>
+        	<li><a href="#" onclick="signup(); return false;">7秒注册/登陆</a></li>
         <?php else: ?>
   
        		<li class="dropdown">

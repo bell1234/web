@@ -119,6 +119,14 @@ class PostsController extends Controller
 	 */
 	public function actionView($id)
 	{
+
+		if(Yii::app()->user->id){
+			$user = Users::model()->findByPk(Yii::app()->user->id);
+			$user->userActed(); 
+		}else{
+			Users::guestSignup();		//automatically sign up for you
+		}
+
 		$model = $this->loadModel($id);
 		$model->views++;
 		$model->save(false);
@@ -548,45 +556,6 @@ class PostsController extends Controller
 			Yii::app()->end();
 		}
 	}
-
-
-
-
-
-protected function absurl($pgurl, $url) {
- $pgurl;
- if(strpos($url,'://')) return $url; //already absolute
- if(substr($url,0,2)=='//') return 'http:'.$url; //shorthand scheme
- if($url[0]=='/') return parse_url($pgurl,PHP_URL_SCHEME).'://'.parse_url($pgurl,PHP_URL_HOST).$url; //just add domain
- if(strpos($pgurl,'/',9)===false) $pgurl .= '/'; //add slash to domain if needed
- return substr($pgurl,0,strrpos($pgurl,'/')+1).$url; //for relative links, gets current directory and appends new filename
-}
-
-protected function nodots($path) {
- $arr1 = explode('/',$path);
- $arr2 = array();
- foreach($arr1 as $seg) {
-  switch($seg) {
-   case '.':
-    break;
-   case '..':
-    array_pop($arr2);
-    break;
-   case '...':
-    array_pop($arr2); array_pop($arr2);
-    break;
-   case '....':
-    array_pop($arr2); array_pop($arr2); array_pop($arr2);
-    break;
-   case '.....':
-    array_pop($arr2); array_pop($arr2); array_pop($arr2); array_pop($arr2);
-    break;
-   default:
-    $arr2[] = $seg;
-  }
- }
- return implode('/',$arr2);
-}
 
 
 }

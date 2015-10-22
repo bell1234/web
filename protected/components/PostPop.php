@@ -76,6 +76,10 @@ class PostPop extends CWidget
 						if($first_pic){
 							$model->thumb_pic = $first_pic;
 						}
+
+						//注意:上传视频怎么办....
+						//$model->video_html = "";
+
 						//如果上述还是没有找到图片
 						if(!$model->thumb_pic){
 							$model->thumb_pic = ""; 	//avatar? or default content pic?
@@ -88,7 +92,7 @@ class PostPop extends CWidget
 				}
 
 
-				$this->controller->redirect(array('view','id'=>$model->id));
+				$this->controller->redirect('/posts/'.$model->id);
 			}else{
 				echo "<script>post_new();</script>";
 			}

@@ -36,12 +36,13 @@ if($model->type == 1){
 		</div>
 
 		<div class="post_pic">
+
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-			<?php if(!$model->thumb_pic): ?>
-				<img id="link_thumb_pic" style="width:90px; height:90px;" src="/images/loading_or_404.png" />
-			<?php else: ?>
-				<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $model->thumb_pic; ?>" />
-			<?php endif; ?>
+				<?php if(!$model->thumb_pic): ?>
+					<img id="link_thumb_pic" style="width:90px; height:90px;" src="/images/blackshaka.gif" />
+				<?php else: ?>
+					<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $model->thumb_pic; ?>" />
+				<?php endif; ?>
 			</a>
 		</div>
 
@@ -57,7 +58,7 @@ if($model->type == 1){
 			</div>
 
 			<div class="post_footer grey small">
-				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
+				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>
@@ -85,7 +86,7 @@ if($model->type == 1){
 		</div>
 
 	<?php
-	if(Yii::app()->user->id == $model->user_id && $model->views == 1 && !$model->thumb_pic){
+	if($model->views == 1 && !$model->thumb_pic){
 		$this->renderPartial('_hidden_field_for_ajax', array('model'=>$model)); 
 	}
 	?>

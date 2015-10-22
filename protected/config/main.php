@@ -24,6 +24,7 @@ return array(
         	'ext.yii-mail.YiiMailMessage',
         	'ext.imperavi-redactor-widget.ImperaviRedactorWidget',
 		'ext.segment_analytics.lib.*',
+		'ext.s3.*',
 	        'application.classes.*',
 	),
 
@@ -59,13 +60,20 @@ return array(
         ),
 */
 
-'session' => array(
-    'class' => 'system.web.CDbHttpSession',
-    'autoStart' => true,
-    'connectionID' => 'db',
-    'sessionTableName' => 'tbl_session',
-    'autoCreateSessionTable' => false    // for performance reasons
-),
+
+	's3'=>array(
+       		'class'=>'ext.s3.ES3',
+        	'aKey'=>'AKIAJ4LRRVNFL5JNIWOA', 	//access key
+        	'sKey'=>'VJgfwqw8MmmW8Sn96rdl5nXY5lWjikgpg8wdoGmO',	//secret key
+    	),
+
+	'session' => array(
+    		'class' => 'system.web.CDbHttpSession',
+    		'autoStart' => true,
+    		'connectionID' => 'db',
+    		'sessionTableName' => 'tbl_session',
+    		'autoCreateSessionTable' => false    // for performance reasons
+	),
 
         'clientScript'=>array(
 
@@ -163,11 +171,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				
+				/*
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				
+				*/
 				
 			),
 		),

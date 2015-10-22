@@ -77,10 +77,6 @@
 
 	</div>
 
-	<div class="row">
-		社交账号登陆
-		微信－微博－QQ
-	</div>
 
 <?php $this->endWidget(); ?>
 

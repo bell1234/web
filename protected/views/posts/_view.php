@@ -24,7 +24,9 @@ if($data->type == 1){
 }
 
 //need to do yum install php-mbstring
-$truncated = (strlen($data->name) > 53) ? mb_substr($data->name, 0, 50,'utf-8') . '...' : $data->name;
+$truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8') . '...' : $data->name;
+
+$truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0, 12,'utf-8') . '...' : $user->username;
 ?>
 
 
@@ -39,7 +41,11 @@ $truncated = (strlen($data->name) > 53) ? mb_substr($data->name, 0, 50,'utf-8') 
 
 		<div class="post_pic">
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-				<img style="width:90px; height:90px;" src="<?php echo $data->thumb_pic; ?>" />
+				<?php if(!$data->thumb_pic): ?>
+					<img id="link_thumb_pic" style="width:90px; height:90px;" src="/images/shaka.png" />
+				<?php else: ?>
+					<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $data->thumb_pic; ?>" />
+				<?php endif; ?>
 			</a>
 		</div>
 
@@ -50,8 +56,8 @@ $truncated = (strlen($data->name) > 53) ? mb_substr($data->name, 0, 50,'utf-8') 
 				</a>
 			</h4>
 			<div class="post_footer grey small">
-				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
-				发布于
+				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $truncated_name; ?></a>
+				- 
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>
 				</abbr>

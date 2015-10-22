@@ -28,32 +28,6 @@ public function actionGetFeed(){
 //https://diy-devz.rhcloud.com
 
 
-
-    //$feed_url = "http://weirss.me/account/Tianya-China/feed/";
-    //$feed_url = "http://weirss.me/account/yiduiread/feed/";
-    //$feed_url = "http://hanhanone.appspot.com/";
-    //$feed_url = "http://weirss.me/account/grandpagu/feed/";
-    //$feed_url = "http://weirss.me/account/huxiu_com/feed/";
-    //$feed_url = "http://www.youku.com/index/rss_cool_v/";
-    //$feed_url = "http://www.youku.com/index/rss_hot_day_videos/duration/1";
-
-
-    //搞笑	1
-    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1644395354";
-    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=3177527181";
-    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1642635773";
-    //$feed_url = "https://diy-devz.rhcloud.com/weibo?uid=1713926427";
-    //$feed_url = "http://weirss.me/account/lengtoo/feed/";
-    //$feed_url = "http://weirss.me/account/lengiii/feed/";
-    //$feed_url = "http://weirss.me/account/licaivip8/feed/";
-    //$feed_url = "http://weirss.me/account/xiaonimeia123/feed/";
-    //$feed_url = "http://weirss.me/account/dongtu600/feed/";
-    //$feed_url = "http://weirss.me/account/mojiexuetang/feed/";
-    //$feed_url = "http://www.youku.com/index/rss_category_videos/cateid/94";
-
-
-
-
     // create curl resource
     $ch = curl_init();
 
@@ -82,52 +56,6 @@ public function actionGetFeed(){
 
 }
 
-
-/*
-	public function actionTest(){
-
-Yii::import('application.extensions.embedly.src.Embedly.Embedly', true);
-
-// Call with pro (you'll need a real key)
-$pro = new Embedly\Embedly(array(
-    'key' => '05c0e7529f174ace83e837e28ffc448e',
-    'user_agent' => 'Mozilla/8.0 (compatible; mytestapp/1.0)'
-));
-
-//$objs = $pro->extract(array(
-//    'urls' => array(
-//        'http://www.guardian.co.uk/media/2011/jan/21/andy-coulson-phone-hacking-statement',
-//        'http://hn.embed.ly'
-//    )
-//));
-
-// http://v.youku.com/v_show/id_XMTM2MTU0NjMzMg==_ev_1.html
-// Single url
-$objs = $pro->oembed('http://www.douban.com/note/520168102/');
-
-if(isset($objs->title)){	//title
-	echo $objs->title;
-	echo "<br>";
-}
-
-if(isset($objs->description)){	//description
-	echo $objs->description;
-	echo "<br>";
-}
-
-if(isset($objs->thumbnail_url)){	//picture
-	echo $objs->thumbnail_url;
-	echo "<br>";
-}
-
-if(isset($objs->html)){	//video...
-	echo $objs->html;
-	echo "<br>";
-}
-
-//print_r($objs);
-	}
-*/
 
 	/**
 	 * This is the default 'index' action that is invoked
@@ -249,9 +177,7 @@ if(isset($objs->html)){	//video...
 	public function actionForgetPassword(){
 
 		$form = new UserRecoveryForm;
-		if (Yii::app()->user->id) {
-		    	$this->redirect('/');
-		} else {
+
 				$email = ((isset($_GET['email']))?$_GET['email']:'');
 				$activkey = ((isset($_GET['activkey']))?$_GET['activkey']:'');
 				if ($email && $activkey) {
@@ -299,7 +225,6 @@ if(isset($objs->html)){	//video...
 			    		}
 		    			$this->render('forgetPassword',array('form'=>$form));
 		    		}
-		}
 	}
 
 

@@ -18,6 +18,17 @@ body {
         margin-top: 0px;
     }
 }
+
+.navbar-brand > .logo_text{
+	position:absolute; 
+	margin-left:50px; 
+	margin-top:3px;
+}
+
+.navbar-brand > .logo_img{
+	width:42px; 
+	margin-top:-6px;
+}
  
 h1, h2, h3, h4, h5 {
 	-webkit-font-smoothing: antialiased;

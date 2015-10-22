@@ -38,7 +38,7 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('create_time, lastaction, status, logins, auto', 'numerical', 'integerOnly'=>true),
+			array('create_time, lastaction, status, logins, auto, system', 'numerical', 'integerOnly'=>true),
 
 			array('username', 'length', 'max'=>20, 'tooLong'=>'用户名最多包含20个字符'),
 			array('username', 'length', 'min'=>2, 'tooShort'=>'用户名至少包含2个字符'),
@@ -154,8 +154,8 @@ class Users extends CActiveRecord
 
 			if(!Yii::app()->user->id){
 				$user = new Users;
-				$user->username = "guest".time();
-				$user->password = "pwd".time();
+				$user->username = "guest".strrev(time());
+				$user->password = "pwd".strrev(time());
 				$temp = $user->password;
 				if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {		//cloudflare for now, maybe Baidu in the future.
 					$user->ip = $_SERVER['HTTP_CF_CONNECTING_IP'];

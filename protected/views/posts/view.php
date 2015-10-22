@@ -50,7 +50,7 @@ if($model->type == 1){
 			</div>
 
 			<div class="post_footer grey small paddingleft50 top20 bottom10">
-				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
+				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>

@@ -1,7 +1,8 @@
 
 <div>
-<img src="/images/placeholder.jpg" class="top10 sidebar_head_pic">
-
+<a href="/">
+	<img src="/images/sidebar.png" class="top10 sidebar_head_pic">
+</a>
 
 <ul class="nostyle nopaddingleft top20">
 	<?php if(Yii::app()->user->isGuest): ?>

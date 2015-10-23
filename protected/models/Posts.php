@@ -156,9 +156,12 @@ class Posts extends CActiveRecord
     		$fp = fopen($saveto,'x');
     		fwrite($fp, $raw);
     		fclose($fp);
+
  		$thumb = new Imagick($saveto);
-       		$thumb->setImageFormat("png");
-        	$thumb->thumbnailImage(200, 200);
+		if(exif_imagetype($saveto) != IMAGETYPE_JPEG){
+			$thumb->setImageFormat("png");
+		}
+        	$thumb->thumbnailImage(180, 180);
    		if(file_exists($saveto)){
         		unlink($saveto);
     		}
@@ -170,7 +173,9 @@ class Posts extends CActiveRecord
    		//if(file_exists($saveto)){
         	//	unlink($saveto);
     		//}
-		return $success;
+		//return $success;
+
+		return "/".$saveto;		//return final URL
 	}
 
 
@@ -195,7 +200,17 @@ class Posts extends CActiveRecord
 
 		if(isset($objs->thumbnail_url)){	//thumbnail
 
-			//$this->grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".png");
+			$folder = "uploads/posts/".Yii::app()->user->id;
+
+        		if (!file_exists ($folder)){
+            			mkdir ($folder, 0777, true);
+        		}
+
+			if(exif_imagetype($objs->thumbnail_url) != IMAGETYPE_JPEG){
+				$objs->thumbnail_url = Posts::grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".png");
+			}else{
+				$objs->thumbnail_url = Posts::grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".jpg");
+			}
 
 			array_push($arr, $objs->thumbnail_url);
 		}else{

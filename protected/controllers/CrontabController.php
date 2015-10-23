@@ -89,14 +89,13 @@ class CrontabController extends Controller
     }
 
 
-
     public function actionTech(){	
 
 	ini_set('max_execution_time', 900);	//15 mins function max
 	set_time_limit(0);	
 
         //prevent anyone else from using our cron
-        if ($_SERVER['REMOTE_ADDR'] !== '54.204.37.100' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '54.204.37.100')) {
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
             throw new CHttpException(404, "The requested link does not exist.");
         }
 
@@ -117,7 +116,7 @@ class CrontabController extends Controller
 	set_time_limit(0);		
 
         //prevent anyone else from using our cron
-        if ($_SERVER['REMOTE_ADDR'] !== '54.204.37.100' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '54.204.37.100')) {
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
             throw new CHttpException(404, "The requested link does not exist.");
         }
 
@@ -135,7 +134,7 @@ class CrontabController extends Controller
     public function actionOther(){		
 
         //prevent anyone else from using our cron
-        if ($_SERVER['REMOTE_ADDR'] !== '54.204.37.100' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '54.204.37.100')) {
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
             throw new CHttpException(404, "The requested link does not exist.");
         }
 
@@ -154,7 +153,7 @@ class CrontabController extends Controller
     public function actionNews(){		
 
         //prevent anyone else from using our cron
-        if ($_SERVER['REMOTE_ADDR'] !== '54.204.37.100' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '54.204.37.100')) {
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
             throw new CHttpException(404, "The requested link does not exist.");
         }
 

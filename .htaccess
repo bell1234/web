@@ -20,9 +20,7 @@
 </ifModule>
 
 RewriteEngine on
-
-
-RewriteCond %{HTTP_HOST} ^54\.204\.37\.100$ [OR]
+RewriteCond %{HTTP_HOST} ^52\.8\.247\.253$ [OR]
 RewriteCond %{HTTP_HOST} ^www.meiliur\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^meiliur\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www.meiliuer\.com$ [NC]

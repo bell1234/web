@@ -24,6 +24,38 @@ analytics.load("kEGvVw6uhrd6l8WXPJaVeIzMlCqBG24O");
 analytics.page()
 }}();
 	</script>
+
+   <script type="text/javascript">
+        var ShareId = "";
+        $(function () {
+            $(".bdsharebuttonbox a").mouseover(function () {
+                ShareId = $(this).attr("data-id");
+                ShareTitle = $(this).attr("data-title");
+                SharePic = $(this).attr("data-img");
+            });
+        });
+        function SetShareUrl(cmd, config) {            
+            if (ShareId) {
+                config.bdUrl = "http://meiliuer.com/posts/" + ShareId; 
+                config.bdPic = "http://meiliuer.com/" + SharePic;    
+                config.bdText = ShareTitle + " - 没六儿";    
+            }
+            return config;
+        }
+
+        window._bd_share_config = {
+            "common": {
+                onBeforeClick: SetShareUrl, "bdSnsKey": {}, "bdText": ""
+                , "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"
+            }, "share": {}
+        };
+        //插件的JS加载部分
+        with (document) 0[(getElementsByTagName('head')[0] || body)
+            .appendChild(createElement('script'))
+            .src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='
+            + ~(-new Date() / 36e5)];
+    </script>
+
     
     <?php if(Yii::app()->user->id): 
 			$user = Users::model()->findByPk(Yii::app()->user->id);

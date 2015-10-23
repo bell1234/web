@@ -50,16 +50,12 @@ class PostPop extends CWidget
 				$model->save(false);
 
 				$pictures = Yii::app()->session['pictures'];
-				$first_pic = "";
 				if ($pictures) {
 					foreach ($pictures as $picture => $pic) {
 						$image = PostsPictures::model()->findByAttributes(array(
 							'path' => $pic
 						));
 						if($image){
-							if(!$first_pic){
-								$first_pic = $pic;
-							}
 							$image->post_id = $model->id;
 							$image->save();
 						}
@@ -73,8 +69,11 @@ class PostPop extends CWidget
 						//We fill in thumb_pic, etc, in a async way, in ajax. not here.
 						//nothing here
 					}else if($model->type == 2){	
-						if($first_pic){
-							$model->thumb_pic = $first_pic;
+
+						preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $model->description, $match);
+
+						if(isset($match[1])){
+							$model->thumb_pic = $match[1];
 						}
 
 						//注意:上传视频怎么办....

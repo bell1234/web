@@ -41,11 +41,13 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
 
 		<div class="post_pic">
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
-				<?php if(!$data->thumb_pic): ?>
-					<img id="link_thumb_pic" style="width:90px; height:90px;" src="/images/shaka.png" />
-				<?php else: ?>
-					<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $data->thumb_pic; ?>" />
-				<?php endif; ?>
+				<?php if(!$data->thumb_pic): 
+					  $thumb = "http://meiliuer.com/images/shaka.png";
+				      else:
+					  $thumb = $data->thumb_pic;
+				      endif;
+				?>
+					<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $thumb; ?>" />
 			</a>
 		</div>
 
@@ -55,13 +57,24 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
 					<?php echo $truncated; ?>
 				</a>
 			</h4>
-			<div class="post_footer grey small">
+			<div class="post_footer grey small" style="margin-top:6px;">
 				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $truncated_name; ?></a>
-				- 
+				发布于
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>
 				</abbr>
-				<a target="_blank" href="<?php echo "/posts/".$data->id; ?>" class="left5 grey bold">评论(<?php echo $data->comments;?>)</a>
+				
+				<div style="margin-top:4px;">
+					<a target="_blank" href="<?php echo "/posts/".$data->id; ?>" class="left grey bold">评论(<?php echo $data->comments;?>)</a>
+
+            	    			<div class="bdsharebuttonbox" style="position:absolute; margin-top:-25px; margin-left:50px;">
+                				<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
+                				<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
+                				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
+            				</div>
+				</div>
+
+
 			</div>
 		</div>
 </div>

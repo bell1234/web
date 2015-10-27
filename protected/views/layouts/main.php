@@ -49,6 +49,7 @@ analytics.page()
                 , "bdMini": "2", "bdMiniList": false, "bdPic": "", "bdStyle": "0", "bdSize": "16"
             }, "share": {}
         };
+
         //插件的JS加载部分
         with (document) 0[(getElementsByTagName('head')[0] || body)
             .appendChild(createElement('script'))

@@ -2,6 +2,8 @@
 /* @var $this PostsController */
 /* @var $model Posts */
 
+$this->pageTitle = $model->name . " － 没六儿";
+
 $self = 0;
 $guest = 0;
 $alreadyUp = 0;
@@ -26,7 +28,7 @@ if($model->type == 1){
 
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50">
 
-	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none;" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; margin-top:0px;" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 
 		<div class="post_content">
@@ -55,6 +57,16 @@ if($model->type == 1){
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>
 				</abbr>
+				<div style="margin-top:4px;">
+					<span class="left grey bold">分享到:</span>
+
+            	    			<div class="bdsharebuttonbox" style="position:absolute; margin-top:-25px; margin-left:45px;">
+                				<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
+                				<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
+                				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
+            				</div>
+				</div>
+
 			</div>
 
 			<div class="post_comments_box">

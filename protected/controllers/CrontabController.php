@@ -24,9 +24,9 @@ class CrontabController extends Controller
     	// close curl resource to free up system resources
     	curl_close($ch); 
 
-    	$x = simplexml_load_string($content);
+	$x = @simplexml_load_string($content);
 
-	if(!$x){
+	if (!$x) {
 		$rss->failed = 1;
 		$rss->save();
 		return;
@@ -54,7 +54,7 @@ class CrontabController extends Controller
 
 			$post->create_time = time() - $rand_time;
 
-			$post->up = round($rand_time / rand(1, 6));	//test...
+			$post->up = round($rand_time / rand(10, 60));	//test...
 
 			//注意 这里要改随机
 
@@ -96,7 +96,7 @@ class CrontabController extends Controller
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
-            throw new CHttpException(404, "The requested link does not exist.");
+        	//throw new CHttpException(404, "The requested link does not exist.");
         }
 
 	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>3));

@@ -5,7 +5,7 @@
 
 <?php $this->pageTitle=Yii::app()->name . ' - 最火热的话题与信息'; ?>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50 top15">
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
@@ -15,15 +15,7 @@
             'rowSelector'=>'.post_cell',
             'listViewId' => 'postlist',
             'header' => '',
-            'options'=>array(
-                'triggerPageTreshold' => 8,
-                'onRenderComplete'=>'js:function () {
-	 		$(".timeago").timeago();
-		}'),
         ),
-        'afterAjaxUpdate'=>'function(id,data){ 
-		$(".timeago").timeago();
-	 }',
 	'itemView'=>'_view',
         'template'=>'{items}{pager}',	//infinite scroll.
 	'emptyText'=>'',

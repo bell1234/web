@@ -22,29 +22,46 @@ class IasPager extends CLinkPager {
         $cs->registerCoreScript('jquery');
         $cs->registerCSSFile($this->baseUrl . '/css/jquery.ias.css');
 
-        if (YII_DEBUG)
-            $cs->registerScriptFile($this->baseUrl . '/js/jquery.ias.js', CClientScript::POS_END);
-        else
-            $cs->registerScriptFile($this->baseUrl . '/js/jquery-ias.min.js', CClientScript::POS_END);
-        return;
+        $cs->registerScriptFile($this->baseUrl . '/js/jquery-ias.min.js', CClientScript::POS_END);
     }
 
     public function run() {
 
-        $js = "jQuery.ias(" .
+        $js = "var ias = jQuery.ias(" .
                 CJavaScript::encode(
                         CMap::mergeArray($this->options, array(
                             'container' => '#' . $this->listViewId . '' . $this->itemsSelector,
                             'item' => $this->rowSelector,
                             'pagination' => '#' . $this->listViewId . ' ' . $this->pagerSelector,
                             'next' => '#' . $this->listViewId . ' ' . $this->nextSelector,
-                            'loader' => '<img width="20px;" style="margin-right:3px;" src="/images/loading.gif" /> 努力读取中…',
                         ))) . ");";
 
 
         $cs = Yii::app()->clientScript;
         $cs->registerScript(__CLASS__ . $this->id, $js, CClientScript::POS_READY);
 
+
+$script = <<<EOD
+	ias.extension(new IASTriggerExtension({
+		offset: 8,
+		html: '<div class="ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><a class="btn btn-sm btn-default">读取更多分享</a></div>',
+		
+	}));
+	ias.extension(new IASPagingExtension());
+	ias.extension(new IASHistoryExtension());
+
+	ias.on('rendered', function(items) {
+ 		$(".timeago").timeago();
+		window._bd_share_main.init();
+               $(".bdsharebuttonbox a").mouseover(function () {
+                   ShareId = $(this).attr("data-id");
+                   ShareTitle = $(this).attr("data-title");
+                   SharePic = $(this).attr("data-img");
+               });
+	})
+EOD;
+
+Yii::app()->clientScript->registerScript('iashistory', $script, CClientScript::POS_READY);
 
         $buttons = $this->createPageButtons();
 

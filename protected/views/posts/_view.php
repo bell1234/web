@@ -65,9 +65,9 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
 				</abbr>
 				
 				<div style="margin-top:4px;">
-					<a target="_blank" href="<?php echo "/posts/".$data->id; ?>" class="left grey bold">评论(<?php echo $data->comments;?>)</a>
-
-            	    			<div class="bdsharebuttonbox" style="position:absolute; margin-top:-25px; margin-left:50px;">
+					<a target="_blank" href="<?php echo "/posts/".$data->id; ?>" class="left grey bold">评论<!--(<?php echo $data->comments;?>)--></a>
+					<b class="left10">分享: </b>
+            	    			<div class="bdsharebuttonbox" style="position:absolute; margin-top:-25px; margin-left:70px;"> <!--90-->
                 				<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
                 				<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
                 				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>

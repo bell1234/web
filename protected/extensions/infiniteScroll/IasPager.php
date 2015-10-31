@@ -43,7 +43,7 @@ class IasPager extends CLinkPager {
 
 $script = <<<EOD
 	ias.extension(new IASTriggerExtension({
-		offset: 8,
+		offset: 16,
 		html: '<div class="ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><a class="btn btn-sm btn-default">读取更多分享</a></div>',
 		
 	}));

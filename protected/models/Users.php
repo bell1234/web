@@ -393,7 +393,6 @@ class Users extends CActiveRecord
 	}
 
 
-
 	/**
 	 * This function updates the lastaction time in the user model, and also sets
 	 * the location city.

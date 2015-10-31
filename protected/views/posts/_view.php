@@ -7,6 +7,9 @@ $guest = 0;
 $alreadyUp = 0;
 $alreadyDown = 0;
 $user = Users::model()->findByPk($data->user_id);
+if(!$user){
+	echo $data->id;
+}else{
 if($data->user_id == Yii::app()->user->id){
 	$self = 1;
 }
@@ -27,6 +30,7 @@ if($data->type == 1){
 $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8') . '...' : $data->name;
 
 $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0, 12,'utf-8') . '...' : $user->username;
+
 ?>
 
 
@@ -51,7 +55,7 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
 			</a>
 		</div>
 
-		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
+		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft nopaddingright" style="margin-right:-10px;">
 			<h4 class="post_header">
 				<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 					<?php echo $truncated; ?>
@@ -78,3 +82,4 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
 			</div>
 		</div>
 </div>
+<?php } ?>

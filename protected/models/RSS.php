@@ -27,7 +27,7 @@ class RSS extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('system, processed, failed, category_id, total, video', 'numerical', 'integerOnly'=>true),
+			array('system, processed, failed, category_id, total, video, pause', 'numerical', 'integerOnly'=>true),
 			array('url', 'length', 'max'=>500),
 			array('note', 'length', 'max'=>500),
 			// The following rule is used by search().

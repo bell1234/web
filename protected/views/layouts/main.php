@@ -83,6 +83,7 @@ analytics.page()
 
 <body>
 
+<!--background-color:#fee123; border-bottom: solid 2px #111111;-->
 <nav class="navbar navbar-fixed-top navbar-default bottom_redborder">
   <div class="container-fluid col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
     <!-- Brand and toggle get grouped for better mobile display -->

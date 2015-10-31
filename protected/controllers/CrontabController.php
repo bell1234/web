@@ -28,7 +28,7 @@ class CrontabController extends Controller
 
 	if (!$x) {
 		$rss->failed = 1;
-		$rss->save();
+		$rss->save(false);
 		return;
 	}
 
@@ -54,7 +54,7 @@ class CrontabController extends Controller
 
 			$post->create_time = time() - $rand_time;
 
-			$post->up = round($rand_time / rand(10, 60));	//test...
+			$post->up = round($rand_time / rand(1, 10));	//test...
 
 			//注意 这里要改随机
 
@@ -75,11 +75,16 @@ class CrontabController extends Controller
 					$post->video_html = $array[2];
 				}
 			}
+			if(!$post->thumb_pic){
+				$post->up = round($post->up / 5);
+			}
 			$post->save();
+			$rss->failed = 0;
+			$rss->save(false);
 
 		}else{
 			$rss->failed = 1;
-			$rss->save();
+			$rss->save(false);
 		}
 
     	}
@@ -99,10 +104,13 @@ class CrontabController extends Controller
         	//throw new CHttpException(404, "The requested link does not exist.");
         }
 
-	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>3));
+	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>3, 'pause'=>0));
+
 	
 	foreach($rsss as $rss){
 		$this->ParseRss($rss);
+		$rss->processed = time();
+		$rss->save(false);
 	}
 
 	return;
@@ -120,10 +128,12 @@ class CrontabController extends Controller
             throw new CHttpException(404, "The requested link does not exist.");
         }
 
-	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>1));
-	
+	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>1, 'pause'=>0));
+
 	foreach($rsss as $rss){
 		$this->ParseRss($rss);
+		$rss->processed = time();
+		$rss->save(false);
 	}
 
 	return;
@@ -135,13 +145,15 @@ class CrontabController extends Controller
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
-            throw new CHttpException(404, "The requested link does not exist.");
+          //  throw new CHttpException(404, "The requested link does not exist.");
         }
 
-	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>30));
-	
+	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>30, 'pause'=>0));
+
 	foreach($rsss as $rss){
 		$this->ParseRss($rss);
+		$rss->processed = time();
+		$rss->save(false);
 	}
 
 	return;
@@ -157,10 +169,12 @@ class CrontabController extends Controller
             throw new CHttpException(404, "The requested link does not exist.");
         }
 
-	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>2));
+	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>2, 'pause'=>0));
 	
 	foreach($rsss as $rss){
 		$this->ParseRss($rss);
+		$rss->processed = time();
+		$rss->save(false);
 	}
 
 	return;

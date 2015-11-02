@@ -24,7 +24,7 @@ if($model->type == 1){
 }
 ?>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50 top10">
 
 	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; <?php if($model->hide): ?>background-color:#FBCDCD;<?php endif; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -53,9 +53,9 @@ if($model->type == 1){
 
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$model->thumb_pic): ?>
-					<img id="link_thumb_pic" style="width:90px; height:90px;" src="/images/blackshaka.gif" />
+					<img class="link_thumb_pic" src="/images/blackshaka.gif" />
 				<?php else: ?>
-					<img id="link_thumb_pic" style="width:90px; height:90px;" src="<?php echo $model->thumb_pic; ?>" />
+					<img class="link_thumb_pic" src="<?php echo $model->thumb_pic; ?>" />
 				<?php endif; ?>
 			</a>
 		</div>
@@ -122,7 +122,7 @@ if($model->type == 1){
 
 
 
-<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top10">
+<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top20">
 	<?php $this->renderPartial('_sidebar'); ?>
 </div>
 <?php

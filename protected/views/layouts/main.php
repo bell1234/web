@@ -237,6 +237,8 @@ analytics.page()
 		</div> 
 
 
+	<div id="toTop" style="display: none;"><i class="glyphicon glyphicon-triangle-top"></i></div>
+
 </body>
 </html>
 

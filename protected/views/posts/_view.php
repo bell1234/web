@@ -29,7 +29,6 @@ if($data->type == 1){
 //need to do yum install php-mbstring
 $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8') . '...' : $data->name;
 
-$truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0, 12,'utf-8') . '...' : $user->username;
 ?>
 
 <div id="post_cell_<?php echo $data->id; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -84,7 +83,8 @@ $truncated_name = (strlen($user->username) > 15) ? mb_substr($user->username, 0,
                 				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $data->name; ?>" data-img="<?php echo $data->thumb_pic; ?>" data-id="<?php echo $data->id;?>"></a>
             				</div>
 
-				<a style="margin-left:80px;" class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $truncated_name; ?></a>
+				<a class="view_username grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
+
 <!--
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>

@@ -28,6 +28,19 @@ $(document).ready(function() {
 
 	$("abbr.timeago").timeago();
 
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 400) {
+			$('#toTop').fadeIn();
+		} else {
+			$('#toTop').fadeOut();
+		}
+	});
+
+	$('#toTop').click(function(){
+		$("html, body").animate({ scrollTop: 0 }, 400);
+		return false;
+	});
+
 });
 
 function signup(){

@@ -25,6 +25,6 @@
 
 </div>
 
-<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top10">
+<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top20">
 	<?php $this->renderPartial('_sidebar'); ?>
 </div>

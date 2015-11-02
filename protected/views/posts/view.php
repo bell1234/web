@@ -26,7 +26,7 @@ if($model->type == 1){
 }
 ?>
 
-<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50">
+<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50 top10">
 
 	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; margin-top:-20px; margin-bottom:0px; <?php if($model->hide): ?>background-color:#FBCDCD;<?php endif; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -114,6 +114,6 @@ if($model->type == 1){
 
 
 
-<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top10">
+<div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top20">
 	<?php $this->renderPartial('_sidebar'); ?>
 </div>

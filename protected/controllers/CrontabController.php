@@ -7,20 +7,15 @@ class CrontabController extends Controller
     protected function ParseRss($rss){
 
 	$feed_url = $rss->url;
-
     	// create curl resource
     	$ch = curl_init();
-
     	// set url
     	curl_setopt($ch, CURLOPT_URL, $feed_url);
-
     	//return the transfer as a string
     	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-
     	// $output contains the output string
     	$content = curl_exec($ch);
-
     	// close curl resource to free up system resources
     	curl_close($ch); 
 
@@ -30,6 +25,9 @@ class CrontabController extends Controller
 		$rss->failed = 1;
 		$rss->save(false);
 		return;
+	}else{
+		$rss->failed = 0;
+		$rss->save(false);
 	}
 
     	foreach($x->channel->item as $entry) {
@@ -89,6 +87,8 @@ class CrontabController extends Controller
 
     	}
 
+	echo "finished processing RSS ".$rss->id."<br>";
+
 	return;
 
     }
@@ -113,7 +113,7 @@ class CrontabController extends Controller
 		$rss->save(false);
 	}
 
-	return;
+	echo 200;
 
     }
 
@@ -125,7 +125,7 @@ class CrontabController extends Controller
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
-            throw new CHttpException(404, "The requested link does not exist.");
+           // throw new CHttpException(404, "The requested link does not exist.");
         }
 
 	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>1, 'pause'=>0));
@@ -136,12 +136,15 @@ class CrontabController extends Controller
 		$rss->save(false);
 	}
 
-	return;
+	echo 200;
 
     }
 
 
-    public function actionOther(){		
+    public function actionOther(){	
+
+	ini_set('max_execution_time', 900);	//15 mins function max
+	set_time_limit(900);	
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
@@ -151,22 +154,24 @@ class CrontabController extends Controller
 	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>30, 'pause'=>0));
 
 	foreach($rsss as $rss){
+
 		$this->ParseRss($rss);
 		$rss->processed = time();
 		$rss->save(false);
 	}
 
-	return;
-	
-
+	echo 200;
     }
 
 
-    public function actionNews(){		
+    public function actionNews(){	
+
+	ini_set('max_execution_time', 900);	//15 mins function max
+	set_time_limit(0);	
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
-            throw new CHttpException(404, "The requested link does not exist.");
+           // throw new CHttpException(404, "The requested link does not exist.");
         }
 
 	$rsss = RSS::model()->findAllByAttributes(array('category_id'=>2, 'pause'=>0));
@@ -177,7 +182,7 @@ class CrontabController extends Controller
 		$rss->save(false);
 	}
 
-	return;
+	echo 200;
 
     }
 

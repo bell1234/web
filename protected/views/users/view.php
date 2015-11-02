@@ -8,33 +8,27 @@
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 
 <?php if($model->id == Yii::app()->user->id): ?>
-	<h1 class="bottom30" style="font-size:28px;">我的分享</h1>
+	<h1 class="bottom30" style="font-size:26px;">我的提交</h1>
 <?php else: ?>
-	<h1 class="bottom30" style="font-size:28px;"><?php echo $model->username;?>的分享</h1>
+	<h1 class="bottom30" style="font-size:26px;"><?php echo $model->username;?>的提交</h1>
 <?php endif; ?>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,
-	'id'=>'postlist',
+	'id'=>'mypostlist',
         'pager' => array(
             'class' => 'ext.infiniteScroll.IasPager',
             'rowSelector'=>'.post_cell',
-            'listViewId' => 'postlist',
+            'listViewId' => 'mypostlist',
             'header' => '',
-            'options'=>array(
-                'triggerPageTreshold' => 8,
-                'onRenderComplete'=>'js:function () {
-	 		$(".timeago").timeago();
-		}'),
         ),
-        'afterAjaxUpdate'=>'function(id,data){ 
-		$(".timeago").timeago();
-	 }',
+	'viewData' => array('admin' => $admin),    //自己的variables
 	'itemView'=>'/posts/_view',
         'template'=>'{items}{pager}',	//infinite scroll.
-	'emptyText'=>'',
+	'emptyText'=>'你还没有提交过任何信息!',
 
 )); ?>	
+
 
 </div>
 

@@ -93,7 +93,7 @@ class UsersController extends Controller
 	{
 
 		$model = $this->loadModel($id);
-
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
 		if($model->id == Yii::app()->user->id){
 			$criteria = array(
 				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
@@ -126,6 +126,7 @@ class UsersController extends Controller
 		$this->render('view',array(
 			'model'=>$model,
 			'dataProvider'=>$dataProvider,
+			'admin'=>$admin
 		));
 	}
 

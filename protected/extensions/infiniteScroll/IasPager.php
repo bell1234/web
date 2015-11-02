@@ -43,13 +43,14 @@ class IasPager extends CLinkPager {
 
 $script = <<<EOD
 	ias.extension(new IASTriggerExtension({
-		offset: 16,
+		offset: 20,
 		html: '<div class="ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><a class="btn btn-sm btn-default">读取更多分享</a></div>',
-		
 	}));
 	ias.extension(new IASPagingExtension());
 	ias.extension(new IASHistoryExtension());
-
+	ias.extension(new IASSpinnerExtension({
+    		src: '/images/loading.gif', // optionally
+	}));
 	ias.on('rendered', function(items) {
  		$(".timeago").timeago();
 		window._bd_share_main.init();

@@ -31,11 +31,11 @@ class PostsController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'getTitle', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload', 'commentimageupload', 'saveTitle'),
+				'actions'=>array('create','update', 'getTitle', 'getDupURL', 'vote', 'voteCancel', 'ajaxUpload', 'voteComment', 'voteCommentCancel', 'imageUpload', 'commentimageupload', 'saveTitle', 'VoteAdmin', 'delete', 'undelete'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -120,6 +120,14 @@ class PostsController extends Controller
 	public function actionView($id)
 	{
 
+		$model = $this->loadModel($id);
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
+
+		//只有管理员可以看隐藏的post
+		if(!$admin && $model->hide){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}
+
 		if(Yii::app()->user->id){
 			$user = Users::model()->findByPk(Yii::app()->user->id);
 			$user->userActed(); 
@@ -195,16 +203,40 @@ class PostsController extends Controller
 				'model'=>$model,
 				'comment'=>$comment,
 				'dataProvider'=>$dataProvider,
+				'admin'=>$admin,
 			));
 		}else{
 			$this->render('view',array(
 				'model'=>$model,
 				'comment'=>$comment,
 				'dataProvider'=>$dataProvider,
+				'admin'=>$admin,
 			));
 		}
 	}
 
+
+
+	//admin vote. pass any number and change up directly.
+	public function actionVoteAdmin(){
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
+		if(!$admin){
+			return;
+		}
+		if(isset($_POST['post_id']) && isset($_POST['up'])){
+			$post = Posts::model()->findByPk($_POST['post_id']);
+			if($post){
+				$post->up = $_POST['up'] + $post->down;	//offset down vote
+				$post->save(false);
+				echo "success";	
+				return;
+			}
+		}
+		return;
+	}
+
+
+	/**
 
 	/**
 	 * Vote ajax function
@@ -461,16 +493,48 @@ class PostsController extends Controller
 
 	/**
 	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
+	 * @param integer $id the ID of the model to be hidden
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		$this->loadModel($id)->delete();
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
+		if(!$admin){
+			return;
+		}
+		if(isset($_POST['post_id'])){
+			$model = Posts::model()->findByPk($_POST['post_id']);
+			if($model){
+				$model->hide = 1;
+				$model->save(false);
+				echo "success";	
+				return;
+			}
+		}
+		return;
+	}
 
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+
+
+	/**
+	 * Restores a particular model.
+	 * @param integer $id the ID of the model to be shown again
+	 */
+	public function actionUnDelete()
+	{
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
+		if(!$admin){
+			return;
+		}
+		if(isset($_POST['post_id'])){
+			$model = Posts::model()->findByPk($_POST['post_id']);
+			if($model){
+				$model->hide = 0;
+				$model->save(false);
+				echo "success";	
+				return;
+			}
+		}
+		return;
 	}
 
 	/**
@@ -484,6 +548,7 @@ class PostsController extends Controller
 		}else{
 			Users::guestSignup();		//automatically sign up for you
 		}
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
 		if(isset($_GET['category_id'])){
 			$criteria = array(
 				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
@@ -505,12 +570,13 @@ class PostsController extends Controller
 				'defaultOrder' => 'rank DESC, create_time DESC' // this is it.
 			),
 			'pagination' => array(
-				'pageSize' => 10
+				'pageSize' => 15
 			)
 		));
 
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
+			'admin'=>$admin
 		));
 	}
 

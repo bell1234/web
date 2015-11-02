@@ -29,7 +29,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('注册', array('class'=>'btn btn-danger btn-block')); ?>
+		<?php echo CHtml::submitButton('注册', array('class'=>'btn btn-warning btn-block')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
@@ -63,7 +63,7 @@
 
 
 	<div class="row buttons">
-		<?php echo CHtml::SubmitButton('登陆', array('class'=>'btn btn-danger btn-block')); ?>
+		<?php echo CHtml::SubmitButton('登陆', array('class'=>'btn btn-warning btn-block')); ?>
 	</div>
 
 

@@ -40,15 +40,24 @@ class PostPop extends CWidget
 				$model->link = "";
 				$model->category_id = 4;	//force AMA
 			}
-			if($model->type != 1 && !$model->description){
-				$model->addError('description', '请输入要提交的内容');
-				echo "<script>post_new();</script>";
-			}else if($model->type == 1 && !$model->link){
-				$model->addError('link', '请输入要提交的链接');
-				echo "<script>post_new();</script>";
-			}else if($model->validate()){
-				$model->save(false);
+			if($model->type == 2 && !$model->description){
 
+				$model->addError('description', '请输入要提交的内容');
+				echo "<script>post_new(); setTimeout(show_content, 3);</script>";
+
+			}else if($model->type == 3 && !$model->description){
+
+				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
+				echo "<script>post_new();  setTimeout(show_ama, 3);</script>";
+
+			}else if($model->type == 1 && !$model->link){
+
+				$model->addError('link', '请输入要提交的链接');
+				echo "<script>post_new(); setTimeout(show_link, 3);</script>";
+
+			}else if($model->validate()){
+
+				$model->save(false);
 				$pictures = Yii::app()->session['pictures'];
 				if ($pictures) {
 					foreach ($pictures as $picture => $pic) {

@@ -1,7 +1,6 @@
 body {
 	-webkit-font-smoothing: antialiased;
 }
-
 #main-page{
 	margin-top: 70px;
 }
@@ -23,6 +22,7 @@ body {
 	position:absolute; 
 	margin-left:50px; 
 	margin-top:3px;
+	color: #000 !important;
 }
 
 .navbar-brand > .logo_img{
@@ -200,41 +200,39 @@ div.comment_cell{
 	margin-bottom:10px;
 }
 .post_votes{
-	width:50px;
+	width:65px;
 	float:left;
-	padding-right: 10px;
+	padding-right: 24px;
 }
 .post_pic{
 	float:left;
-	padding-right: 10px;
+	padding-right: 12px;
 }
 .center-cropped {
-  width: 90px;
-  height: 90px;
-  background-position: center center;
-  background-repeat: no-repeat;
+	width: 90px;
+	height: 90px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.link_thumb_pic{
+	width:74px;
 }
 .vote_up, .vote_down{
 	text-align: center;
 	font-size: 20px;
 	display: block;
-	background-color: #faeeef;
-	color: #d15d5f !important;
+	background-color: #efefef;
+	color: #666 !important;
 	border-radius: 3px;
 	vertical-align:middle;
 	text-decoration:none !important;
 }
-.comment_cell > .post_votes > .vote_up,
-.comment_cell > .post_votes > .vote_down{
-	background-color: #efefef;
-	color: #777 !important;		
-}
-.vote_up{
-	padding-bottom:3px;
+.vote_up > div{
+	height:22px;
 }
 .vote_down{
-	height:30px; 
-	padding-top:5px;
+	height:22px; 
+	padding-top:0px;
 	margin-top:8px;
 }
 .vote_num{
@@ -244,8 +242,8 @@ div.comment_cell{
 }
 
 .voted{
-	color:#faeeef !important;
-	background-color: #d15d5f;
+	color:#222 !important;
+	background-color: #fde125;
 }
 
 .comment_cell > .post_votes > .voted{
@@ -258,6 +256,9 @@ a.black_link{
 }
 .bottom_redborder{
 	border-bottom: solid 2px #c73232;	
+}
+.bottom_blackborder{
+	border-bottom: solid 2px #444 !important;
 }
 ul.qq-upload-list{
 	display:none !important;
@@ -287,8 +288,8 @@ h4.post_header{
 		font-size:18px;
 	}
 	.vote_down:hover, .vote_up:hover{
-		color:#faeeef !important;
-		background-color: #d15d5f;
+		color:#222 !important;
+		background-color: #fde125;
 	}
 	.comment_cell > .post_votes > .vote_up:hover,
 	.comment_cell > .post_votes > .vote_down:hover{
@@ -306,6 +307,7 @@ h4.post_header{
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
 	cursor: pointer;
+	color:#333;
 }
 
 #small_avatar_mobile:hover{
@@ -313,7 +315,6 @@ h4.post_header{
 	background: none;
 	text-decoration:none;
 }
-
 #nav_col_post, #nav_col_signup{
 	font-size:14px; 
 	padding-top:6px; 
@@ -321,8 +322,12 @@ h4.post_header{
 	padding-left:10px;
 	text-decoration:none;
 	font-weight:bold;
-	color: #c73232;
+	color: #333333;
 	cursor: pointer;
+	border-color: #333 !important;
+}
+#nav_col_post:hover, #nav_col_signup:hover{
+	background-color:#f8f8f8;
 }
 .sm_h1{
 	font-size:24px;
@@ -406,14 +411,16 @@ button.body-close{
 	margin-bottom:15px;
 }
 #avatar_now{
+	background-color:#fff;
 	padding: 5px;
-	border: solid 1px #e5e5e5;
+	border: solid 1px #444;
 	width:120px;
 	height:120px;
 }
 #small_avatar_nav{
+	background-color:#fff;
 	padding: 2px;
-	border: solid 1px #e1e1e1;
+	border: solid 1px #444;
 	width:36px;
 	height:36px;
 	display:inline;
@@ -432,10 +439,14 @@ button.body-close{
 	-webkit-border-radius:0px 0px 0px 0px !important;
 	margin: 0px 0px 0px 0px !important;
 }
+.admin_vote_field{
+	width:46px;
+}
+
 
 /*
 grey: f5f5f5
 red:c73232
-orange: f77e1b
+yellow: fde125
 blue: 1787fc
 */

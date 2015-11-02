@@ -16,6 +16,7 @@
             'listViewId' => 'postlist',
             'header' => '',
         ),
+	'viewData' => array('admin' => $admin),    //自己的variables
 	'itemView'=>'_view',
         'template'=>'{items}{pager}',	//infinite scroll.
 	'emptyText'=>'',

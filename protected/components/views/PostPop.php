@@ -74,7 +74,7 @@
 	<div class="ama_alert alert alert-warning alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<p><b>有问必答(Ask Me Anything)</b></p>
-		<p>例如: 我是XXX／我是一个XXX (简介自己), 有问必答！</p>
+		<p>标题范例: 我是XXX／我是一个XXX (简介自己), 有问必答！</p>
 		<p class="small">* 名人/机构发起有问必答: 请先<a href="mailto:contact@meiliuer.com">联系我们验证帐号</a>或在发表后将链接分享到您的微博/微信公众号。</p>
 	</div>
 
@@ -106,7 +106,10 @@
 		
 		<input type="hidden" style="display:none;" id="temp_title" />
 
-<?php /****** ?>
+<?php
+$admin = Admins::model()->findByPk(Yii::app()->user->id);
+if(Yii::app()->user->id && $admin):
+?>
 	<div class="row form-group">
 		<label class="control-label" for="Posts_thumb_pic">配图（可选）</label>
 
@@ -115,11 +118,11 @@
 
 	<?php $this->widget('ext.EAjaxUpload.EAjaxUpload',
 	array(
-		'id'=>'uploadFile',        
+		'id'=>'uploadFile2',        
         	'config'=>array(
 	                       'action'=>'/posts/AjaxUpload',
 
-					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;">或 <a href="#" onclick="read_pic(); return false;" class=" small pic_post post_pic_before left5">从网址读取配图</a><span class="no_show post_pic_loading left5">读取中...</span><span class="no_show post_pic_error left5">未找到合适的配图，建议手动上传</span></div><ul class="qq-upload-list" style="display:none;"></ul><br><br><br><div class="qq-upload-drop-area">将图片拖至这里上传</div></div>',
+					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;"></div><ul class="qq-upload-list" style="display:none;"></ul><br><br><br><div class="qq-upload-drop-area">将图片拖至这里上传</div></div>',
 
 					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
 	                                      'allowedExtensions'=>array('jpg','png','gif','jpeg','tiff','tif','bmp'),
@@ -140,8 +143,7 @@
 
 		</div>
 	</div>
-<?php ***/ ?>
-
+<?php endif; ?>
 
 
 	<div class="row content_post form-group">
@@ -193,12 +195,12 @@ $this->widget('ImperaviRedactorWidget', array(
 
 
 	<div class="row buttons top20">
-<?php if(Yii::app()->user->id): ?>
+<!--
 		<?php echo $form->checkBox($model,'private'); ?>
 		<span class="dark_grey v_middle top5">匿名</span>		
-<?php endif; ?>
+-->
 		<div class="float_right">
-			<?php echo CHtml::submitButton($model->isNewRecord ? '提交' : '保存', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
+			<?php echo CHtml::submitButton($model->isNewRecord ? '提交' : '保存', array('class'=>'btn btn-warning btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>
 

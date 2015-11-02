@@ -125,6 +125,93 @@ function ajaxVoteCancel(post_id, type){
 }
 
 
+function admin_vote(post_id){
+	var vote = $('#admin_vote_field_'+post_id).val();
+	var r = confirm("确定将投票修改为"+vote+"吗?");
+		if (r == true) {
+	} else {
+    		return false;
+	}
+	$.ajax({
+        	url: '/posts/VoteAdmin',
+        	type: 'POST',
+        	data: {post_id: post_id, up: vote},
+        	datatype: 'json',
+        	success: function (data) {
+			if(data){
+				//
+			}else{
+				//
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			//
+		}
+    	});
+	alert('投票更新成功');
+}
+
+
+function delete_post(post_id, ajax){
+	var r = confirm("确定删除这个分享吗");
+		if (r == true) {
+	} else {
+    		return false;
+	}
+	$.ajax({
+        	url: '/posts/delete?ajax='+ajax,
+        	type: 'POST',
+        	data: {post_id: post_id},
+        	datatype: 'json',
+        	success: function (data) {
+			if(data){
+				//
+			}else{
+				//
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			//
+		}
+    	});
+	$('#delete_btn_'+post_id).hide();
+	$('#undelete_btn_'+post_id).show();
+	$('#post_cell_'+post_id).css('background-color', '#FBCDCD');
+	alert('删除成功');
+}
+
+
+function undelete_post(post_id, ajax){
+	var r = confirm("确定恢复这个分享吗");
+		if (r == true) {
+	} else {
+    		return false;
+	}
+	$.ajax({
+        	url: '/posts/undelete?ajax='+ajax,
+        	type: 'POST',
+        	data: {post_id: post_id},
+        	datatype: 'json',
+        	success: function (data) {
+			if(data){
+				//
+			}else{
+				//
+			}
+		},
+        	error: function (jqXHR, textStatus, errorThrown) {
+			//
+		}
+    	});
+	$('#delete_btn_'+post_id).show();
+	$('#undelete_btn_'+post_id).hide();
+	$('#post_cell_'+post_id).css('background-color', '#FFF');
+	alert('恢复成功');
+}
+
+
+
+
 function comment_vote(comment_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 
 	if(guest){
@@ -272,9 +359,7 @@ function show_link(){
 	$('#Posts_category_id').val('');
 	//$('.category_drop').show();
 	$('#Posts_category_id').val('');
-	if($('#Posts_name').val() == '我是XXX (简介自己), 有问必答!'){
-		$('#Posts_name').val('');
-	}
+	$('#Posts_name').attr('placeholder', '“一个吸引人的的标题是成功的一半” － 爱迪生');
 }
 
 function show_content(){
@@ -287,20 +372,19 @@ function show_content(){
 	$('.content_post').show();
 	//$('.category_drop').show();
 	$('#Posts_category_id').val('');
-	if($('#Posts_name').val() == '我是XXX (简介自己), 有问必答!'){
-		$('#Posts_name').val('');
-	}
+	$('#post_popup').find('.redactor-placeholder').attr('placeholder', '要提交的内容');
+	$('#Posts_name').attr('placeholder', '“一个吸引人的的标题是成功的一半” － 爱迪生');
 }
 
 function show_ama(){
-	$('#Posts_type').val(2);
+	$('#Posts_type').val(3);
 	$('.link_tab').removeClass('active');
 	$('.content_tab').removeClass('active');
 	$('.ama_tab').addClass('active');
 	$('.content_post').show();
 	$('.ama_alert').show();
-	$('#Posts_name').val('我是XXX (简介自己), 有问必答!');
-	$('#Posts_description').val('请介绍自己，如果方便的话，提供可以证明身份的材料可以大幅提高收视率哦。');
+	$('#Posts_name').attr('placeholder', '我是XXX (简介自己), 有问必答!');
+	$('#post_popup').find('.redactor-placeholder').attr('placeholder', '请介绍自己/推荐提供身份证明');
 	$('.link_post').hide();
 	//$('.category_drop').hide();
 	$('#Posts_category_id').val(30); //random value here for validation, does not matter
@@ -339,14 +423,7 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
         	type: 'POST',
         	success: function (data) {
 			if(!system_action){	//非系统读取
-				$('#Posts_name').val(data[0]);
-			}else{
-				$('#temp_title').val(data[0]);
-			}
-			$('#Posts_thumb_pic').val(data[1]);
-			$('#Posts_video_html').val(data[2]);
-			queried = true;		//only once.
-			if(!system_action){	//非系统读取
+				$('#Posts_name').val(data['title']);
 				$('.post_title_before').show();
 				$('.post_title_loading').hide();
 				$('.post_title_error').hide();
@@ -355,7 +432,18 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
 					$('.post_title_loading').hide();
 					$('.post_title_error').show();
 				}
+			}else{
+				$('#temp_title').val(data['title']);
 			}
+
+			$('#Posts_thumb_pic').val(data['thumbnail_url']);
+			$('#Posts_video_html').val(data['html']);
+			queried = true;		//only once.
+
+			if(data['thumbnail_url']){
+				$('#thumb_pic').attr('src', data['thumbnail_url']);
+			}
+
 		},
         	error: function (jqXHR, textStatus, errorThrown) {
 			if(!system_action){	//非系统读取
@@ -369,7 +457,7 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
 }
 
 
-/*
+
 function read_pic(){
 	if(!validateURlField()){
 		return false;
@@ -409,4 +497,3 @@ function read_pic(){
 		}
     	});
 }
-*/

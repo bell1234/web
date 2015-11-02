@@ -84,39 +84,40 @@ analytics.page()
 <body>
 
 <!--background-color:#fee123; border-bottom: solid 2px #111111;-->
-<nav class="navbar navbar-fixed-top navbar-default bottom_redborder">
+<nav class="navbar navbar-fixed-top navbar-default bottom_blackborder">
   <div class="container-fluid col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
-      <a class="navbar-brand" href="/">
-	<span class="logo_text">没六儿</span>
-	<img class="logo_img" alt="Brand" src="/images/shaka.png" /> 
-      </a>
+	<a class="navbar-brand" href="/">
+		<span class="logo_text">没六儿</span>
+		<img class="logo_img" alt="Brand" src="/images/shaka.png" /> 
+	</a>
 
-<?php if(Yii::app()->user->isGuest || $user->auto): ?>
-      <a id="nav_col_signup" onclick="signup(); return false;" class="navbar-toggle collapsed">
-        <span class="sr-only">New post</span>
-        7秒注册/登录
-      </a>
-<?php else: ?>
-      <a id="small_avatar_mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-	<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
-	<span style="line-height:48px;">
-		<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
-	</span>
-      </a>
-<?php endif; ?>
-        	<?php if (strpos($_SERVER['REQUEST_URI'], "submit") !== false): ?>
-                 <a id="nav_col_post" href="/submit" class="navbar-toggle collapsed">
-        				提交
-      			   </a>
-           <?php else: ?>
-                 <a id="nav_col_post" onclick="post_new(); return false;" href="#" class="navbar-toggle collapsed">
-        				提交
-      			   </a>
-           <?php endif; ?>
+	<?php if(Yii::app()->user->isGuest || $user->auto): ?>
+		<a id="nav_col_signup" onclick="signup(); return false;" class="navbar-toggle collapsed">
+        		<span class="sr-only">New post</span>
+			7秒注册/登录
+		</a>
+	<?php else: ?>
+     		<a id="small_avatar_mobile" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-top-navbar-collapse-1" aria-expanded="false">
+        		<span class="sr-only">Toggle navigation</span>
+			<img id="small_avatar_nav" class="img-circle" src="<?php echo $user->avatar; ?>" />
+			<span style="line-height:48px;">
+				<?php echo (strlen($user->username) > 12) ? mb_substr($user->username, 0, 10,'utf-8') . '..' : $user->username; ?> 
+			</span>
+      		</a>
+	<?php endif; ?>
+
+	<?php if (strpos($_SERVER['REQUEST_URI'], "submit") !== false): ?>
+		<a id="nav_col_post" href="/submit" class="navbar-toggle collapsed">
+			提交
+      		</a>
+	<?php else: ?>
+		<a id="nav_col_post" onclick="post_new();  setTimeout(show_link, 3);  return false;" href="#" class="navbar-toggle collapsed">
+			提交
+		</a>
+	<?php endif; ?>
     
     </div>
 

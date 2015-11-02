@@ -143,6 +143,7 @@ class Posts extends CActiveRecord
 	//s3国内无法使用 以后开始使用又拍云 目前存在服务器上就 http://www.yiiframework.com/extension/upyun/ 
 
 	public function grab_image($url,$saveto){
+
     		$ch = curl_init ($url);
 		curl_setopt($ch, CURLOPT_HEADER, 0);
     		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -190,15 +191,12 @@ class Posts extends CActiveRecord
 		));
 		$objs = $pro->oembed($url);
 
-		$arr = array();
-
-		if(isset($objs->title)){	//title
-			array_push($arr, $objs->title);
-		}else{
-			array_push($arr, "");		
+		//如果embed.ly的api失败，我们自己找图
+		if(!isset($objs->thumbnail_url) || !$objs->thumbnail_url){
+			$objs->thumbnail_url = Posts::GetPic($url);
 		}
 
-		if(isset($objs->thumbnail_url)){	//thumbnail
+		if(isset($objs->thumbnail_url) && $objs->thumbnail_url){	//thumbnail
 
 			$folder = "uploads/posts/".Yii::app()->user->id;
 
@@ -211,20 +209,102 @@ class Posts extends CActiveRecord
 			}else{
 				$objs->thumbnail_url = Posts::grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".jpg");
 			}
-
-			array_push($arr, $objs->thumbnail_url);
-		}else{
-			array_push($arr, "");	
 		}
 
-		if(isset($objs->html)){	//video...
-			array_push($arr, $objs->html);
-		}else{
-			array_push($arr, "");	
-		}
+		return json_encode($objs);
 
-		return json_encode($arr);
+
 	}
+
+
+
+
+	public function GetPic($url)
+	{
+		$ch = curl_init();
+		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (compatible; MSIE 8.0)');
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		$data = curl_exec($ch);
+		curl_close($ch);
+		$pos = strpos($data,'utf-8');
+		if($pos===false){$data = iconv("gbk","utf-8",$data);}
+		preg_match_all( '/<img[^>]+src=[\'"]([^\'"]+)[\'"].*>/i', $data, $array);
+		$biggestImage = 'no image found';
+		// process
+		$maxSize = -1;
+		$visited = array();
+		// base url
+		$parts=parse_url($url);
+		$host=$parts['scheme'].'://'.$parts['host'];
+		// loop a few times
+		$i = 0;
+		shuffle($array[1]);
+		foreach($array[1] as $key=>$element){
+   			$i++;
+    			$pic = $element;
+    			if($i > 3){		//stop at the 3rd image...
+				continue;
+    			}
+    			if($pic=='')continue;// it happens on your test url
+			$absUrl = Posts::nodots(Posts::absurl($url, $pic));
+    			// ignore already seen images, add new images
+    			if(in_array($absUrl, $visited))continue;
+    			$visited[]=$absUrl;
+    			// get image
+    			$image=@getimagesize($absUrl);// get the rest images width and height
+    			if (($image[0] * $image[1]) > $maxSize) {   
+       				$maxSize = $image[0] * $image[1];  //compare images' sise
+        			$biggestImage = $absUrl;
+    			}
+		}
+		if($biggestImage){
+			return $biggestImage; 
+		}else{
+			return "error";
+		}
+	}
+
+
+	public function absurl($pgurl, $url) {
+ 		$pgurl;
+ 		if(strpos($url,'://')) return $url; //already absolute
+ 		if(substr($url,0,2)=='//') return 'http:'.$url; //shorthand scheme
+ 		if($url[0]=='/') return parse_url($pgurl,PHP_URL_SCHEME).'://'.parse_url($pgurl,PHP_URL_HOST).$url; //just add domain
+ 		if(strpos($pgurl,'/',9)===false) $pgurl .= '/'; //add slash to domain if needed
+ 		return substr($pgurl,0,strrpos($pgurl,'/')+1).$url; //for relative links, gets current directory and appends new filename
+	}
+
+
+	public function nodots($path) {
+		$arr1 = explode('/',$path);
+		$arr2 = array();
+		foreach($arr1 as $seg) {
+			switch($seg) {
+			case '.':
+				break;
+			case '..':
+				array_pop($arr2);
+    				break;
+   			case '...':
+    				array_pop($arr2); array_pop($arr2);
+    				break;
+   			case '....':
+    				array_pop($arr2); array_pop($arr2); array_pop($arr2);
+    				break;
+   				case '.....':
+    				array_pop($arr2); array_pop($arr2); array_pop($arr2); array_pop($arr2);
+    				break;
+   			default:
+    			$arr2[] = $seg;
+  			}
+ 		}
+ 		return implode('/',$arr2);
+	}
+
+
 
 	/**
 	 * Returns the static model of the specified AR class.

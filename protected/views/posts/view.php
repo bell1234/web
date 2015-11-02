@@ -28,10 +28,20 @@ if($model->type == 1){
 
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50">
 
-	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; margin-top:0px;" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
+	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; margin-top:-20px; margin-bottom:0px; <?php if($model->hide): ?>background-color:#FBCDCD;<?php endif; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 		<div class="post_content">
+
+	<?php if($admin): ?>
+
+		<div class="post_votes">
+			<input id="admin_vote_field_<?php echo $model->id; ?>" class="admin_vote_field" value="<?php echo ($model->up - $model->down); ?>" />
+			<a id="admin_vote_up_<?php echo $model->id; ?>" href="#" onclick="admin_vote(<?php echo $model->id; ?>); return false;" class="btn btn-sm btn-default top30">
+				修改
+			</a>
+		</div>
+
+	<?php else: ?>
 
 			<div class="post_votes" style="height:100%;">
 				<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
@@ -41,6 +51,7 @@ if($model->type == 1){
 				<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 			</div>
 
+	<?php endif; ?>
 			<div style="min-height:60px;">
 				<h1 class="post_header paddingleft50 bottom15">
 					<?php echo $model->name; ?>
@@ -65,9 +76,21 @@ if($model->type == 1){
                 				<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
                 				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
             				</div>
+
+					<?php if($admin): ?>
+						<a id="delete_btn_<?php echo $model->id; ?>" class="left bold delete_btn" style="margin-left:80px; <?php if($model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $model->id; ?>, 0); return false;">删除</a>
+						<a id="undelete_btn_<?php echo $model->id; ?>" class="left bold" style="margin-left:80px; <?php if(!$model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="undelete_post(<?php echo $model->id; ?>, 0); return false;">已删除 - 点击恢复</a>
+					<?php endif; ?>
 				</div>
 
 			</div>
+
+
+		</div>
+
+	</div>
+
+			<div class="clear"></div>
 
 			<div class="post_comments_box">
 			<?php 
@@ -85,10 +108,6 @@ if($model->type == 1){
 				?>
 			</div>
 
-
-		</div>
-
-	</div>
 
 </div>
 

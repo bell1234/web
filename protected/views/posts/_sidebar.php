@@ -12,11 +12,21 @@
 		<?php endif; ?>
 			<li><a href="#" onclick="signup(); return false;"><i class="fa fa-microphone"></i> <span style="margin-left:9px;">发起问答</span></a></li>
 	<?php else: ?>
+
+
+		<?php if(!isset($_GET['category_id']) || $_GET['category_id'] != 4): ?>
+			<li><a href="#" onclick="post_new(); setTimeout(show_link, 3); return false;"><i class="fa fa-link"></i> <span style="margin-left:4px;">提交链接</span></a></li>
+			<li><a href="#" onclick="post_new(); setTimeout(show_content, 3); return false;"><i class="fa fa-pencil-square-o"></i> <span style="margin-left:4px;">提交内容</span></a></li>
+		<?php endif; ?>
+			<li><a href="#" onclick="post_new(); setTimeout(show_ama, 3); return false;"><i class="fa fa-microphone"></i> <span style="margin-left:9px;">发起问答</span></a></li>
+
+<!--
 		<?php if(!isset($_GET['category_id']) || $_GET['category_id'] != 4): ?>
 			<li><a href="/submit"><i class="fa fa-link"></i> <span style="margin-left:4px;">提交链接</span></a></li>
 			<li><a href="/submit?content"><i class="fa fa-pencil-square-o"></i> <span style="margin-left:4px;">提交内容</span></a></li>
 		<?php endif; ?>
 			<li><a href="/submit?content&ama"><i class="fa fa-microphone"></i> <span style="margin-left:9px;">发起问答</span></a></li>
+-->
 	<?php endif; ?>
 <!--
 	<hr>

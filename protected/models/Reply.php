@@ -1,22 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "tbl_admins".
+ * This is the model class for table "tbl_reply".
  *
- * The followings are the available columns in table 'tbl_admins':
+ * The followings are the available columns in table 'tbl_reply':
+ * @property integer $id
+ * @property integer $comment_id
  * @property integer $user_id
- * @property string $title
- * @property integer $regulate
- * @property integer $metrics
+ * @property string $description
+ * @property integer $create_time
+ * @property integer $up
+ * @property integer $down
  */
-class Admins extends CActiveRecord
+class Reply extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_admins';
+		return 'tbl_reply';
 	}
 
 	/**
@@ -27,14 +30,11 @@ class Admins extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, title, regulate, metrics', 'required'),
-			array('user_id, regulate, metrics, total_posts, posts_today', 'numerical', 'integerOnly'=>true),
-			array('balance', 'safe'),
-			array('title', 'length', 'max'=>128),
+			array('comment_id, user_id, description, create_time, up, down', 'required'),
+			array('comment_id, user_id, create_time, up, down', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, title, regulate, metrics', 'safe', 'on'=>'search'),
-			
+			array('id, comment_id, user_id, description, create_time, up, down', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,10 +55,13 @@ class Admins extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
+			'comment_id' => 'Comment',
 			'user_id' => 'User',
-			'title' => 'Title',
-			'regulate' => 'Regulate',
-			'metrics' => 'Metrics',
+			'description' => 'Description',
+			'create_time' => 'Create Time',
+			'up' => 'Up',
+			'down' => 'Down',
 		);
 	}
 
@@ -80,10 +83,13 @@ class Admins extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id);
+		$criteria->compare('comment_id',$this->comment_id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('regulate',$this->regulate);
-		$criteria->compare('metrics',$this->metrics);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('create_time',$this->create_time);
+		$criteria->compare('up',$this->up);
+		$criteria->compare('down',$this->down);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,7 +100,7 @@ class Admins extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Admins the static model class
+	 * @return Reply the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

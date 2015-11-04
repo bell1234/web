@@ -40,8 +40,8 @@ if(Yii::app()->user->isGuest){
 					<?php echo date('M jS, Y',($data->create_time)); ?>
 				</abbr>
 				<?php if($data->edited): ?>
-				(<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
-					<?php echo date('M jS, Y',($data->create_time)); ?>
+				(<abbr class="timeago" title="<?php echo date('c',($data->edited)); ?>">
+					<?php echo date('M jS, Y',($data->edited)); ?>
 				</abbr>编辑过)
 				<?php endif; ?>
 				<?php if($data->user_id == Yii::app()->user->id): ?>

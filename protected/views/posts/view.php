@@ -77,7 +77,7 @@ if($model->type == 1){
                 				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
             				</div>
 
-					<?php if($admin): ?>
+					<?php if(($admin && $admin->regulate) || Yii::app()->user->id == $model->user_id): ?>
 						<a id="delete_btn_<?php echo $model->id; ?>" class="left bold delete_btn" style="margin-left:80px; <?php if($model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $model->id; ?>, 0); return false;">删除</a>
 						<a id="undelete_btn_<?php echo $model->id; ?>" class="left bold" style="margin-left:80px; <?php if(!$model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="undelete_post(<?php echo $model->id; ?>, 0); return false;">已删除 - 点击恢复</a>
 					<?php endif; ?>

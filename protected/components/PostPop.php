@@ -58,6 +58,14 @@ class PostPop extends CWidget
 			}else if($model->validate()){
 
 				$model->save(false);
+
+				$admin = Admins::model()->findByPk($user->id);
+				if($admin){
+					$admin->total_posts++;
+					$admin->balance += $admin->salary;		//1块钱1条 或者 1块5 1条
+					$admin->save(false);
+				}
+
 				$pictures = Yii::app()->session['pictures'];
 				if ($pictures) {
 					foreach ($pictures as $picture => $pic) {

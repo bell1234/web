@@ -1,0 +1,12 @@
+User-agent: * 
+Disallow: /js/
+Disallow: /css/
+Disallow: /bootstrap/
+Disallow: /assets/
+Disallow: /geoip/
+Disallow: /images/
+Disallow: /themes/
+Disallow: /font-awesome/
+Disallow: /geoip.php
+
+Sitemap: http://meiliuer.com/sitemap.xml

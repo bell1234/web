@@ -28,13 +28,15 @@ $(document).ready(function() {
 
 	$("abbr.timeago").timeago();
 
-	$(window).scroll(function () {
-		if ($(this).scrollTop() > 400) {
-			$('#toTop').fadeIn();
-		} else {
-			$('#toTop').fadeOut();
-		}
-	});
+	if($(window).width() > 768){
+		$(window).scroll(function () {
+			if ($(this).scrollTop() > 400) {
+				$('#toTop').fadeIn();
+			} else {
+				$('#toTop').fadeOut();
+			}
+		});
+	}
 
 	$('#toTop').click(function(){
 		$("html, body").animate({ scrollTop: 0 }, 400);
@@ -190,7 +192,6 @@ function delete_post(post_id, ajax){
 	$('#delete_btn_'+post_id).hide();
 	$('#undelete_btn_'+post_id).show();
 	$('#post_cell_'+post_id).css('background-color', '#FBCDCD');
-	alert('删除成功');
 }
 
 
@@ -219,7 +220,6 @@ function undelete_post(post_id, ajax){
 	$('#delete_btn_'+post_id).show();
 	$('#undelete_btn_'+post_id).hide();
 	$('#post_cell_'+post_id).css('background-color', '#FFF');
-	alert('恢复成功');
 }
 
 
@@ -370,7 +370,7 @@ function show_link(){
 	$('.content_post').hide();
 	$('.ama_alert').hide();
 	$('#Posts_category_id').val('');
-	//$('.category_drop').show();
+	$('.category_drop').show();
 	$('#Posts_category_id').val('');
 	$('#Posts_name').attr('placeholder', '“一个吸引人的的标题是成功的一半” － 爱迪生');
 }
@@ -383,7 +383,7 @@ function show_content(){
 	$('.link_post').hide();
 	$('.ama_alert').hide();
 	$('.content_post').show();
-	//$('.category_drop').show();
+	$('.category_drop').show();
 	$('#Posts_category_id').val('');
 	$('#post_popup').find('.redactor-placeholder').attr('placeholder', '要提交的内容');
 	$('#Posts_name').attr('placeholder', '“一个吸引人的的标题是成功的一半” － 爱迪生');
@@ -399,8 +399,8 @@ function show_ama(){
 	$('#Posts_name').attr('placeholder', '我是XXX (简介自己), 有问必答!');
 	$('#post_popup').find('.redactor-placeholder').attr('placeholder', '请介绍自己/推荐提供身份证明');
 	$('.link_post').hide();
-	//$('.category_drop').hide();
-	$('#Posts_category_id').val(30); //random value here for validation, does not matter
+	$('.category_drop').hide();
+	$('#Posts_category_id').val(30); //random value in the dropdown here for validation, does not matter
 }
 
 function read_title(system_action){		//读取标题，图片或者视频。如果system_action为true, 则为系统读取，不覆盖标题。
@@ -454,7 +454,9 @@ function read_title(system_action){		//读取标题，图片或者视频。如�
 			queried = true;		//only once.
 
 			if(data['thumbnail_url']){
-				$('#thumb_pic').attr('src', data['thumbnail_url']);
+				if(!$('#thumb_pic').attr('src')){
+					$('#thumb_pic').attr('src', data['thumbnail_url']);
+				}
 			}
 
 		},

@@ -3,7 +3,11 @@
 /* @var $dataProvider CActiveDataProvider */
 ?>
 
-<?php $this->pageTitle=Yii::app()->name . ' - 最火热的话题与信息'; ?>
+<?php 
+$this->pageTitle=Yii::app()->name . ' - 最火热的话题与信息'; 
+$href = 'http://meiliuer.com'; 
+Yii::app()->clientScript->registerLinkTag('canonical', null, $href); 
+?>
 
 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 bottom50 top15">
 

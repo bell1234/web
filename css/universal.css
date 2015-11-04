@@ -21,7 +21,7 @@ body {
 .navbar-brand > .logo_text{
 	position:absolute; 
 	margin-left:50px; 
-	margin-top:3px;
+	margin-top:1px;
 	color: #000 !important;
 }
 
@@ -199,6 +199,7 @@ div.comment_cell{
 	margin-top:0px;
 	margin-bottom:10px;
 }
+
 .post_votes{
 	width:65px;
 	float:left;
@@ -208,14 +209,40 @@ div.comment_cell{
 	float:left;
 	padding-right: 12px;
 }
+.link_thumb_pic{
+	width:74px;
+}
+#thumb_pic{
+	width:90px; 
+	height:90px;
+	margin-top:-30px; 
+	float:left;
+}
+@media (max-width: 350px) {
+
+	#thumb_pic{
+		width:75px; 
+		height:75px;
+		margin-top:-25px; 
+		float:left;
+	}
+	.post_votes{
+		width: 50px;
+		padding-right: 16px;
+	}
+	.post_pic{
+		padding-right: 8px;
+	}
+	.link_thumb_pic{
+		width:70px;
+	}
+}
+
 .center-cropped {
 	width: 90px;
 	height: 90px;
 	background-position: center center;
 	background-repeat: no-repeat;
-}
-.link_thumb_pic{
-	width:74px;
 }
 .vote_up, .vote_down{
 	text-align: center;
@@ -466,7 +493,7 @@ button.body-close{
 .view_username{
 	display:inline-block;
 	margin-left:80px; 
-	width:20%; 
+	width:20%;
 	white-space: nowrap; 
 	overflow:hidden; 
 	vertical-align:middle;

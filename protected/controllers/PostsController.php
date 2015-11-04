@@ -176,7 +176,6 @@ class PostsController extends Controller
 					}
 				}
 				unset(Yii::app()->session['comment_pictures']);
-
 			}
 		}
 
@@ -408,12 +407,12 @@ class PostsController extends Controller
 		$array = array();
 		if($model){
 			$json = Posts::getTitle($model->link);
-			$array = json_decode($json);
-			if(isset($array[1])){
-				$model->thumb_pic = $array[1];
+			$array = json_decode($json, TRUE);
+			if(isset($array['thumbnail_url'])){
+				$model->thumb_pic = $array['thumbnail_url'];
 			}
-			if(isset($array[2])){
-				$model->video_html = $array[2];
+			if(isset($array['html'])){
+				$model->video_html = $array['html'];
 			}
 			$model->save(false);
 		}
@@ -497,13 +496,13 @@ class PostsController extends Controller
 	 */
 	public function actionDelete()
 	{
-		$admin = Admins::model()->findByPk(Yii::app()->user->id);
-		if(!$admin){
-			return;
-		}
 		if(isset($_POST['post_id'])){
 			$model = Posts::model()->findByPk($_POST['post_id']);
 			if($model){
+				$admin = Admins::model()->findByPk(Yii::app()->user->id);
+				if(!$admin && Yii::app()->user->id != $model->user_id){
+					return;
+				}
 				$model->hide = 1;
 				$model->save(false);
 				echo "success";	
@@ -542,6 +541,7 @@ class PostsController extends Controller
 	 */
 	public function actionIndex()
 	{
+		unset(Yii::app()->session['pictures']);
 		if(Yii::app()->user->id){
 			$user = Users::model()->findByPk(Yii::app()->user->id);
 			$user->userActed(); 

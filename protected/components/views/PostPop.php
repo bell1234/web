@@ -65,15 +65,15 @@
 	<div class="row">
 		<?php echo $form->hiddenField($model,'type', array('value'=>$type)); ?>
 		<ul class="nav nav-tabs top10 bottom10 bold">
-  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">提交链接</a></li>
-  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">提交内容</a></li>
-  			<li role="presentation" class="ama_tab"><a href="#" onclick="show_ama(); return false;">有问必答</a></li>
+  			<li role="presentation" class="link_tab active"><a href="#" onclick="show_link(); return false;">链接</a></li>
+  			<li role="presentation" class="content_tab"><a href="#" onclick="show_content(); return false;">内容</a></li>
+  			<!--<li role="presentation" class="ama_tab"><a href="#" onclick="show_ama(); return false;">有问必答</a></li>-->
 		</ul>
 	</div>
 
 	<div class="ama_alert alert alert-warning alert-dismissible" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<p><b>有问必答(Ask Me Anything)</b></p>
+		<p><b>有问必答(AMA - Ask Me Anything)</b></p>
 		<p>标题范例: 我是XXX／我是一个XXX (简介自己), 有问必答！</p>
 		<p class="small">* 名人/机构发起有问必答: 请先<a href="mailto:contact@meiliuer.com">联系我们验证帐号</a>或在发表后将链接分享到您的微博/微信公众号。</p>
 	</div>
@@ -106,15 +106,15 @@
 		
 		<input type="hidden" style="display:none;" id="temp_title" />
 
-<?php
+<?php 
 $admin = Admins::model()->findByPk(Yii::app()->user->id);
-if(Yii::app()->user->id && $admin):
-?>
+if($admin): ?>
+
 	<div class="row form-group">
 		<label class="control-label" for="Posts_thumb_pic">配图（可选）</label>
 
 		<div>
-			<img id="thumb_pic" style="width:100px; height:100px; margin-top:-35px; float:left;" src='' />
+			<img id="thumb_pic" src='' />
 
 	<?php $this->widget('ext.EAjaxUpload.EAjaxUpload',
 	array(
@@ -123,8 +123,12 @@ if(Yii::app()->user->id && $admin):
 	                       'action'=>'/posts/AjaxUpload',
 
 					      'template'=>'<div class="qq-uploader" style="margin-top:35px;"><div class="qq-upload-button btn btn-primary btn-sm" style="width:70px; float:left; margin-left:20px;">上传</div><div class="link_post" style="margin-left:10px; float:left; margin-top:6px;"></div><ul class="qq-upload-list" style="display:none;"></ul><br><br><br><div class="qq-upload-drop-area">将图片拖至这里上传</div></div>',
+						'onSubmit'=>"js:function(id, fileName){ $('#picture_progress').show(); }",
 
-					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
+						'onProgress'=>"js:function(id, fileName, loaded, total){ var percent = Math.round(100 * loaded/total); $('#picture_progress > .progress-bar').attr('aria-valuenow', percent).css('width', percent+'%'); $('#submit_progress').text(percent+'%'); }",
+
+
+					      'onComplete'=>"js:function(id, fileName, responseJSON){ $('#picture_progress').hide(); $('#thumb_pic').attr('src', '/uploads/posts/".Yii::app()->user->id."/' + fileName); $('#Posts_thumb_pic').val('/uploads/posts/".Yii::app()->user->id."/' + fileName);}",
 	                                      'allowedExtensions'=>array('jpg','png','gif','jpeg','tiff','tif','bmp'),
 	                                      'sizeLimit'=>5*1024*1024,// maximum file size in bytes       
                				      'minSizeLimit'=>1,// minimum file size in bytes
@@ -143,8 +147,16 @@ if(Yii::app()->user->id && $admin):
 
 		</div>
 	</div>
-<?php endif; ?>
 
+
+
+<div id="picture_progress" class="progress" style="display:none;">
+  <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style=" color:black; min-width: 7em;">
+	上传中...<span id="submit_progress">0<span>
+    <span class="sr-only">100% Complete (success)</span>
+  </div>
+</div>
+<?php endif; ?>
 
 	<div class="row content_post form-group">
 		<label class="control-label" for="Posts_description">内容</label>
@@ -186,9 +198,9 @@ $this->widget('ImperaviRedactorWidget', array(
 	</div>
 
 
-	<div class="row form-group category_drop" style="display:none;">
+	<div class="row form-group category_drop">
 		<label class="control-label" for="Posts_category_id">请选择分类</label>
-		<?php echo $form->dropDownList($model,'category_id', array(1=>'搞笑', 2=>'新闻', 3=>'科技', 30=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
+		<?php echo $form->dropDownList($model,'category_id', array(1=>'娱乐', 2=>'新闻', 3=>'科技', 30=>'杂谈'), array('class'=>'form-control','empty'=>'点击选择分类',)); ?>
 		<?php echo $form->error($model,'category_id'); ?>
 	</div>
 

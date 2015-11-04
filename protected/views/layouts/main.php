@@ -3,9 +3,9 @@
 <html lang="zh-CN">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/font-awesome/css/font-awesome.min.css">
     <!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/css/bootstrap-theme.min.css">-->
@@ -23,7 +23,15 @@
 analytics.load("kEGvVw6uhrd6l8WXPJaVeIzMlCqBG24O");
 analytics.page()
 }}();
-	</script>
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c3281480f32d56f1bc53d5f175bbe6d6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
    <script type="text/javascript">
         var ShareId = "";
@@ -60,6 +68,7 @@ analytics.page()
     
     <?php if(Yii::app()->user->id): 
 			$user = Users::model()->findByPk(Yii::app()->user->id);
+			$admin = Admins::model()->findByPk(Yii::app()->user->id);
 	?>
             <script>
             $('document').ready(function() {
@@ -124,6 +133,9 @@ analytics.page()
     <div class="collapse navbar-collapse"  aria-expanded="false" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
            	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+		<?php if(isset($admin) && $admin): ?>
+           		<li><a href="/users/withdraw">管理员取款</a></li>
+		<?php endif; ?>
            	<li><a href="/users/setting">账户设置</a></li>
            	<li><a href="/site/contact">联系我们</a></li>
            	<li role="separator" class="divider"></li>
@@ -133,17 +145,20 @@ analytics.page()
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-top-navbar-collapse">
-      <!--
-      <ul class="nav navbar-nav">
+      
+      <ul class="nav navbar-nav" style="margin-left:80px;">
         <?php $host = $_SERVER['REQUEST_URI']; ?>
         <li <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>class="active"<?php endif; ?>><a href="/">热点</a></li>
-        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>class="active"<?php endif; ?>><a href="/funny">搞笑</a></li>
+        <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>class="active"<?php endif; ?>><a href="/funny">娱乐</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>class="active"<?php endif; ?>><a href="/news">新闻</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>class="active"<?php endif; ?>><a href="/tech">科技</a></li>
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>class="active"<?php endif; ?>><a href="/other">杂谈</a></li>
+
+<!--
         <li <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>class="active"<?php endif; ?>><a href="/ama">有问必答</a></li>
+-->
       </ul>
-      -->
+      
       <ul class="nav navbar-nav navbar-right">
 
 
@@ -167,6 +182,9 @@ analytics.page()
 		</a>
           	<ul class="dropdown-menu">
            	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+		<?php if(isset($admin) && $admin): ?>
+           		<li><a href="/users/withdraw">管理员取款</a></li>
+		<?php endif; ?>
            	<li><a href="/users/setting">账户设置</a></li>
            	<li><a href="/site/contact">联系我们</a></li>
            	<li role="separator" class="divider"></li>
@@ -185,13 +203,20 @@ analytics.page()
 <!--
 <div id="option_bar_mobile" class="btn-group visible-xs btn-block" role="group">
   <a href="/" class="btn btn-default <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>active<?php endif; ?>" style="border-left:none;">热点</a>
-  <a href="/funny" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>active<?php endif; ?>" >搞笑</a>
+  <a href="/funny" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>active<?php endif; ?>" >娱乐</a>
   <a href="/news" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>active<?php endif; ?>" >新闻</a>
   <a href="/tech" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>active<?php endif; ?>" >科技</a>
   <a href="/other" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>active<?php endif; ?>" >杂谈</a>
   <a href="/ama" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 4): ?>active<?php endif; ?>" style="width:22.5%;">有问必答</a>
 </div>
 -->
+<div id="option_bar_mobile" class="btn-group visible-xs btn-block" role="group">
+  <a href="/" class="btn btn-default <?php if($host == "/" || $host == "" || $host == "/site/index" || $host == "/posts/index"): ?>active<?php endif; ?>" style="border-left:none; width:20%;">热点</a>
+  <a href="/funny" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 1): ?>active<?php endif; ?>" style="width:20%;">娱乐</a>
+  <a href="/news" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 2): ?>active<?php endif; ?>" style="width:20%;">新闻</a>
+  <a href="/tech" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 3): ?>active<?php endif; ?>" style="width:20%;">科技</a>
+  <a href="/other" class="btn btn-default <?php if(isset($_GET['category_id']) && $_GET['category_id'] == 30): ?>active<?php endif; ?>" style="width:20%;" >杂谈</a>
+</div>
 
 
 

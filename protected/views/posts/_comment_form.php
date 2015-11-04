@@ -85,7 +85,7 @@ $this->widget('ImperaviRedactorWidget', array(
 				<a class="right20" href="#" onclick="cancel_edit_comment(); return false;">取消</a>
 			<?php endif; ?>
 
-			<?php echo CHtml::submitButton($model->isNewRecord ? '评论' : '修改', array('class'=>'btn btn-danger btn-default paddingleft30 paddingright30')); ?>
+			<?php echo CHtml::submitButton($model->isNewRecord ? '评论' : '修改', array('class'=>'btn btn-warning btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>
 

@@ -46,7 +46,7 @@ class Posts extends CActiveRecord
 
 			array('description', 'length', 'min'=>10, 'max'=>'65535', 'tooShort'=>'内容太少啦！', 'tooLong'=>'内容太长啦!'),
 
-			//array('category_id', 'required', 'message'=>'请为你的内容分类'),
+			array('category_id', 'required', 'message'=>'请为提交内容分类'),
 
 			array('user_id, create_time', 'required'),		//system will assign it...
 
@@ -69,6 +69,7 @@ class Posts extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
 		);
 	}
 
@@ -158,8 +159,9 @@ class Posts extends CActiveRecord
     		fwrite($fp, $raw);
     		fclose($fp);
 
+	try{
  		$thumb = new Imagick($saveto);
-		if(exif_imagetype($saveto) != IMAGETYPE_JPEG){
+		if(@exif_imagetype($saveto) != IMAGETYPE_JPEG){
 			$thumb->setImageFormat("png");
 		}
         	$thumb->thumbnailImage(180, 180);
@@ -167,6 +169,10 @@ class Posts extends CActiveRecord
         		unlink($saveto);
     		}
         	$thumb->writeImage($saveto);
+
+	} catch (Exception $e) {
+		return "";		//empty picture
+	}
 
 		//s3 国内被墙
 		//$success = Yii::app()->s3->upload($saveto, $saveto, 'meiliuer');	//from, to, bucket name
@@ -189,14 +195,20 @@ class Posts extends CActiveRecord
  		   'key' => '05c0e7529f174ace83e837e28ffc448e',
     		    'user_agent' => 'Mozilla/8.0 (compatible; mytestapp/1.0)'
 		));
-		$objs = $pro->oembed($url);
+
+
+		try{
+			$objs = @$pro->oembed($url);
+		} catch (Exception $e) {
+
+		}
 
 		//如果embed.ly的api失败，我们自己找图
-		if(!isset($objs->thumbnail_url) || !$objs->thumbnail_url){
+		if(!isset($objs) || !$objs || !isset($objs->thumbnail_url) || !$objs->thumbnail_url){
 			$objs->thumbnail_url = Posts::GetPic($url);
 		}
 
-		if(isset($objs->thumbnail_url) && $objs->thumbnail_url){	//thumbnail
+		if(isset($objs) && $objs && isset($objs->thumbnail_url) && $objs->thumbnail_url){	//thumbnail
 
 			$folder = "uploads/posts/".Yii::app()->user->id;
 
@@ -204,7 +216,7 @@ class Posts extends CActiveRecord
             			mkdir ($folder, 0777, true);
         		}
 
-			if(exif_imagetype($objs->thumbnail_url) != IMAGETYPE_JPEG){
+			if(@exif_imagetype($objs->thumbnail_url) != IMAGETYPE_JPEG){
 				$objs->thumbnail_url = Posts::grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".png");
 			}else{
 				$objs->thumbnail_url = Posts::grab_image($objs->thumbnail_url, "uploads/posts/".Yii::app()->user->id."/pic_".time().".jpg");

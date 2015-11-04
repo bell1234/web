@@ -1,22 +1,22 @@
 <?php
 
 /**
- * This is the model class for table "tbl_admins".
+ * This is the model class for table "tbl_withdraw".
  *
- * The followings are the available columns in table 'tbl_admins':
+ * The followings are the available columns in table 'tbl_withdraw':
+ * @property integer $id
  * @property integer $user_id
- * @property string $title
- * @property integer $regulate
- * @property integer $metrics
+ * @property string $alipay
+ * @property integer $create_time
  */
-class Admins extends CActiveRecord
+class Withdraw extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_admins';
+		return 'tbl_withdraw';
 	}
 
 	/**
@@ -27,14 +27,13 @@ class Admins extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, title, regulate, metrics', 'required'),
-			array('user_id, regulate, metrics, total_posts, posts_today', 'numerical', 'integerOnly'=>true),
-			array('balance', 'safe'),
-			array('title', 'length', 'max'=>128),
+			array('alipay', 'required', 'message'=>'请输入您的支付宝邮箱/账号'),
+			array('user_id', 'required'),
+			array('user_id, create_time, sent', 'numerical', 'integerOnly'=>true),
+			array('alipay', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, title, regulate, metrics', 'safe', 'on'=>'search'),
-			
+			array('id, user_id, alipay, create_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,10 +54,10 @@ class Admins extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+			'id' => 'ID',
 			'user_id' => 'User',
-			'title' => 'Title',
-			'regulate' => 'Regulate',
-			'metrics' => 'Metrics',
+			'alipay' => 'Alipay',
+			'create_time' => 'Create Time',
 		);
 	}
 
@@ -80,10 +79,10 @@ class Admins extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('regulate',$this->regulate);
-		$criteria->compare('metrics',$this->metrics);
+		$criteria->compare('alipay',$this->alipay,true);
+		$criteria->compare('create_time',$this->create_time);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,7 +93,7 @@ class Admins extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Admins the static model class
+	 * @return Withdraw the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

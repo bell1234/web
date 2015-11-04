@@ -2,6 +2,8 @@
 /* @var $this PostsController */
 /* @var $model Posts */
 
+$this->pageTitle = $model->name . " － 没六儿";
+
 $self = 0;
 $guest = 0;
 $alreadyUp = 0;
@@ -53,9 +55,9 @@ if($model->type == 1){
 
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$model->thumb_pic): ?>
-					<img class="link_thumb_pic" src="/images/blackshaka.gif" />
+					<img id="link_thumb_pic" class="link_thumb_pic" src="/images/shaka.png" />
 				<?php else: ?>
-					<img class="link_thumb_pic" src="<?php echo $model->thumb_pic; ?>" />
+					<img id="link_thumb_pic" class="link_thumb_pic" src="<?php echo $model->thumb_pic; ?>" />
 				<?php endif; ?>
 			</a>
 		</div>
@@ -88,7 +90,7 @@ if($model->type == 1){
                 				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
             				</div>
 
-					<?php if($admin): ?>
+					<?php if(($admin && $admin->regulate) || Yii::app()->user->id == $model->user_id): ?>
 						<a id="delete_btn_<?php echo $model->id; ?>" class="left bold delete_btn" style="margin-left:80px; <?php if($model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $model->id; ?>, 0); return false;">删除</a>
 						<a id="undelete_btn_<?php echo $model->id; ?>" class="left bold" style="margin-left:80px; <?php if(!$model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="undelete_post(<?php echo $model->id; ?>, 0); return false;">已删除 - 点击恢复</a>
 					<?php endif; ?>

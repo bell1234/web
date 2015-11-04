@@ -32,7 +32,7 @@ class UsersController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('setting', 'ajaxUpload'),
+				'actions'=>array('setting', 'ajaxUpload', 'withdraw'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,6 +44,9 @@ class UsersController extends Controller
 			),
 		);
 	}
+
+
+
 
 	//Ajax 上传头像
 	public function actionAjaxUpload()
@@ -83,6 +86,37 @@ class UsersController extends Controller
         echo $return;// it's array
 	}
 
+
+	//管理员取现
+	public function actionWithdraw()
+	{
+		$model = new Withdraw;
+		$admin = Admins::model()->findByPk(Yii::app()->user->id);
+		if(!$admin){
+			throw new CHttpException(404,'The requested page does not exist.');
+		}
+
+		if(isset($_POST['Withdraw']))
+		{
+			$model->money = $admin->balance;
+			$model->user_id = Yii::app()->user->id;
+			$model->attributes=$_POST['Withdraw'];
+			$model->create_time = time();
+
+			if($model->save()){
+				$admin->balance = 0;
+				$admin->save(false);
+				Yii::app()->user->setFlash('withdrawMessage', "您的提款请求已经提交。我们会在2-3个工作日内付款。");
+				$this->refresh();
+			}
+		}		
+
+		$this->render('withdraw',array(
+			'model'=>$model,
+			'admin'=>$admin
+		));
+
+	}
 
 
 	/**

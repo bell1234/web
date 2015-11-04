@@ -70,7 +70,7 @@ $this->pageTitle=Yii::app()->name . ' - 联系我们';
 	<?php endif; ?>
 
 	<div class="row buttons top10">
-		<?php echo CHtml::submitButton('提交', array('class'=>'btn btn-primary btn-block')); ?>
+		<?php echo CHtml::submitButton('提交', array('class'=>'btn btn-warning btn-block')); ?>
 
 	</div>
 

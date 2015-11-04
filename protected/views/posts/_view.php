@@ -31,7 +31,7 @@ $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8'
 
 ?>
 
-<div id="post_cell_<?php echo $data->id; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div id="post_cell_<?php echo $data->id; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12" style="<?php if($data->hide): ?>background-color: #FBCDCD;<?php endif; ?>">
 
 	<?php if($admin): ?>
 
@@ -57,7 +57,7 @@ $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8'
 		<div class="post_pic">
 			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$data->thumb_pic): 
-					  $thumb = "http://meiliuer.com/images/shaka.png";
+					  $thumb = "/images/shaka.png";
 				      else:
 					  $thumb = $data->thumb_pic;
 				      endif;
@@ -91,9 +91,18 @@ $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8'
 				</abbr>
 -->				
 
-					<?php if($admin): ?>
-						<a id="delete_btn_<?php echo $data->id; ?>" class="left bold delete_btn" style="margin-left:80px; <?php if($data->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $data->id; ?>, 0); return false;">删除</a>
-						<a id="undelete_btn_<?php echo $data->id; ?>" class="left bold" style="margin-left:80px; <?php if(!$data->hide): ?>display:none;<?php endif; ?>" href="#" onclick="undelete_post(<?php echo $data->id; ?>, 0); return false;">已删除 - 点击恢复</a>
+					<?php if($admin && $admin->regulate): ?>
+
+<?php 
+if($data->category_id): 
+	echo "(".$data->category->name.")"; 
+endif; 
+?>
+
+						<a id="delete_btn_<?php echo $data->id; ?>" class="left bold delete_btn" style="<?php if($data->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $data->id; ?>, 0); return false;">删除</a>
+						<a id="undelete_btn_<?php echo $data->id; ?>" class="left bold" style="<?php if(!$data->hide): ?>display:none;<?php endif; ?>" href="#" onclick="undelete_post(<?php echo $data->id; ?>, 0); return false;">已删除 - 点击恢复</a>
+
+
 					<?php endif; ?>
 
 				</div>

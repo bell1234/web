@@ -19,7 +19,7 @@
 	</div>
 	
 	<div class="row submit1">
-                <?php echo CHtml::submitButton('找回密码', array('class'=>'btn btn-primary btn-block')); ?>
+                <?php echo CHtml::submitButton('找回密码', array('class'=>'btn btn-warning btn-block')); ?>
 	</div>
 
 <?php echo CHtml::endForm(); ?>

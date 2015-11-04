@@ -34,7 +34,7 @@
 			'id'=>'uploadFile',
 	        	'config'=>array(
 	                       'action'=>'/users/AjaxUpload',
-				'template'=>'<div class="qq-uploader"><div class="qq-upload-drop-area">将图片拖至这里上传</div><div class="qq-upload-button btn btn-primary btn-block">上传新头像</div><ul class="qq-upload-list" style="display:none;"></ul></div>',
+				'template'=>'<div class="qq-uploader"><div class="qq-upload-drop-area">将图片拖至这里上传</div><div class="qq-upload-button btn btn-warning btn-block">上传新头像</div><ul class="qq-upload-list" style="display:none;"></ul></div>',
 				'onComplete'=>"js:function(id, fileName, responseJSON){ $('#avatar_now').attr('src', '/uploads/avatar/".Yii::app()->user->id."/' + fileName);}",
 	                        'allowedExtensions'=>array('jpg','png','gif','jpeg','tiff','tif','bmp'),
 	                        'sizeLimit'=>5*1024*1024,// maximum file size in bytes                    
@@ -79,7 +79,7 @@
 
 
 	<div class="row buttons" style="margin-top:15px;">
-		<?php echo CHtml::submitButton('保存信息', array('class'=>'btn btn-primary btn-block')); ?>
+		<?php echo CHtml::submitButton('保存信息', array('class'=>'btn btn-warning btn-block')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

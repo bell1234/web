@@ -65,16 +65,16 @@ class CrontabController extends Controller
 
 			if(!$post->thumb_pic){
 				$json = $post->getTitle((string)$entry->link);
-				$array = json_decode($json);
-				if(isset($array[1])){
-					$post->thumb_pic = $array[1];
+				$array = json_decode($json, TRUE);
+				if(isset($array['thumbnail_url'])){
+					$post->thumb_pic = $array['thumbnail_url'];
 				}
-				if(isset($array[2])){
-					$post->video_html = $array[2];
+				if(isset($array['html'])){
+					$post->video_html = $array['html'];
 				}
 			}
 			if(!$post->thumb_pic){
-				$post->up = round($post->up / 5);
+				$post->up = round($post->up / 2);
 			}
 			$post->save();
 			$rss->failed = 0;
@@ -97,7 +97,7 @@ class CrontabController extends Controller
     public function actionTech(){	
 
 	ini_set('max_execution_time', 900);	//15 mins function max
-	set_time_limit(0);	
+	set_time_limit(900);	
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
@@ -121,7 +121,7 @@ class CrontabController extends Controller
     public function actionFunny(){	
 
 	ini_set('max_execution_time', 900);	//15 mins function max
-	set_time_limit(0);		
+	set_time_limit(900);		
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
@@ -167,7 +167,7 @@ class CrontabController extends Controller
     public function actionNews(){	
 
 	ini_set('max_execution_time', 900);	//15 mins function max
-	set_time_limit(0);	
+	set_time_limit(900);	
 
         //prevent anyone else from using our cron
         if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {

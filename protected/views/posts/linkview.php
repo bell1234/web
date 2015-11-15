@@ -9,9 +9,6 @@ $guest = 0;
 $alreadyUp = 0;
 $alreadyDown = 0;
 $user = Users::model()->findByPk($model->user_id);
-if($model->user_id == Yii::app()->user->id){
-	$self = 1;
-}
 if(Yii::app()->user->isGuest){
 	$guest = 1;
 }else{
@@ -30,10 +27,10 @@ if($model->type == 1){
 
 	<div id="post_cell_<?php echo $model->id; ?>" style="border-bottom:none; <?php if($model->hide): ?>background-color:#FBCDCD;<?php endif; ?>" class="post_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-	<?php if($admin): ?>
+	<?php if($admin && $admin->vote): ?>
 
 		<div class="post_votes">
-			<input id="admin_vote_field_<?php echo $model->id; ?>" class="admin_vote_field" value="<?php echo ($model->up - $model->down); ?>" />
+			<input id="admin_vote_field_<?php echo $model->id; ?>" class="admin_vote_field" value="<?php echo ($model->fake_up + $model->up - $model->down); ?>" />
 			<a id="admin_vote_up_<?php echo $model->id; ?>" href="#" onclick="admin_vote(<?php echo $model->id; ?>); return false;" class="btn btn-sm btn-default top30">
 				修改
 			</a>
@@ -44,7 +41,7 @@ if($model->type == 1){
 		<div class="post_votes">
 			<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
 				<div><i class="glyphicon glyphicon-triangle-top"></i></div>
-				<div class="vote_num"><?php echo ($model->up - $model->down); ?></div>
+				<div class="vote_num"><?php echo ($model->fake_up + $model->up - $model->down); ?></div>
 			</a>
 			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 		</div>
@@ -64,7 +61,7 @@ if($model->type == 1){
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
 
-			<div style="min-height:66px;">
+			<div>
 				<h1 class="post_header" style="margin-top:0px;">
 					<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
 						<?php echo $model->name; ?>
@@ -74,6 +71,7 @@ if($model->type == 1){
 			</div>
 
 			<div class="post_footer grey small">
+				<img class="extra_small_avatar img-circle" src="<?php echo $user->avatar; ?>" />
 				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
@@ -85,10 +83,9 @@ if($model->type == 1){
 					<span class="left grey bold">分享到:</span>
 
             	    			<div class="bdsharebuttonbox" style="position:absolute; margin-top:-25px; margin-left:45px;">
-                				<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
-                				<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
-                				<a title="分享到QQ空间" class="bds_qzone" href="#" data-cmd="qzone" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
-            				</div>
+                					<a title="分享到微信" class="bds_weixin" href="#" data-cmd="weixin" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
+                					<a title="分享到新浪微博" class="bds_tsina" href="#" data-cmd="tsina" data-title="<?php echo $model->name; ?>" data-img="<?php echo $model->thumb_pic; ?>" data-id="<?php echo $model->id;?>"></a>
+                			    </div>
 
 					<?php if(($admin && $admin->regulate) || Yii::app()->user->id == $model->user_id): ?>
 						<a id="delete_btn_<?php echo $model->id; ?>" class="left bold delete_btn" style="margin-left:80px; <?php if($model->hide): ?>display:none;<?php endif; ?>" href="#" onclick="delete_post(<?php echo $model->id; ?>, 0); return false;">删除</a>
@@ -109,13 +106,13 @@ if($model->type == 1){
 		?>
 		</div>
 
-		<div class="post_comment_counter left50">
+		<div class="post_comment_counter left50 bottom10">
 			<?php echo $model->comments; ?> 个评论
 		</div>
 
 		<div class="post_comments">
 			<?php
-				$this->renderPartial('_comments', array('dataProvider'=>$dataProvider, 'model'=>$model));  
+				$this->renderPartial('_comments', array('dataProvider'=>$dataProvider, 'model'=>$model, 'reply'=>$reply));  
 			?>
 		</div>
 

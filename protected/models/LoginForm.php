@@ -10,7 +10,7 @@ class LoginForm extends CFormModel
 	public $username;
 	public $password;
 	public $rememberMe;
-
+	public $invitation_code;
 	private $_identity;
 
 	/**
@@ -24,6 +24,7 @@ class LoginForm extends CFormModel
 			// username and password are required
 			array('username', 'required', 'message'=>'请输入用户名或邮箱'),
 			array('password', 'required', 'message'=>'请输入密码'),
+			//array('invitation_code', 'required', 'message'=>'没六儿暂不开放公开注册，请输入邀请码'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated

@@ -16,6 +16,25 @@ body {
     #main-page {
         margin-top: 0px;
     }
+	#toTop{
+		border-radius: 3px;
+		background-color:#efefef;
+		/* default fallback */
+		background: rgb(239, 239, 239) transparent;
+		/* nice browsers */
+		background: rgba(239, 239, 239, 0.8);
+		color:#666;
+		padding: 10px;
+		padding-top:5px;
+		padding-bottom:5px;
+		position: fixed;
+		bottom: 45px;
+		left: 91.66%;
+		border-radius:25px;
+		margin-left:-70px;
+		cursor: pointer;
+		font-size:25px;
+	}
 }
 
 .navbar-brand > .logo_text{
@@ -208,6 +227,8 @@ div.comment_cell{
 .post_pic{
 	float:left;
 	padding-right: 12px;
+	height:74px;
+	overflow-y:hidden;
 }
 .link_thumb_pic{
 	width:74px;
@@ -363,7 +384,7 @@ h4.post_header{
 	background: none;
 	text-decoration:none;
 }
-#nav_col_post, #nav_col_signup{
+#nav_col_post, #nav_col_signup, #nav_col_noti{
 	font-size:14px; 
 	padding-top:6px; 
 	padding-bottom:6px; 
@@ -374,7 +395,11 @@ h4.post_header{
 	cursor: pointer;
 	border-color: #333 !important;
 }
-#nav_col_post:hover, #nav_col_signup:hover{
+#nav_col_noti{
+	padding-right:8px;
+	padding-left:9px;
+}
+#nav_col_post:hover, #nav_col_signup:hover, #nav_col_noti:hover{
 	background-color:#f8f8f8;
 }
 .sm_h1{
@@ -385,7 +410,7 @@ h4.post_header{
 }
 .comment_des{
 	line-height:1.7em !important;
-	min-height:72px !important;
+	min-height:42px !important;
 }
 .post_comment_counter{
 	font-weight:bold;
@@ -471,6 +496,26 @@ button.body-close{
 	border: solid 1px #444;
 	width:36px;
 	height:36px;
+	display:inline;
+}
+.extra_small_avatar{
+	background-color:#fff;
+	padding: 2px;
+	border: solid 1px #777;
+	width:25px;
+	height:25px;
+	margin-top:-5px;
+	margin-right:3px;
+	display:inline;
+}
+.big_avatar{
+	background-color:#fff;
+	padding: 2px;
+	border: solid 1px #777;
+	width:60px;
+	height:60px;
+	margin-top:-5px;
+	margin-right:3px;
 	display:inline;
 }
 #option_bar_mobile{

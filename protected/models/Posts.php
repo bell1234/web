@@ -46,13 +46,16 @@ class Posts extends CActiveRecord
 
 			array('description', 'length', 'min'=>10, 'max'=>'65535', 'tooShort'=>'内容太少啦！', 'tooLong'=>'内容太长啦!'),
 
-			array('category_id', 'required', 'message'=>'请为提交内容分类'),
+			//array('category_id', 'required', 'message'=>'请为提交内容分类'),
 
 			array('user_id, create_time', 'required'),		//system will assign it...
 
-			array('user_id, create_time, category_id, up, down, points, comments, type, hide, processed, views, private, auto', 'numerical', 'integerOnly'=>true),
+			array('user_id, create_time, category_id, fake_up, up, down, points, comments, type, hide, processed, views, private, auto', 'numerical', 'integerOnly'=>true),
 
-			array('name, link, thumb_pic, video_html', 'length', 'max'=>500),
+			//array('name, link, thumb_pic, video_html', 'length', 'max'=>500),
+
+			array('link, thumb_pic, video_html', 'safe'),
+			
 			array('shorturl', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

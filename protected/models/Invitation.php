@@ -1,22 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "tbl_admins".
+ * This is the model class for table "tbl_invitation".
  *
- * The followings are the available columns in table 'tbl_admins':
- * @property integer $user_id
- * @property string $title
- * @property integer $regulate
- * @property integer $metrics
+ * The followings are the available columns in table 'tbl_invitation':
+ * @property integer $id
+ * @property integer $parent
+ * @property string $code
  */
-class Admins extends CActiveRecord
+class Invitation extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_admins';
+		return 'tbl_invitation';
 	}
 
 	/**
@@ -27,14 +26,12 @@ class Admins extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, title, regulate, metrics', 'required'),
-			array('user_id, regulate, metrics, total_posts, posts_today, vote', 'numerical', 'integerOnly'=>true),
-			array('balance, salary', 'safe'),
-			array('title', 'length', 'max'=>128),
+			array('parent', 'required'),
+			array('parent', 'numerical', 'integerOnly'=>true),
+			array('code', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('user_id, title, regulate, metrics', 'safe', 'on'=>'search'),
-			
+			array('id, parent, code', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,10 +52,9 @@ class Admins extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => 'User',
-			'title' => 'Title',
-			'regulate' => 'Regulate',
-			'metrics' => 'Metrics',
+			'id' => 'ID',
+			'parent' => 'Parent',
+			'code' => 'Code',
 		);
 	}
 
@@ -80,10 +76,9 @@ class Admins extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('regulate',$this->regulate);
-		$criteria->compare('metrics',$this->metrics);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('parent',$this->parent);
+		$criteria->compare('code',$this->code,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -94,7 +89,7 @@ class Admins extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Admins the static model class
+	 * @return Invitation the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

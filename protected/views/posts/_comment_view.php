@@ -7,9 +7,6 @@ $guest = 0;
 $alreadyUp = 0;
 $alreadyDown = 0;
 $user = Users::model()->findByPk($data->user_id);
-if($data->user_id == Yii::app()->user->id){
-	$self = 1;
-}
 if(Yii::app()->user->isGuest){
 	$guest = 1;
 }else{
@@ -17,8 +14,26 @@ if(Yii::app()->user->isGuest){
 	$alreadyUp = CommentsVotes::model()->findByAttributes(array('comment_id'=>$data->id, 'user_id'=>$me->id, 'type'=>1));
 	$alreadyDown = CommentsVotes::model()->findByAttributes(array('comment_id'=>$data->id, 'user_id'=>$me->id, 'type'=>2));
 }
+$replies = Reply::model()->findAllByAttributes(array('comment_id'=>$data->id), array('order'=>'create_time ASC'));
 ?>
 
+<script>
+function reply_comment_<?php echo $data->id; ?>(name, uid){
+	if(name == 1 ){
+		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').val('');
+	}else if(name){
+		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').val('@'+name+' ');
+	}
+	$('#reply_form_<?php echo $data->id;?>').show();
+	
+ 	$('#reply_form_<?php echo $data->id;?>').find('.reply-field').focus();
+	
+	$('#reply_form_<?php echo $data->id;?>').find('.reply-receiver-field').val(uid);
+}
+function hide_reply_comment_<?php echo $data->id; ?>(){
+	$('#reply_form_<?php echo $data->id;?>').hide();
+}
+</script>
 
 <div id="comment_cell_<?php echo $data->id; ?>" class="post_cell comment_cell col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="post_votes">
@@ -29,12 +44,13 @@ if(Yii::app()->user->isGuest){
 			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="comment_vote(<?php echo $data->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 		</div>
 
-		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft">
+		<div class="post_content" style="padding-left:65px;">
 			<div class="comment_des">
 				<?php echo $data->description; ?>
 			</div>
-			<div class="post_footer grey small">
-				<a class="grey" target="_blank" href="/users/<?php echo $user->name_token; ?>"><?php echo $user->username; ?></a>
+			<div class="post_footer grey small top10">
+				<img class="extra_small_avatar img-circle" src="<?php echo $user->avatar; ?>" />
+				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>
@@ -59,9 +75,20 @@ if(Yii::app()->user->isGuest){
 						display:none;
 					}
 				</style>
-				<a href="#" onclick="edit_comment();">编辑评论</a>
+				<!--<a href="#" onclick="edit_comment();">编辑</a>-->
+				<?php endif; ?>
+				<?php if($data->user_id == Yii::app()->user->id): ?>
+					<b><a class="left10" href="#" onclick="reply_comment_<?php echo $data->id;?>(1, <?php echo $data->user_id; ?>); return false;">回复<!--(<?php echo Reply::model()->countByAttributes(array('comment_id'=>$data->id));?>)--></a></b>
+				<?php else: ?>
+					<b><a class="left10" href="#" onclick="reply_comment_<?php echo $data->id;?>('<?php echo $data->user->username;?>', <?php echo $data->user_id; ?>); return false;">回复<!--(<?php echo Reply::model()->countByAttributes(array('comment_id'=>$data->id));?>)--></a></b>
 				<?php endif; ?>
 			</div>
 		</div>
 		<div class="clear left50 paddingtop10" style="border-bottom: solid 1px #efefef;"></div>
+		<?php 
+			$this->renderPartial('_replies', array('comment'=>$data, 'replies'=>$replies)); 
+		?>
+		<?php
+			$this->renderPartial('_reply', array('comment'=>$data, 'model'=>$reply)); 
+		?>
 </div>

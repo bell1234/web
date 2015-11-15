@@ -1,7 +1,15 @@
 $(document).ready(function() {
-
-    	FastClick.attach(document.body);
-
+	
+	FastClick.attach(document.body);
+	FastClick.prototype._needsClick = FastClick.prototype.needsClick;
+	FastClick.prototype.needsClick = function(target) {
+    	var matchesSelector = HTMLElement.prototype.matchesSelector || HTMLElement.prototype.webkitMatchesSelector || HTMLElement.prototype.mozMatchesSelector || HTMLElement.prototype.msMatchesSelector;
+    	if (matchesSelector.call(target, '.redactor-box, .redactor-toolbar, .redactor-editor, .needsClick, .re-icon')) {
+        	return true;
+    	}
+    	return FastClick.prototype._needsClick.call(this, target);
+	};
+	
 	queried = false;
 
 	$("#post_link").change(function() {
@@ -28,7 +36,7 @@ $(document).ready(function() {
 
 	$("abbr.timeago").timeago();
 
-	if($(window).width() > 768){
+	//if($(window).width() > 768){
 		$(window).scroll(function () {
 			if ($(this).scrollTop() > 400) {
 				$('#toTop').fadeIn();
@@ -36,7 +44,7 @@ $(document).ready(function() {
 				$('#toTop').fadeOut();
 			}
 		});
-	}
+	//}
 
 	$('#toTop').click(function(){
 		$("html, body").animate({ scrollTop: 0 }, 400);
@@ -44,6 +52,24 @@ $(document).ready(function() {
 	});
 
 });
+
+//this function is called when a user clicks on the notification icon
+function hidered() {
+    //#n2 is the span with the number of notifications
+    if ( $("#n2").is(":visible") ) { //if we are currently showing notifications:
+
+        //mark the notifications as viewed
+        $.post("/site/notification");
+
+        //show the drop down
+        $("#list2").attr('class', 'redplum dropdown left noti_Container');
+        $("#redplum-dropdown li[id=new]").attr('id', 'old');
+
+        //hide the notification, and change the icon from black to gray
+        $('#n2').hide();
+    }
+
+}
 
 function signup(){
 	$('#signup_or_login').modal();
@@ -59,11 +85,12 @@ function vote(post_id, type, guest, self){	//type 1 = up vote, 2 = down vote
 		signup();
 		return false;	
 	}
+/*
 	if(self){
 		alert('自己不可以给自己投票哦！');
 		return false;	
 	}
-
+*/
 	var voteup = $('#post_cell_'+post_id+' > div.post_votes > a.vote_up');
 	var votedown = $('#post_cell_'+post_id+' > div.post_votes > a.vote_down');
 
@@ -231,11 +258,12 @@ function comment_vote(comment_id, type, guest, self){	//type 1 = up vote, 2 = do
 		signup();
 		return false;	
 	}
+	/*
 	if(self){
 		alert('自己不可以给自己投票哦！');
 		return false;	
 	}
-
+	*/
 	var voteup = $('#comment_cell_'+comment_id+' > div.post_votes > a.vote_up');
 	var votedown = $('#comment_cell_'+comment_id+' > div.post_votes > a.vote_down');
 

@@ -19,7 +19,6 @@ class LoginPop extends CWidget
 		}
 
 		$user = new Users;
-		
 		$model= new LoginForm;
 
 		// if it is ajax validation request
@@ -28,6 +27,7 @@ class LoginPop extends CWidget
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+
 
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='signup-form')
@@ -39,7 +39,6 @@ class LoginPop extends CWidget
 		// login part
 		if(isset($_POST['LoginForm']))
 		{
-
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login()){
@@ -61,6 +60,7 @@ class LoginPop extends CWidget
 		if(isset($_POST['Users']))
 		{
 			$user->attributes=$_POST['Users'];
+
 			if($user->validate()){ //validate
 				if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {		//cloudflare for now, maybe Baidu in the future.
 					$user->ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
@@ -76,6 +76,10 @@ class LoginPop extends CWidget
 				$user->userActed(); 	//update IP, location
 				$user->saveDupStats(); //save user dup accounts, cookie etc.
 
+				$invite = Invitation::model()->findByAttributes(array('code' => $user->invitation));
+				if($invite){
+					//$invite->delete();
+				}
 				if($user->email){
 					$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
 						"activkey" => $user->activkey,
@@ -118,7 +122,6 @@ class LoginPop extends CWidget
 			'user' => $user
 		));
 
-		
 	}
 	
 }

@@ -131,9 +131,9 @@ class PostsController extends Controller
 		if(Yii::app()->user->id){
 			$user = Users::model()->findByPk(Yii::app()->user->id);
 			$user->userActed(); 
-		}else{
-			Users::guestSignup();		//automatically sign up for you
 		}
+		//else{	Users::guestSignup(); }		//automatically sign up for you
+		
 
 		$model = $this->loadModel($id);
 		$model->views++;
@@ -150,6 +150,38 @@ class PostsController extends Controller
 			$comment = new Comments;
 			$comment->post_id = $model->id;
 		}
+
+		$reply = new Reply;
+		$reply->user_id = Yii::app()->user->id;
+		if(isset($_POST['Reply']) && Yii::app()->user->id){
+			$reply->attributes = $_POST['Reply'];
+			$reply->create_time = time();
+			$reply->description = strip_tags($reply->description);
+			$reply->save();
+			$model->comments++;
+			$model->save(false);
+
+			if($reply->receiver != Yii::app()->user->id){
+				$noti = Notification::model()->findByAttributes(array('post_id'=>$model->id, 'receiver'=>$reply->receiver, 'type_id'=>3));
+				if($noti){
+					$noti->sender = Yii::app()->user->id;
+					$noti->other++;
+					$noti->post_id = $model->id;
+					$noti->create_time = time();
+					$noti->read = 0;
+					$noti->save();
+				}else{
+					$noti = new Notification;
+					$noti->type_id = 3; //reply
+					$noti->post_id = $model->id;
+					$noti->sender = Yii::app()->user->id;
+					$noti->receiver = $reply->receiver;
+					$noti->create_time = time();
+					$noti->save();
+				}
+			}
+		}
+
 		if(isset($_POST['Comments']) && Yii::app()->user->id){
 			$comment->attributes = $_POST['Comments'];
 			$comment->user_id = Yii::app()->user->id;
@@ -158,11 +190,33 @@ class PostsController extends Controller
 			}else{
 				$comment->edited = time();
 			}
+			if($comment->isNewRecord){
+				$model->comments++;
+			}
+			$comment->description = strip_tags($comment->description);
+			$comment->description = nl2br($comment->description);
+			
 			if($comment->save()){
+				$model->save(false);
 
-				if($comment->isNewRecord){
-					$model->comments++;
-					$model->save(false);
+				if($comment->user_id != $model->user_id){
+					$noti = Notification::model()->findByAttributes(array('post_id'=>$model->id, 'receiver'=>$model->user_id, 'type_id'=>2));
+					if($noti){
+						$noti->sender = Yii::app()->user->id;
+						$noti->other++;
+						$noti->post_id = $model->id;
+						$noti->create_time = time();
+						$noti->read = 0;
+						$noti->save();
+					}else{
+						$noti = new Notification;
+						$noti->type_id = 2; //comment
+						$noti->post_id = $model->id;
+						$noti->sender = Yii::app()->user->id;
+						$noti->receiver = $model->user_id;
+						$noti->create_time = time();
+						$noti->save();
+					}
 				}
 
 				$pictures = Yii::app()->session['comment_pictures'];
@@ -178,8 +232,6 @@ class PostsController extends Controller
 				unset(Yii::app()->session['comment_pictures']);
 			}
 		}
-
-
 
 		$dataProvider = new CActiveDataProvider('Comments', array(
 			'criteria' => array(
@@ -203,6 +255,7 @@ class PostsController extends Controller
 				'comment'=>$comment,
 				'dataProvider'=>$dataProvider,
 				'admin'=>$admin,
+				'reply'=>$reply,
 			));
 		}else{
 			$this->render('view',array(
@@ -210,6 +263,7 @@ class PostsController extends Controller
 				'comment'=>$comment,
 				'dataProvider'=>$dataProvider,
 				'admin'=>$admin,
+				'reply'=>$reply,
 			));
 		}
 	}
@@ -225,7 +279,7 @@ class PostsController extends Controller
 		if(isset($_POST['post_id']) && isset($_POST['up'])){
 			$post = Posts::model()->findByPk($_POST['post_id']);
 			if($post){
-				$post->up = $_POST['up'] + $post->down;	//offset down vote
+				$post->fake_up = $_POST['up'] + $post->down;	//offset down vote
 				$post->save(false);
 				echo "success";	
 				return;
@@ -233,7 +287,6 @@ class PostsController extends Controller
 		}
 		return;
 	}
-
 
 	/**
 
@@ -244,7 +297,7 @@ class PostsController extends Controller
 		if(isset($_POST['post_id']) && isset($_POST['type'])){
 			$post = Posts::model()->findByPk($_POST['post_id']);
 			$user = Users::model()->findByPk(Yii::app()->user->id);
-			if($post && $user && $post->user_id != $user->id){
+			if($post && $user){	//&& $post->user_id != $user->id
 				$already = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 				if($already){
 					if($already->type != $_POST['type']){
@@ -252,9 +305,17 @@ class PostsController extends Controller
 						$already->create_time = time();
 						$already->save(false);
 						if($already->type == 1){
-							$post->up++;		//+=2 would be more accurate?
+							if($post->user_id == $user->id){
+								$post->fake_up++;
+							}else{
+								$post->up++;		//+=2 would be more accurate?
+							}
 						}else{
-							$post->down++;		//+=2 would be more accurate?
+							if($post->user_id == $user->id){
+								$post->fake_up--;
+							}else{
+								$post->down++;		//+=2 would be more accurate?
+							}
 						}
 						$post->save(false);
 					}
@@ -266,9 +327,17 @@ class PostsController extends Controller
 					$vote->create_time = time();
 					$vote->save(false);
 					if($vote->type == 1){
-						$post->up++;
+						if($post->user_id == $user->id){
+							$post->fake_up++;
+						}else{
+							$post->up++;
+						}
 					}else{
-						$post->down++;
+						if($post->user_id == $user->id){
+							$post->fake_up--;
+						}else{
+							$post->down++;
+						}
 					}
 					$post->save(false);
 				}
@@ -288,7 +357,7 @@ class PostsController extends Controller
 		if(isset($_POST['comment_id']) && isset($_POST['type'])){
 			$comment = Comments::model()->findByPk($_POST['comment_id']);
 			$user = Users::model()->findByPk(Yii::app()->user->id);
-			if($comment && $user && $comment->user_id != $user->id){
+			if($comment && $user){
 				$already = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id));
 				if($already){
 					if($already->type != $_POST['type']){
@@ -331,14 +400,22 @@ class PostsController extends Controller
 		if(isset($_POST['post_id']) && isset($_POST['type'])){
 			$post = Posts::model()->findByPk($_POST['post_id']);
 			$user = Users::model()->findByPk(Yii::app()->user->id);
-			if($post && $user && $post->user_id != $user->id){
+			if($post && $user){
 				$already = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id, 'type'=>$_POST['type']));
 				if($already){
 					$already->delete();
 					if($already->type == 1){
-						$post->up--;
+						if($post->user_id == $user->id){
+							$post->fake_up--;
+						}else{
+							$post->up--;
+						}
 					}else{
-						$post->down--;
+						if($post->user_id == $user->id){
+							$post->fake_up++;
+						}else{
+							$post->down--;
+						}
 					}
 					$post->save(false);
 					echo "success";	
@@ -357,7 +434,7 @@ class PostsController extends Controller
 		if(isset($_POST['comment_id']) && isset($_POST['type'])){
 			$comment = Comments::model()->findByPk($_POST['comment_id']);
 			$user = Users::model()->findByPk(Yii::app()->user->id);
-			if($comment && $user && $comment->user_id != $user->id){
+			if($comment && $user){
 				$already = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id, 'type'=>$_POST['type']));
 				if($already){
 					$already->delete();
@@ -505,6 +582,15 @@ class PostsController extends Controller
 				}
 				$model->hide = 1;
 				$model->save(false);
+
+				//如果是管理员提交，减钱
+				$owner_admin = Admins::model()->findByPk($model->user_id);
+				if($owner_admin){
+					$owner_admin->balance -= $admin->salary;
+					$owner_admin->total_posts -= 1;
+					$owner_admin->save(false);
+				}
+
 				echo "success";	
 				return;
 			}
@@ -529,6 +615,15 @@ class PostsController extends Controller
 			if($model){
 				$model->hide = 0;
 				$model->save(false);
+
+				//如果是管理员提交，加钱
+				$owner_admin = Admins::model()->findByPk($model->user_id);
+				if($owner_admin){
+					$owner_admin->balance += $admin->salary;
+					$owner_admin->total_posts += 1;
+					$owner_admin->save(false);
+				}
+
 				echo "success";	
 				return;
 			}
@@ -541,17 +636,22 @@ class PostsController extends Controller
 	 */
 	public function actionIndex()
 	{
-		unset(Yii::app()->session['pictures']);
+		if(isset(Yii::app()->session['pictures'])){
+			unset(Yii::app()->session['pictures']);
+		}
 		if(Yii::app()->user->id){
 			$user = Users::model()->findByPk(Yii::app()->user->id);
+			if(!$user){
+				$this->redirect('site/logout');
+			}
 			$user->userActed(); 
-		}else{
-			Users::guestSignup();		//automatically sign up for you
 		}
+		//else{	Users::guestSignup(); }		//automatically sign up for you
+
 		$admin = Admins::model()->findByPk(Yii::app()->user->id);
 		if(isset($_GET['category_id'])){
 			$criteria = array(
-				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
+				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
 				'condition'=>'hide = 0 AND category_id = :cid',
 				'params'=>array(
 					':cid'=>$_GET['category_id']
@@ -559,7 +659,7 @@ class PostsController extends Controller
 			);
 		}else{
 			$criteria = array(
-				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
+				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
 				'condition'=>'hide = 0',
 			);
 		}

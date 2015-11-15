@@ -41,7 +41,7 @@
    
    my_bool postrank_init(UDF_INIT *initid, UDF_ARGS *args, char *message)
    {
-     if(!(args->arg_count == 3)) {
+     if(!(args->arg_count == 4)) {
        strcpy(message, "Expected three arguments");
        return 1;
      }
@@ -49,6 +49,7 @@
      args->arg_type[0] = REAL_RESULT;
      args->arg_type[1] = REAL_RESULT;
      args->arg_type[2] = REAL_RESULT;
+     args->arg_type[3] = REAL_RESULT;
    
      return 0;
    }
@@ -61,12 +62,15 @@
    double postrank(UDF_INIT* initid, UDF_ARGS* args __attribute__((unused)),
                      char* is_null __attribute__((unused)), char* error __attribute__((unused)))
    {
-     double ups = *((double *)(args->args[0]));
-     double downs = *((double *)(args->args[1]));
-     double d = *((double *)(args->args[2]));
+     double fake_ups = *((double *)(args->args[0]));
+     double ups = *((double *)(args->args[1]));
+     double downs = *((double *)(args->args[2]));
+     double d = *((double *)(args->args[3]));
 
        double final = 0.00;
        double my_sign = 1.0;
+
+	ups = ups + round(0.02 * fake_ups);
 
        if(ups - downs > 0){
 		my_sign = 1.0;
@@ -86,7 +90,7 @@
 
 	double dbmy_max = (double) my_max;
 
-	double result = log10(dbmy_max) * my_sign + ((d - 1444000000.0) / 64800.0);
+	double result = log10(dbmy_max) * my_sign + ((d - 1444000000.0) / 86400.0);
 
 	final = round( 10000000.0 * result ) / 10000000.0;
 

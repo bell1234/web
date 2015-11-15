@@ -259,8 +259,8 @@
     "@modal-content-bg": "#fff",
     "@modal-content-border-color": "rgba(0,0,0,.2)",
     "@modal-content-fallback-border-color": "#999",
-    "@modal-backdrop-bg": "#000",
-    "@modal-backdrop-opacity": ".5",
+    "@modal-backdrop-bg": "#fff",
+    "@modal-backdrop-opacity": ".9",
     "@modal-header-border-color": "#e5e5e5",
     "@modal-footer-border-color": "@modal-header-border-color",
     "@modal-lg": "900px",
@@ -430,5 +430,5 @@
     "scrollspy.js",
     "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=60041e363dd27d95808b"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=c574ced3e7a46b6daf0f"
 }

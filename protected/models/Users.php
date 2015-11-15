@@ -22,6 +22,9 @@
  */
 class Users extends CActiveRecord
 {
+
+	public $invitation;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,14 +42,17 @@ class Users extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('create_time, lastaction, status, logins, auto, system', 'numerical', 'integerOnly'=>true),
-
 			array('username', 'length', 'max'=>20, 'tooLong'=>'用户名最多包含20个字符'),
 			array('username', 'length', 'min'=>2, 'tooShort'=>'用户名至少包含2个字符'),
 			array('username','required','message'=>'请输入用户名'),
+
+			array('invitation','required','message'=>'请输入邀请码', 'on'=>'insert'),
+			array('invitation','invitationValidate','message'=>'邀请码不正确或已被使用', 'on'=>'insert'),
+
 			array('username', 'unique', 'message'=>'该用户名已经被注册'),
 			array('username', 'match', 'pattern' => '/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]*$/u','message' =>'用户名只能含有汉字，英文字母，数字和下划线'),
 			
-			//array('email','required','message'=>'请输入电子邮箱地址'),
+			array('email','required','message'=>'请输入电子邮箱地址'),
 			array('email', 'unique', 'message' => '此邮箱已经被注册'),
 			array('email', 'email','message'=>'请输入您真实的电子邮箱地址'),
 
@@ -139,6 +145,12 @@ class Users extends CActiveRecord
 	}
 
 
+	public function invitationValidate($attribute,$params){
+		$invite = Invitation::model()->findByAttributes(array('code' => $this->$attribute));
+		if(!$invite){
+			 $this->addError($attribute, '邀请码不正确或已被使用');
+		}
+	}
 
 	public function isAdmin() {
 		// Returns null if it doesn't find the user in the admins table
@@ -148,7 +160,7 @@ class Users extends CActiveRecord
 
 	public function guestSignup(){
 
-  			if (!isset($_SERVER['HTTP_USER_AGENT']) || (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|seek|facebookexternalhit|search|robo|lycos|twiceler|archiver|sohu|msn|sogou|mediapartners-google|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))) {
+  			if (!isset($_SERVER['HTTP_USER_AGENT']) || (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|seek|facebookexternalhit|search|robo|lycos|twiceler|cron|curl|fake|moni|archiver|sohu|msn|sogou|mediapartners-google|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))) {
     				return false;		//stop search engining from signing up
   			}
 

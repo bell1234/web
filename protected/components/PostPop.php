@@ -31,6 +31,14 @@ class PostPop extends CWidget
 			$model->create_time = time();
 			$model->user_id = Yii::app()->user->id;
 			$model->points = 0;	//starting with 0 points?
+
+			if(isset($_POST['fake_username'])){
+				$fake_user = Users::model()->findByAttributes(array('username'=>$_POST['fake_username']));
+				if($fake_user){
+					$model->user_id = $fake_user->id;
+				}
+			}
+
 			if($model->type == 1){		//link
 				//nothing
 			}else if($model->type == 2){	//content

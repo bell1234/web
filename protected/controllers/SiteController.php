@@ -21,41 +21,32 @@ class SiteController extends Controller
 		);
 	}
 
+	public function actionNotifications(){
+	  $user = Users::model()->findByPk(Yii::app()->user->id);
+	  if(!$user){
+	  		$this->redirect('/');
+	  }
+      $notifications=new CActiveDataProvider('Notification', array(
+        'criteria'=>array(
+            'condition'=>'receiver = :user_id',
+            'params'=> array(':user_id'=>Yii::app()->user->id),
+            'order'=>'create_time DESC',
+            'offset' => 0,
+        ),
+        'pagination' => array('pageSize' =>40),
+      ));
+      $this->render('notifications',array('notifications'=>$notifications));
+	}
 
 
-public function actionGetFeed(){
-
-//https://diy-devz.rhcloud.com
-
-
-    // create curl resource
-    $ch = curl_init();
-
-    // set url
-    curl_setopt($ch, CURLOPT_URL, $feed_url);
-
-    //return the transfer as a string
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
-
-    // $output contains the output string
-    $content = curl_exec($ch);
-
-    // close curl resource to free up system resources
-    curl_close($ch); 
-
-
-    $x = simplexml_load_string($content);
-     
-    echo "<ul>";
-     
-    foreach($x->channel->item as $entry) {
-        echo "<li><a href='$entry->link' title='$entry->title'>" . $entry->title . "</a></li>";
-    }
-    echo "</ul>";
-
-}
-
+	public function actionNotification(){
+		$notifications = Notification::model()->findAllByAttributes(array('receiver'=>Yii::app()->user->id, 'read'=>0));
+		foreach($notifications as $noti):
+			$noti->read = 1;
+			$noti->save(false);
+		endforeach;
+		echo 200;
+	}
 
 	/**
 	 * This is the default 'index' action that is invoked
@@ -249,10 +240,10 @@ public function actionGetFeed(){
 	public function actionLogout()
 	{
 		if(Yii::app()->user->id){
-			$user = Users::model()->findByPk(Yii::app()->user->id);
-			if($user && !$user->auto){
+			//$user = Users::model()->findByPk(Yii::app()->user->id);
+			//if($user && !$user->auto){
 				Yii::app()->user->logout();
-			}
+			//}
 		}
 		$this->redirect(Yii::app()->homeUrl);
 	}

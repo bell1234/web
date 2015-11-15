@@ -10,7 +10,7 @@
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-	'action'=>'/site/setting',	//我们加了这一行 因为每个人都已经是用户了...我们存下每一个访问
+	//'action'=>'/site/setting',	//我们加了这一行 因为每个人都已经是用户了...我们存下每一个访问
 )); ?>
 
 	<div class="row">
@@ -19,13 +19,19 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->textField($user,'email',array('placeholder'=>'邮箱(选填)','class'=>'form-control')); ?>
+		<?php echo $form->textField($user,'email',array('placeholder'=>'邮箱','class'=>'form-control')); ?>
 		<?php echo $form->error($user,'email'); ?>
 	</div>
+	
 
 	<div class="row">
 		<?php echo $form->passwordField($user,'password',array('placeholder'=>'密码(不少于6位)','class'=>'form-control')); ?>
 		<?php echo $form->error($user,'password'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->textField($user,'invitation',array('placeholder'=>'邀请码','class'=>'form-control')); ?>
+		<?php echo $form->error($user,'invitation'); ?>
 	</div>
 
 	<div class="row buttons">

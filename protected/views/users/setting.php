@@ -35,7 +35,7 @@
 	        	'config'=>array(
 	                       'action'=>'/users/AjaxUpload',
 				'template'=>'<div class="qq-uploader"><div class="qq-upload-drop-area">将图片拖至这里上传</div><div class="qq-upload-button btn btn-warning btn-block">上传新头像</div><ul class="qq-upload-list" style="display:none;"></ul></div>',
-				'onComplete'=>"js:function(id, fileName, responseJSON){ $('#avatar_now').attr('src', '/uploads/avatar/".Yii::app()->user->id."/' + fileName);}",
+				'onComplete'=>"js:function(id, fileName, responseJSON){ $('#avatar_now').attr('src', '/uploads/avatars/".Yii::app()->user->id."/' + fileName);}",
 	                        'allowedExtensions'=>array('jpg','png','gif','jpeg','tiff','tif','bmp'),
 	                        'sizeLimit'=>5*1024*1024,// maximum file size in bytes                    
                			 'minSizeLimit'=>1,// minimum file size in bytes

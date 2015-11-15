@@ -2,7 +2,6 @@
 <div class="form left50 comments_form" style="border-top: solid 1px #efefef; padding-bottom:15px;">
 	<?php CHtml::$errorCss = "has-error"; ?>
 <?php 
-
 	$form=$this->beginWidget('CActiveForm', array(
 	'id'=>'comments-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
@@ -32,7 +31,7 @@
 ?>
 
 	<div class="row form-group">
-		<label class="control-label" for="Posts_description">
+		<label class="control-label" for="Comments_description">
 		<?php if($model->isNewRecord): ?>
 			提交评论
 		<?php else: ?>
@@ -41,6 +40,7 @@
 		</label>
 
 <?php
+/*
 $this->widget('ImperaviRedactorWidget', array(
     // You can either use it for model attribute
     'model' => $model,
@@ -72,20 +72,24 @@ $this->widget('ImperaviRedactorWidget', array(
     ),
 
 ));
+*/
 ?>
+<?php echo $form->textArea($model,'description',array('placeholder'=>'想说点什么?','class'=>'form-control', 'style'=>'resize:vertical; height:60px;')); ?>
 <?php echo $form->error($model,'description'); ?>
 
 	</div>
 
 	<div class="row buttons top20">
-		<?php echo $form->checkBox($model,'private'); ?>
-		<span class="dark_grey v_middle top5">匿名</span>
+		<!--
+			<?php echo $form->checkBox($model,'private'); ?>
+			<span class="dark_grey v_middle top5">匿名</span>
+		-->
 		<div class="float_right">
 			<?php if(!$model->isNewRecord): ?>
 				<a class="right20" href="#" onclick="cancel_edit_comment(); return false;">取消</a>
 			<?php endif; ?>
 
-			<?php echo CHtml::submitButton($model->isNewRecord ? '评论' : '修改', array('class'=>'btn btn-warning btn-default paddingleft30 paddingright30')); ?>
+			<?php echo CHtml::submitButton($model->isNewRecord ? '评论' : '编辑', array('class'=>'btn btn-warning btn-default paddingleft30 paddingright30')); ?>
 		</div>
 	</div>
 

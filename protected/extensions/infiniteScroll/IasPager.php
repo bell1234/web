@@ -49,7 +49,7 @@ $script = <<<EOD
 	ias.extension(new IASPagingExtension());
 	ias.extension(new IASHistoryExtension());
 	ias.extension(new IASSpinnerExtension({
-    		src: '/images/loading.gif', // optionally
+    		src: '/images/loadingb.gif', // optionally
 	}));
 	ias.on('rendered', function(items) {
  		$(".timeago").timeago();

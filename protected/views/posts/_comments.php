@@ -16,6 +16,7 @@
 		$(".timeago").timeago();
 	 }',
 	'itemView'=>'_comment_view',
+	'viewData' => array('reply' => $reply),    //自己的variables
         'template'=>'{items}{pager}',	//infinite scroll.
 	'emptyText'=>'',
 

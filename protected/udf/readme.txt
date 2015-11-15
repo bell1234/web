@@ -6,7 +6,7 @@
 	drop function postrank;
 	CREATE FUNCTION postrank RETURNS REAL SONAME 'postrank.so';
 
-        select *, postrank(up, down, CAST(create_time as decimal(18,7))) as rank FROM tbl_posts order by rank DESC
+        select *, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank FROM tbl_posts order by rank DESC
 
 	同理。。。我们可以为评论创建一个方程，然后用
 	select *, commentrank(up, down) as rank FROM tbl_comments order by rank DESC
@@ -21,7 +21,9 @@ RETURN ROUND(LOG10(GREATEST(ABS(ups-downs), 1))*SIGN(ups-downs) + (d - 144400000
     */
 
 
-    protected function postRank($ups, $downs, $date){	//hot
+    protected function postRank($fake_ups, $ups, $downs, $date){	//hot
+
+	$ups = $ups + round(0.02 * $fake_ups);	//50 fake = 1 real
 
 	$score = $ups - $downs;
 	$order = log10(max(abs($score), 1));
@@ -34,9 +36,9 @@ RETURN ROUND(LOG10(GREATEST(ABS(ups-downs), 1))*SIGN(ups-downs) + (d - 144400000
 	}
 	$seconds = $date - 1444000000;		//1444000000 is the earliest post
 
-	return round($sign * $order + $seconds / 64800, 7);	//64800 
+	return round($sign * $order + $seconds / 86400, 7);	//86400 
 
-	//64800 is the number of seconds in 18 hours.  The way the algo works is that something needs to have 10 times as many points to be "hot" as something 18. hours younger.  In other words, that's the boundary for the log.
+	//86400 is the number of seconds in 24 hours.  The way the algo works is that something needs to have 10 times as many points to be "hot" as something 24. hours younger.  In other words, that's the boundary for the log.
 	//reddit is using 12.5 => 45000
 	//we can make it higher if we found the algorithm preferred new stuff way too much... update MySQL as well for this.
 	//https://www.quora.com/Where-do-the-constants-1134028003-and-45000-come-from-in-reddits-hotness-algorithm

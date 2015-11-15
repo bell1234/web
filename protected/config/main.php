@@ -22,6 +22,7 @@ return array(
         	'application.modules.*',
         	'application.extensions.*',
         	'ext.yii-mail.YiiMailMessage',
+        	'ext.PHPDomParser.*',
         	'ext.imperavi-redactor-widget.ImperaviRedactorWidget',
 		'ext.segment_analytics.lib.*',
 		'ext.s3.*',
@@ -35,12 +36,15 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
+
+        
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'86626728',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
-			'ipFilters'=>array('98.116.191.128', '24.6.100.11','::1'),
+			'ipFilters'=>array('*', '::1'),
 		),
+        
 	),
 
 	// application components
@@ -172,9 +176,11 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 				
+/*
 				array(
 					'class'=>'CWebLogRoute',
 				),
+*/
 				
 				
 			),

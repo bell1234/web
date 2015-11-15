@@ -30,8 +30,9 @@ class Reply extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('comment_id, user_id, description, create_time, up, down', 'required'),
-			array('comment_id, user_id, create_time, up, down', 'numerical', 'integerOnly'=>true),
+			array('comment_id, user_id, create_time', 'required'),
+			array('description', 'required', 'message'=>'请输入回复内容'),
+			array('comment_id, user_id, create_time, up, down, receiver', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, comment_id, user_id, description, create_time, up, down', 'safe', 'on'=>'search'),

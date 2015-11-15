@@ -32,3 +32,5 @@ Yii::app()->clientScript->registerLinkTag('canonical', null, $href);
 <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs paddingleft50 top20">
 	<?php $this->renderPartial('_sidebar'); ?>
 </div>
+
+<div id="toTop" style="display: none;"><i class="glyphicon glyphicon-triangle-top"></i></div>

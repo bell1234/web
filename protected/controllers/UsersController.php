@@ -130,7 +130,7 @@ class UsersController extends Controller
 		$admin = Admins::model()->findByPk(Yii::app()->user->id);
 		if($model->id == Yii::app()->user->id){
 			$criteria = array(
-				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
+				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
 				'condition'=>'user_id = :uid',
 				'params'=>array(
 					':uid'=>$model->id
@@ -138,7 +138,7 @@ class UsersController extends Controller
 			);
 		}else{
 			$criteria = array(
-				'select'=>'*, postrank(up, down, CAST(create_time as decimal(18,7))) as rank',
+				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
 				'condition'=>'hide = 0 AND user_id = :uid',
 				'params'=>array(
 					':uid'=>$model->id

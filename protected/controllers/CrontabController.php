@@ -3,6 +3,203 @@
 class CrontabController extends Controller
 {
 
+	public function actionTest(){
+		$admins = Admins::model()->findAll();
+		foreach($admins as $admin){
+			$user = Users::model()->findByPk($admin->user_id);
+			if(!$user){
+				$admin->delete();
+			}
+		}
+	}
+
+
+    public function actionToutiao(){
+
+    	throw new CHttpException(404, "The requested link does not exist.");
+
+	ini_set('max_execution_time', 600);	//10 mins function max
+	set_time_limit(600);
+
+	Yii::import('ext.Scrapper.Scrapper', true);	//toutiao only for now
+	$array = Scrapper::toutiao();
+
+	foreach($array as $arr){
+	
+		$post = Posts::model()->findByAttributes(array('link'=>$arr['url'], 'auto'=>1));
+		if($post){
+			//是不是应该跳过整个？
+			continue;
+		}
+		$post = new Posts;
+		$post->auto = 1;
+		$post->link = $arr['url'];
+		$post->name = $arr['title'];
+		if (strpos($arr['category'],'tech') !== false) {
+			$post->category_id = 3;
+		}
+		else if (strpos($arr['category'],'news') !== false) {
+			$post->category_id = 2;
+		}
+		else if (strpos($arr['category'],'funny') !== false) {
+			$post->category_id = 1;
+		}else{
+			$post->category_id = 30;
+		}
+
+		if(isset($arr['images']) && isset($arr['images'][0])){
+			$image = $arr['images'][0];
+		}
+
+		$rand_time = rand(1, 1200);	//20 mins
+		$post->create_time = time() - $rand_time;
+
+		$post->fake_up = $arr['likes'] - $arr['dislikes'];	//rand for now
+
+		if($post->fake_up > 500){
+			$post->fake_up = 500 - rand(1, 100);
+		}
+
+		$post->user_id = rand(175235, 175327);	//system accounts
+		$post->type = 1;		//link
+		if(isset($image) && $image){
+			$post->thumb_pic = $image;
+		}
+		$post->save();
+
+	}
+		echo 200;
+    }
+
+
+
+
+    public function actionPengpai(){	//this is the function that calls paperCN
+
+    	throw new CHttpException(404, "The requested link does not exist.");
+
+	ini_set('max_execution_time', 600);	//10 mins function max
+	set_time_limit(600);
+
+	Yii::import('ext.Scrapper.Scrapper', true);	//toutiao only for now
+	$array = Scrapper::paperCn();
+
+	foreach($array as $arr){
+
+		$post = Posts::model()->findByAttributes(array('link'=>$arr['url'], 'auto'=>1));
+		if($post){
+			//是不是应该跳过整个？
+			continue;
+		}
+		$post = new Posts;
+		$post->auto = 1;
+		$post->link = $arr['url'];
+		$post->name = $arr['title'];
+		$post->category_id = 2;
+
+		if(isset($arr['images']) && isset($arr['images'][0])){
+			$image = $arr['images'][0];
+		}
+
+		$rand_time = rand(1, 1200);	//20 mins
+		$post->create_time = time() - $rand_time;
+
+		$post->fake_up = rand(50, 300);
+
+		$post->user_id = rand(175235, 175327);	//system accounts
+		$post->type = 1;		//link
+		if(isset($image) && $image){
+			$post->thumb_pic = $image;
+		}
+		$post->save();
+	}
+
+	echo 200;
+    }
+
+
+
+    public function actionDouban(){	//this is the function that calls paperCN
+
+    	throw new CHttpException(404, "The requested link does not exist.");
+
+	ini_set('max_execution_time', 600);	//10 mins function max
+	set_time_limit(600);
+
+	Yii::import('ext.Scrapper.Scrapper', true);	//toutiao only for now
+	$array = Scrapper::douban();
+
+	foreach($array as $arr){
+
+		$post = Posts::model()->findByAttributes(array('link'=>$arr['url'], 'auto'=>1));
+		if($post){
+			//是不是应该跳过整个？
+			continue;
+		}
+		$post = new Posts;
+		$post->auto = 1;
+		$post->link = $arr['url'];
+		$post->name = $arr['title'];
+
+		$post->category_id = 30;
+
+		$rand_time = rand(1, 1200);	//20 mins
+		$post->create_time = time() - $rand_time;
+
+		$post->fake_up = rand(50, 300);
+
+		$post->user_id = rand(175235, 175327);	//system accounts
+		$post->type = 1;		//link
+		$post->thumb_pic = '/images/douban.jpeg';	//douban logo
+		$post->save();
+
+	}
+	
+	echo 200;
+   }
+
+
+
+/*
+    public function actionTianya(){	//this is the function that calls paperCN
+
+	ini_set('max_execution_time', 600);	//10 mins function max
+	set_time_limit(600);
+
+	Yii::import('ext.Scrapper.Scrapper', true);	//toutiao only for now
+	$array = Scrapper::tianya();
+
+	foreach($array as $arr){
+
+		$post = Posts::model()->findByAttributes(array('link'=>$arr['url'], 'auto'=>1));
+		if($post){
+			//是不是应该跳过整个？
+			continue;
+		}
+		$post = new Posts;
+		$post->auto = 1;
+		$post->link = $arr['url'];
+		$post->name = $arr['title'];
+
+		$post->category_id = 30;
+
+		$rand_time = rand(1, 1200);	//20 mins
+		$post->create_time = time() - $rand_time;
+
+		$post->fake_up = rand(50, 300);
+
+		$post->user_id = rand(175235, 175327);	//system accounts
+		$post->type = 1;		//link
+		$post->thumb_pic = '/images/douban.jpeg';	//douban logo
+		$post->save();
+
+	}
+	
+	echo 200;
+   }
+*/
+
+
 
     protected function ParseRss($rss){
 
@@ -52,7 +249,7 @@ class CrontabController extends Controller
 
 			$post->create_time = time() - $rand_time;
 
-			$post->up = round($rand_time / rand(1, 10));	//test...
+			$post->fake_up = rand(50, 300);
 
 			//注意 这里要改随机
 
@@ -74,7 +271,7 @@ class CrontabController extends Controller
 				}
 			}
 			if(!$post->thumb_pic){
-				$post->up = round($post->up / 2);
+				$post->fake_up = round($post->up / 2);
 			}
 			$post->save();
 			$rss->failed = 0;
@@ -95,6 +292,8 @@ class CrontabController extends Controller
 
 
     public function actionTech(){	
+
+    	throw new CHttpException(404, "The requested link does not exist.");
 
 	ini_set('max_execution_time', 900);	//15 mins function max
 	set_time_limit(900);	
@@ -120,6 +319,8 @@ class CrontabController extends Controller
 
     public function actionFunny(){	
 
+    	throw new CHttpException(404, "The requested link does not exist.");
+
 	ini_set('max_execution_time', 900);	//15 mins function max
 	set_time_limit(900);		
 
@@ -143,6 +344,8 @@ class CrontabController extends Controller
 
     public function actionOther(){	
 
+    	throw new CHttpException(404, "The requested link does not exist.");
+
 	ini_set('max_execution_time', 900);	//15 mins function max
 	set_time_limit(900);	
 
@@ -165,6 +368,8 @@ class CrontabController extends Controller
 
 
     public function actionNews(){	
+
+    	throw new CHttpException(404, "The requested link does not exist.");
 
 	ini_set('max_execution_time', 900);	//15 mins function max
 	set_time_limit(900);	

@@ -36,7 +36,7 @@ class CommentsPictures extends CActiveRecord
                     array('file', 'file',
 		    'types'=>'jpeg, png, jpg, gif, tiff, bmp',
 		    'safe'=>false,
-                    'maxSize'=>1024 * 1024 * 5, // 5MB
+                    'maxSize'=>1024 * 1024 * 15, // 5MB
                     'maxFiles' => 1,
                     'allowEmpty' => true,
                     'tooLarge'=>'There is one file larger than 5MB. Please upload a smaller one.'

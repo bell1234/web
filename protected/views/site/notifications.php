@@ -1,3 +1,10 @@
+                                  <script>
+                                        $(function(){
+                                            $('.noti_bubble').hide();
+                                            $.post("/site/notification");
+                                        });
+                                  </script>
+
                                    <ul style="list-style-type: none; padding-left:15px; padding-right:15px;">
                                     <?php
                                     $this->widget('zii.widgets.CListView', array(

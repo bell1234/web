@@ -21,7 +21,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/timeago.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/fastclick.js"></script>
-    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/universal_v1.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/universal_v2.js"></script>
     
     <script type="text/javascript">
 !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
@@ -171,6 +171,7 @@ var _hmt = _hmt || [];
     <div class="collapse navbar-collapse"  aria-expanded="false" id="bs-top-navbar-collapse-1">
       <ul class="nav navbar-nav">
            	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+            <li><a href="#" onclick="invite(); return false;">邀请朋友</a></li>
 		<?php if(isset($admin) && $admin): ?>
            		<li><a href="/users/withdraw">管理员取款</a></li>
 		<?php endif; ?>
@@ -260,6 +261,7 @@ var _hmt = _hmt || [];
 		</a>
           	<ul class="dropdown-menu">
            	<li><a href="/users/view/<?php echo Yii::app()->user->id; ?>">我的提交</a></li>
+            <li><a href="#" onclick="invite(); return false;">邀请朋友</a></li>
 		<?php if(isset($admin) && $admin): ?>
            		<li><a href="/users/withdraw">管理员取款</a></li>
 		<?php endif; ?>
@@ -307,6 +309,9 @@ var _hmt = _hmt || [];
 		Copyright &copy; <?php echo date('Y'); ?> by Meiliuer<br/>
 	</div><!-- footer -->
 
+
+<!-- modals starts, move everything out for partial --> 
+
 	<?php if(Yii::app()->user->isGuest || $user->auto): ?>
 		<!-- Modal -->
 		<div class="modal fade" id="signup_or_login" tabindex="-1" role="dialog" aria-labelledby="signup_or_login_modal">
@@ -321,7 +326,28 @@ var _hmt = _hmt || [];
     				</div>
   			</div>
 		</div>
-    	<?php endif; ?>
+
+  <?php else: ?>
+
+  <div class="modal fade " id="invite_friend" tabindex="-1" role="dialog" aria-labelledby="invite_friend_modal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">邀请好友</h4>
+      </div>
+      <div class="modal-body">
+            <div class="row">
+                     <p>没六儿目前仅限邀请注册</p>
+                    <p>邀请朋友加入请使用邀请码:</p>
+                    <p><b style="font-size:16px;"><u>ML999</u></b></p>
+            </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <?php endif; ?>
 
 		<!-- Modal -->
 		<div class="modal fade" id="post_popup" tabindex="-1" role="dialog" aria-labelledby="post_popup_modal">

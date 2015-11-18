@@ -16,7 +16,7 @@ return array(
 	// autoloading model and component classes
 	'import'=>array(
 	        'application.classes.*',
-		'application.models.*',
+		    'application.models.*',
 		'application.controllers.*',
 		'application.components.*',
         	'application.modules.*',
@@ -25,7 +25,6 @@ return array(
         	'ext.PHPDomParser.*',
         	'ext.imperavi-redactor-widget.ImperaviRedactorWidget',
 		'ext.segment_analytics.lib.*',
-		'ext.s3.*',
 	        'application.classes.*',
 	),
 

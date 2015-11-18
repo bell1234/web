@@ -22,7 +22,7 @@ Yii::app()->clientScript->registerLinkTag('canonical', null, $href);
         ),
 	'viewData' => array('admin' => $admin),    //自己的variables
 	'itemView'=>'_view',
-        'template'=>'{items}{pager}',	//infinite scroll.
+    'template'=>'{items}{pager}',	//infinite scroll.
 	'emptyText'=>'',
 
 )); ?>	

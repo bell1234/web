@@ -39,7 +39,7 @@
 		<?php echo $form->hiddenField($model,'comment_id',array('value'=>$comment->id)); ?>
 		<?php echo $form->hiddenField($model,'receiver', array('class'=>'reply-receiver-field')); ?>
 	
-<?php echo $form->textArea($model,'description',array('placeholder'=>'回复评论','class'=>'form-control reply-field', 'style'=>'resize:vertical; height:33px;')); ?>
+<?php echo $form->textArea($model,'description',array('placeholder'=>'回复评论','class'=>'form-control reply-field', 'style'=>'resize:vertical; height:60px;')); ?>
 <?php echo $form->error($model,'description'); ?>
 
 	</div>

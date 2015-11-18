@@ -42,7 +42,7 @@ class Posts extends CActiveRecord
 			array('name', 'required', 'message'=>'请输入一个吸引人的标题'),
 			array('name', 'length','min'=>3, 'tooShort'=>'标题也太短了吧！'),
 
-			array('name', 'length','max'=>90, 'tooLong'=>'标题太长啦！'),
+			array('name', 'length','max'=>500, 'tooLong'=>'标题太长啦！'),
 
 			array('description', 'length', 'min'=>10, 'max'=>'65535', 'tooShort'=>'内容太少啦！', 'tooLong'=>'内容太长啦!'),
 

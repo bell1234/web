@@ -158,6 +158,13 @@ class Users extends CActiveRecord
 	}
 
 
+	public function isBanned(){
+		if($this->status == 3){
+			return true;
+		}
+		return false;
+	}
+
 	public function guestSignup(){
 
   			if (!isset($_SERVER['HTTP_USER_AGENT']) || (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|seek|facebookexternalhit|search|robo|lycos|twiceler|cron|curl|fake|moni|archiver|sohu|msn|sogou|mediapartners-google|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))) {

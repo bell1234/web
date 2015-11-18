@@ -41,11 +41,11 @@ if($model->type == 1){
 	<?php else: ?>
 
 			<div class="post_votes" style="height:100%;">
-				<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
+				<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, 0); return false;">
 					<div><i class="glyphicon glyphicon-triangle-top"></i></div>
 					<div class="vote_num"><?php echo ($model->fake_up + $model->up - $model->down); ?></div>
 				</a>
-				<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+				<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, 0); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 			</div>
 
 	<?php endif; ?>
@@ -61,7 +61,7 @@ if($model->type == 1){
 
 			<div class="post_footer grey small paddingleft50 top20 bottom10">
 				<img class="extra_small_avatar img-circle" src="<?php echo $user->avatar; ?>" />
-				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
+				<a class="grey" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>

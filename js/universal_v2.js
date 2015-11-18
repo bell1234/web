@@ -71,6 +71,11 @@ function hidered() {
 
 }
 
+
+function invite(){
+	$('#invite_friend').modal();
+}
+
 function signup(){
 	$('#signup_or_login').modal();
 }

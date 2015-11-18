@@ -74,7 +74,7 @@ $this->widget('ImperaviRedactorWidget', array(
 ));
 */
 ?>
-<?php echo $form->textArea($model,'description',array('placeholder'=>'想说点什么?','class'=>'form-control', 'style'=>'resize:vertical; height:60px;')); ?>
+<?php echo $form->textArea($model,'description',array('placeholder'=>'想说点什么?','class'=>'form-control', 'style'=>'resize:vertical; height:90px;')); ?>
 <?php echo $form->error($model,'description'); ?>
 
 	</div>

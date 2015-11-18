@@ -39,18 +39,18 @@ if($model->type == 1){
 	<?php else: ?>
 
 		<div class="post_votes">
-			<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, <?php echo $self; ?>); return false;">
+			<a id="vote_up_<?php echo $model->id; ?>" class="vote_up <?php if($alreadyUp): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 1, <?php echo $guest; ?>, 0); return false;">
 				<div><i class="glyphicon glyphicon-triangle-top"></i></div>
 				<div class="vote_num"><?php echo ($model->fake_up + $model->up - $model->down); ?></div>
 			</a>
-			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, <?php echo $self; ?>); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
+			<a class="vote_down <?php if($alreadyDown): ?>voted<?php endif; ?>" href="#" onclick="vote(<?php echo $model->id; ?>, 2, <?php echo $guest; ?>, 0); return false;"><i class="glyphicon glyphicon-triangle-bottom"></i></a>
 		</div>
 	
 	<?php endif; ?>
 
 		<div class="post_pic">
 
-			<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
+			<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$model->thumb_pic): ?>
 					<img id="link_thumb_pic" class="link_thumb_pic" src="/images/shaka.png" />
 				<?php else: ?>
@@ -63,7 +63,7 @@ if($model->type == 1){
 
 			<div>
 				<h1 class="post_header" style="margin-top:0px;">
-					<a class="black_link" target="_blank" href="<?php echo $post_link;?>" rel="nofollow">
+					<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 						<?php echo $model->name; ?>
 					</a>
 				</h1>
@@ -72,7 +72,7 @@ if($model->type == 1){
 
 			<div class="post_footer grey small">
 				<img class="extra_small_avatar img-circle" src="<?php echo $user->avatar; ?>" />
-				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
+				<a class="grey" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($model->create_time)); ?>">
 					<?php echo date('M jS, Y',($model->create_time)); ?>

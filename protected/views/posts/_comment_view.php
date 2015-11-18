@@ -50,7 +50,7 @@ function hide_reply_comment_<?php echo $data->id; ?>(){
 			</div>
 			<div class="post_footer grey small top10">
 				<img class="extra_small_avatar img-circle" src="<?php echo $user->avatar; ?>" />
-				<a class="grey" target="_blank" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
+				<a class="grey" href="/users/<?php echo $user->id; ?>"><?php echo $user->username; ?></a>
 				发布于
 				<abbr class="timeago" title="<?php echo date('c',($data->create_time)); ?>">
 					<?php echo date('M jS, Y',($data->create_time)); ?>

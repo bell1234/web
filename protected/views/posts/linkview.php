@@ -50,7 +50,7 @@ if($model->type == 1){
 
 		<div class="post_pic">
 
-			<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
+			<a target="_blank" class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$model->thumb_pic): ?>
 					<img id="link_thumb_pic" class="link_thumb_pic" src="/images/shaka.png" />
 				<?php else: ?>
@@ -63,11 +63,11 @@ if($model->type == 1){
 
 			<div>
 				<h1 class="post_header" style="margin-top:0px;">
-					<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
+					<a target="_blank" class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 						<?php echo $model->name; ?>
 					</a>
 				</h1>
-				<p><a style="word-wrap:break-word;" href="<?php echo $post_link;?>" rel="nofollow"><?php echo $post_link;?></a></p>
+				<p><a target="_blank" style="word-wrap:break-word;" href="<?php echo $post_link;?>" rel="nofollow"><?php echo $post_link;?></a></p>
 			</div>
 
 			<div class="post_footer grey small">

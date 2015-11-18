@@ -27,7 +27,7 @@ class PostsController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','ApiIndex','ApiCreate',),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -42,22 +42,6 @@ class PostsController extends Controller
 				'users'=>array('*'),
 			),
 		);
-	}
-
-
-
-	public function sendJSONResponse($arr) {
-		if (!isset($_GET['callback'])) {
-			echo "no callback from jsonp";
-			exit();
-		}
-		header('content-type: application/json; charset=utf-8');
-		echo $_GET['callback'] . '(' . json_encode($arr) . ')';
-	}
-
-	public function sendJSONPost($arr) {
-		header('content-type: application/json; charset=utf-8');
-		echo json_encode($arr);
 	}
 
 	//ajax image upload for redactor
@@ -174,27 +158,27 @@ class PostsController extends Controller
 			$reply->attributes = $_POST['Reply'];
 			$reply->create_time = time();
 			$reply->description = strip_tags($reply->description);
-			$reply->save();
-			$model->comments++;
-			$model->save(false);
-
-			if($reply->receiver != Yii::app()->user->id){
-				$noti = Notification::model()->findByAttributes(array('post_id'=>$model->id, 'receiver'=>$reply->receiver, 'type_id'=>3));
-				if($noti){
-					$noti->sender = Yii::app()->user->id;
-					$noti->other++;
-					$noti->post_id = $model->id;
-					$noti->create_time = time();
-					$noti->read = 0;
-					$noti->save();
-				}else{
-					$noti = new Notification;
-					$noti->type_id = 3; //reply
-					$noti->post_id = $model->id;
-					$noti->sender = Yii::app()->user->id;
-					$noti->receiver = $reply->receiver;
-					$noti->create_time = time();
-					$noti->save();
+			if($reply->save()){
+				$model->comments++;
+				$model->save(false);
+				if($reply->receiver != Yii::app()->user->id){
+					$noti = Notification::model()->findByAttributes(array('post_id'=>$model->id, 'receiver'=>$reply->receiver, 'type_id'=>3));
+					if($noti){
+						$noti->sender = Yii::app()->user->id;
+						$noti->other++;
+						$noti->post_id = $model->id;
+						$noti->create_time = time();
+						$noti->read = 0;
+						$noti->save();
+					}else{
+						$noti = new Notification;
+						$noti->type_id = 3; //reply
+						$noti->post_id = $model->id;
+						$noti->sender = Yii::app()->user->id;
+						$noti->receiver = $reply->receiver;
+						$noti->create_time = time();
+						$noti->save();
+					}
 				}
 			}
 		}
@@ -305,9 +289,8 @@ class PostsController extends Controller
 		return;
 	}
 
-	/**
 
-	/**
+	/*
 	 * Vote ajax function
 	 */
 	public function actionVote(){
@@ -646,193 +629,6 @@ class PostsController extends Controller
 			}
 		}
 		return;
-	}
-
-	public function actionApiCreate(){
-
-		if (!isset($_GET['token'])) {
-			$this->sendJSONResponse(array(
-				'error' => 'No token'
-			));
-			exit();
-		} else {
-			$user = Users::model()->findByAttributes(array(
-				'activkey' => $_GET['token']
-			));
-			if (!$user) {
-				$this->sendJSONResponse(array(
-					'error' => 'Invalid token'
-				));
-				exit();
-			}
-		}
-
-		$model = new Posts;
-
-		if(isset($_GET['Posts']))
-		{
-			$model->attributes=$_GET['Posts'];
-			$model->name = strip_tags($model->name); 	//净化tags
-			$model->create_time = time();
-			$model->user_id = $user->id;
-			$model->points = 0;	//starting with 0 points?
-
-			if($model->type == 1){		//link
-				//nothing
-			}else if($model->type == 2){	//content
-				$model->link = "";
-
-			}else if($model->type == 3){	//ama
-				$model->link = "";
-				$model->category_id = 4;	//force AMA
-			}
-			if($model->type == 2 && !$model->description){
-
-				$model->addError('description', '请输入要提交的内容');
-				echo json_encode(array($model->getErrors()));
-
-			}else if($model->type == 3 && !$model->description){
-
-				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
-				echo json_encode(array($model->getErrors()));
-
-			}else if($model->type == 1 && !$model->link){
-
-				$model->addError('link', '请输入要提交的链接');
-				echo json_encode(array($model->getErrors()));
-
-			}else if($model->validate()){
-
-				$model->save(false);
-
-				$admin = Admins::model()->findByPk($user->id);
-				if($admin){
-					$admin->total_posts++;
-					$admin->balance += $admin->salary;		//1块钱1条 或者 1块5 1条
-					$admin->save(false);
-				}
-
-				$pictures = Yii::app()->session['pictures'];
-				if ($pictures) {
-					foreach ($pictures as $picture => $pic) {
-						$image = PostsPictures::model()->findByAttributes(array(
-							'path' => $pic
-						));
-						if($image){
-							$image->post_id = $model->id;
-							$image->save();
-						}
-					}
-				}
-				unset(Yii::app()->session['pictures']);
-
-				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
-					if($model->link){
-						//We fill in thumb_pic, etc, in a async way, in ajax. not here.
-						//nothing here
-					}else if($model->type == 2){	
-
-						preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $model->description, $match);
-
-						if(isset($match[1])){
-							$model->thumb_pic = $match[1];
-						}
-
-						//注意:上传视频怎么办....
-						//$model->video_html = "";
-
-						//如果上述还是没有找到图片
-						if(!$model->thumb_pic){
-							$model->thumb_pic = ""; 	//avatar? or default content pic?
-						}
-						$model->save(false);
-					}else if($model->type == 3){	//AMA
-						$model->thumb_pic = ""; //avatar? or default ama pic?
-						$model->save(false);
-					}
-				}
-				echo json_encode(array('success'=>$model->id));
-
-				$this->sendJSONResponse(array(
-					'success' => $model->id,
-				));
-
-			}else{
-				$this->sendJSONResponse(array(
-					$model->getErrors()
-				));
-			}
-		}
-
-	}
-
-
-	public function actionApiIndex(){
-
-		if (!isset($_GET['token'])) {
-			$this->sendJSONResponse(array(
-				'error' => 'No token'
-			));
-			exit();
-		} else {
-			$user = Users::model()->findByAttributes(array(
-				'activkey' => $_GET['token']
-			));
-			if (!$user) {
-				$this->sendJSONResponse(array(
-					'error' => 'Invalid token'
-				));
-				exit();
-			}
-		}
-
-		$page = 1;
-		
-		if (isset($_GET['page'])) {
-			$page = $_GET['page'];
-		}
-
-		if (isset($_GET['refresh_all'])) {
-			
-			$posts = Posts::model()->findAll(array(
-				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
-				'condition'=>'hide = 0',
-				'offset' => ($page - 1) * 15,
-				'order' => 'rank DESC, create_time DESC',
-				'limit' => 15 * $_GET['refresh_all']
-			));
-			
-		} else {
-			
-			$posts = Posts::model()->findAll(array(
-				'select'=>'*, postrank(fake_up, up, down, CAST(create_time as decimal(18,7))) as rank',
-				'condition'=>'hide = 0',
-				'offset' => ($page - 1) * 15,
-				'order' => 'rank DESC, create_time DESC',
-				'limit' => 15
-			));
-		}
-
-		$arr = array();
-
-		foreach($posts as $post):
-			array_push($arr, array(
-				'post_id' => $post->id,				//post id
-				'category'=>$post->category_id,		//category id
-				'up' => $post->up + $post->fake_up,	//up votes
-				'down'=>$post->down,				//down votes
-				'create_time' => $post->create_time,		//create time in unix time stamp
-				'title' => $post->name,				//名字
-				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
-				'thumb_pic'=>$post->thumb_pic,		//小图链接
-				'comments'=>$post->comments,		//评论数
-				'type'=>$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
-				'username'=>$post->user->username,	//发布人用户名
-				'user_id'=>$post->user_id			//发布人id. 链接为/users/id
-			));
-		endforeach;
-
-		$this->sendJSONResponse($arr);
 	}
 
 

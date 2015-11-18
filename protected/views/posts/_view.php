@@ -51,7 +51,7 @@ $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8'
 	<?php endif; ?>
 
 		<div class="post_pic">
-			<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
+			<a target="_blank" class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 				<?php if(!$data->thumb_pic): 
 					  $thumb = "/images/shaka.png";
 				      else:
@@ -64,7 +64,7 @@ $truncated = (strlen($data->name) > 150) ? mb_substr($data->name, 0, 147,'utf-8'
 
 		<div class="post_content col-lg-9 col-md-8 col-sm-8 col-xs-7 nopaddingleft nopaddingright" style="margin-right:-10px;">
 			<h4 class="post_header">
-				<a class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
+				<a target="_blank" target="_blank" class="black_link" href="<?php echo $post_link;?>" rel="nofollow">
 					<?php echo $truncated; ?>
 				</a>
 			</h4>

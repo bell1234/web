@@ -33,7 +33,7 @@ class SiteController extends Controller
             'order'=>'create_time DESC',
             'offset' => 0,
         ),
-        'pagination' => array('pageSize' =>40),
+        'pagination' => array('pageSize' =>20),
       ));
       $this->render('notifications',array('notifications'=>$notifications));
 	}

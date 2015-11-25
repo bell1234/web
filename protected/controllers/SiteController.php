@@ -54,7 +54,8 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$this->redirect('/');
+		$this->render('index');
+		//$this->redirect('/');
 	}
 
 	/**

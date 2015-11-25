@@ -394,6 +394,19 @@ function isUrlValid(url) {
 }
 
 
+function show_signup(){
+	$('#user_signup').show();
+	$('#user_login').hide();
+	$('.signup_tab').addClass('active');
+	$('.login_tab').removeClass('active');
+}
+function show_login(){
+	$('#user_login').show();	
+	$('#user_signup').hide();
+	$('.signup_tab').removeClass('active');
+	$('.login_tab').addClass('active');
+}
+
 function show_link(){
 	$('#Posts_type').val(1);
 	$('.content_tab').removeClass('active');

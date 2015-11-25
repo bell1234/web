@@ -1,7 +1,7 @@
 <?php
 class LoginPop extends CWidget
 {
-	
+
 	public function init()
 	{
 		
@@ -52,7 +52,7 @@ class LoginPop extends CWidget
 				}
 
 			}else{
-				echo "<script>signup();</script>";
+				echo "<script>signup(); setTimeout(show_login, 3);</script>";
 			}
 		}
 
@@ -110,10 +110,10 @@ class LoginPop extends CWidget
 				if($model->validate() && $model->login()){
 					$this->controller->redirect('/');
 				}else{
-					echo "<script>signup();</script>";
+					echo "<script>signup(); setTimeout(show_signup, 1);</script>";
 				}
 			}else{
-				echo "<script>signup();</script>";
+				echo "<script>signup(); setTimeout(show_signup, 1);</script>";
 			}
 		}
 

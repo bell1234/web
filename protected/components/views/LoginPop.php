@@ -1,7 +1,4 @@
-
-<div class="form col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-<h3 class="bottom15">注册账号</h3>
+<div id="user_signup" class="form col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'signup-form',
@@ -38,6 +35,7 @@
 		<?php echo CHtml::submitButton('注册', array('class'=>'btn btn-warning btn-block')); ?>
 	</div>
 
+
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
@@ -45,9 +43,7 @@
 
 
 
-<div class="form col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-<h3 class="bottom15">登录没六儿</h3>
+<div id="user_login" class="form col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display:none;">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',

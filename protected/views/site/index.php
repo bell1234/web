@@ -1,20 +1,30 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle = "没六儿";
+$this->layout = "//layouts/nobar";
 ?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<div class="align_center">
+	<img src="/images/half_trans.png" style="width:140px;" />
+</div>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+<h4 class="bottom15 top20 paddingleft15 paddingright15">
+	
+  		<div class="hori_tab signup_tab active"><a href="#" onclick="show_signup(); return false;">注册</a></div>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+  		<div class="hori_tab login_tab" style="float:right;"><a href="#" onclick="show_login(); return false;">登陆</a></div>
+	
+</h4>
+
+<?php
+ 	$this->widget('application.components.LoginPop');
+?>
+
+
+<img src="/images/apple_store.svg" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 top30" />
+
+
+</div>

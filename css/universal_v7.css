@@ -322,6 +322,9 @@ h4.post_header{
 	#bs-top-navbar-collapse-1{
 		display: none !important;
 	}
+
+	#signup_or_login .modal-dialog  {width:400px;}
+
 	#toTop{
 		border-radius: 3px;
 		background-color:#efefef;
@@ -543,6 +546,24 @@ button.body-close{
 	overflow:hidden; 
 	vertical-align:middle;
 	text-overflow: ellipsis;
+}
+
+.hori_tab{
+	display:inline-block;
+	font-size:20px;
+	padding-bottom:15px;
+	font-weight:300;
+	left:5px; 
+	right:5px;
+	width:47%;
+	text-align:center;
+}
+.hori_tab.active{
+	border-bottom: solid 3px #333 !important;
+}
+.hori_tab a{
+	text-decoration:none;
+	color: black;
 }
 
 /*

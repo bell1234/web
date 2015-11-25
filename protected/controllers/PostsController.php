@@ -243,7 +243,7 @@ class PostsController extends Controller
 				),
 			),
 			'sort' => array(
-				'defaultOrder' => 'rank DESC, create_time DESC' // this is it.
+				'defaultOrder' => 'rank DESC, create_time ASC' // this is it.
 			),
 			'pagination' => array(
 				'pageSize' => 10

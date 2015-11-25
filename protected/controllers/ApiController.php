@@ -7,11 +7,15 @@ class ApiController extends Controller
 	public function actionSignup(){
 
 		$user = new Users;
-		$model= new LoginForm;
 
-		if(isset($_GET['Users']))
+		if(isset($_GET['username']) && isset($_GET['email']) && isset($_GET['password']))
 		{
-			$user->attributes=$_GET['Users'];
+			$user->username = $_GET['username'];
+			$user->email = $_GET['email'];
+			$user->password = $_GET['password'];
+
+			//for phone app, not limitation
+			$user->invitation = "ML999";
 
 			if($user->validate()){ //validate
 				if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {		//cloudflare for now, maybe Baidu in the future.
@@ -28,12 +32,8 @@ class ApiController extends Controller
 				$user->userActed(); 	//update IP, location
 				$user->saveDupStats(); //save user dup accounts, cookie etc.
 
-				$invite = Invitation::model()->findByAttributes(array('code' => $user->invitation));
-				if($invite){
-					//$invite->delete();
-				}
 				if($user->email){
-					$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
+					$activation_url = $this->createAbsoluteUrl('/site/activation', array(
 						"activkey" => $user->activkey,
 						"email" => $user->email
 					));
@@ -55,6 +55,8 @@ class ApiController extends Controller
 					Yii::app()->mail->send($message);
 					} catch (Exception $e) {}
 				}
+
+				DeviceToken::addNewToken($user->id);
 
 				$this->sendJSONResponse(array(
 					'user_id'=>$user->id,	//user_id
@@ -93,6 +95,9 @@ class ApiController extends Controller
 					
 					$user->logins++;
 					$user->save(false);
+
+					DeviceToken::addNewToken($user->id);
+
 					$this->sendJSONResponse(array(
 						'user_id'=>$user->id,	//user_id
 						'token'=>$user->activkey,	//token
@@ -116,7 +121,6 @@ class ApiController extends Controller
 		}
 
 	}
-
 
 
 	public function actionIndex(){
@@ -165,14 +169,16 @@ class ApiController extends Controller
 			));
 		}
 
+		DeviceToken::addNewToken($user->id);
+
 		$arr = array();
 
 		foreach($posts as $post):
 			array_push($arr, array(
 				'post_id' => $post->id,				//post id
 				'category'=>$post->category_id,		//category id
-				'up' => $post->up + $post->fake_up,	//up votes
-				'down'=>$post->down,				//down votes
+				'up' => (int)$post->up + $post->fake_up,	//up votes
+				'down'=>(int)$post->down,				//down votes
 				'create_time' => $post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
@@ -251,8 +257,8 @@ class ApiController extends Controller
 			array_push($arr, array(
 				'post_id' => $post->id,				//post id
 				'category'=>$post->category_id,		//category id
-				'up' => $post->up + $post->fake_up,	//up votes
-				'down'=>$post->down,				//down votes
+				'up' => (int)$post->up + $post->fake_up,	//up votes
+				'down'=>(int)$post->down,				//down votes
 				'create_time' => $post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'description'=>$post->description,  //type != 1时（内容分享或者ama）
@@ -275,20 +281,31 @@ class ApiController extends Controller
 
 	public function actionCreate(){
 
-		if (!isset($_GET['token'])) {
-			$this->sendJSONResponse(array(
-				'error' => 'No token'
-			));
-			exit();
-		} else {
-			$user = Users::model()->findByAttributes(array(
-				'activkey' => $_GET['token']
-			));
-			if (!$user) {
+		$user = null;
+
+		if(isset($_GET['device_token'])){
+			$token = DeviceToken::model()->findByAttributes(array('token'=>$_GET['device_token']));
+			if($token){
+				$user = Users::model()->findByPk($token->user_id);
+			}
+		}
+
+		if(!$user){
+			if (!isset($_GET['token'])) {
 				$this->sendJSONResponse(array(
-					'error' => 'Invalid token'
+					'error' => 'No token'
 				));
 				exit();
+			} else {
+				$user = Users::model()->findByAttributes(array(
+					'activkey' => $_GET['token']
+				));
+				if (!$user) {
+					$this->sendJSONResponse(array(
+						'error' => 'Invalid token'
+					));
+					exit();
+				}
 			}
 		}
 
@@ -388,8 +405,6 @@ class ApiController extends Controller
 						$model->save(false);
 					}
 				}
-				echo json_encode(array('success'=>$model->id));
-
 				$this->sendJSONResponse(array(
 					'success' => $model->id,
 				));
@@ -406,6 +421,150 @@ class ApiController extends Controller
 		}
 
 	}
+
+
+	public function actionCreatePost(){
+
+
+		if(isset($_POST['device_token'])){
+			$token = DeviceToken::model()->findByAttributes(array('token'=>$_POST['device_token']));
+			if($token){
+				$user = Users::model()->findByPk($token->user_id);
+			}
+		}
+
+		if(!$user){
+			if (!isset($_POST['token'])) {
+				$this->sendJSONResponse(array(
+					'error' => 'No token'
+				));
+				exit();
+			} else {
+				$user = Users::model()->findByAttributes(array(
+					'activkey' => $_POST['token']
+				));
+				if (!$user) {
+					$this->sendJSONResponse(array(
+						'error' => 'Invalid token'
+					));
+					exit();
+				}
+			}
+		}
+
+		$model = new Posts;
+
+		if(isset($_POST['name']) && isset($_POST['type']))
+		{
+			if(isset($_POST['description'])){
+				$model->description = $_POST['description'];
+			}
+			if(isset($_GET['category_id'])){
+				$model->category_id = $_POST['category_id'];
+			}
+			if(isset($_POST['link'])){
+				$model->link = $_POST['link'];
+			}
+
+			$model->name = $_POST['name'];
+			$model->type = $_POST['type'];
+			
+			$model->name = strip_tags($model->name); 	//净化tags
+			$model->create_time = time();
+			$model->user_id = $user->id;
+			$model->points = 0;	//starting with 0 points?
+
+			if($model->type == 1){		//link
+				//nothing
+			}else if($model->type == 2){	//content
+				$model->link = "";
+
+			}else if($model->type == 3){	//ama
+				$model->link = "";
+				$model->category_id = 4;	//force AMA
+			}
+			if($model->type == 2 && !$model->description){
+
+				$model->addError('description', '请输入要提交的内容');
+				echo json_encode(array($model->getErrors()));
+
+			}else if($model->type == 3 && !$model->description){
+
+				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
+				echo json_encode(array($model->getErrors()));
+
+			}else if($model->type == 1 && !$model->link){
+
+				$model->addError('link', '请输入要提交的链接');
+				echo json_encode(array($model->getErrors()));
+
+			}else if($model->validate()){
+
+				$model->save(false);
+
+				$admin = Admins::model()->findByPk($user->id);
+				if($admin){
+					$admin->total_posts++;
+					$admin->balance += $admin->salary;		//1块钱1条 或者 1块5 1条
+					$admin->save(false);
+				}
+
+				$pictures = Yii::app()->session['pictures'];
+				if ($pictures) {
+					foreach ($pictures as $picture => $pic) {
+						$image = PostsPictures::model()->findByAttributes(array(
+							'path' => $pic
+						));
+						if($image){
+							$image->post_id = $model->id;
+							$image->save();
+						}
+					}
+				}
+				unset(Yii::app()->session['pictures']);
+
+				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
+					if($model->link){
+						//We fill in thumb_pic, etc, in a async way, in ajax. not here.
+						//nothing here
+					}else if($model->type == 2){	
+
+						preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $model->description, $match);
+
+						if(isset($match[1])){
+							$model->thumb_pic = $match[1];
+						}
+
+						//注意:上传视频怎么办....
+						//$model->video_html = "";
+
+						//如果上述还是没有找到图片
+						if(!$model->thumb_pic){
+							$model->thumb_pic = ""; 	//avatar? or default content pic?
+						}
+						$model->save(false);
+					}else if($model->type == 3){	//AMA
+						$model->thumb_pic = ""; //avatar? or default ama pic?
+						$model->save(false);
+					}
+				}
+				$this->sendJSONResponse(array(
+					'success' => $model->id,
+				));
+
+			}else{
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
+			}
+		}else{
+			$this->sendJSONResponse(array(
+				'error' => 'no name',
+			));	
+		}
+
+	}
+
 
 
 	public function actionVote(){
@@ -477,11 +636,11 @@ class ApiController extends Controller
 					'success' => 'success',
 				));
 			}
+		}else{
+			$this->sendJSONResponse(array(
+				'error' => 'failed',
+			));
 		}
-
-		$this->sendJSONResponse(array(
-			'error' => 'failed',
-		));
 	}
 
 
@@ -540,10 +699,11 @@ class ApiController extends Controller
 					'success' => 'success',
 				));
 			}
+		}else{
+			$this->sendJSONResponse(array(
+				'error' => 'failed',
+			));
 		}
-		$this->sendJSONResponse(array(
-			'error' => 'failed',
-		));
 	}
 
 
@@ -567,8 +727,8 @@ class ApiController extends Controller
 		$this->sendJSONResponse(array(
 				'post_id' => $post->id,				//post id
 				'category'=>$post->category_id,		//category id
-				'up' => $post->up + $post->fake_up,	//up votes
-				'down'=>$post->down,				//down votes
+				'up' => (int)$post->up + $post->fake_up,	//up votes
+				'down'=>(int)$post->down,				//down votes
 				'create_time' => $post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'description'=>$post->description,  //type != 1时（内容分享或者ama）
@@ -623,8 +783,8 @@ class ApiController extends Controller
 		$comment = new Comments;
 		$comment->post_id = $post->id;
 
-		if(isset($_GET['Comments'])){
-			$comment->attributes = $_GET['Comments'];
+		if(isset($_GET['description'])){
+			$comment->description = $_GET['description'];
 			$comment->user_id = $user->id;
 			if($comment->isNewRecord){
 				$comment->create_time = time();
@@ -644,16 +804,16 @@ class ApiController extends Controller
 					if($noti){
 						$noti->sender = $user->id;
 						$noti->other++;
-						$noti->post_id = $model->id;
+						$noti->post_id = $post->id;
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 2; //comment
-						$noti->post_id = $model->id;
+						$noti->post_id = $post->id;
 						$noti->sender = $user->id;
-						$noti->receiver = $model->user_id;
+						$noti->receiver = $post->user_id;
 						$noti->create_time = time();
 						$noti->save();
 					}
@@ -716,9 +876,12 @@ class ApiController extends Controller
 
 		$reply = new Reply;
 		$reply->comment_id = $comment->id;
+		$reply->user_id = $user->id;
 
-		if(isset($_GET['Reply'])){
-			$reply->attributes = $_GET['Reply'];
+		$post = $comment->post;
+
+		if(isset($_GET['description'])){
+			$reply->description = $_GET['description'];
 			$reply->create_time = time();
 			$reply->description = strip_tags($reply->description);
 
@@ -730,19 +893,22 @@ class ApiController extends Controller
 					if($noti){
 						$noti->sender = $user->id;
 						$noti->other++;
-						$noti->post_id = $model->id;
+						$noti->post_id = $post->id;
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 3; //reply
-						$noti->post_id = $model->id;
+						$noti->post_id = $post->id;
 						$noti->sender = $user->id;
 						$noti->receiver = $reply->receiver;
 						$noti->create_time = time();
 						$noti->save();
 					}
+					$this->sendJSONResponse(array(
+						'success'=>$reply->id,
+					));
 				}
 			}else{
 				$this->sendJSONResponse(array(
@@ -904,7 +1070,7 @@ class ApiController extends Controller
 				'select'=>'*, commentrank(up, CAST(down as decimal(18,7))) as rank',
 				'condition'=>'post_id = '.$post->id,
 				'offset' => ($page - 1) * 15,
-				'order' => 'rank DESC, create_time DESC',
+				'order' => 'rank DESC, create_time ASC',
 				'limit' => 15
 			));
 		}
@@ -912,15 +1078,17 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($comments as $comment):
+			$replies = $this->getReply($comment->id);
 			array_push($arr, array(
 				'comment_id' => $comment->id,				//post id
 				'up' => $comment->up,	//up votes
 				'down'=>$comment->down,				//down votes
 				'create_time' => $comment->create_time,		//create time in unix time stamp
-				'description' => $comment->description,				//内容
+				'description' => (string)$comment->description,				//内容
 				'username'=>$comment->user->username,	//发布人用户名
 				'user_id'=>$comment->user_id,			//发布人id. 链接为/users/id
 				'avatar'=>$comment->user->avatar,		//发布人头像
+				'replies'=>$replies,					//replies
 			));
 		endforeach;
 
@@ -930,24 +1098,9 @@ class ApiController extends Controller
 
 
 
-	public function actionGetReply(){
+	protected function getReply($comment_id){
 
-		if (!isset($_GET['comment_id'])) {
-			$this->sendJSONResponse(array(
-				'error' => 'No comment_id'
-			));
-			exit();
-		} else {
-			$comment = Comments::model()->findByPk($_GET['comment_id']);
-			if (!$post) {
-				$this->sendJSONResponse(array(
-					'error' => '404'
-				));
-				exit();
-			}
-		}
-
-		$replies = Reply::model()->findAllByAttributes(array('comment_id'=>$comment->id));
+		$replies = Reply::model()->findAllByAttributes(array('comment_id'=>$comment_id));
 
 		$arr = array();
 
@@ -955,13 +1108,14 @@ class ApiController extends Controller
 			array_push($arr, array(
 				'reply_id' => $reply->id,				//reply id
 				'create_time' => $reply->create_time,		//create time in unix time stamp
-				'description' => $reply->description,				//内容
+				'description' => (string)$reply->description,				//内容
 				'username'=>$reply->user->username,	//发布人用户名
 				'user_id'=>$reply->user_id,			//发布人id. 链接为/users/id
+				'avatar'=>$reply->user->avatar,		//发布人头像
 			));
 		endforeach;
 
-		$this->sendJSONResponse($arr);
+		return $arr;
 	}
 
 

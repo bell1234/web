@@ -48,6 +48,7 @@ class Reply extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 				'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+				'receiverx' => array(self::BELONGS_TO, 'Users', 'receiver'),
 				'comment' => array(self::BELONGS_TO, 'Comments', 'comment_id'),
 		);
 	}

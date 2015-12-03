@@ -1,7 +1,7 @@
 
 <div>
 <a href="/">
-	<img src="/images/sidebar.png" class="sidebar_head_pic">
+	<img src="/images/chinesead.png" class="sidebar_head_pic">
 </a>
 
 <ul class="nostyle nopaddingleft top20">

@@ -56,10 +56,10 @@ class ApiController extends Controller
 					} catch (Exception $e) {}
 				}
 
-				DeviceToken::addNewToken($user->id);
+				DeviceToken::model()->addNewToken($user->id);
 
 				$this->sendJSONResponse(array(
-					'user_id'=>$user->id,	//user_id
+					'user_id'=>(int)$user->id,	//user_id
 					'token'=>$user->activkey,	//token
 					'username'=>$user->username,	//用户名
 					'avatar'=>$user->avatar,	//头像
@@ -78,6 +78,217 @@ class ApiController extends Controller
 	}
 
 
+	//接受ajax，非同步获取保存图片
+	public function actionSaveTitle(){	//太慢了 需要优化。ajax保存的时候点别的链接反应很慢。
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		$model = "";
+		if(isset($_GET['id'])){
+			$model = Posts::model()->findByPk($_GET['id']);
+		}
+		$array = array();
+		if($model){
+			$json = Posts::getTitle($model->link);
+			$array = json_decode($json, TRUE);
+			if(isset($array['thumbnail_url'])){
+				$model->thumb_pic = $array['thumbnail_url'];
+			}
+			if(isset($array['html'])){
+				$model->video_html = $array['html'];
+			}
+			$model->save(false);
+		}
+		$this->sendJSONResponse($array);
+	}
+
+
+	/**
+	 * 账户设置
+	 * @param integer $id the ID of the model to be displayed
+	 */
+	public function actionSetting()
+	{
+
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['email']) || isset($_GET['avatar']))
+		{
+
+			if(isset($_GET['email'])){
+				$user->email=$_GET['email'];
+			}
+
+			if(isset($_GET['avatar'])){
+				$user->avatar=$_GET['avatar'];
+			}
+
+			$user->auto = 0;
+
+			if($user->save()){
+				$this->sendJSONResponse(array(
+					'success'=>'changed',
+				));
+			}else{
+				$this->sendJSONResponse(array(
+					$user->getErrors()
+				));
+			}
+		}else{
+			$this->sendJSONResponse(array(
+				'error'=>'nothing changed',
+			));
+		}
+
+	}
+
+
+    /**
+     * 修改密码
+     */
+    public function actionChangepassword()
+    {
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+            
+            if (isset($_GET['oldPassword']) && isset($_GET['newPassword']) && isset($_GET['verifyPassword'])) {
+   				$model = new UserChangePassword;
+   				$model->password = $_GET['oldPassword'];
+   				$model->oldPassword = $_GET['oldPassword'];
+   				$model->verifyPassword = $_GET['verifyPassword'];
+                if ($model->validate()) {
+                    $find           = Users::model()->findByPk(Yii::app()->user->id);
+                    $find->password = hash('sha256', $model->password);
+                    $find->activkey= hash('sha256', microtime() . $find->username);
+                    $find->save();
+                    $this->sendJSONResponse(array(
+						'success'=>'changed',
+					));
+                }else{
+          			$this->sendJSONResponse(array(
+						$model->getErrors()
+					));      	
+                }
+            }else{
+				$this->sendJSONResponse(array(
+					'error'=>'nothing changed',
+				));            	
+            }
+
+    }
+
+
+    /*
+	 * 找回密码
+	 */
+	public function actionForgetPassword(){
+
+
+		$form = new UserRecoveryForm;
+
+				$email = ((isset($_GET['email']))?$_GET['email']:'');
+				$activkey = ((isset($_GET['activkey']))?$_GET['activkey']:'');
+				if ($email && $activkey) {
+					$form2 = new UserChangePassword;
+		    			$find = Users::model()->findByAttributes(array('email'=>$email));
+		    			if(isset($find) && $find->activkey == $activkey) {
+			    			if(isset($_POST['UserChangePassword'])) {
+							$form2->attributes=$_POST['UserChangePassword'];
+							if($form2->validate()) {
+								$find->password = hash('sha256', $form2->password);
+								$find->activkey= hash('sha256', microtime() . $find->username);
+
+								if ($find->status==0) {
+									$find->status = 1;
+								}
+								$find->save();
+								//Yii::app()->user->setFlash('recoveryMessage', "<p>您的新密码已保存</p><p>请<a href='/site/login'>点击这里登陆</a></p>");
+								$this->sendJSONResponse(array(
+									'success'=>'Password has changed',
+								)); 
+							}
+						} 
+						$this->render('changePassword',array('form'=>$form2));
+		    			} else {
+		    				$this->sendJSONResponse(array(
+								'error'=>'Wrong link',
+							)); 
+		    				//throw new CHttpException(404, '该找回密码链接无效，请复制粘贴邮件中的完整地址至浏览器地址栏中');
+		    			}
+		    		} else {
+			    		if(isset($_GET['email'])) {
+			    			$form->login_or_email = $_GET['email'];
+
+			    			if($form->validate()) {
+
+			    			$user = Users::model()->findbyPk($form->user_id);
+							$activation_url = Yii::app()->params['url'].'/site/forgetpassword/activkey/'.$user->activkey.'/email/'.$user->email;
+							
+							$message = new YiiMailMessage;
+							$message->view = 'forgetpassword';
+							$username = $user->username;
+							$message->setBody(array('username'=>$user->username,'act_link'=>$activation_url), 'text/html');
+							$message->setSubject('找回密码 - 没六儿');
+							$message->addTo($user->email);
+							$message->setFrom(array(
+								'no-reply@meiliuer.com' => '没六儿'
+							));
+							Yii::app()->mail->send($message);
+							//Yii::app()->user->setFlash('recoveryMessage', "没六儿已经向您的邮箱发送了一封帮您重置密码的邮件，请查收。");
+			    				$this->sendJSONResponse(array(
+									'success'=>'recovery email sent',
+								)); 
+			    			}
+			    		}
+		  
+		    		}
+	}
 
 
 
@@ -96,10 +307,10 @@ class ApiController extends Controller
 					$user->logins++;
 					$user->save(false);
 
-					DeviceToken::addNewToken($user->id);
+					DeviceToken::model()->addNewToken($user->id);
 
 					$this->sendJSONResponse(array(
-						'user_id'=>$user->id,	//user_id
+						'user_id'=>(int)$user->id,	//user_id
 						'token'=>$user->activkey,	//token
 						'username'=>$user->username,	//用户名
 						'avatar'=>$user->avatar,	//头像
@@ -169,31 +380,36 @@ class ApiController extends Controller
 			));
 		}
 
-		DeviceToken::addNewToken($user->id);
+		DeviceToken::model()->addNewToken($user->id);
 
 		$arr = array();
 
 		foreach($posts as $post):
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$self_vote = 0;			//0为尚未投票
+			if($vote){
+				$self_vote = $vote->type;		//1为up，2为down
+			}
 			array_push($arr, array(
-				'post_id' => $post->id,				//post id
-				'category'=>$post->category_id,		//category id
+				'post_id' => (int)$post->id,				//post id
+				'category'=>(int)$post->category_id,		//category id
 				'up' => (int)$post->up + $post->fake_up,	//up votes
 				'down'=>(int)$post->down,				//down votes
-				'create_time' => $post->create_time,		//create time in unix time stamp
+				'create_time' => (int)$post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
 				'thumb_pic'=>$post->thumb_pic,		//小图链接
-				'comments'=>$post->comments,		//评论数
-				'type'=>$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
+				'comments'=>(int)$post->comments,		//评论数
+				'type'=>(int)$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
 				'username'=>$post->user->username,	//发布人用户名
 				'avatar'=>$post->user->avatar,		//发布人头像
-				'user_id'=>$post->user_id			//发布人id. 链接为/users/id
+				'user_id'=>(int)$post->user_id,			//发布人id. 链接为/users/id
+				'self_vote'=>(int)$self_vote,			//1为up, 2为down, 3为nothing
 			));
 		endforeach;
 
 		$this->sendJSONResponse($arr);
 	}
-
 
 
 	public function actionUser(){
@@ -254,21 +470,27 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($posts as $post):
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$self_vote = 0;			//0为尚未投票
+			if($vote){
+				$self_vote = $vote->type;		//1为up，2为down
+			}
 			array_push($arr, array(
-				'post_id' => $post->id,				//post id
-				'category'=>$post->category_id,		//category id
+				'post_id' => (int)$post->id,				//post id
+				'category'=>(int)$post->category_id,		//category id
 				'up' => (int)$post->up + $post->fake_up,	//up votes
 				'down'=>(int)$post->down,				//down votes
-				'create_time' => $post->create_time,		//create time in unix time stamp
+				'create_time' => (int)$post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'description'=>$post->description,  //type != 1时（内容分享或者ama）
 				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
 				'thumb_pic'=>$post->thumb_pic,		//小图链接
-				'comments'=>$post->comments,		//评论数
-				'type'=>$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
+				'comments'=>(int)$post->comments,		//评论数
+				'type'=>(int)$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
 				'username'=>$post->user->username,	//发布人用户名
 				'avatar'=>$post->user->avatar,		//发布人头像
-				'user_id'=>$post->user_id			//发布人id. 链接为/users/id
+				'user_id'=>(int)$post->user_id,			//发布人id. 链接为/users/id
+				'self_vote'=>(int)$self_vote,			//0 not vote, 1->up, 2->Down
 			));
 		endforeach;
 
@@ -343,17 +565,23 @@ class ApiController extends Controller
 			if($model->type == 2 && !$model->description){
 
 				$model->addError('description', '请输入要提交的内容');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->type == 3 && !$model->description){
 
 				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->type == 1 && !$model->link){
 
 				$model->addError('link', '请输入要提交的链接');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->validate()){
 
@@ -486,17 +714,23 @@ class ApiController extends Controller
 			if($model->type == 2 && !$model->description){
 
 				$model->addError('description', '请输入要提交的内容');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->type == 3 && !$model->description){
 
 				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->type == 1 && !$model->link){
 
 				$model->addError('link', '请输入要提交的链接');
-				echo json_encode(array($model->getErrors()));
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
 
 			}else if($model->validate()){
 
@@ -609,6 +843,13 @@ class ApiController extends Controller
 							}
 						}
 						$post->save(false);
+						$this->sendJSONResponse(array(
+							'success' => 'success',
+						));
+					}else{
+						$this->sendJSONResponse(array(
+							'error' => 'dup vote',
+						));
 					}
 				}else{
 					$vote = new PostsVotes;
@@ -631,10 +872,10 @@ class ApiController extends Controller
 						}
 					}
 					$post->save(false);
+					$this->sendJSONResponse(array(
+						'success' => 'success',
+					));
 				}
-				$this->sendJSONResponse(array(
-					'success' => 'success',
-				));
 			}
 		}else{
 			$this->sendJSONResponse(array(
@@ -680,6 +921,13 @@ class ApiController extends Controller
 							$comment->down++;		//+=2 would be more accurate?
 						}
 						$comment->save(false);
+						$this->sendJSONResponse(array(
+							'success' => 'success',
+						));
+					}else{
+						$this->sendJSONResponse(array(
+							'error' => 'dup vote',
+						));
 					}
 				}else{
 					$vote = new CommentsVotes;
@@ -694,10 +942,10 @@ class ApiController extends Controller
 						$comment->down++;
 					}
 					$comment->save(false);
+					$this->sendJSONResponse(array(
+						'success' => 'success',
+					));
 				}
-				$this->sendJSONResponse(array(
-					'success' => 'success',
-				));
 			}
 		}else{
 			$this->sendJSONResponse(array(
@@ -725,20 +973,20 @@ class ApiController extends Controller
 		}
 
 		$this->sendJSONResponse(array(
-				'post_id' => $post->id,				//post id
-				'category'=>$post->category_id,		//category id
+				'post_id' => (int)$post->id,				//post id
+				'category'=>(int)$post->category_id,		//category id
 				'up' => (int)$post->up + $post->fake_up,	//up votes
 				'down'=>(int)$post->down,				//down votes
-				'create_time' => $post->create_time,		//create time in unix time stamp
+				'create_time' => (int)$post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'description'=>$post->description,  //type != 1时（内容分享或者ama）
 				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
 				'thumb_pic'=>$post->thumb_pic,		//小图链接
-				'comments'=>$post->comments,		//评论数
-				'type'=>$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
+				'comments'=>(int)$post->comments,		//评论数
+				'type'=>(int)$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
 				'username'=>$post->user->username,	//发布人用户名
 				'avatar'=>$post->user->avatar,		//发布人头像
-				'user_id'=>$post->user_id			//发布人id. 链接为/users/id
+				'user_id'=>(int)$post->user_id			//发布人id. 链接为/users/id
 		));
 
 	}
@@ -808,6 +1056,11 @@ class ApiController extends Controller
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 和另外".$noti->other."人评论了您的发布: ".$post->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 2; //comment
@@ -816,13 +1069,17 @@ class ApiController extends Controller
 						$noti->receiver = $post->user_id;
 						$noti->create_time = time();
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 评论了您的发布: ".$post->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}
-					
-					$this->sendJSONResponse(array(
-						'success'=>$comment->id,
-					));
-
 				}
+
+				$this->sendJSONResponse(array(
+					'success'=>$comment->id,
+				));
 			}else{
 				$this->sendJSONResponse(array(
 					$comment->getErrors()
@@ -878,6 +1135,9 @@ class ApiController extends Controller
 		$reply->comment_id = $comment->id;
 		$reply->user_id = $user->id;
 
+		if(isset($_GET['receiver'])){
+			$reply->receiver = $_GET['receiver'];
+		}
 		$post = $comment->post;
 
 		if(isset($_GET['description'])){
@@ -897,6 +1157,11 @@ class ApiController extends Controller
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 和另外".$noti->other."人在下列发布中回复了您的评论: ".$post->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 3; //reply
@@ -905,11 +1170,19 @@ class ApiController extends Controller
 						$noti->receiver = $reply->receiver;
 						$noti->create_time = time();
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 在下列发布中回复了您的评论: ".$post->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}
+				}
+
+
 					$this->sendJSONResponse(array(
 						'success'=>$reply->id,
 					));
-				}
+
 			}else{
 				$this->sendJSONResponse(array(
 					$reply->getErrors()
@@ -920,6 +1193,36 @@ class ApiController extends Controller
 				'error' => '无输入'
 			));
 		}
+
+	}
+
+
+	public function actionUnreadNotifications(){
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		$notifications = Notification::model()->count(array(
+				'condition'=>'`read` = 0 AND receiver = '.$user->id,
+		));
+
+		$this->sendJSONResponse(array(
+			'unread' => (int)$notifications,
+		));
 
 	}
 
@@ -959,13 +1262,35 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($notifications as $notification):
+			$post = Posts::model()->findByPk($notification->post_id);
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$self_vote = 0;			//0为尚未投票
+			if($vote){
+				$self_vote = $vote->type;		//1为up，2为down
+			}
 			array_push($arr, array(
-				'post_id' => $notification->post_id,		//post id
+				'post_id' => (int)$notification->post_id,		//post id
 				'post_name' => $notification->post->name,	//post name
-				'type_id' => $notification->type_id,		//notification type
-				'username'=>$notification->senderx->username,	//回复人用户名
-				'user_id'=>$notification->sender,				//回复人id. 链接为/users/id
-				'avatar'=>$notification->senderx->avatar,		//回复人头像
+				'type_id' => (int)$notification->type_id,		//notification type
+				'noti_username'=>$notification->senderx->username,	//回复人用户名
+				'noti_user_id'=>(int)$notification->sender,				//回复人id. 链接为/users/id
+				'noti_avatar'=>$notification->senderx->avatar,		//回复人头像
+				'read'=>(int)$notification->read,					//read or not
+
+				'category'=>(int)$post->category_id,		//category id
+				'up' => (int)$post->up + $post->fake_up,	//up votes
+				'down'=>(int)$post->down,				//down votes
+				'create_time' => (int)$post->create_time,		//create time in unix time stamp
+				'title' => $post->name,				//名字
+				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
+				'thumb_pic'=>$post->thumb_pic,		//小图链接
+				'comments'=>(int)$post->comments,		//评论数
+				'type'=>(int)$post->type,				//1为link分享 2为内容分享 3为AMA, 当为内容分享时，link为/posts/id
+				'username'=>$post->user->username,	//发布人用户名
+				'avatar'=>$post->user->avatar,		//发布人头像
+				'user_id'=>(int)$post->user_id,			//发布人id. 链接为/users/id
+				'self_vote'=>(int)$self_vote,			//1为up, 2为down, 3为nothing
+
 			));
 		endforeach;
 
@@ -1024,7 +1349,7 @@ class ApiController extends Controller
 		}
 
 		$this->sendJSONResponse(array(
-			'user_id'=>$user->id,	//user_id
+			'user_id'=>(int)$user->id,	//user_id
 			'username'=>$user->username,	//用户名
 			'avatar'=>$user->avatar,	//头像
 		));
@@ -1079,16 +1404,23 @@ class ApiController extends Controller
 
 		foreach($comments as $comment):
 			$replies = $this->getReply($comment->id);
+
+			$vote = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$comment->user_id));
+			$self_vote = 0;			//0为尚未投票
+			if($vote){
+				$self_vote = $vote->type;		//1为up，2为down
+			}
 			array_push($arr, array(
-				'comment_id' => $comment->id,				//post id
-				'up' => $comment->up,	//up votes
-				'down'=>$comment->down,				//down votes
-				'create_time' => $comment->create_time,		//create time in unix time stamp
+				'comment_id' => (int)$comment->id,				//post id
+				'up' => (int)$comment->up,	//up votes
+				'down'=>(int)$comment->down,				//down votes
+				'create_time' => (int)$comment->create_time,		//create time in unix time stamp
 				'description' => (string)$comment->description,				//内容
 				'username'=>$comment->user->username,	//发布人用户名
-				'user_id'=>$comment->user_id,			//发布人id. 链接为/users/id
+				'user_id'=>(int)$comment->user_id,			//发布人id. 链接为/users/id
 				'avatar'=>$comment->user->avatar,		//发布人头像
 				'replies'=>$replies,					//replies
+				'self_vote'=>(int)$self_vote,				//0->no, 1->up, 2->down
 			));
 		endforeach;
 
@@ -1105,14 +1437,27 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($replies as $reply):
-			array_push($arr, array(
-				'reply_id' => $reply->id,				//reply id
-				'create_time' => $reply->create_time,		//create time in unix time stamp
-				'description' => (string)$reply->description,				//内容
-				'username'=>$reply->user->username,	//发布人用户名
-				'user_id'=>$reply->user_id,			//发布人id. 链接为/users/id
-				'avatar'=>$reply->user->avatar,		//发布人头像
-			));
+			if($reply->receiverx){
+				array_push($arr, array(
+					'reply_id' => (int)$reply->id,				//reply id
+					'create_time' => (int)$reply->create_time,		//create time in unix time stamp
+					'description' => (string)$reply->description,				//内容
+					'username'=>$reply->user->username,	//发布人用户名
+					'user_id'=>(int)$reply->user_id,			//发布人id. 链接为/users/id
+					'avatar'=>$reply->user->avatar,		//发布人头像
+					'receiver_id'=>$reply->receiver,		//回复人
+					'receiver_username'=>$reply->receiverx->username,		//回复人用户名
+				));
+			}else{
+				array_push($arr, array(
+					'reply_id' => (int)$reply->id,				//reply id
+					'create_time' => (int)$reply->create_time,		//create time in unix time stamp
+					'description' => (string)$reply->description,				//内容
+					'username'=>$reply->user->username,	//发布人用户名
+					'user_id'=>(int)$reply->user_id,			//发布人id. 链接为/users/id
+					'avatar'=>$reply->user->avatar,		//发布人头像
+				));
+			}
 		endforeach;
 
 		return $arr;

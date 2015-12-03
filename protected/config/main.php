@@ -193,5 +193,6 @@ return array(
 		// this is used in contact page
 		'url'=>'http://meiliuer.com', //update to hard code domain
 		'adminEmail'=>'jimmyzhong@meiliuer.com',
+        'globalURL'=>'http://meiliuer.com',
 	),
 );

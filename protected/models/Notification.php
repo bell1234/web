@@ -68,6 +68,28 @@ class Notification extends CActiveRecord
 		);
 	}
 
+
+	public function sendiOSNotification($data){	//pass in ['title'], ['user_id']
+			$notif = DeviceToken::model()->findByAttributes(array("user_id"=>$data['user_id'], "device"=>"iOS"));
+			if ($notif && $notif->token) {
+				$unreadMessages = Yii::app()->db->createCommand('SELECT count * from tbl_notification where receiver = '.$data['user_id'])->queryScalar();
+				$data["token"] = $notif->token;
+				$data["unread"] = $unreadMessages;
+				$data["title"] = $data['title'];
+			 	$url = Yii::app()->params['globalURL'].'/simplepush/iospush.php?'.http_build_query($data);
+			
+				$ch  = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //this prevent printing the 200json code
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1); //timeout 1s
+				curl_setopt($ch, CURLOPT_TIMEOUT, 1); //timeout 1s
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				$result = curl_exec($ch);
+				curl_close($ch);
+
+			}
+	}
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *

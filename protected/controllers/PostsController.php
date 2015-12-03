@@ -141,16 +141,16 @@ class PostsController extends Controller
 		$model->save(false);
 
 		if(Yii::app()->user->id){
-			$comment = Comments::model()->findByAttributes(array('user_id'=>Yii::app()->user->id, 'post_id'=>$model->id));
+			//$comment = Comments::model()->findByAttributes(array('user_id'=>Yii::app()->user->id, 'post_id'=>$model->id));
 			$user = Users::model()->findByPk(Yii::app()->user->id);
 			$user->userActed(); 
 		}else{
 			$comment = new Comments;
 		}
-		if(!$comment){
-			$comment = new Comments;
-			$comment->post_id = $model->id;
-		}
+		//if(!$comment){
+		$comment = new Comments;
+		$comment->post_id = $model->id;
+		//}
 
 		$reply = new Reply;
 		$reply->user_id = Yii::app()->user->id;
@@ -512,13 +512,14 @@ class PostsController extends Controller
         $sizeLimit = 5 * 1024 * 1024;	// maximum file size in bytes
         $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
         $result = $uploader->handleUpload($folder);
+        
         $return = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
  
         $fileSize=filesize($folder.$result['filename']);//GETTING FILE SIZE
         $fileName=$result['filename'];//GETTING FILE NAME
-	$filename = $fileName;
+		$filename = $fileName;
 
- 	$thumb = new Imagick("uploads/posts/" . Yii::app()->user->id . "/" . $filename);
+ 		$thumb = new Imagick("uploads/posts/" . Yii::app()->user->id . "/" . $filename);
         $thumb->setImageFormat("png");
         $thumb->thumbnailImage(180, 180);
 
@@ -637,6 +638,9 @@ class PostsController extends Controller
 	 */
 	public function actionIndex()
 	{
+		if(!Yii::app()->user->id){
+				$this->render('/site/index');
+		}else{
 
 		if(isset(Yii::app()->session['pictures'])){
 			unset(Yii::app()->session['pictures']);
@@ -691,6 +695,8 @@ class PostsController extends Controller
 			'dataProvider'=>$dataProvider,
 			'admin'=>$admin
 		));
+
+		}
 	}
 
 	/**

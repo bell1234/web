@@ -56,7 +56,7 @@ class LoginPop extends CWidget
 			}
 		}
 
-		// sign up part
+		// sign up partin
 		if(isset($_POST['Users']))
 		{
 			$user->attributes=$_POST['Users'];
@@ -76,10 +76,10 @@ class LoginPop extends CWidget
 				$user->userActed(); 	//update IP, location
 				$user->saveDupStats(); //save user dup accounts, cookie etc.
 
-				$invite = Invitation::model()->findByAttributes(array('code' => $user->invitation));
-				if($invite){
-					//$invite->delete();
-				}
+				//$invite = Invitation::model()->findByAttributes(array('code' => $user->invitation));
+				//if($invite){
+				//	//$invite->delete();
+				//}
 				if($user->email){
 					$activation_url = $this->controller->createAbsoluteUrl('/site/activation', array(
 						"activkey" => $user->activkey,

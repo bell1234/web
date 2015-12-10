@@ -26,10 +26,12 @@
 		<?php echo $form->error($user,'password'); ?>
 	</div>
 
+<!--
 	<div class="row">
 		<?php echo $form->textField($user,'invitation',array('placeholder'=>'邀请码','class'=>'form-control')); ?>
 		<?php echo $form->error($user,'invitation'); ?>
 	</div>
+-->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('注册', array('class'=>'btn btn-warning btn-block')); ?>

@@ -22,6 +22,12 @@ if(isset($_GET['token'])){
 	exit();
 }
 
+if(isset($_GET['type'])){
+	$type = $_GET['type'];
+}else{
+	$type = 1;
+}
+
 
 if(isset($_GET['unread']) && $_GET['unread']){
 	$num = intval($_GET['unread']);
@@ -46,13 +52,14 @@ $message = $title;
 ////////////////////////////////////////////////////////////////////////////////
 
 $ctx = stream_context_create();
-stream_context_set_option($ctx, 'ssl', 'local_cert', 'MeiliuerPushAPN.pem');
+stream_context_set_option($ctx, 'ssl', 'local_cert', 'MeiliuerProductionCertificates.pem');
 stream_context_set_option($ctx, 'ssl', 'passphrase', $passphrase);
 
 // Open a connection to the APNS server
 // production: ssl://gateway.push.apple.com:2195
+// sandbox: ssl://gateway.sandbox.push.apple.com:2195
 $fp = stream_socket_client(
-	'ssl://gateway.sandbox.push.apple.com:2195', $err,
+	'ssl://gateway.push.apple.com:2195', $err,
 	$errstr, 60, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
 
 if (!$fp)
@@ -70,7 +77,8 @@ $body['aps'] = array(
 	'alert' => $message,
 	'content' => $content, 
 	'badge' => $num,
-    'sound' => 'chime.aiff'
+    'sound' => 'chime.aiff',
+    'type'  => $type,
 	);
 
 // Encode the payload as JSON

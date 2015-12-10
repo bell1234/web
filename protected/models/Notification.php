@@ -70,14 +70,14 @@ class Notification extends CActiveRecord
 
 
 	public function sendiOSNotification($data){	//pass in ['title'], ['user_id']
-			$notif = DeviceToken::model()->findByAttributes(array("user_id"=>$data['user_id'], "device"=>"iOS"));
+		$notifs = DeviceToken::model()->findAllByAttributes(array("user_id"=>$data['user_id'], "device"=>"iOS"));
+		foreach($notifs as $notif){
 			if ($notif && $notif->token) {
-				$unreadMessages = Yii::app()->db->createCommand('SELECT count * from tbl_notification where receiver = '.$data['user_id'])->queryScalar();
+				$unreadMessages = Yii::app()->db->createCommand('SELECT count(*) from tbl_notification where receiver = '.$data['user_id'])->queryScalar();
 				$data["token"] = $notif->token;
 				$data["unread"] = $unreadMessages;
-				$data["title"] = $data['title'];
+				$data["type"] = 1;				//to inbox, 2 is to homepage
 			 	$url = Yii::app()->params['globalURL'].'/simplepush/iospush.php?'.http_build_query($data);
-			
 				$ch  = curl_init();
 				curl_setopt($ch, CURLOPT_URL, $url);
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //this prevent printing the 200json code
@@ -86,8 +86,8 @@ class Notification extends CActiveRecord
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 				$result = curl_exec($ch);
 				curl_close($ch);
-
 			}
+		}
 	}
 
 	/**

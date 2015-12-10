@@ -46,8 +46,8 @@ class Users extends CActiveRecord
 			array('username', 'length', 'min'=>2, 'tooShort'=>'用户名至少包含2个字符'),
 			array('username','required','message'=>'请输入用户名'),
 
-			array('invitation','required','message'=>'请输入邀请码', 'on'=>'insert'),
-			array('invitation','invitationValidate','message'=>'邀请码不正确或已被使用', 'on'=>'insert'),
+			//array('invitation','required','message'=>'请输入邀请码', 'on'=>'insert'),
+			//array('invitation','invitationValidate','message'=>'邀请码不正确或已被使用', 'on'=>'insert'),
 
 			array('username', 'unique', 'message'=>'该用户名已经被注册'),
 			array('username', 'match', 'pattern' => '/^[\x{4e00}-\x{9fa5}A-Za-z0-9_]*$/u','message' =>'用户名只能含有汉字，英文字母，数字和下划线'),

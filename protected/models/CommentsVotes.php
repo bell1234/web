@@ -29,7 +29,7 @@ class CommentsVotes extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, comment_id, type, create_time', 'required'),
-			array('user_id, comment_id, type, create_time', 'numerical', 'integerOnly'=>true),
+			array('user_id, comment_id, type, create_time, receiver', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, user_id, comment_id, type, create_time', 'safe', 'on'=>'search'),

@@ -170,6 +170,11 @@ class PostsController extends Controller
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 和另外".$noti->other."人在下列发布中回复了您的评论: ".$model->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 3; //reply
@@ -178,6 +183,11 @@ class PostsController extends Controller
 						$noti->receiver = $reply->receiver;
 						$noti->create_time = time();
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 在下列发布中回复了您的评论: ".$model->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}
 				}
 			}
@@ -209,6 +219,11 @@ class PostsController extends Controller
 						$noti->create_time = time();
 						$noti->read = 0;
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 和另外".$noti->other."人评论了您的发布: ".$model->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}else{
 						$noti = new Notification;
 						$noti->type_id = 2; //comment
@@ -217,6 +232,11 @@ class PostsController extends Controller
 						$noti->receiver = $model->user_id;
 						$noti->create_time = time();
 						$noti->save();
+						$notificationData = array(
+							"user_id"=>$noti->receiver,
+							"title"=>$noti->senderx->username." 评论了您的发布: ".$model->name,
+						);
+						Notification::model()->sendiOSNotification($notificationData);
 					}
 				}
 
@@ -300,21 +320,21 @@ class PostsController extends Controller
 			if($post && $user){	//&& $post->user_id != $user->id
 				$already = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 				if($already){
-					if($already->type != $_POST['type']){
+					if($already->type != $_POST['type']){	//只考虑和曾经的相反的情况，因为无法重复投票
 						$already->type = $_POST['type'];
 						$already->create_time = time();
 						$already->save(false);
-						if($already->type == 1){
+						if($already->type == 1){	//
 							if($post->user_id == $user->id){
-								$post->fake_up++;
+								$post->fake_up += 2;
 							}else{
-								$post->up++;		//+=2 would be more accurate?
+								$post->up += 2;		//+=2 would be more accurate?
 							}
 						}else{
 							if($post->user_id == $user->id){
-								$post->fake_up--;
+								$post->fake_up -= 2;
 							}else{
-								$post->down++;		//+=2 would be more accurate?
+								$post->down += 2;		//+=2 would be more accurate?
 							}
 						}
 						$post->save(false);
@@ -323,6 +343,7 @@ class PostsController extends Controller
 					$vote = new PostsVotes;
 					$vote->type = $_POST['type'];
 					$vote->post_id = $post->id;
+					$vote->receiver = $post->user_id;
 					$vote->user_id = $user->id;
 					$vote->create_time = time();
 					$vote->save(false);
@@ -365,9 +386,9 @@ class PostsController extends Controller
 						$already->create_time = time();
 						$already->save(false);
 						if($already->type == 1){
-							$comment->up++;		//+=2 would be more accurate?
+							$comment->up += 2;		//+=2 would be more accurate?
 						}else{
-							$comment->down++;		//+=2 would be more accurate?
+							$comment->down += 2;		//+=2 would be more accurate?
 						}
 						$comment->save(false);
 					}
@@ -376,6 +397,7 @@ class PostsController extends Controller
 					$vote->type = $_POST['type'];
 					$vote->comment_id = $comment->id;
 					$vote->user_id = $user->id;
+					$vote->receiver = $comment->user_id;
 					$vote->create_time = time();
 					$vote->save(false);
 					if($vote->type == 1){
@@ -472,7 +494,8 @@ class PostsController extends Controller
 	 * grab title, pic and video from the link
 	 */
 	public function actionGetTitle($url){
-		echo Posts::getTitle($url);
+		$url = urldecode($url);
+		echo Posts::model()->getTitle($url);
 	}
 
 	//接受ajax，非同步获取保存图片
@@ -483,7 +506,7 @@ class PostsController extends Controller
 		}
 		$array = array();
 		if($model){
-			$json = Posts::getTitle($model->link);
+			$json = Posts::model()->getTitle($model->link);
 			$array = json_decode($json, TRUE);
 			if(isset($array['thumbnail_url'])){
 				$model->thumb_pic = $array['thumbnail_url'];

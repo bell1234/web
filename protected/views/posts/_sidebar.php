@@ -21,13 +21,14 @@
 			<li><a href="#" onclick="post_new(); setTimeout(show_ama, 3); return false;"><i class="fa fa-microphone"></i> <span style="margin-left:9px;">有问必答</span></a></li>
 
 	<?php endif; ?>
-
+<!--
 <?php if(Yii::app()->user->id): ?>
 	<hr>
 	没六儿目前仅限邀请注册<br>
 	邀请朋友加入请使用邀请码:<br>
 	<b style="font-size:16px;"><u>ML999</u></b>
 <?php endif; ?>
+-->
 <!--
 	<hr>
 	<li><a href="/"><i class="fa fa-fire"></i> <span style="margin-left:7px;">热点</span></a></li>

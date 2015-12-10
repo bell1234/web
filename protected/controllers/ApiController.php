@@ -77,6 +77,40 @@ class ApiController extends Controller
 
 	}
 
+	//读取标题和图片
+	public function actionGetTitle(){
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if (!isset($_GET['url'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No url'
+			));
+			exit();
+		} else {
+			$url = $_GET['url'];
+		}
+
+		$url = urldecode($url);
+		$json = Posts::model()->getTitle($url);
+		$array = json_decode($json, TRUE);
+		$this->sendJSONResponse($array);
+	}
+
 
 	//接受ajax，非同步获取保存图片
 	public function actionSaveTitle(){	//太慢了 需要优化。ajax保存的时候点别的链接反应很慢。
@@ -102,9 +136,10 @@ class ApiController extends Controller
 		if(isset($_GET['id'])){
 			$model = Posts::model()->findByPk($_GET['id']);
 		}
-		$array = array();
-		if($model){
-			$json = Posts::getTitle($model->link);
+		$array = array('thumbnail_url'=>$model->thumb_pic);
+		if($model && !$model->thumb_pic){
+			
+			$json = Posts::model()->getTitle($model->link);
 			$array = json_decode($json, TRUE);
 			if(isset($array['thumbnail_url'])){
 				$model->thumb_pic = $array['thumbnail_url'];
@@ -124,7 +159,6 @@ class ApiController extends Controller
 	 */
 	public function actionSetting()
 	{
-
 
 		if (!isset($_GET['token'])) {
 			$this->sendJSONResponse(array(
@@ -385,7 +419,7 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($posts as $post):
-			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 			$self_vote = 0;			//0为尚未投票
 			if($vote){
 				$self_vote = $vote->type;		//1为up，2为down
@@ -470,7 +504,7 @@ class ApiController extends Controller
 		$arr = array();
 
 		foreach($posts as $post):
-			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 			$self_vote = 0;			//0为尚未投票
 			if($vote){
 				$self_vote = $vote->type;		//1为up，2为down
@@ -498,6 +532,37 @@ class ApiController extends Controller
 	}
 
 
+
+	public function actionGetUserData(){
+
+		if (!isset($_GET['user_id'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No user_id'
+			));
+			exit();
+		}else{
+			$user = Users::model()->findByPk($_GET['user_id']);
+		}
+		$total_posts = Posts::model()->countByAttributes(array('user_id'=>$user->id, 'hide'=>0));
+		$total_ups_sent = PostsVotes::model()->countByAttributes(array('user_id'=>$user->id, 'type'=>1));
+		$total_ups_received_comments = CommentsVotes::model()->countByAttributes(array('receiver'=>$user->id, 'type'=>1));
+
+		$allposts = Posts::model()->findAllByAttributes(array('user_id'=>$user->id, 'hide'=>0));
+		$total_ups_received_posts = 0;
+		
+		foreach($allposts as $ap){
+			$total_ups_received_posts += $ap->up + $ap->fake_up;
+		}
+
+		$arr = array(
+			'total_posts'=>$total_posts,
+			'total_ups_sent'=>$total_ups_sent,
+			'total_ups_received_posts'=>$total_ups_received_posts,
+			'total_ups_received_comments'=>$total_ups_received_comments,
+		);
+
+		$this->sendJSONResponse($arr);
+	}
 
 
 
@@ -543,6 +608,9 @@ class ApiController extends Controller
 			}
 			if(isset($_GET['link'])){
 				$model->link = $_GET['link'];
+			}
+			if(isset($_GET['thumbnail_url'])){
+				$model->thumb_pic = $_GET['thumbnail_url'];
 			}
 
 			$model->name = $_GET['name'];
@@ -693,7 +761,10 @@ class ApiController extends Controller
 			if(isset($_POST['link'])){
 				$model->link = $_POST['link'];
 			}
-
+			if(isset($_POST['thumbnail_url'])){
+				$model->thumb_pic = $_POST['thumbnail_url'];
+			}
+			
 			$model->name = $_POST['name'];
 			$model->type = $_POST['type'];
 			
@@ -800,6 +871,108 @@ class ApiController extends Controller
 	}
 
 
+	/**
+	 * Vote ajax cancel function
+	 */
+	public function actionVoteCancel(){
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['post_id']) && isset($_GET['type'])){
+			$post = Posts::model()->findByPk($_GET['post_id']);
+			if($post && $user){
+				$already = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id, 'type'=>$_GET['type']));
+				if($already){
+					$already->delete();
+					if($already->type == 1){
+						if($post->user_id == $user->id){
+							$post->fake_up--;
+						}else{
+							$post->up--;
+						}
+					}else{
+						if($post->user_id == $user->id){
+							$post->fake_up++;
+						}else{
+							$post->down--;
+						}
+					}
+					$post->save(false);
+					$this->sendJSONResponse(array(
+						'success' => 'success',
+					));
+					return;	
+				}	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+	}
+
+
+	/**
+	 * Comment Vote ajax cancel function
+	 */
+	public function actionVoteCommentCancel(){
+
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['comment_id']) && isset($_GET['type'])){
+			$comment = Comments::model()->findByPk($_GET['comment_id']);
+			if($comment && $user){
+				$already = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id, 'type'=>$_GET['type']));
+				if($already){
+					$already->delete();
+					if($already->type == 1){
+						$comment->up--;
+					}else{
+						$comment->down--;
+					}
+					$comment->save(false);
+					$this->sendJSONResponse(array(
+						'success' => 'success',
+					));
+					return;	
+				}	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+		return;
+	}
+
 
 	public function actionVote(){
 
@@ -831,15 +1004,15 @@ class ApiController extends Controller
 						$already->save(false);
 						if($already->type == 1){
 							if($post->user_id == $user->id){
-								$post->fake_up++;
+								$post->fake_up += 2;
 							}else{
-								$post->up++;		//+=2 would be more accurate?
+								$post->up +=2;		//+=2 would be more accurate?
 							}
 						}else{
 							if($post->user_id == $user->id){
-								$post->fake_up--;
+								$post->fake_up -= 2;
 							}else{
-								$post->down++;		//+=2 would be more accurate?
+								$post->down += 2;		//+=2 would be more accurate?
 							}
 						}
 						$post->save(false);
@@ -855,6 +1028,7 @@ class ApiController extends Controller
 					$vote = new PostsVotes;
 					$vote->type = $_GET['type'];
 					$vote->post_id = $post->id;
+					$vote->receiver = $post->user_id;
 					$vote->user_id = $user->id;
 					$vote->create_time = time();
 					$vote->save(false);
@@ -916,9 +1090,9 @@ class ApiController extends Controller
 						$already->create_time = time();
 						$already->save(false);
 						if($already->type == 1){
-							$comment->up++;		//+=2 would be more accurate?
+							$comment->up += 2;		//+=2 would be more accurate?
 						}else{
-							$comment->down++;		//+=2 would be more accurate?
+							$comment->down += 2;		//+=2 would be more accurate?
 						}
 						$comment->save(false);
 						$this->sendJSONResponse(array(
@@ -935,6 +1109,7 @@ class ApiController extends Controller
 					$vote->comment_id = $comment->id;
 					$vote->user_id = $user->id;
 					$vote->create_time = time();
+					$vote->receiver = $comment->user_id;
 					$vote->save(false);
 					if($vote->type == 1){
 						$comment->up++;
@@ -1263,7 +1438,7 @@ class ApiController extends Controller
 
 		foreach($notifications as $notification):
 			$post = Posts::model()->findByPk($notification->post_id);
-			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$post->user_id));
+			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 			$self_vote = 0;			//0为尚未投票
 			if($vote){
 				$self_vote = $vote->type;		//1为up，2为down
@@ -1358,6 +1533,23 @@ class ApiController extends Controller
 
 	public function actionGetAllComments(){
 
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}		
+
 		if (!isset($_GET['post_id'])) {
 			$this->sendJSONResponse(array(
 				'error' => 'No post_id'
@@ -1405,7 +1597,7 @@ class ApiController extends Controller
 		foreach($comments as $comment):
 			$replies = $this->getReply($comment->id);
 
-			$vote = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$comment->user_id));
+			$vote = CommentsVotes::model()->findByAttributes(array('comment_id'=>$comment->id, 'user_id'=>$user->id));
 			$self_vote = 0;			//0为尚未投票
 			if($vote){
 				$self_vote = $vote->type;		//1为up，2为down

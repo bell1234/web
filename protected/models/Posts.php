@@ -196,7 +196,7 @@ class Posts extends CActiveRecord
 		// Call with pro (you'll need a real key)
 		$pro = new Embedly\Embedly(array(
  		   'key' => '05c0e7529f174ace83e837e28ffc448e',
-    		    'user_agent' => 'Mozilla/8.0 (compatible; mytestapp/1.0)'
+    		    'user_agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.112 Safari/534.30",
 		));
 
 
@@ -253,7 +253,8 @@ class Posts extends CActiveRecord
 		$visited = array();
 		// base url
 		$parts=parse_url($url);
-		$host=$parts['scheme'].'://'.$parts['host'];
+
+		$host= $parts['scheme'].'://'.$parts['host'];
 		// loop a few times
 		$i = 0;
 		shuffle($array[1]);

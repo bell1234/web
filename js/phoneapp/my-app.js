@@ -91,7 +91,6 @@ var mainView = myApp.addView('.view-main', {
 
 });
 
-
 try {
   if (cordova) 
     // return; 
@@ -103,6 +102,7 @@ try {
 document.addEventListener("deviceready", function () {
 
   loginStatusUpdate();
+  window.cache.clear( null, null );
   
 
     // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);

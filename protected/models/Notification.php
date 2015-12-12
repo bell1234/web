@@ -73,7 +73,7 @@ class Notification extends CActiveRecord
 		$notifs = DeviceToken::model()->findAllByAttributes(array("user_id"=>$data['user_id'], "device"=>"iOS"));
 		foreach($notifs as $notif){
 			if ($notif && $notif->token) {
-				$unreadMessages = Yii::app()->db->createCommand('SELECT count(*) from tbl_notification where receiver = '.$data['user_id'])->queryScalar();
+				$unreadMessages = Yii::app()->db->createCommand('SELECT count(*) from tbl_notification where `read` = 0 AND receiver = '.$data['user_id'])->queryScalar();
 				$data["token"] = $notif->token;
 				$data["unread"] = $unreadMessages;
 				$data["type"] = 1;				//to inbox, 2 is to homepage

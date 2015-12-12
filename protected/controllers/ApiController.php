@@ -14,6 +14,10 @@ class ApiController extends Controller
 			$user->email = $_GET['email'];
 			$user->password = $_GET['password'];
 
+			if(isset($_GET['udid'])){
+				$user->udid = $_GET['udid'];
+			}
+
 			//for phone app, not limitation
 			$user->invitation = "ML999";
 
@@ -339,6 +343,9 @@ class ApiController extends Controller
 				if(hash('sha256', $_GET['password']) === $user->password){
 					
 					$user->logins++;
+					if(isset($_GET['udid'])){
+						$user->udid = $_GET['udid'];
+					}
 					$user->save(false);
 
 					DeviceToken::model()->addNewToken($user->id);
@@ -412,6 +419,11 @@ class ApiController extends Controller
 				'order' => 'rank DESC, create_time DESC',
 				'limit' => 15
 			));
+		}
+
+		if(isset($_GET['udid'])){
+			$user->udid = $_GET['udid'];
+			$user->save(false);
 		}
 
 		DeviceToken::model()->addNewToken($user->id);
@@ -721,12 +733,8 @@ class ApiController extends Controller
 
 	public function actionCreatePost(){
 
-
-		if(isset($_POST['device_token'])){
-			$token = DeviceToken::model()->findByAttributes(array('token'=>$_POST['device_token']));
-			if($token){
-				$user = Users::model()->findByPk($token->user_id);
-			}
+		if(isset($_POST['udid'])){
+			$user = Users::model()->findByAttributes(array('udid'=>$_POST['udid']));
 		}
 
 		if(!$user){
@@ -830,8 +838,17 @@ class ApiController extends Controller
 
 				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
 					if($model->link){
-						//We fill in thumb_pic, etc, in a async way, in ajax. not here.
-						//nothing here
+						//如果这个太慢 转移到queue
+						$json = Posts::model()->getTitle($model->link);
+						$array = json_decode($json, TRUE);
+						if(isset($array['thumbnail_url'])){
+							$model->thumb_pic = $array['thumbnail_url'];
+						}
+						if(isset($array['html'])){
+							$model->video_html = $array['html'];
+						}
+						$model->save(false);
+
 					}else if($model->type == 2){	
 
 						preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $model->description, $match);

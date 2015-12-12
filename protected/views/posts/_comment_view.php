@@ -19,11 +19,13 @@ $replies = Reply::model()->findAllByAttributes(array('comment_id'=>$data->id), a
 
 <script>
 function reply_comment_<?php echo $data->id; ?>(name, uid){
+	
 	if(name == 1 ){
-		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').val('');
+		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').attr('placeholder', '');
 	}else if(name){
-		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').val('@'+name+' ');
+		$('#reply_form_<?php echo $data->id;?>').find('.reply-field').attr('placeholder', '@'+name+'');
 	}
+
 	$('#reply_form_<?php echo $data->id;?>').show();
 	
  	$('#reply_form_<?php echo $data->id;?>').find('.reply-field').focus();

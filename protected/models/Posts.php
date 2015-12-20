@@ -54,7 +54,7 @@ class Posts extends CActiveRecord
 
 			//array('name, link, thumb_pic, video_html', 'length', 'max'=>500),
 
-			array('link, thumb_pic, video_html', 'safe'),
+			array('link, thumb_pic, video_html, informed', 'safe'),
 			
 			array('shorturl', 'length', 'max'=>255),
 			// The following rule is used by search().

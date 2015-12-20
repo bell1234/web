@@ -352,6 +352,9 @@ class PostsController extends Controller
 							$post->fake_up++;
 						}else{
 							$post->up++;
+							if($post->up == 5 || $post->up == 10 || $post->up == 20){
+								$post->informed = 0;
+							}
 						}
 					}else{
 						if($post->user_id == $user->id){

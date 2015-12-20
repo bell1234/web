@@ -14,6 +14,77 @@ class CrontabController extends Controller
 	}
 
 
+
+	public function actionUpdateOnYourPost(){
+        //prevent anyone else from using our cron
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
+            throw new CHttpException(404, "The requested link does not exist.");
+        }
+        $posts = Posts::model()->findAll('informed = 0 AND hide = 0 AND (up + fake_up) >= 2');
+        foreach($posts as $post){
+
+			if($post->user_id != 175205){
+				//continue;
+				//仅供测试
+			}
+			$lead = PostsVotes::model()->find('post_id = '.$post->id.' AND user_id != '.$post->user_id.' AND type = 1');
+			if(!$lead){
+				continue;
+			}else{
+				$user = Users::model()->findByPk($lead->user_id);
+			}
+
+			$data["user_id"] = $post->user_id;
+			$data["title"] = $user->username.'和另外'.($post->up + $post->fake_up - 1).'人赞了您的发布: '.$post->name;
+			$data["type"] = 2;				//1 to inbox, 2 is to homepage
+
+			Notification::model()->sendiOSNotification($data);
+
+        	$post->informed = 1;
+        	$post->save(false);
+        }
+        echo 200;
+	}
+
+
+	public function actionDailyNews(){
+
+        //prevent anyone else from using our cron
+        if ($_SERVER['REMOTE_ADDR'] !== '52.8.247.253' && (!isset($_SERVER['HTTP_CF_CONNECTING_IP']) || $_SERVER['HTTP_CF_CONNECTING_IP'] != '52.8.247.253')) {
+            throw new CHttpException(404, "The requested link does not exist.");
+        }
+
+		$notifs = DeviceToken::model()->findAll();
+		foreach($notifs as $notif){
+			if($notif->user_id != 175205){
+				//continue;
+				//仅供测试
+			}
+			if ($notif && $notif->token) {
+				$post = Yii::app()->db->createCommand('select * from tbl_posts where unix_timestamp() - create_time < 86400 order by `up` desc limit 1')->queryRow();
+				if(!$post){
+					continue;
+				}
+				$data["user_id"] = $notif->user_id;
+				$data["title"] = "今日最佳: ".$post['name'];
+				$data["token"] = $notif->token;
+				$data["unread"] = 1;
+				$data["type"] = 2;				//1 to inbox, 2 is to homepage
+			 	$url = Yii::app()->params['globalURL'].'/simplepush/iospush.php?'.http_build_query($data);
+				$ch  = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //this prevent printing the 200json code
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1); //timeout 1s
+				curl_setopt($ch, CURLOPT_TIMEOUT, 1); //timeout 1s
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				$result = curl_exec($ch);
+				curl_close($ch);
+			}
+		}
+		echo 200;
+	}
+
+
     public function actionToutiao(){
 
     	throw new CHttpException(404, "The requested link does not exist.");

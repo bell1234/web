@@ -441,6 +441,7 @@ class ApiController extends Controller
 				'category'=>(int)$post->category_id,		//category id
 				'up' => (int)$post->up + $post->fake_up,	//up votes
 				'down'=>(int)$post->down,				//down votes
+				'description'=>$post->description,		//description
 				'create_time' => (int)$post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'url' => $post->link,				//链接（仅限链接分享） 当为内容分享时(type=2)，link为/posts/id
@@ -526,6 +527,7 @@ class ApiController extends Controller
 				'category'=>(int)$post->category_id,		//category id
 				'up' => (int)$post->up + $post->fake_up,	//up votes
 				'down'=>(int)$post->down,				//down votes
+				'description'=>$post->description,		//description
 				'create_time' => (int)$post->create_time,		//create time in unix time stamp
 				'title' => $post->name,				//名字
 				'description'=>$post->description,  //type != 1时（内容分享或者ama）
@@ -620,6 +622,9 @@ class ApiController extends Controller
 			}
 			if(isset($_GET['link'])){
 				$model->link = $_GET['link'];
+				if(isset($_GET['encoded'])){
+					$model->link = urldecode($_GET['link']);
+				}
 			}
 			if(isset($_GET['thumbnail_url'])){
 				$model->thumb_pic = $_GET['thumbnail_url'];
@@ -637,7 +642,7 @@ class ApiController extends Controller
 				//nothing
 			}else if($model->type == 2){	//content
 				$model->link = "";
-
+				
 			}else if($model->type == 3){	//ama
 				$model->link = "";
 				$model->category_id = 4;	//force AMA
@@ -733,6 +738,8 @@ class ApiController extends Controller
 
 	public function actionCreatePost(){
 
+		$user = null;
+
 		if(isset($_POST['udid'])){
 			$user = Users::model()->findByAttributes(array('udid'=>$_POST['udid']));
 		}
@@ -763,11 +770,11 @@ class ApiController extends Controller
 			if(isset($_POST['description'])){
 				$model->description = $_POST['description'];
 			}
-			if(isset($_GET['category_id'])){
+			if(isset($_POST['category_id'])){
 				$model->category_id = $_POST['category_id'];
 			}
 			if(isset($_POST['link'])){
-				$model->link = $_POST['link'];
+				$model->link = urldecode($_POST['link']);
 			}
 			if(isset($_POST['thumbnail_url'])){
 				$model->thumb_pic = $_POST['thumbnail_url'];
@@ -822,19 +829,171 @@ class ApiController extends Controller
 					$admin->save(false);
 				}
 
-				$pictures = Yii::app()->session['pictures'];
-				if ($pictures) {
-					foreach ($pictures as $picture => $pic) {
-						$image = PostsPictures::model()->findByAttributes(array(
-							'path' => $pic
-						));
-						if($image){
-							$image->post_id = $model->id;
-							$image->save();
+				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
+					if($model->link){
+						//如果这个太慢 转移到queue
+						$json = Posts::model()->getTitle($model->link);
+						$array = json_decode($json, TRUE);
+						if(isset($array['thumbnail_url'])){
+							$model->thumb_pic = $array['thumbnail_url'];
 						}
+						if(isset($array['html'])){
+							$model->video_html = $array['html'];
+						}
+						$model->save(false);
+
+					}else if($model->type == 2){	
+
+						preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $model->description, $match);
+
+						if(isset($match[1])){
+							$model->thumb_pic = $match[1];
+						}
+
+						//注意:上传视频怎么办....
+						//$model->video_html = "";
+
+						//如果上述还是没有找到图片
+						if(!$model->thumb_pic){
+							$model->thumb_pic = ""; 	//avatar? or default content pic?
+						}
+						$model->save(false);
+					}else if($model->type == 3){	//AMA
+						$model->thumb_pic = ""; //avatar? or default ama pic?
+						$model->save(false);
 					}
 				}
-				unset(Yii::app()->session['pictures']);
+				$this->sendJSONResponse(array(
+					'success' => $model->id,
+				));
+
+			}else{
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
+			}
+		}else{
+			$this->sendJSONResponse(array(
+				'error' => 'no name',
+			));	
+		}
+
+	}
+
+
+	public function actionCreateImagePost(){
+
+		$user = null;
+
+		if(isset($_POST['udid'])){
+			$user = Users::model()->findByAttributes(array('udid'=>$_POST['udid']));
+		}
+
+		if(!$user){
+			if (!isset($_POST['token'])) {
+				$this->sendJSONResponse(array(
+					'error' => 'No token'
+				));
+				exit();
+			} else {
+				$user = Users::model()->findByAttributes(array(
+					'activkey' => $_POST['token']
+				));
+				if (!$user) {
+					$this->sendJSONResponse(array(
+						'error' => 'Invalid token'
+					));
+					exit();
+				}
+			}
+		}
+
+		$model = new Posts;
+
+		if(isset($_FILES['file']) && isset($_POST['name']) && isset($_POST['type']))
+		{
+
+			if (!isset($_FILES["file"]["tmp_name"]) || !$_FILES["file"]["tmp_name"]) {
+				$this->sendJSONPost(array(
+					'error' => 'No picture posted.'
+				));
+				exit();
+			}
+
+			$new_image_name = strtolower($_FILES['file']['tmp_name']);
+
+			$fileSavePath = "uploads/posts/" . $user->id . "/";
+			if (!file_exists($fileSavePath)) {
+				mkdir($fileSavePath, 0777, true);
+			}
+
+			$file_html = '<img src="/uploads/posts/'.$user->id.'/'.$new_image_name.'" style="max-width:700px;" />';
+
+			if(isset($_POST['description'])){
+				$model->description = $_POST['description'];
+			}
+
+			$model->description .= $file_html;
+
+			if(isset($_POST['category_id'])){
+				$model->category_id = $_POST['category_id'];
+			}
+			if(isset($_POST['link'])){
+				$model->link = urldecode($_POST['link']);
+			}
+			if(isset($_POST['thumbnail_url'])){
+				$model->thumb_pic = $_POST['thumbnail_url'];
+			}
+			
+			$model->name = $_POST['name'];
+			$model->type = $_POST['type'];
+			
+			$model->name = strip_tags($model->name); 	//净化tags
+			$model->create_time = time();
+			$model->user_id = $user->id;
+			$model->points = 0;	//starting with 0 points?
+
+			if($model->type == 1){		//link
+				//nothing
+			}else if($model->type == 2){	//content
+				$model->link = "";
+
+			}else if($model->type == 3){	//ama
+				$model->link = "";
+				$model->category_id = 4;	//force AMA
+			}
+			if($model->type == 2 && !$model->description){
+
+				$model->addError('description', '请输入要提交的内容');
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
+
+			}else if($model->type == 3 && !$model->description){
+
+				$model->addError('description', '请简单介绍自己/推荐提供身份证明');
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
+
+			}else if($model->type == 1 && !$model->link){
+
+				$model->addError('link', '请输入要提交的链接');
+				$this->sendJSONResponse(array(
+					$model->getErrors()
+				));
+
+			}else if($model->validate()){
+
+				$model->save(false);
+				move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/posts/".$user->id."/".$new_image_name);
+
+				$admin = Admins::model()->findByPk($user->id);
+				if($admin){
+					$admin->total_posts++;
+					$admin->balance += $admin->salary;		//1块钱1条 或者 1块5 1条
+					$admin->save(false);
+				}
 
 				if(!$model->thumb_pic){		//说明用户没有自己点推荐链接
 					if($model->link){
@@ -887,6 +1046,147 @@ class ApiController extends Controller
 
 	}
 
+
+	public function actionDelete()
+	{
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['post_id'])){
+			$post = Posts::model()->findByPk($_GET['post_id']);
+			if($post && $user->id == $post->user_id){
+				$post->hide = 1;
+				$post->save(false);
+				$this->sendJSONResponse(array(
+					'success' => 'success',
+				));
+				return;	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+	}
+
+
+	public function actionUnDelete()
+	{
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['post_id'])){
+			$post = Posts::model()->findByPk($_GET['post_id']);
+			if($post && $user->id == $post->user_id){
+				$post->hide = 0;
+				$post->save(false);
+				$this->sendJSONResponse(array(
+					'success' => 'success',
+				));
+				return;	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+	}
+
+
+	public function actionDeleteComment()
+	{
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['comment_id'])){
+			$comment = Comments::model()->findByPk($_GET['comment_id']);
+			if($comment && $user->id == $comment->user_id){
+				$comment->delete();
+				$this->sendJSONResponse(array(
+					'success' => 'success',
+				));
+				return;	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+	}
+
+
+	public function actionDeleteReply()
+	{
+		if (!isset($_GET['token'])) {
+			$this->sendJSONResponse(array(
+				'error' => 'No token'
+			));
+			exit();
+		} else {
+			$user = Users::model()->findByAttributes(array(
+				'activkey' => $_GET['token']
+			));
+			if (!$user) {
+				$this->sendJSONResponse(array(
+					'error' => 'Invalid token'
+				));
+				exit();
+			}
+		}
+
+		if(isset($_GET['reply_id'])){
+			$reply = Reply::model()->findByPk($_GET['reply_id']);
+			if($reply && $user->id == $reply->user_id){
+				$reply->delete();
+				$this->sendJSONResponse(array(
+					'success' => 'success',
+				));
+				return;	
+			}
+		}
+		$this->sendJSONResponse(array(
+			'error' => 'error',
+		));
+	}
 
 	/**
 	 * Vote ajax cancel function
@@ -1054,6 +1354,9 @@ class ApiController extends Controller
 							$post->fake_up++;
 						}else{
 							$post->up++;
+							if($post->up == 5 || $post->up == 10 || $post->up == 20){
+								$post->informed = 0;
+							}
 						}
 					}else{
 						if($post->user_id == $user->id){
@@ -1455,6 +1758,9 @@ class ApiController extends Controller
 
 		foreach($notifications as $notification):
 			$post = Posts::model()->findByPk($notification->post_id);
+			if(!$post){
+				continue;
+			}
 			$vote = PostsVotes::model()->findByAttributes(array('post_id'=>$post->id, 'user_id'=>$user->id));
 			$self_vote = 0;			//0为尚未投票
 			if($vote){
